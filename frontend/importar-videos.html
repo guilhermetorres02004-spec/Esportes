@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Importar Vídeos - Portal do Esporte Betim</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 font-sans text-slate-900 flex flex-col min-h-screen">
+
+    <script>
+        fetch("/api/auth/me", { credentials: "include" }).then((response) => {
+            if (!response.ok) {
+                window.location.href = "login.html";
+            }
+        });
+
+        function sair() {
+            fetch("/logout", { method: "POST", credentials: "include" })
+                .finally(() => window.location.href = "login.html");
+        }
+    </script>
+
+    <header class="bg-blue-950 text-white py-2 text-xs font-bold uppercase tracking-widest text-center">
+        Comunicação - Secretaria Municipal de Esportes
+    </header>
+
+    <nav class="bg-white border-b sticky top-0 z-50 shadow-sm h-20 flex items-center">
+        <div class="max-w-7xl mx-auto w-full px-4 flex justify-between items-center">
+            <div class="flex items-center gap-4 cursor-pointer" onclick="location.href='comunicacao.html'">
+                <div class="bg-blue-900 text-white font-black p-2 rounded-lg text-xl w-10 h-10 flex items-center justify-center">B</div>
+                <h1 class="text-blue-900 font-black text-xl uppercase italic tracking-tighter">Portal do Esporte</h1>
+            </div>
+            <div class="flex items-center gap-3">
+                <button onclick="location.href='comunicacao.html'" class="border-2 border-blue-900 text-blue-900 px-4 py-1.5 rounded-full font-black hover:bg-blue-900 hover:text-white transition text-xs uppercase">
+                    Voltar
+                </button>
+                <button onclick="sair()" class="border-2 border-red-600 text-red-600 px-4 py-1.5 rounded-full font-black hover:bg-red-600 hover:text-white transition text-xs uppercase">
+                    Sair
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-3xl mx-auto px-4 py-12 flex-grow w-full">
+        <div class="border-l-8 border-blue-900 pl-6 mb-10">
+            <h2 class="text-4xl font-black text-blue-900 uppercase italic tracking-tighter leading-none">Importar Vídeos</h2>
+            <p class="text-slate-500 font-bold uppercase text-xs mt-2 tracking-widest">Exibição na página inicial</p>
+        </div>
+
+        <form id="form-upload" class="bg-white rounded-[24px] shadow-md p-8 mb-10">
+            <label class="block text-sm font-bold text-slate-600 mb-2" for="arquivo">Selecionar vídeo (.mp4, .webm, .mov — até 200MB)</label>
+            <input type="file" id="arquivo" name="arquivo" accept="video/mp4,video/webm,video/quicktime" required
+                   class="block w-full text-sm border border-slate-300 rounded-lg p-2 mb-4">
+
+            <div id="progresso-container" class="hidden mb-4">
+                <div class="w-full bg-slate-200 rounded-full h-3">
+                    <div id="progresso-barra" class="bg-blue-900 h-3 rounded-full transition-all" style="width:0%"></div>
+                </div>
+            </div>
+
+            <p id="mensagem" class="text-sm mb-4 hidden"></p>
+
+            <button type="submit" class="bg-blue-900 text-white font-black uppercase tracking-widest px-6 py-3 rounded-lg hover:bg-blue-800 transition">
+                Enviar Vídeo
+            </button>
+        </form>
+
+        <div class="bg-white rounded-[24px] shadow-md p-8">
+            <h3 class="text-lg font-black text-blue-900 uppercase italic mb-4">Vídeos já importados</h3>
+            <ul id="lista-videos" class="divide-y divide-slate-100">
+                <li class="py-3 text-sm text-slate-400">Carregando...</li>
+            </ul>
+        </div>
+    </main>
+
+    <script>
+        const form = document.getElementById("form-upload");
+        const input = document.getElementById("arquivo");
+        const mensagem = document.getElementById("mensagem");
+        const progressoContainer = document.getElementById("progresso-container");
+        const progressoBarra = document.getElementById("progresso-barra");
+        const lista = document.getElementById("lista-videos");
+
+        function mostrarMensagem(texto, sucesso) {
+            mensagem.textContent = texto;
+            mensagem.classList.remove("hidden", "text-emerald-600", "text-red-600");
+            mensagem.classList.add(sucesso ? "text-emerald-600" : "text-red-600");
+        }
+
+        async function carregarLista() {
+            const response = await fetch("/api/videos", { credentials: "include" });
+            if (!response.ok) {
+                lista.innerHTML = '<li class="py-3 text-sm text-red-600">Não foi possível carregar a lista.</li>';
+                return;
+            }
+            const videos = await response.json();
+            lista.innerHTML = videos.length
+                ? videos.map((nome) => `<li class="py-3 text-sm flex items-center gap-2"><i class="fas fa-film text-blue-900"></i>${nome}</li>`).join("")
+                : '<li class="py-3 text-sm text-slate-400">Nenhum vídeo importado ainda.</li>';
+        }
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            if (!input.files.length) return;
+
+            const dados = new FormData();
+            dados.append("arquivo", input.files[0]);
+
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "/api/videos");
+            xhr.withCredentials = true;
+
+            progressoContainer.classList.remove("hidden");
+            mensagem.classList.add("hidden");
+
+            xhr.upload.onprogress = (event) => {
+                if (event.lengthComputable) {
+                    progressoBarra.style.width = Math.round((event.loaded / event.total) * 100) + "%";
+                }
+            };
+
+            xhr.onload = () => {
+                progressoContainer.classList.add("hidden");
+                progressoBarra.style.width = "0%";
+                if (xhr.status === 201) {
+                    mostrarMensagem("Vídeo enviado com sucesso.", true);
+                    form.reset();
+                    carregarLista();
+                } else {
+                    mostrarMensagem("Erro ao enviar: " + xhr.responseText, false);
+                }
+            };
+
+            xhr.onerror = () => {
+                progressoContainer.classList.add("hidden");
+                mostrarMensagem("Erro de conexão ao enviar o vídeo.", false);
+            };
+
+            xhr.send(dados);
+        });
+
+        carregarLista();
+    </script>
+</body>
+</html>

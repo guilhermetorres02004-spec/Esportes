@@ -30,7 +30,8 @@ public class SecurityConfig {
                                 "/api/eventos/**",
                                 "/api/noticias/**",
                                 "/api/modalidades/**",
-                                "/api/locais-esportivos/**").permitAll()
+                                "/api/locais-esportivos/**",
+                                "/api/imagens/exibindo").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/inscricoes").permitAll()
                         .requestMatchers("/api/auth/me").permitAll()
                         .anyRequest().authenticated())

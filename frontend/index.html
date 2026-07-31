@@ -236,8 +236,8 @@
                 <div class="flex justify-between items-end mb-12 border-l-8 border-blue-900 pl-6"><h3 class="text-4xl font-black text-blue-900 uppercase italic tracking-tighter leading-none">Notícias</h3></div>
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
                     <div class="lg:col-span-2 relative rounded-[40px] news-main-card overflow-hidden bg-black shadow-2xl">
-                        <img src="Imagens/Rio.jpeg" class="absolute inset-0 w-full h-full object-contain z-10 mx-auto">
-                        <img src="Imagens/Rio.jpeg" class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-50">
+                        <img id="noticia-img-principal" src="Imagens/Rio.jpeg" class="absolute inset-0 w-full h-full object-contain z-10 mx-auto">
+                        <img id="noticia-img-blur" src="Imagens/Rio.jpeg" class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-50">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent p-12 flex flex-col justify-end z-20">
                             <span class="bg-yellow-400 text-blue-900 text-xs font-black uppercase px-4 py-1 w-fit mb-4 italic">Rumo ao Rio</span>
                             <h4 class="text-white text-4xl font-black uppercase italic mb-4">Partiu Rio de Janeiro!</h4>
@@ -256,23 +256,20 @@
                 <div class="flex items-center gap-3 mb-10 border-l-8 border-red-600 pl-4">
                     <h3 class="text-3xl font-black text-blue-900 uppercase italic tracking-tighter leading-none">Ação em Vídeo</h3>
                 </div>
-                <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
-                    <div class="lg:col-span-3 relative group overflow-hidden rounded-[30px] bg-black shadow-2xl aspect-video border-4 border-white">
-                        <video class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-110" muted loop autoplay><source src="Imagens/esporte.mp4" type="video/mp4"></video>
-                        <video id="mainVideo" class="relative z-10 w-full h-full object-contain mx-auto"><source src="Imagens/esporte.mp4" type="video/mp4"></video>
-                        <div class="absolute inset-0 flex items-center justify-center z-20">
-                            <button id="playBtn" class="w-16 h-16 bg-white/20 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center text-white text-2xl hover:scale-110 transition-all"><i class="fas fa-play ml-1"></i></button>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-4">
-                        <div class="bg-blue-900 p-6 rounded-[24px] text-white shadow-lg flex-1 flex flex-col justify-center">
-                            <h4 class="font-black uppercase italic text-lg mb-2">Destaque</h4>
-                            <p class="text-[10px] opacity-80 italic">Assista aos melhores momentos das competições municipais.</p>
-                        </div>
-                        <div class="bg-yellow-400 p-6 rounded-[24px] text-blue-900 shadow-lg flex-1 flex flex-col justify-center">
-                            <h4 class="font-black uppercase italic text-lg mb-2">Novos Vídeos</h4>
-                            <p class="text-[10px] font-bold italic">Acesse nosso canal oficial para tutoriais e treinos.</p>
-                        </div>
+                <div class="flex flex-wrap justify-center items-stretch gap-6">
+                    <video controls class="rounded-[24px] shadow-2xl bg-black" style="max-width:400px; width:100%;">
+                        <source src="Videos/VideoEsporte.mp4" type="video/mp4">
+                    </video>
+                    <video controls class="rounded-[24px] shadow-2xl bg-black" style="max-width:400px; width:100%;">
+                        <source src="Videos/VideoEsporte1.mp4" type="video/mp4">
+                    </video>
+                    <div class="flex flex-col gap-6" style="max-width:200px; width:100%;">
+                        <video controls class="rounded-[16px] shadow-lg bg-black w-full flex-1" style="min-height:0; object-fit:cover;">
+                            <source src="Videos/VideoEsporte2.mp4" type="video/mp4">
+                        </video>
+                        <video controls class="rounded-[16px] shadow-lg bg-black w-full flex-1" style="min-height:0; object-fit:cover;">
+                            <source src="Videos/videoesporte3.mp4" type="video/mp4">
+                        </video>
                     </div>
                 </div>
             </section>
@@ -498,6 +495,22 @@
             window.scrollTo(0,0);
         }
 
+        // Notícias: sempre mostra as fotos da pasta Imagens/Exibindo
+        fetch('/api/imagens/exibindo').then(r => r.ok ? r.json() : []).then((fotos) => {
+            if (!fotos.length) return;
+            const principal = document.getElementById('noticia-img-principal');
+            const blur = document.getElementById('noticia-img-blur');
+            let idx = 0;
+            const atualizar = () => {
+                const src = `Imagens/Exibindo/${encodeURIComponent(fotos[idx])}`;
+                principal.src = src;
+                blur.src = src;
+                idx = (idx + 1) % fotos.length;
+            };
+            atualizar();
+            if (fotos.length > 1) setInterval(atualizar, 6000);
+        }).catch(() => {});
+
         let slideIdx = 0;
         const slides = document.querySelectorAll('.slide');
         setInterval(() => {
@@ -509,13 +522,6 @@
         const map = L.map('map', { scrollWheelZoom: false }).setView([-19.9678, -44.1983], 13);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
         unidades.forEach(u => { L.marker(u.c).addTo(map).bindPopup(`<b>${u.n}</b>`); });
-
-        const video = document.getElementById('mainVideo');
-        const playBtn = document.getElementById('playBtn');
-        playBtn.onclick = () => {
-            if (video.paused) { video.play(); playBtn.innerHTML = '<i class="fas fa-pause"></i>'; playBtn.style.opacity = '0'; }
-            else { video.pause(); playBtn.innerHTML = '<i class="fas fa-play ml-2"></i>'; playBtn.style.opacity = '1'; }
-        };
 
         const track = document.getElementById('marquee-track');
         track.innerHTML += track.innerHTML;
