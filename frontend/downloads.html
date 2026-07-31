@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloads - Portal do Esporte Betim</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --betim-blue: #1e3a8a; }
+        html { scroll-behavior: smooth; }
+        .download-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .download-card:hover { transform: translateY(-10px); }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-900">
+
+    <header class="bg-blue-950 text-white py-2 text-[10px] font-bold uppercase tracking-widest text-center">
+        Prefeitura Municipal de Betim - Secretaria Municipal de Esportes
+    </header>
+
+    <nav class="bg-white border-b sticky top-0 z-50 shadow-sm h-24 flex items-center">
+        <div class="max-w-7xl mx-auto w-full px-4 flex justify-between items-center">
+            <div class="flex items-center gap-4 cursor-pointer" onclick="location.href='index.html'">
+                <div class="bg-blue-900 text-white font-black p-2 rounded-lg text-2xl w-12 h-12 flex items-center justify-center">B</div>
+                <h1 class="text-blue-900 font-black text-2xl uppercase italic tracking-tighter">Portal do Esporte</h1>
+            </div>
+            <ul class="hidden lg:flex gap-8 font-bold text-gray-700 uppercase text-[12px] items-center">
+                <li class="cursor-pointer hover:text-blue-900" onclick="location.href='index.html'">Início</li>
+                <li><button class="bg-blue-900 text-white px-8 py-3 rounded-full font-black hover:bg-yellow-400 hover:text-blue-900 transition shadow-lg">Downloads Ativos</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 py-20">
+        <div class="border-l-8 border-blue-900 pl-6 mb-16">
+            <h2 class="text-5xl font-black text-blue-900 uppercase italic tracking-tighter leading-tight">Documentação <br>Oficial 2026</h2>
+            <p class="text-slate-500 font-bold uppercase text-xs mt-2 tracking-widest">Acesse as diretrizes e formulários da SEMES</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white p-8 rounded-[40px] shadow-xl border border-slate-100 flex flex-col justify-between download-card">
+                <div>
+                    <div class="bg-blue-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-file-signature text-3xl text-blue-900"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-blue-900 uppercase italic mb-3">Termo de Ajustamento de Conduta (TAC)</h3>
+                    <p class="text-xs text-slate-500 mb-6 leading-relaxed">Regulamento para atletas sobre conduta, autorização de imagem e viagens oficiais[cite: 76, 77, 84].</p>
+                </div>
+                <a href="2026 TERMO DE AJUSTAMENTO DE CONDUTA ATLETAS PREFEITURA MUNICIPAL DE BETIM.pdf" download class="bg-blue-900 text-white text-center py-4 rounded-2xl font-black uppercase text-xs hover:bg-yellow-400 hover:text-blue-900 transition-all">
+                    <i class="fas fa-download mr-2"></i> Baixar TAC (PDF)
+                </a>
+            </div>
+
+            <div class="bg-white p-8 rounded-[40px] shadow-xl border border-slate-100 flex flex-col justify-between download-card">
+                <div>
+                    <div class="bg-red-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-camera text-3xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-blue-900 uppercase italic mb-3">Protocolo de Fotos e Vídeos</h3>
+                    <p class="text-xs text-slate-500 mb-6 leading-relaxed">Orientações para o registro de equipes e envio via WhatsApp para a comunicação[cite: 1, 2, 21].</p>
+                </div>
+                <a href="PROTOCOLO VÍDEOS E FOTOS PARA VIAGENS SEMES.pdf" download class="bg-red-600 text-white text-center py-4 rounded-2xl font-black uppercase text-xs hover:bg-blue-900 transition-all">
+                    <i class="fas fa-download mr-2"></i> Baixar Guia (PDF)
+                </a>
+            </div>
+
+            <div class="bg-white p-8 rounded-[40px] shadow-xl border border-slate-100 flex flex-col justify-between download-card">
+                <div>
+                    <div class="bg-emerald-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-heartbeat text-3xl text-emerald-600"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-blue-900 uppercase italic mb-3">Questionário PAR-Q</h3>
+                    <p class="text-xs text-slate-500 mb-6 leading-relaxed">Identificação de necessidade de avaliação clínica antes do início da atividade física[cite: 161, 162, 163].</p>
+                </div>
+                <a href="PAR Q PVE 2026.pdf" download class="bg-emerald-600 text-white text-center py-4 rounded-2xl font-black uppercase text-xs hover:bg-blue-900 transition-all">
+                    <i class="fas fa-download mr-2"></i> Baixar PAR-Q (PDF)
+                </a>
+            </div>
+
+            <div class="bg-white p-8 rounded-[40px] shadow-xl border border-slate-100 flex flex-col justify-between download-card">
+                <div>
+                    <div class="bg-yellow-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-map-marked-alt text-3xl text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-blue-900 uppercase italic mb-3">Unidades Esportivas</h3>
+                    <p class="text-xs text-slate-500 mb-6 leading-relaxed">Lista de endereços e modalidades do Projeto Viva o Esporte[cite: 26, 48, 65, 66].</p>
+                </div>
+                <a href="Unidades Esportivas Projeto Viva o Esporte  (1).pdf" download class="bg-yellow-400 text-blue-900 text-center py-4 rounded-2xl font-black uppercase text-xs hover:bg-blue-900 hover:text-white transition-all">
+                    <i class="fas fa-download mr-2"></i> Ver Unidades (PDF)
+                </a>
+            </div>
+        </div>
+
+        <div class="mt-16 bg-blue-900 p-10 rounded-[40px] text-white flex flex-col md:flex-row items-center gap-8">
+            <div class="text-4xl"><i class="fas fa-info-circle text-yellow-400"></i></div>
+            <div>
+                <h4 class="font-black uppercase italic text-xl mb-2">Instruções de Entrega</h4>
+                <p class="text-sm opacity-80 leading-relaxed">
+                    Certifique-se de que todos os documentos estejam devidamente preenchidos e assinados[cite: 151, 153]. 
+                    Para materiais de mídia, utilize o WhatsApp da comunicação: (31) 9 9327-0326[cite: 24].
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-blue-950 text-white py-16 text-center text-xs font-black uppercase tracking-widest border-t-[12px] border-yellow-400">
+        Prefeitura de Betim - Secretaria Municipal de Esportes &copy; 2026
+    </footer>
+
+</body>
+</html>
+

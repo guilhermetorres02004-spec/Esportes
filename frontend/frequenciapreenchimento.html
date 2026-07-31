@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Frequência - SEMES Betim</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js';
+        import { getFirestore, collection, addDoc, getDocs, updateDoc, deleteDoc, doc, query, where } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js';
+
+        // Configuração Firebase (substitua pelas suas credenciais)
+        const firebaseConfig = {
+            apiKey: "SUA_API_KEY",
+            authDomain: "seu-projeto.firebaseapp.com",
+            projectId: "seu-projeto",
+            storageBucket: "seu-projeto.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "1:123456789:web:abcdef123456"
+        };
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Tornar db global para uso nos scripts
+        window.db = db;
+        window.collection = collection;
+        window.addDoc = addDoc;
+        window.getDocs = getDocs;
+        window.updateDoc = updateDoc;
+        window.deleteDoc = deleteDoc;
+        window.doc = doc;
+        window.query = query;
+        window.where = where;
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #1e3a8a; border-radius: 10px; }
+        select option { white-space: nowrap; }
+        body { font-weight: 600; }
+        input, select, textarea, button { font-weight: 700; }
+    </style>
+</head>
+<body class="bg-slate-100 font-sans text-slate-900 p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden">
+        
+        <div class="bg-blue-900 p-6 text-white">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="bg-white text-blue-900 font-black h-12 w-12 flex items-center justify-center rounded-lg text-2xl shadow-lg">B</div>
+                    <div>
+                        <h1 class="text-xl font-black uppercase italic tracking-tight">Portal do Instrutor</h1>
+                        <p class="text-xs font-bold text-blue-200 uppercase tracking-widest">Secretaria de Esportes - Betim</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-3 bg-blue-800/50 p-3 rounded-xl border border-blue-700/50">
+                    <div class="h-10 w-10 bg-yellow-400 rounded-full flex items-center justify-center text-blue-900">
+                        <i class="fas fa-user-tie text-xl"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-[10px] font-black uppercase text-blue-300 leading-none">Instrutor Responsável</p>
+                        <p id="instrutorNome" class="text-sm font-bold text-white uppercase">Prof. Ricardo Silva</p>
+                        <p class="text-[9px] font-bold text-yellow-400">CREF: 012345-G/MG</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-6">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-6">
+                
+                <div class="md:col-span-9 bg-slate-50 p-4 rounded-xl border border-slate-200 grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div class="md:col-span-4">
+                        <label class="block text-[10px] font-black text-slate-400 uppercase mb-1">Local / Núcleo</label>
+                        <p class="text-sm font-bold text-blue-900 uppercase"><i class="fas fa-map-marker-alt mr-2 text-red-500"></i> Horto Municipal Homero Gomes</p>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-black text-slate-400 uppercase mb-1">Data da Aula</label>
+                        <input type="date" id="dataAula" class="w-full p-2 border rounded-lg font-bold text-blue-900 outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-[10px] font-black text-slate-400 uppercase mb-1">Turma Ativa</label>
+                        <select id="turmaId" onchange="atualizarInstrutores()" class="w-full p-2 border rounded-lg font-bold text-blue-900 text-sm outline-none focus:ring-2 focus:ring-blue-500">
+                            <option>Futsal Masculino - Sub 15 (Terça/Quinta)</option>
+                            <option>Futsal Feminino - Aberto (Quarta/Sexta)</option>
+                            <option>Vôlei Masculino - Sub 17 (Segunda/Quarta)</option>
+                            <option>Vôlei Feminino - Sub 15 (Terça/Sexta)</option>
+                            <option>Basquete Misto - Aberto (Quinta/Sábado)</option>
+                            <option>Handebol Masculino - Sub 13 (Segunda/Quinta)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-black text-slate-400 uppercase mb-1">Instrutor</label>
+                        <select id="instrutorId" onchange="atualizarInstrutor()" class="w-48 p-2 border rounded-lg font-bold text-blue-900 text-sm outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="Prof. Ricardo Silva">Prof. Ricardo Silva</option>
+                            <option value="Prof. João Santos">Prof. João Santos</option>
+                            <option value="Prof. Maria Oliveira">Prof. Maria Oliveira</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="md:col-span-3 bg-blue-50 p-4 rounded-xl border border-blue-100 flex flex-col justify-center">
+                    <p class="text-[10px] font-black text-blue-400 uppercase mb-3 text-center">Status do Lançamento</p>
+                    <div class="flex justify-around items-center">
+                        <div class="text-center">
+                            <span id="countP" class="text-2xl font-black text-emerald-600 block">0</span>
+                            <p class="text-[9px] font-bold text-slate-400 uppercase">Presenças</p>
+                        </div>
+                        <div class="text-center border-x border-blue-200 px-6">
+                            <span id="countF" class="text-2xl font-black text-red-600 block">0</span>
+                            <p class="text-[9px] font-bold text-slate-400 uppercase">Faltas</p>
+                        </div>
+                        <div class="text-center">
+                            <span id="countFJ" class="text-2xl font-black text-blue-600 block">0</span>
+                            <p class="text-[9px] font-bold text-slate-400 uppercase">Justificadas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border rounded-xl overflow-hidden shadow-sm">
+                <div class="max-h-[450px] overflow-y-auto custom-scrollbar">
+                    <table class="w-full text-left">
+                        <thead class="bg-slate-800 text-white text-[11px] uppercase">
+                            <tr>
+                                <th class="p-4 w-16 text-center">Nº</th>
+                                <th class="p-4">Nome do Atleta</th>
+                                <th class="p-4 text-center">Registro de Frequência</th>
+                            </tr>
+                        </thead>
+                        <tbody id="listaAtletas" class="divide-y divide-slate-100">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-2 text-[10px] text-slate-400 font-bold uppercase">
+                    <i class="fas fa-info-circle text-blue-500 text-sm"></i>
+                    Os dados serão sincronizados com o banco de dados da SEMES.
+                </div>
+                <div class="flex gap-3 w-full md:w-auto">
+                    <button onclick="window.location.href='index.html'" class="flex-1 md:flex-none px-12 py-4 bg-slate-600 text-white font-black rounded-xl hover:bg-slate-700 transition-all shadow-lg flex items-center justify-center gap-3 tracking-widest uppercase text-xs">
+                        <i class="fas fa-arrow-left"></i> Voltar ao Portal
+                    </button>
+                    <button onclick="salvar()" class="flex-1 md:flex-none px-12 py-4 bg-blue-900 text-white font-black rounded-xl hover:bg-yellow-400 hover:text-blue-900 transition-all shadow-lg flex items-center justify-center gap-3 tracking-widest uppercase text-xs">
+                        <i class="fas fa-check-circle"></i> Finalizar e Salvar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const atletasPorTurma = {
+            "Futsal Masculino - Sub 15 (Terça/Quinta)": [
+                "Arthur Henrique Costa", "Bruno Vinícius Dias", "Douglas Antunes Lima", "Enzo Gabriel Martins",
+                "Felipe Macedo Gomes", "Gabriel Ferreira Lima", "João Pedro Cavalcante", "Leonardo Silva Prado",
+                "Lucas Oliveira Santos", "Matheus Souza Mendes", "Rafael Augusto Neves", "Thiago Rocha Silva"
+            ],
+            "Futsal Feminino - Aberto (Quarta/Sexta)": [
+                "Alice Silva", "Beatriz Santos", "Carla Oliveira", "Daniela Pereira", "Eduarda Lima",
+                "Fernanda Costa", "Gabriela Rocha", "Helena Martins", "Isabela Ferreira", "Juliana Gomes",
+                "Karina Alves", "Larissa Mendes", "Mariana Neves"
+            ],
+            "Vôlei Masculino - Sub 17 (Segunda/Quarta)": [
+                "André Lima", "Bernardo Costa", "Caio Pereira", "Diego Santos", "Eduardo Rocha",
+                "Fernando Oliveira", "Gustavo Martins", "Henrique Ferreira", "Igor Gomes", "José Alves",
+                "Kevin Mendes", "Lucas Neves", "Miguel Silva"
+            ],
+            "Vôlei Feminino - Sub 15 (Terça/Sexta)": [
+                "Ana Clara", "Bianca Lima", "Camila Costa", "Diana Pereira", "Elena Santos",
+                "Fabiana Rocha", "Giovana Oliveira", "Heloísa Martins", "Inês Ferreira", "Júlia Gomes",
+                "Karla Alves", "Lívia Mendes", "Mônica Neves"
+            ],
+            "Basquete Misto - Aberto (Quinta/Sábado)": [
+                "Nicolas Silva", "Olivia Santos", "Pedro Oliveira", "Quintino Pereira", "Rafael Lima",
+                "Sofia Costa", "Thiago Rocha", "Úrsula Martins", "Victor Ferreira", "Wagner Gomes",
+                "Xavier Alves", "Yasmin Mendes", "Zoe Neves"
+            ],
+            "Handebol Masculino - Sub 13 (Segunda/Quinta)": [
+                "Alexandre Lima", "Bruno Costa", "Carlos Pereira", "Daniel Santos", "Elias Rocha",
+                "Fábio Oliveira", "Gabriel Martins", "Hugo Ferreira", "Ícaro Gomes", "João Alves",
+                "Kaique Mendes", "Leandro Neves", "Marcos Silva"
+            ]
+        };
+
+        function renderizar() {
+            const turma = document.getElementById('turmaId').value;
+            const atletas = atletasPorTurma[turma] || [];
+            const container = document.getElementById('listaAtletas');
+            container.innerHTML = atletas.sort().map((nome, i) => `
+                <tr class="hover:bg-blue-50/50 transition-colors">
+                    <td class="p-4 w-16 text-center font-bold text-slate-300 text-xs">${i + 1}</td>
+                    <td class="p-4">
+                        <div class="flex flex-col">
+                            <span class="font-bold text-blue-900 uppercase text-xs">${nome}</span>
+                            <span class="text-[9px] text-slate-400 font-bold tracking-tight">MATRÍCULA: 2026.00${i+100}</span>
+                        </div>
+                    </td>
+                    <td class="p-4">
+                        <div class="flex justify-center gap-3">
+                            ${['P', 'F', 'FJ'].map(status => `
+                                <label class="relative group">
+                                    <input type="radio" name="status_${i}" value="${status}" 
+                                        ${status === 'P' ? 'checked' : ''} 
+                                        onchange="atualizarContadores()"
+                                        class="hidden peer">
+                                    <span class="w-10 h-10 flex flex-col items-center justify-center rounded-lg border-2 font-black cursor-pointer transition-all text-[10px]
+                                        ${status === 'P' ? 'border-emerald-100 text-emerald-200 peer-checked:border-emerald-600 peer-checked:bg-emerald-600 peer-checked:text-white' : 
+                                          status === 'F' ? 'border-red-100 text-red-200 peer-checked:border-red-600 peer-checked:bg-red-600 peer-checked:text-white' : 
+                                          'border-blue-100 text-blue-200 peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white'}">
+                                        ${status}
+                                    </span>
+                                </label>
+                            `).join('')}
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+            atualizarContadores();
+        }
+
+        function atualizarContadores() {
+            document.getElementById('countP').innerText = document.querySelectorAll('input[value="P"]:checked').length;
+            document.getElementById('countF').innerText = document.querySelectorAll('input[value="F"]:checked').length;
+            document.getElementById('countFJ').innerText = document.querySelectorAll('input[value="FJ"]:checked').length;
+        }
+
+        const instrutoresPorTurma = {
+            "Futsal Masculino - Sub 15 (Terça/Quinta)": ["Prof. Ricardo Silva", "Prof. João Santos"],
+            "Futsal Feminino - Aberto (Quarta/Sexta)": ["Prof. Maria Oliveira", "Prof. Ana Costa"],
+            "Vôlei Masculino - Sub 17 (Segunda/Quarta)": ["Prof. Carlos Mendes", "Prof. Pedro Lima"],
+            "Vôlei Feminino - Sub 15 (Terça/Sexta)": ["Prof. Juliana Ferreira", "Prof. Sofia Rocha"],
+            "Basquete Misto - Aberto (Quinta/Sábado)": ["Prof. Roberto Alves", "Prof. Luciana Pereira"],
+            "Handebol Masculino - Sub 13 (Segunda/Quinta)": ["Prof. Eduardo Santos", "Prof. Felipe Gomes"]
+        };
+
+        function atualizarInstrutores() {
+            const turma = document.getElementById('turmaId').value;
+            const instrutores = instrutoresPorTurma[turma] || [];
+            const selectInstrutor = document.getElementById('instrutorId');
+            selectInstrutor.innerHTML = instrutores.map(instr => `<option value="${instr}">${instr}</option>`).join('');
+            // Set default to first
+            if (instrutores.length > 0) {
+                selectInstrutor.value = instrutores[0];
+                atualizarInstrutor();
+            }
+            renderizar();
+        }
+
+        function atualizarInstrutor() {
+            document.getElementById('instrutorNome').innerText = document.getElementById('instrutorId').value;
+        }
+
+        document.getElementById('dataAula').valueAsDate = new Date();
+        atualizarInstrutores();
+        renderizar();
+    </script>
+</body>
+</html>
+

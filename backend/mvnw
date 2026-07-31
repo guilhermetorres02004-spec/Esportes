@@ -1,0 +1,17 @@
+#!/bin/sh
+
+cd "$(dirname "$0")" || exit 1
+
+LOCAL_MAVEN="$(pwd)/.tools/apache-maven-3.9.9/bin/mvn"
+if [ -x "$LOCAL_MAVEN" ]; then
+  exec "$LOCAL_MAVEN" "-Dmaven.repo.local=$(pwd)/.m2/repository" "$@"
+fi
+
+if command -v mvn >/dev/null 2>&1; then
+  exec mvn "-Dmaven.repo.local=$(pwd)/.m2/repository" "$@"
+fi
+
+echo "Maven nao encontrado."
+echo "Instale o Maven ou mantenha a pasta .tools dentro de backend."
+echo "Depois rode novamente: ./mvnw spring-boot:run"
+exit 1

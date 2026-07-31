@@ -1,0 +1,292 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Futebol - Portal do Esporte Betim</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        /* CARROSSEL RODAPÉ (MARQUEE) */
+        .marquee-container { width: 100%; overflow: hidden; background: white; padding: 40px 0; border-top: 2px solid #1e3a8a; border-bottom: 2px solid #1e3a8a; display: flex; }
+        .marquee-content { display: flex; white-space: nowrap; animation: scrollMarquee 40s linear infinite; }
+        .marquee-content img { width: 350px; height: 200px; object-fit: cover; margin: 0 20px; border-radius: 25px; border: 2px solid #e2e8f0; flex-shrink: 0; }
+        @keyframes scrollMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        #mapaFutebol { height: 640px; width: 100%; border-radius: 24px; border: 3px solid #1e3a8a; z-index: 10; }
+    </style>
+</head>
+<body class="bg-slate-50">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md p-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-blue-900 font-black uppercase flex items-center gap-2">
+                <i class="fas fa-arrow-left"></i> Voltar ao Portal
+            </a>
+            <img src="https://www.betim.mg.gov.br/img/logo_prefeitura.png" class="h-8">
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="relative bg-blue-900 text-white py-20 overflow-hidden">
+        <img src="Imagens/Futebol Bom Repouso.jpeg" class="absolute inset-0 w-full h-full object-cover opacity-20" onerror="this.src='https://images.unsplash.com/photo-1518605368461-1e1e38ce156d?q=80&w=1200'" alt="Campo de Futebol">
+        <div class="relative max-w-7xl mx-auto px-4">
+            <span class="bg-yellow-400 text-blue-900 px-3 py-1 rounded-full text-xs font-bold uppercase">Esporte Coletivo</span>
+            <h1 class="text-5xl font-black uppercase mt-4 italic">Futebol de Betim</h1>
+            <p class="text-blue-100 mt-4 max-w-2xl text-lg">Escola de futebol de campo Bom de Bola, Bom de Escola, com núcleos municipais em Betim para alunos de 6 a 15 anos, além do Funcional Soccer para participantes acima de 16 anos.</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-12 grid lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 space-y-12">
+            
+            <!-- Sobre a Modalidade -->
+            <section class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
+                <h3 class="text-2xl font-black text-blue-900 mb-6 uppercase italic">Futebol em Betim</h3>
+                <div class="space-y-4 text-slate-700 leading-relaxed">
+                    <p>O futebol de campo em Betim é ofertado por meio da Escola de Futebol de Campo Bom de Bola, Bom de Escola, com turmas organizadas por faixa etária e limite de até 30 alunos por turma.</p>
+                    <p>As aulas acontecem em campos e estádios municipais distribuídos por regionais da cidade. O atendimento contempla crianças e adolescentes de 6 a 15 anos, com horários pela manhã e à tarde conforme cada núcleo.</p>
+                    <p>Para jovens e adultos acima de 16 anos, o município também oferece o Funcional Soccer, com turmas feminina e masculina no período da noite.</p>
+                </div>
+            </section>
+
+            <!-- Galeria de Fotos -->
+            <section>
+                <h3 class="text-2xl font-black text-blue-900 mb-6 uppercase italic pl-4 border-l-4 border-yellow-400">Galeria</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="aspect-square rounded-2xl overflow-hidden shadow-lg">
+                        <img src="Imagens/Futebol Bom Repouso.jpeg" alt="Campo de Futebol Bom Repouso" onerror="this.src='https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=400'" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="aspect-square rounded-2xl overflow-hidden shadow-lg">
+                        <img src="Imagens/1.jpeg" alt="Atletas de Futebol" onerror="this.src='https://images.unsplash.com/photo-1511886929837-354d827aae26?q=80&w=400'" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="aspect-square rounded-2xl overflow-hidden shadow-lg">
+                        <img src="Imagens/2.jpeg" alt="Competição Municipal" onerror="this.src='https://images.unsplash.com/photo-1431324155629-1a6d0a11f581?q=80&w=400'" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Sidebar de Inscrição -->
+        <aside class="space-y-8 sticky top-24">
+            <div class="bg-white p-6 rounded-3xl shadow-lg border-t-8 border-emerald-500">
+                <h4 class="font-black text-blue-900 mb-4 uppercase">Inscrições Abertas</h4>
+                <p class="text-sm text-slate-600 mb-6">Faça parte das turmas municipais de futebol de Betim. As vagas seguem a disponibilidade dos núcleos e o limite de até 30 alunos por turma.</p>
+                <h5 class="font-bold text-blue-900 mb-3 uppercase text-sm">Requisitos</h5>
+                <ul class="text-sm space-y-3 text-slate-600">
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Bom de Bola: 6 a 15 anos</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Funcional Soccer: acima de 16 anos</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Estar matriculado na rede escolar</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Cópia do RG ou Certidão de Nascimento</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Comprovante de Residência (Betim)</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Atestado Médico de Aptidão Física</li>
+                </ul>
+                <a href="Inscricao.html?modalidade=futebol" class="block w-full mt-8 bg-blue-900 text-white text-center py-4 rounded-xl font-black uppercase tracking-widest hover:bg-blue-800 transition shadow-lg">
+                    Quero me Inscrever
+                </a>
+            </div>
+
+            <!-- Card SEMES Betim -->
+            <div class="bg-white p-6 rounded-3xl shadow-lg border-t-8 border-blue-900">
+                <h4 class="font-black text-blue-900 mb-4 uppercase">Rede Municipal</h4>
+                <p class="text-sm text-slate-600 mb-6">Consulte a agenda do portal para acompanhar eventos, torneios e ações esportivas realizadas pela Secretaria de Esportes em Betim.</p>
+                <a href="agenda.html" class="block w-full bg-yellow-400 text-blue-900 text-center py-4 rounded-xl font-black uppercase tracking-widest hover:bg-yellow-500 transition shadow-lg">
+                    Ver Agenda <i class="fas fa-calendar-alt ml-2"></i>
+                </a>
+            </div>
+        </aside>
+    </main>
+
+    <section class="max-w-7xl mx-auto px-4 pb-12 space-y-8">
+        <section class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
+            <h3 class="text-2xl font-black text-blue-900 mb-6 uppercase italic">Núcleos Bom de Bola, Bom de Escola</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                <div class="p-5 border border-slate-300 border-l-4 border-l-blue-900 bg-slate-50 rounded-xl shadow-sm">
+                    <p class="font-black text-blue-900 uppercase">Alterosa</p>
+                    <p class="text-sm md:text-base text-slate-700 font-semibold mt-2 leading-relaxed">Campo do Alterosa - Rua Mignonete, 125, Jardim das Alterosas II</p>
+                    <p class="text-base md:text-lg text-slate-800 mt-3 leading-relaxed">Terças e quintas: 08:00 às 09:30 (6 a 10), 09:30 às 11:00 (11 a 15), 14:00 às 15:30 (6 a 10), 15:30 às 17:00 (11 a 15).</p>
+                    <p class="text-[10px] text-blue-700 font-black uppercase mt-2">Educador físico: Duílio</p>
+                </div>
+                <div class="p-5 border border-slate-300 border-l-4 border-l-blue-900 bg-slate-50 rounded-xl shadow-sm">
+                    <p class="font-black text-blue-900 uppercase">Citrolândia</p>
+                    <p class="text-sm md:text-base text-slate-700 font-semibold mt-2 leading-relaxed">Estádio Municipal Pedro Butti - Rua Duque de Caxias, 42, Citrolândia</p>
+                    <p class="text-base md:text-lg text-slate-800 mt-3 leading-relaxed">Segundas e quartas: 08:00 às 09:30 (6 a 10), 09:30 às 11:00 (11 a 15), 14:00 às 15:30 (6 a 10), 15:30 às 17:00 (11 a 15).</p>
+                    <p class="text-[10px] text-blue-700 font-black uppercase mt-2">Educador físico: Alírio</p>
+                </div>
+                <div class="p-5 border border-slate-300 border-l-4 border-l-blue-900 bg-slate-50 rounded-xl shadow-sm">
+                    <p class="font-black text-blue-900 uppercase">Santa Inês</p>
+                    <p class="text-sm md:text-base text-slate-700 font-semibold mt-2 leading-relaxed">Estádio Municipal Silma Alves Benevides - Rua Ferroviária, s/n, Santa Inês</p>
+                    <p class="text-base md:text-lg text-slate-800 mt-3 leading-relaxed">Terças e quintas: 08:00 às 09:30 (6 a 10), 09:30 às 11:00 (11 a 15), 14:00 às 15:30 (6 a 10), 15:30 às 17:00 (11 a 15).</p>
+                    <p class="text-[10px] text-blue-700 font-black uppercase mt-2">Educador físico: Duílio</p>
+                </div>
+                <div class="p-5 border border-slate-300 border-l-4 border-l-blue-900 bg-slate-50 rounded-xl shadow-sm">
+                    <p class="font-black text-blue-900 uppercase">Senhora das Graças</p>
+                    <p class="text-sm md:text-base text-slate-700 font-semibold mt-2 leading-relaxed">Campo do Senhora das Graças - Rua Minas Gerais, s/n, N. S. das Graças</p>
+                    <p class="text-base md:text-lg text-slate-800 mt-3 leading-relaxed">Segundas e quartas: 08:00 às 09:30 (6 a 10), 09:30 às 11:00 (11 a 15), 14:00 às 15:30 (6 a 10), 15:30 às 17:00 (11 a 15).</p>
+                    <p class="text-[10px] text-blue-700 font-black uppercase mt-2">Educador físico: Duílio</p>
+                </div>
+                <div class="p-5 border border-slate-300 border-l-4 border-l-blue-900 bg-slate-50 rounded-xl shadow-sm">
+                    <p class="font-black text-blue-900 uppercase">São João</p>
+                    <p class="text-sm md:text-base text-slate-700 font-semibold mt-2 leading-relaxed">Campo do São João - Rua Cachopa, s/n, São João</p>
+                    <p class="text-base md:text-lg text-slate-800 mt-3 leading-relaxed">Terças e quintas: 08:00 às 09:00 (6 a 9), 09:00 às 10:00 (10 a 12), 10:00 às 11:00 (13 a 15), 14:00 às 15:30 (6 a 10), 15:30 às 17:00 (11 a 15).</p>
+                    <p class="text-[10px] text-blue-700 font-black uppercase mt-2">Educadora física: Aline Guedes</p>
+                </div>
+                <div class="p-5 border border-slate-300 border-l-4 border-l-blue-900 bg-slate-50 rounded-xl shadow-sm">
+                    <p class="font-black text-blue-900 uppercase">Cruzeiro do Sul</p>
+                    <p class="text-sm md:text-base text-slate-700 font-semibold mt-2 leading-relaxed">Campo do Cruzeiro do Sul - Rua 20, s/n, Cruzeiro do Sul</p>
+                    <p class="text-base md:text-lg text-slate-800 mt-3 leading-relaxed">Segundas e quartas: 08:00 às 09:30 (6 a 10), 09:30 às 11:00 (11 a 15), 14:00 às 15:30 (6 a 10), 15:30 às 17:00 (11 a 15).</p>
+                    <p class="text-[10px] text-blue-700 font-black uppercase mt-2">Educador físico: Leonardo Sette</p>
+                </div>
+                <div class="p-5 border border-slate-300 border-l-4 border-l-blue-900 bg-slate-50 rounded-xl shadow-sm">
+                    <p class="font-black text-blue-900 uppercase">Itacolomi</p>
+                    <p class="text-sm md:text-base text-slate-700 font-semibold mt-2 leading-relaxed">Campo do Itacolomi - Rua Torpedo, nº 235, Itacolomi</p>
+                    <p class="text-base md:text-lg text-slate-800 mt-3 leading-relaxed">Terças e quintas: 08:00 às 09:30 (6 a 10), 09:30 às 11:00 (11 a 15), 14:00 às 15:30 (6 a 10), 15:30 às 17:00 (11 a 15).</p>
+                    <p class="text-[10px] text-blue-700 font-black uppercase mt-2">Educador físico: Leonardo Sette</p>
+                </div>
+                <div class="p-5 border border-slate-300 border-l-4 border-l-blue-900 bg-slate-50 rounded-xl shadow-sm">
+                    <p class="font-black text-blue-900 uppercase">Pingo D'Água</p>
+                    <p class="text-sm md:text-base text-slate-700 font-semibold mt-2 leading-relaxed">Estádio Municipal João Evangelista de Souza - Rua Virgílio Fernandes Filho, s/n, Pingo D'Água</p>
+                    <p class="text-base md:text-lg text-slate-800 mt-3 leading-relaxed">Segundas e quartas: 08:00 às 09:30 (6 a 10), 09:30 às 11:00 (11 a 15), 14:00 às 15:30 (6 a 10), 15:30 às 17:00 (11 a 15).</p>
+                    <p class="text-[10px] text-blue-700 font-black uppercase mt-2">Educadora física: Aline Guedes</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
+            <h3 class="text-2xl font-black text-blue-900 mb-6 uppercase italic">Funcional Soccer</h3>
+            <p class="text-sm text-slate-600 font-bold mb-5">Atividade para participantes acima de 16 anos, com turmas feminina e masculina.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-5 border border-emerald-200 border-l-4 border-l-emerald-500 bg-emerald-50 rounded-xl shadow-sm">
+                    <p class="font-black text-blue-900 uppercase">São João</p>
+                    <p class="text-sm md:text-base text-slate-700 font-semibold mt-2 leading-relaxed">Campo do São João - Rua Cachopa, s/n, São João</p>
+                    <p class="text-base md:text-lg text-slate-800 mt-3 leading-relaxed">Terças e quintas: 18:00 às 19:00 (turma feminina) e 19:00 às 20:00 (turma masculina).</p>
+                    <p class="text-[10px] text-blue-700 font-black uppercase mt-2">Educadora física: Aline Guedes</p>
+                </div>
+                <div class="p-5 border border-emerald-200 border-l-4 border-l-emerald-500 bg-emerald-50 rounded-xl shadow-sm">
+                    <p class="font-black text-blue-900 uppercase">Senhora das Graças</p>
+                    <p class="text-sm md:text-base text-slate-700 font-semibold mt-2 leading-relaxed">Campo do Senhora das Graças - Rua Minas Gerais, s/n, N. S. das Graças</p>
+                    <p class="text-base md:text-lg text-slate-800 mt-3 leading-relaxed">18:00 às 19:00 (turma feminina) e 19:00 às 20:00 (turma masculina).</p>
+                    <p class="text-[10px] text-blue-700 font-black uppercase mt-2">Educador físico: Leonardo Sette</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-6">
+                <div>
+                    <h3 class="text-2xl font-black text-blue-900 uppercase italic">Mapa dos Núcleos</h3>
+                    <p class="text-xs text-slate-500 font-bold mt-1">Locais de atendimento do futebol municipal em Betim.</p>
+                </div>
+                <span class="bg-yellow-100 text-blue-900 px-4 py-2 rounded-full text-[10px] font-black uppercase">Localização por bairro</span>
+            </div>
+            <div id="mapaFutebol"></div>
+        </section>
+    </section>
+
+    <!-- Carrossel Deslizante -->
+    <section class="marquee-container mb-12">
+        <div class="marquee-content" id="marquee-track">
+            <img src="Imagens/Futebol Bom Repouso.jpeg" alt="Campo de Futebol" onerror="this.src='https://images.unsplash.com/photo-1518605368461-1e1e38ce156d?q=80&w=600'">
+            <img src="Imagens/1.jpeg" alt="Treino Futebol" onerror="this.src='https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=600'">
+            <img src="Imagens/2.jpeg" alt="Torneio" onerror="this.src='https://images.unsplash.com/photo-1511886929837-354d827aae26?q=80&w=600'">
+            <img src="Imagens/3.jpg" alt="Viva Esporte" onerror="this.src='https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&w=600'">
+            <img src="Imagens/futebol1.jpeg" alt="Jogo de Futebol" onerror="this.src='https://images.unsplash.com/photo-1431324155629-1a6d0a11f581?q=80&w=600'">
+            <img src="Imagens/futebol2.jpeg" alt="Atletas" onerror="this.src='https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=600'">
+        </div>
+    </section>
+
+    <footer class="bg-blue-950 text-white py-10 text-center text-xs font-black uppercase tracking-widest border-t-[8px] border-yellow-400">
+        Secretaria de Esportes - Gestão 2026 &copy; Betim
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Script do Carrossel e Mapa -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const track = document.getElementById('marquee-track');
+            track.innerHTML += track.innerHTML;
+
+            const nucleosFutebol = [
+                {
+                    nome: 'Núcleo Alterosa',
+                    local: 'Campo do Alterosa',
+                    endereco: 'Rua Mignonete, 125, Jardim das Alterosas II, Betim/MG',
+                    educador: 'Duílio',
+                    coords: [-19.9409728, -44.1656657]
+                },
+                {
+                    nome: 'Núcleo Citrolândia',
+                    local: 'Estádio Municipal Pedro Butti',
+                    endereco: 'Rua Duque de Caxias, 42, Citrolândia, Betim/MG',
+                    educador: 'Alírio',
+                    coords: [-20.0304662, -44.2268126]
+                },
+                {
+                    nome: 'Núcleo Santa Inês',
+                    local: 'Estádio Municipal Silma Alves Benevides',
+                    endereco: 'Rua Ferroviária, s/n, Santa Inês, Betim/MG',
+                    educador: 'Duílio',
+                    coords: [-19.9655275, -44.2129732]
+                },
+                {
+                    nome: 'Núcleo Senhora das Graças',
+                    local: 'Campo do Senhora das Graças',
+                    endereco: 'Rua Minas Gerais, s/n, N. S. das Graças, Betim/MG',
+                    educador: 'Duílio / Leonardo Sette',
+                    coords: [-19.9410464, -44.1923890]
+                },
+                {
+                    nome: 'Núcleo São João',
+                    local: 'Campo do São João',
+                    endereco: 'Rua Cachopa, s/n, São João, Betim/MG',
+                    educador: 'Aline Guedes',
+                    coords: [-19.9694144, -44.1605510]
+                },
+                {
+                    nome: 'Núcleo Cruzeiro do Sul',
+                    local: 'Campo do Cruzeiro do Sul',
+                    endereco: 'Rua 20, s/n, Cruzeiro do Sul, Betim/MG',
+                    educador: 'Leonardo Sette',
+                    coords: [-19.9297491, -44.1629776]
+                },
+                {
+                    nome: 'Núcleo Itacolomi',
+                    local: 'Campo do Itacolomi',
+                    endereco: 'Rua Torpedo, nº 235, Itacolomi, Betim/MG',
+                    educador: 'Leonardo Sette',
+                    coords: [-19.9232407, -44.1737643]
+                },
+                {
+                    nome: "Núcleo Pingo D'Água",
+                    local: 'Estádio Municipal João Evangelista de Souza',
+                    endereco: "Rua Virgílio Fernandes Filho, s/n, Pingo D'Água, Betim/MG",
+                    educador: 'Aline Guedes',
+                    coords: [-19.9745922, -44.2449335]
+                }
+            ];
+
+            const map = L.map('mapaFutebol', { scrollWheelZoom: false }).setView([-19.9678, -44.1983], 12);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap'
+            }).addTo(map);
+
+            const bounds = [];
+            nucleosFutebol.forEach((nucleo) => {
+                bounds.push(nucleo.coords);
+                const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${nucleo.local}, ${nucleo.endereco}`)}`;
+                L.marker(nucleo.coords).addTo(map).bindPopup(`
+                    <strong>${nucleo.nome}</strong><br>
+                    ${nucleo.local}<br>
+                    <small>${nucleo.endereco}</small><br>
+                    <small><b>Educador:</b> ${nucleo.educador}</small><br>
+                    <a href="${mapsUrl}" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;background:#1e3a8a;color:white;padding:8px 10px;border-radius:8px;font-weight:800;text-decoration:none;">
+                        Abrir no Google Maps
+                    </a>
+                `);
+            });
+            map.fitBounds(bounds, { padding: [30, 30] });
+        });
+    </script>
+</body>
+</html>
+

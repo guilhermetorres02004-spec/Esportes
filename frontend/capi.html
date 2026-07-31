@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Capi Interativa - Betim</title>
+
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* Mascote */
+#capi {
+    position: fixed;
+    bottom: 20px;
+    left: -200px;
+    width: 180px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+/* Movimento */
+.andando {
+    animation: andar 12s linear infinite;
+}
+
+@keyframes andar {
+    0% { left: -200px; }
+    50% { left: 60%; }
+    100% { left: -200px; }
+}
+
+/* “Passos” */
+.passos {
+    animation: passos 0.4s infinite;
+}
+
+@keyframes passos {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Balão */
+#fala {
+    position: fixed;
+    bottom: 220px;
+    left: 20px;
+    max-width: 220px;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    font-size: 14px;
+}
+
+/* Olhar pro mouse */
+.olhando {
+    transition: transform 0.1s;
+}
+</style>
+</head>
+
+<body>
+
+<img id="capi" src="capi.png">
+<div id="fala"></div>
+
+<script>
+const capi = document.getElementById("capi");
+const fala = document.getElementById("fala");
+
+// Frases da Capi (mini IA)
+const frases = [
+    "🏃‍♀️ Bora praticar esporte!",
+    "💪 Movimento é saúde!",
+    "🎯 Já viu os projetos da Secretaria?",
+    "⚽ Vem participar das atividades!",
+    "🏆 Betim é esporte!"
+];
+
+// Iniciar animação
+capi.classList.add("andando", "passos");
+
+// Clique → falar
+capi.addEventListener("click", () => {
+    const frase = frases[Math.floor(Math.random() * frases.length)];
+
+    fala.innerText = frase;
+    fala.style.display = "block";
+
+    // posiciona perto dela
+    fala.style.left = capi.offsetLeft + "px";
+
+    setTimeout(() => {
+        fala.style.display = "none";
+    }, 3000);
+
+    // animação de reação
+    capi.style.transform = "scale(1.1)";
+    setTimeout(() => capi.style.transform = "scale(1)", 200);
+});
+
+// Seguir mouse (leve)
+document.addEventListener("mousemove", (e) => {
+    const rect = capi.getBoundingClientRect();
+    const dx = e.clientX - rect.left;
+
+    if (dx > 0) {
+        capi.style.transform = "scaleX(1)";
+    } else {
+        capi.style.transform = "scaleX(-1)";
+    }
+});
+
+// Fala automática
+setInterval(() => {
+    const frase = frases[Math.floor(Math.random() * frases.length)];
+
+    fala.innerText = frase;
+    fala.style.display = "block";
+    fala.style.left = capi.offsetLeft + "px";
+
+    setTimeout(() => {
+        fala.style.display = "none";
+    }, 2500);
+
+}, 8000);
+
+</script>
+
+</body>
+</html>

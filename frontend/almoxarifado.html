@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almoxarifado - Secretaria de Esportes Betim</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white !important; }
+            .print-area { box-shadow: none !important; border: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 font-sans text-slate-900">
+    <header class="bg-blue-950 text-white py-2 text-[10px] font-bold uppercase tracking-widest text-center">
+        Secretaria Municipal de Esportes - Almoxarifado
+    </header>
+
+    <nav class="bg-white border-b sticky top-0 z-50 shadow-sm h-20 flex items-center no-print">
+        <div class="max-w-7xl mx-auto w-full px-4 flex justify-between items-center gap-4">
+            <a href="index.html" class="flex items-center gap-3 text-blue-900 font-black uppercase italic">
+                <div class="bg-blue-900 text-white w-10 h-10 rounded-lg flex items-center justify-center">B</div>
+                Portal do Esporte
+            </a>
+            <div class="flex gap-2">
+                <a href="index.html" class="bg-white border-2 border-blue-900 text-blue-900 px-4 py-2 rounded-xl font-black uppercase text-xs hover:bg-blue-900 hover:text-white">
+                    <i class="fas fa-arrow-left mr-2"></i> Página Principal
+                </a>
+                <button onclick="window.print()" class="bg-slate-200 text-blue-900 px-4 py-2 rounded-xl font-black uppercase text-xs hover:bg-slate-300">
+                    <i class="fas fa-print mr-2"></i> Imprimir
+                </button>
+                <a href="agenda.html" class="bg-blue-900 text-white px-4 py-2 rounded-xl font-black uppercase text-xs hover:bg-yellow-400 hover:text-blue-900">
+                    <i class="fas fa-calendar-alt mr-2"></i> Agenda
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-10">
+        <section class="mb-8">
+            <div class="border-l-8 border-blue-900 pl-5">
+                <h1 class="text-4xl font-black text-blue-900 uppercase italic tracking-tight">Almoxarifado SEMES</h1>
+                <p class="text-slate-600 font-bold text-sm mt-2">Controle de requisição, retirada, entrega e devolução de materiais esportivos.</p>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white rounded-2xl shadow-lg p-6 border-t-8 border-blue-900">
+                <p class="text-[10px] font-black text-slate-400 uppercase">Materiais em uso</p>
+                <div id="totalEmUso" class="text-4xl font-black text-blue-900 mt-2">0</div>
+            </div>
+            <div class="bg-white rounded-2xl shadow-lg p-6 border-t-8 border-emerald-600">
+                <p class="text-[10px] font-black text-slate-400 uppercase">Devoluções registradas</p>
+                <div id="totalDevolvidos" class="text-4xl font-black text-emerald-600 mt-2">0</div>
+            </div>
+            <div class="bg-white rounded-2xl shadow-lg p-6 border-t-8 border-yellow-400">
+                <p class="text-[10px] font-black text-slate-400 uppercase">Última movimentação</p>
+                <div id="ultimaMovimentacao" class="text-sm font-black text-blue-900 mt-3 uppercase">Sem registros</div>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-10 no-print">
+            <form id="formRetirada" class="bg-white rounded-2xl shadow-xl p-6 border border-slate-200">
+                <h2 class="text-2xl font-black text-blue-900 uppercase italic mb-6">
+                    <i class="fas fa-box-open mr-2 text-yellow-500"></i> Requisição e Retirada
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <label class="block">
+                        <span class="text-[10px] font-black text-slate-500 uppercase">Material</span>
+                        <select required id="material" class="mt-1 w-full border rounded-xl p-3 font-bold text-blue-900">
+                            <option value="">Selecione o material</option>
+                        </select>
+                    </label>
+                    <label class="block">
+                        <span class="text-[10px] font-black text-slate-500 uppercase">Quantidade</span>
+                        <input required id="quantidade" type="number" min="1" class="mt-1 w-full border rounded-xl p-3 font-bold text-blue-900" placeholder="Ex: 10">
+                    </label>
+                    <div class="md:col-span-2 bg-slate-50 border border-slate-200 rounded-2xl p-4 flex items-center gap-4">
+                        <img id="previewMaterial" src="Imagens/Futebol Bom Repouso.jpeg" alt="Prévia do material selecionado" class="w-28 h-20 object-cover rounded-xl border bg-white">
+                        <div>
+                            <p class="text-[10px] font-black text-slate-400 uppercase">Imagem de referência</p>
+                            <p id="previewMaterialNome" class="text-blue-900 font-black uppercase">Selecione um material</p>
+                            <p id="previewMaterialCategoria" class="text-xs text-slate-500 font-bold">A foto enviada pelo instrutor substitui esta imagem no registro.</p>
+                        </div>
+                    </div>
+                    <label class="block">
+                        <span class="text-[10px] font-black text-slate-500 uppercase">Estado na retirada</span>
+                        <select id="estadoRetirada" class="mt-1 w-full border rounded-xl p-3 font-bold text-blue-900">
+                            <option>Novo</option>
+                            <option>Bom</option>
+                            <option>Regular</option>
+                            <option>Necessita manutenção</option>
+                        </select>
+                    </label>
+                    <label class="block">
+                        <span class="text-[10px] font-black text-slate-500 uppercase">Modalidade / Evento</span>
+                        <input id="evento" class="mt-1 w-full border rounded-xl p-3 font-bold text-blue-900" placeholder="Ex: Torneio de Futsal">
+                    </label>
+                    <label class="block">
+                        <span class="text-[10px] font-black text-slate-500 uppercase">Responsável pela retirada</span>
+                        <input required id="responsavelRetirada" class="mt-1 w-full border rounded-xl p-3 font-bold text-blue-900" placeholder="Nome do instrutor">
+                    </label>
+                    <label class="block">
+                        <span class="text-[10px] font-black text-slate-500 uppercase">Responsável pela entrega</span>
+                        <input required id="responsavelEntrega" class="mt-1 w-full border rounded-xl p-3 font-bold text-blue-900" placeholder="Servidor do almoxarifado">
+                    </label>
+                    <label class="block">
+                        <span class="text-[10px] font-black text-slate-500 uppercase">Data da entrega</span>
+                        <input required id="dataEntrega" type="date" class="mt-1 w-full border rounded-xl p-3 font-bold text-blue-900">
+                    </label>
+                    <label class="block">
+                        <span class="text-[10px] font-black text-slate-500 uppercase">Previsão de devolução</span>
+                        <input id="previsaoDevolucao" type="date" class="mt-1 w-full border rounded-xl p-3 font-bold text-blue-900">
+                    </label>
+                    <label class="block md:col-span-2">
+                        <span class="text-[10px] font-black text-slate-500 uppercase">Foto do material</span>
+                        <input id="fotoMaterial" type="file" accept="image/*" class="mt-1 w-full border rounded-xl p-3 font-bold text-blue-900 bg-white">
+                    </label>
+                    <label class="block md:col-span-2">
+                        <span class="text-[10px] font-black text-slate-500 uppercase">Observações</span>
+                        <textarea id="observacoesRetirada" rows="3" class="mt-1 w-full border rounded-xl p-3 font-bold text-blue-900" placeholder="Patrimônio, identificação, local de uso, restrições ou orientações"></textarea>
+                    </label>
+                </div>
+
+                <button class="mt-6 w-full bg-blue-900 text-white py-4 rounded-xl font-black uppercase hover:bg-yellow-400 hover:text-blue-900 transition-all">
+                    <i class="fas fa-save mr-2"></i> Registrar Retirada
+                </button>
+            </form>
+
+            <form id="formDevolucao" class="bg-white rounded-2xl shadow-xl p-6 border border-slate-200">
+                <h2 class="text-2xl font-black text-blue-900 uppercase italic mb-6">
+                    <i class="fas fa-rotate-left mr-2 text-emerald-600"></i> Devolução
+                </h2>
+
+                <div class="space-y-4">
+                    <label class="block">
+                        <span class="text-[10px] font-black text-slate-500 uppercase">Registro em aberto</span>
+                        <select required id="registroDevolucao" class="mt-1 w-full border rounded-xl p-3 font-bold text-blue-900">
+                            <option value="">Selecione uma retirada</option>
+                        </select>
+                    </label>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <label class="block">
+                            <span class="text-[10px] font-black text-slate-500 uppercase">Quantidade devolvida</span>
+                            <input required id="quantidadeDevolvida" type="number" min="1" class="mt-1 w-full border rounded-xl p-3 font-bold text-blue-900">
+                        </label>
+                        <label class="block">
+                            <span class="text-[10px] font-black text-slate-500 uppercase">Data da devolução</span>
+                            <input required id="dataDevolucao" type="date" class="mt-1 w-full border rounded-xl p-3 font-bold text-blue-900">
+                        </label>
+                        <label class="block">
+                            <span class="text-[10px] font-black text-slate-500 uppercase">Estado na devolução</span>
+                            <select id="estadoDevolucao" class="mt-1 w-full border rounded-xl p-3 font-bold text-blue-900">
+                                <option>Bom</option>
+                                <option>Regular</option>
+                                <option>Danificado</option>
+                                <option>Extraviado parcialmente</option>
+                                <option>Extraviado totalmente</option>
+                            </select>
+                        </label>
+                        <label class="block">
+                            <span class="text-[10px] font-black text-slate-500 uppercase">Recebido por</span>
+                            <input required id="responsavelRecebimento" class="mt-1 w-full border rounded-xl p-3 font-bold text-blue-900" placeholder="Servidor que recebeu">
+                        </label>
+                    </div>
+                    <label class="block">
+                        <span class="text-[10px] font-black text-slate-500 uppercase">Foto na devolução</span>
+                        <input id="fotoDevolucao" type="file" accept="image/*" class="mt-1 w-full border rounded-xl p-3 font-bold text-blue-900 bg-white">
+                    </label>
+                    <label class="block">
+                        <span class="text-[10px] font-black text-slate-500 uppercase">Ocorrências / manutenção necessária</span>
+                        <textarea id="observacoesDevolucao" rows="4" class="mt-1 w-full border rounded-xl p-3 font-bold text-blue-900" placeholder="Descreva avarias, perdas, necessidade de reposição ou manutenção"></textarea>
+                    </label>
+                </div>
+
+                <button class="mt-6 w-full bg-emerald-600 text-white py-4 rounded-xl font-black uppercase hover:bg-blue-900 transition-all">
+                    <i class="fas fa-check mr-2"></i> Registrar Devolução
+                </button>
+            </form>
+        </section>
+
+        <section class="bg-white rounded-2xl shadow-xl overflow-hidden print-area">
+            <div class="p-6 border-b flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl font-black text-blue-900 uppercase italic">Movimentações</h2>
+                    <p class="text-sm text-slate-500 font-bold">Histórico local de materiais requisitados e devolvidos.</p>
+                </div>
+                <button onclick="limparRegistros()" class="no-print bg-red-600 text-white px-4 py-2 rounded-xl font-black uppercase text-xs hover:bg-red-700">
+                    <i class="fas fa-trash mr-2"></i> Limpar Registros
+                </button>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead class="bg-blue-900 text-white uppercase text-[10px]">
+                        <tr>
+                            <th class="p-3">Material</th>
+                            <th class="p-3">Qtd.</th>
+                            <th class="p-3">Status</th>
+                            <th class="p-3">Retirada</th>
+                            <th class="p-3">Entrega</th>
+                            <th class="p-3">Devolução</th>
+                            <th class="p-3">Conservação</th>
+                            <th class="p-3">Foto</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaRegistros" class="divide-y divide-slate-100"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const storageKey = 'almoxarifadoSemes';
+        const materiaisCatalogo = [
+            { nome: 'Bola de futebol de campo', categoria: 'Futebol', imagem: 'Imagens/Futebol Bom Repouso.jpeg' },
+            { nome: 'Bola de futsal', categoria: 'Futsal', imagem: 'Imagens/1.jpeg' },
+            { nome: 'Bola de voleibol', categoria: 'Voleibol', imagem: 'Imagens/volei3.jpeg' },
+            { nome: 'Bola de basquete', categoria: 'Basquete', imagem: 'Imagens/Poliesportivo Ricardo Mediole.jpeg' },
+            { nome: 'Bola de handebol', categoria: 'Handebol', imagem: 'Imagens/2.jpeg' },
+            { nome: 'Rede de vôlei', categoria: 'Voleibol', imagem: 'Imagens/quadra.jpeg' },
+            { nome: 'Coletes de treino', categoria: 'Treinamento', imagem: 'Imagens/3.jpg' },
+            { nome: 'Cones de marcação', categoria: 'Treinamento', imagem: 'Imagens/Campo de Futebol.jpg' },
+            { nome: 'Apito', categoria: 'Arbitragem', imagem: 'Imagens/Poliesportivo Divino Braga.jpeg' },
+            { nome: 'Cronômetro', categoria: 'Arbitragem', imagem: 'Imagens/Poliesportivo Divino Braga1.jpeg' },
+            { nome: 'Súmula / prancheta', categoria: 'Secretaria de jogo', imagem: 'Imagens/Conselho.jpeg' },
+            { nome: 'Kit de primeiros socorros', categoria: 'Apoio', imagem: 'Imagens/Logo Prefeitura - Azul.png' },
+            { nome: 'Tatame', categoria: 'Lutas', imagem: 'Imagens/equipe taek.jpeg' },
+            { nome: 'Raquete / material de tênis de mesa', categoria: 'Tênis de mesa', imagem: 'Imagens/xadrez.jpg' },
+            { nome: 'Outro material esportivo', categoria: 'Diversos', imagem: 'Imagens/beta-logo-verde.png' }
+        ];
+        let registros = JSON.parse(localStorage.getItem(storageKey) || '[]');
+
+        const hoje = new Date().toISOString().slice(0, 10);
+        document.getElementById('dataEntrega').value = hoje;
+        document.getElementById('dataDevolucao').value = hoje;
+        const selectMaterial = document.getElementById('material');
+        selectMaterial.innerHTML += materiaisCatalogo.map((item) => `<option value="${item.nome}">${item.nome}</option>`).join('');
+        selectMaterial.addEventListener('change', atualizarPreviewMaterial);
+        atualizarPreviewMaterial();
+
+        function salvar() {
+            localStorage.setItem(storageKey, JSON.stringify(registros));
+            renderizar();
+        }
+
+        function lerFoto(input) {
+            return new Promise((resolve) => {
+                const file = input.files && input.files[0];
+                if (!file) {
+                    resolve('');
+                    return;
+                }
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.readAsDataURL(file);
+            });
+        }
+
+        document.getElementById('formRetirada').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const foto = await lerFoto(document.getElementById('fotoMaterial'));
+            const materialNome = document.getElementById('material').value;
+            const materialSelecionado = materiaisCatalogo.find((item) => item.nome === materialNome);
+            registros.unshift({
+                id: Date.now(),
+                material: materialNome,
+                quantidade: Number(document.getElementById('quantidade').value),
+                evento: document.getElementById('evento').value.trim(),
+                estadoRetirada: document.getElementById('estadoRetirada').value,
+                responsavelRetirada: document.getElementById('responsavelRetirada').value.trim(),
+                responsavelEntrega: document.getElementById('responsavelEntrega').value.trim(),
+                dataEntrega: document.getElementById('dataEntrega').value,
+                previsaoDevolucao: document.getElementById('previsaoDevolucao').value,
+                observacoesRetirada: document.getElementById('observacoesRetirada').value.trim(),
+                foto,
+                imagemReferencia: materialSelecionado?.imagem || '',
+                categoriaMaterial: materialSelecionado?.categoria || '',
+                status: 'Em uso',
+                devolucao: null
+            });
+            event.target.reset();
+            document.getElementById('dataEntrega').value = hoje;
+            atualizarPreviewMaterial();
+            salvar();
+        });
+
+        document.getElementById('formDevolucao').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const id = Number(document.getElementById('registroDevolucao').value);
+            const registro = registros.find((item) => item.id === id);
+            if (!registro) return;
+            const foto = await lerFoto(document.getElementById('fotoDevolucao'));
+            registro.status = 'Devolvido';
+            registro.devolucao = {
+                quantidade: Number(document.getElementById('quantidadeDevolvida').value),
+                data: document.getElementById('dataDevolucao').value,
+                estado: document.getElementById('estadoDevolucao').value,
+                responsavelRecebimento: document.getElementById('responsavelRecebimento').value.trim(),
+                observacoes: document.getElementById('observacoesDevolucao').value.trim(),
+                foto
+            };
+            event.target.reset();
+            document.getElementById('dataDevolucao').value = hoje;
+            salvar();
+        });
+
+        function renderizar() {
+            const tabela = document.getElementById('tabelaRegistros');
+            const abertos = registros.filter((item) => item.status === 'Em uso');
+            const devolvidos = registros.filter((item) => item.status === 'Devolvido');
+
+            document.getElementById('totalEmUso').textContent = abertos.length;
+            document.getElementById('totalDevolvidos').textContent = devolvidos.length;
+            document.getElementById('ultimaMovimentacao').textContent = registros[0]
+                ? `${registros[0].material} - ${registros[0].status}`
+                : 'Sem registros';
+
+            const select = document.getElementById('registroDevolucao');
+            select.innerHTML = '<option value="">Selecione uma retirada</option>' + abertos.map((item) => `
+                <option value="${item.id}">${item.material} - ${item.quantidade} un. - ${item.responsavelRetirada}</option>
+            `).join('');
+
+            tabela.innerHTML = registros.length ? registros.map((item) => {
+                const devolucao = item.devolucao;
+                const foto = devolucao?.foto || item.foto || item.imagemReferencia;
+                const statusClass = item.status === 'Devolvido' ? 'bg-emerald-100 text-emerald-700' : 'bg-yellow-100 text-yellow-700';
+                return `
+                    <tr class="align-top">
+                        <td class="p-3">
+                            <div class="font-black text-blue-900 uppercase">${item.material}</div>
+                            <div class="text-[10px] text-blue-500 font-black uppercase">${item.categoriaMaterial || 'Material esportivo'}</div>
+                            <div class="text-xs text-slate-500">${item.evento || 'Sem evento vinculado'}</div>
+                            <div class="text-xs text-slate-500">${item.observacoesRetirada || ''}</div>
+                        </td>
+                        <td class="p-3 font-bold">${item.quantidade}</td>
+                        <td class="p-3"><span class="${statusClass} px-3 py-1 rounded-full text-xs font-black uppercase">${item.status}</span></td>
+                        <td class="p-3 text-xs">
+                            <div><b>${item.responsavelRetirada}</b></div>
+                            <div>${formatarData(item.dataEntrega)}</div>
+                            <div>Previsão: ${formatarData(item.previsaoDevolucao)}</div>
+                        </td>
+                        <td class="p-3 text-xs">${item.responsavelEntrega}</td>
+                        <td class="p-3 text-xs">
+                            ${devolucao ? `<div><b>${devolucao.responsavelRecebimento}</b></div><div>${formatarData(devolucao.data)}</div><div>${devolucao.observacoes || ''}</div>` : 'Pendente'}
+                        </td>
+                        <td class="p-3 text-xs">
+                            <div>Retirada: <b>${item.estadoRetirada}</b></div>
+                            <div>Devolução: <b>${devolucao?.estado || 'Pendente'}</b></div>
+                        </td>
+                        <td class="p-3">
+                            ${foto ? `<img src="${foto}" alt="Foto do material" class="w-20 h-16 object-cover rounded-lg border">` : '<span class="text-xs text-slate-400">Sem foto</span>'}
+                        </td>
+                    </tr>
+                `;
+            }).join('') : '<tr><td colspan="8" class="p-8 text-center text-slate-500 font-bold">Nenhuma movimentação registrada.</td></tr>';
+        }
+
+        function formatarData(data) {
+            if (!data) return '-';
+            return new Date(data + 'T00:00:00').toLocaleDateString('pt-BR');
+        }
+
+        function atualizarPreviewMaterial() {
+            const materialNome = document.getElementById('material').value;
+            const material = materiaisCatalogo.find((item) => item.nome === materialNome) || materiaisCatalogo[0];
+            document.getElementById('previewMaterial').src = material.imagem;
+            document.getElementById('previewMaterialNome').textContent = materialNome || 'Selecione um material';
+            document.getElementById('previewMaterialCategoria').textContent = materialNome
+                ? `${material.categoria} - imagem de referência`
+                : 'A foto enviada pelo instrutor substitui esta imagem no registro.';
+        }
+
+        function limparRegistros() {
+            if (!confirm('Deseja apagar todos os registros do almoxarifado neste navegador?')) return;
+            registros = [];
+            salvar();
+        }
+
+        renderizar();
+    </script>
+</body>
+</html>

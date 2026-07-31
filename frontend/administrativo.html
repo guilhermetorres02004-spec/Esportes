@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrativo - Portal do Esporte Betim</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --betim-blue: #1e3a8a;
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Sarabun', sans-serif; font-weight: 600; }
+        
+        .admin-card { 
+            background: white; border-radius: 30px; padding: 25px; 
+            transition: 0.3s; border-bottom: 6px solid;
+        }
+        .admin-card:hover { transform: translateY(-10px); }
+        
+        .doc-item {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 10px; border-radius: 10px; background: #f8fafc;
+            margin-bottom: 8px; transition: 0.3s; border: 1px solid #e2e8f0;
+            font-size: 0.9rem;
+        }
+
+        .struct-container { font-size: 0.92rem; }
+        .struct-node { border-left: 1px solid #cbd5e1; margin-left: 0.75rem; padding-left: 1rem; position: relative; margin-top: 0.4rem; }
+        .struct-node::before { content: ''; position: absolute; left: 0; top: 0.6rem; width: 0.6rem; height: 1px; background: #cbd5e1; }
+        
+        .admin-table { width: 100%; border-collapse: separate; border-spacing: 0; border-radius: 12px; overflow: hidden; font-size: 0.82rem; }
+        .admin-table th { background: #1e3a8a; color: white; text-transform: uppercase; letter-spacing: 0.5px; padding: 12px 4px; text-align: center; border-right: 1px solid rgba(255,255,255,0.1); }
+        .admin-table th:last-child { border-right: none; }
+        .admin-table td { padding: 8px 4px; background: white; border-bottom: 1px solid #f1f5f9; border-right: 1px solid #f1f5f9; color: #334155; vertical-align: middle; }
+        .admin-table td:last-child { border-right: none; }
+        
+        .cargo-cell { text-align: left !important; font-size: 0.78rem; padding-left: 10px !important; }
+        
+        .item-row { display: flex; justify-content: space-between; align-items: center; padding: 3px 0; border-bottom: 1px dotted #e2e8f0; }
+        .item-row:last-child { border-bottom: none; }
+        
+        .qty-cell { 
+            font-family: 'Sarabun', sans-serif !important; 
+            font-weight: 700 !important; 
+            font-size: 0.9rem !important;
+            color: #1e3a8a !important;
+            min-width: 1.2rem;
+            text-align: right;
+        }
+
+        .value-cell { 
+            font-family: 'Sarabun', sans-serif !important; 
+            font-weight: 700 !important; 
+            color: #059669 !important; 
+            font-size: 0.9rem !important;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-900 flex flex-col min-h-screen">
+
+    <script>
+        // Guarda de acesso: sem sessão válida, volta para o login.
+        fetch("/api/auth/me", { credentials: "include" }).then((response) => {
+            if (!response.ok) {
+                window.location.href = "login.html";
+            }
+        });
+
+        function sair() {
+            fetch("/logout", { method: "POST", credentials: "include" })
+                .finally(() => window.location.href = "login.html");
+        }
+    </script>
+
+    <header class="bg-blue-950 text-white py-2 text-xs font-bold uppercase tracking-widest text-center">
+        Área Administrativa - Secretaria Municipal de Esportes
+    </header>
+
+    <nav class="bg-white border-b sticky top-0 z-50 shadow-sm h-20 flex items-center">
+        <div class="max-w-7xl mx-auto w-full px-4 flex justify-between items-center">
+            <div class="flex items-center gap-4 cursor-pointer" onclick="location.href='index.html'">
+                <div class="bg-blue-900 text-white font-black p-2 rounded-lg text-xl w-10 h-10 flex items-center justify-center">B</div>
+                <h1 class="text-blue-900 font-black text-xl uppercase italic tracking-tighter">Portal do Esporte</h1>
+            </div>
+            <div class="flex items-center gap-3">
+                <button onclick="location.href='index.html'" class="border-2 border-blue-900 text-blue-900 px-4 py-1.5 rounded-full font-black hover:bg-blue-900 hover:text-white transition text-xs uppercase">
+                    Voltar
+                </button>
+                <button onclick="sair()" class="border-2 border-red-600 text-red-600 px-4 py-1.5 rounded-full font-black hover:bg-red-600 hover:text-white transition text-xs uppercase">
+                    Sair
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-12 flex-grow w-full">
+        <div class="border-l-8 border-blue-900 pl-6 mb-10">
+            <h2 class="text-4xl font-black text-blue-900 uppercase italic tracking-tighter leading-none">Gestão Administrativa</h2>
+            <p class="text-slate-500 font-bold uppercase text-xs mt-2 tracking-widest">Controle Interno e Organização</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div class="admin-card border-blue-900 shadow-md">
+                <h3 class="text-lg font-black text-blue-900 uppercase italic mb-4">Legislação</h3>
+                <div class="doc-item"><span>Lei de Incentivo ao Esporte</span><i class="fas fa-file-pdf text-red-500"></i></div>
+                <div class="doc-item"><span>Regimento Interno</span><i class="fas fa-file-pdf text-red-500"></i></div>
+            </div>
+            <div class="admin-card border-yellow-400 shadow-md">
+                <h3 class="text-lg font-black text-blue-900 uppercase italic mb-4">Recursos Humanos</h3>
+                <div class="doc-item"><span>Manual do Instrutor 2026</span><i class="fas fa-file-word text-blue-500"></i></div>
+                <div class="doc-item"><span>Código de Ética</span><i class="fas fa-file-pdf text-red-500"></i></div>
+            </div>
+            <div class="admin-card border-emerald-500 shadow-md">
+                <h3 class="text-lg font-black text-blue-900 uppercase italic mb-4">Atos Oficiais</h3>
+                <div class="doc-item"><span>Portarias 2026</span><i class="fas fa-file-pdf text-red-500"></i></div>
+                <div class="doc-item"><span>Editais Abertos</span><i class="fas fa-external-link-alt text-slate-400"></i></div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div class="admin-card border-red-600 shadow-md">
+                <h3 class="text-lg font-black text-blue-900 uppercase italic mb-4">Controle de Frota</h3>
+                <div class="doc-item"><span>Veículos</span><i class="fas fa-car-side text-blue-900"></i></div>
+                <div class="doc-item"><span>Motoristas</span><i class="fas fa-calendar-alt text-slate-400"></i></div>
+            </div>
+            <div class="admin-card border-purple-600 shadow-md">
+                <h3 class="text-lg font-black text-blue-900 uppercase italic mb-4">Almoxarifado</h3>
+                <div class="doc-item"><span>Estoque</span><i class="fas fa-boxes text-purple-600"></i></div>
+                <div class="doc-item"><span>Pedidos</span><i class="fas fa-clipboard-list text-slate-400"></i></div>
+            </div>
+            <div class="admin-card border-orange-500 shadow-md">
+                <h3 class="text-lg font-black text-blue-900 uppercase italic mb-4">Contratos</h3>
+                <div class="doc-item"><span>Termos</span><i class="fas fa-file-signature text-orange-500"></i></div>
+                <div class="doc-item"><span>Gestão</span><i class="fas fa-handshake text-slate-400"></i></div>
+            </div>
+        </div>
+
+        <section class="max-w-xl mx-auto border-t pt-10 mb-12 text-center">
+            <div class="flex items-center gap-2 mb-4 justify-center">
+                <i class="fas fa-coins text-blue-900 text-sm"></i>
+                <h3 class="text-sm font-black text-blue-900 uppercase italic">Custo da folha 2026</h3>
+            </div>
+            <div class="shadow-sm rounded-xl overflow-hidden border border-slate-200">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th class="text-left pl-4">Secretaria</th>
+                            <th>jan/26</th>
+                            <th>fev/26</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-left pl-4 uppercase text-xs cargo-cell">Secretaria Municipal de Esportes</td>
+                            <td class="value-cell">664.797,00</td>
+                            <td class="value-cell">582.372,18</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+            <section class="bg-white p-6 rounded-[30px] shadow-sm border border-slate-200 lg:col-span-1">
+                <div class="flex items-center gap-3 mb-6">
+                    <i class="fas fa-sitemap text-blue-900"></i>
+                    <h3 class="text-xl font-black text-blue-900 uppercase italic">Estrutura</h3>
+                </div>
+                <div class="struct-container">
+                    <div class="font-black text-blue-900 mb-2">1 - Secretaria de Esportes</div>
+                    <div class="struct-node"><div class="font-bold text-slate-700">1.0.1 - Setor Administrativo</div></div>
+                    <div class="struct-node"><div class="font-bold text-slate-700">1.0.2 - Setor Jurídico</div></div>
+                    <div class="struct-node">
+                        <div class="font-bold text-slate-700">1.1 - Superintendência de Mobilização Comunitária</div>
+                        <div class="struct-node">1.1.1 Setor de Comunicação e Eventos</div>
+                    </div>
+                    <div class="struct-node">
+                        <div class="font-bold text-slate-700">1.2 - Superintendência de Esportes Especializados</div>
+                        <div class="struct-node">1.2.1 - Setor Viva o Esporte</div>
+                    </div>
+                    <div class="struct-node"><div class="font-bold text-slate-700">1.3 - Superintendência de Futebol</div></div>
+                    <div class="struct-node"><div class="font-bold text-slate-700">1.4 - Superintendência de Equipamentos Esportivos</div></div>
+                </div>
+            </section>
+
+            <section class="bg-white p-6 rounded-[30px] shadow-sm border border-slate-200 lg:col-span-2">
+                <div class="flex items-center gap-3 mb-6">
+                    <i class="fas fa-users text-blue-900"></i>
+                    <h3 class="text-xl font-black text-blue-900 uppercase italic">Quadro de Cargos</h3>
+                </div>
+                <div class="shadow-sm rounded-xl border border-slate-200 overflow-hidden">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th width="25%">Comissionados</th>
+                                <th width="25%">Comissionados/Efetivos</th>
+                                <th width="25%">Efetivos</th>
+                                <th width="25%">Estagiários</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="cargo-cell">
+                                    <div class="item-row"><span>Secretário Municipal</span> <span class="qty-cell">1</span></div>
+                                    <div class="item-row"><span>Assessor Especial</span> <span class="qty-cell">1</span></div>
+                                    <div class="item-row"><span>Assessor V</span> <span class="qty-cell">10</span></div>
+                                    <div class="item-row"><span>Assessor VI</span> <span class="qty-cell">12</span></div>
+                                    <div class="item-row"><span>Assessor VIII</span> <span class="qty-cell">3</span></div>
+                                </td>
+                                <td class="cargo-cell">
+                                    <div class="item-row"><span>Superintendente</span> <span class="qty-cell">4</span></div>
+                                    <div class="item-row"><span>Auxiliar de Administração 40h Médio</span> <span class="qty-cell">1</span></div>
+                                    <div class="item-row"><span>Educador Social 40h Superior</span> <span class="qty-cell">1</span></div>
+                                </td>
+                                <td class="cargo-cell">
+                                    <div class="item-row"><span>Professor P-II</span> <span class="qty-cell">15</span></div>
+                                    <div class="item-row"><span>Professor P-III</span> <span class="qty-cell">1</span></div>
+                                    <div class="item-row"><span>Oficial de Administração 40h Médio</span> <span class="qty-cell">1</span></div>
+                                    <div class="item-row"><span>Oficial de Administração 40h Superior</span> <span class="qty-cell">1</span></div>
+                                    <div class="item-row"><span>Agente de Serviços Escolares</span> <span class="qty-cell">1</span></div>
+                                    <div class="item-row"><span>Ajudante de Obras</span> <span class="qty-cell">2</span></div>
+                                    <div class="item-row"><span>Bombeiro Hidráulico 40h Médio</span> <span class="qty-cell">1</span></div>
+                                    <div class="item-row"><span>Pedreiro 40h Médio</span> <span class="qty-cell">1</span></div>
+                                    <div class="item-row"><span>Servente / Serviçal</span> <span class="qty-cell">2</span></div>
+                                    <div class="item-row"><span>Guarda Patrimonial</span> <span class="qty-cell">1</span></div>
+                                </td>
+                                <td class="cargo-cell">
+                                    <div class="item-row"><span>Nível Médio Geral</span> <span class="qty-cell">3</span></div>
+                                    <div class="item-row"><span>Nível Superior Geral</span> <span class="qty-cell">8</span></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="bg-blue-950 text-white py-10 text-center text-xs font-black uppercase tracking-widest border-t-[8px] border-yellow-400">
+        Secretaria de Esportes - Gestão 2026 &copy; Betim
+    </footer>
+
+</body>
+</html>
+

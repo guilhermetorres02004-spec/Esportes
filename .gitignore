@@ -1,0 +1,13 @@
+.tools/
+.m2/
+target/
+spring-boot*.log
+
+node_modules/
+dist/
+vite*.log
+
+# Copia de pagina salva por engano (nao usada pelo site, nomes de arquivo
+# longos demais para o git indexar).
+frontend/Imagens/volei3.html
+frontend/Imagens/volei3_files/

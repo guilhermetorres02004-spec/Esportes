@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Administrativo - Portal do Esporte Betim</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center">
+
+    <form id="login-form" class="bg-white shadow-xl rounded-2xl p-8 w-full max-w-sm space-y-4">
+        <h1 class="text-xl font-black text-blue-900 uppercase text-center mb-2">Área Administrativa</h1>
+
+        <div>
+            <label class="text-xs font-bold uppercase text-slate-500" for="username">Usuário</label>
+            <input id="username" name="username" type="text" required autocomplete="username"
+                   class="w-full mt-1 border border-slate-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900">
+        </div>
+
+        <div>
+            <label class="text-xs font-bold uppercase text-slate-500" for="password">Senha</label>
+            <input id="password" name="password" type="password" required autocomplete="current-password"
+                   class="w-full mt-1 border border-slate-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900">
+        </div>
+
+        <p id="error-msg" class="text-red-600 text-sm hidden">Usuário ou senha inválidos.</p>
+
+        <button type="submit" class="w-full bg-blue-900 text-white font-black uppercase tracking-widest py-3 rounded-lg hover:bg-blue-800 transition">
+            Entrar
+        </button>
+    </form>
+
+    <script>
+        const form = document.getElementById("login-form");
+        const errorMsg = document.getElementById("error-msg");
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            errorMsg.classList.add("hidden");
+
+            const body = new URLSearchParams();
+            body.set("username", document.getElementById("username").value);
+            body.set("password", document.getElementById("password").value);
+
+            const response = await fetch("/login", {
+                method: "POST",
+                credentials: "include",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body,
+            });
+
+            if (response.ok) {
+                window.location.href = "administrativo.html";
+            } else {
+                errorMsg.classList.remove("hidden");
+            }
+        });
+    </script>
+</body>
+</html>

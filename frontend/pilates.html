@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Pilates - Portal do Esporte Betim</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .marquee-container { width: 100%; overflow: hidden; background: white; padding: 40px 0; border-top: 2px solid #1e3a8a; border-bottom: 2px solid #1e3a8a; display: flex; }
+        .marquee-content { display: flex; white-space: nowrap; animation: scrollMarquee 40s linear infinite; }
+        .marquee-content img { width: 350px; height: 200px; object-fit: cover; margin: 0 20px; border-radius: 25px; border: 2px solid #e2e8f0; flex-shrink: 0; }
+        @keyframes scrollMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    </style>
+</head>
+<body class="bg-slate-50">
+    <nav class="bg-white shadow-md p-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-blue-900 font-black uppercase flex items-center gap-2">
+                <i class="fas fa-arrow-left"></i> Voltar ao Portal
+            </a>
+            <img src="https://www.betim.mg.gov.br/img/logo_prefeitura.png" class="h-8">
+        </div>
+    </nav>
+
+    <header class="relative bg-blue-900 text-white py-20 overflow-hidden">
+        <img src="Imagens/pilates.jpg" class="absolute inset-0 w-full h-full object-cover opacity-20" onerror="this.src='https://images.unsplash.com/photo-1584467735871-6b0f0f9d0d2b?q=80&w=1200'" alt="Pilates">
+        <div class="relative max-w-7xl mx-auto px-4">
+            <span class="bg-yellow-400 text-blue-900 px-3 py-1 rounded-full text-xs font-bold uppercase">Atividades</span>
+            <h1 class="text-5xl font-black uppercase mt-4 italic">Pilates</h1>
+            <p class="text-blue-100 mt-4 max-w-2xl text-lg">A prática de pilates busca fortalecimento do core, melhora postural, flexibilidade e controle corporal, indicada para todas as idades com acompanhamento especializado.</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-12 grid lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 space-y-12">
+            <section class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
+                <h3 class="text-2xl font-black text-blue-900 mb-6 uppercase italic">Sobre o Pilates</h3>
+                <div class="space-y-4 text-slate-700 leading-relaxed">
+                    <p>As aulas de pilates oferecidas pela Secretaria têm foco em reequilíbrio postural, fortalecimento profundo (core) e prevenção de lesões. As turmas são organizadas por nível e condição física.</p>
+                    <p>As sessões são conduzidas por profissional especializado e incluem exercícios em solo e acessórios quando disponíveis. Recomenda-se avaliação prévia e atestado médico quando necessário.</p>
+                    <p>Vagas limitadas conforme disponibilidade dos núcleos. Procure o núcleo mais próximo para mais informações e inscrição.</p>
+                </div>
+            </section>
+
+            <section>
+                <h3 class="text-2xl font-black text-blue-900 mb-6 uppercase italic pl-4 border-l-4 border-yellow-400">Galeria</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="aspect-square rounded-2xl overflow-hidden shadow-lg">
+                        <img src="Imagens/pilates1.jpg" alt="Pilates" onerror="this.src='https://images.unsplash.com/photo-1584467735871-6b0f0f9d0d2b?q=80&w=400'" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="aspect-square rounded-2xl overflow-hidden shadow-lg">
+                        <img src="Imagens/pilates2.jpg" alt="Pilates" onerror="this.src='https://images.unsplash.com/photo-1558611848-73f7eb4001d5?q=80&w=400'" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="aspect-square rounded-2xl overflow-hidden shadow-lg">
+                        <img src="Imagens/pilates3.jpg" alt="Pilates" onerror="this.src='https://images.unsplash.com/photo-1558611848-73f7eb4001d5?q=80&w=400'" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <aside class="space-y-8 sticky top-24">
+            <div class="bg-white p-6 rounded-3xl shadow-lg border-t-8 border-orange-500">
+                <h4 class="font-black text-blue-900 mb-4 uppercase">Inscrições</h4>
+                <p class="text-sm text-slate-600 mb-6">Para se inscrever nas turmas de pilates, consulte o formulário de inscrições e verifique os pré-requisitos.</p>
+                <a href="Inscricao.html?modalidade=pilates" class="block w-full mt-8 bg-blue-900 text-white text-center py-4 rounded-xl font-black uppercase tracking-widest hover:bg-blue-800 transition shadow-lg">Quero me Inscrever</a>
+            </div>
+
+            <div class="bg-white p-6 rounded-3xl shadow-lg border-t-8 border-blue-900">
+                <h4 class="font-black text-blue-900 mb-4 uppercase">Mais Informações</h4>
+                <p class="text-sm text-slate-600 mb-6">Consulte a agenda para horários e locais das turmas.</p>
+                <a href="agenda.html" class="block w-full bg-yellow-400 text-blue-900 text-center py-4 rounded-xl font-black uppercase tracking-widest hover:bg-yellow-500 transition shadow-lg">Ver Agenda</a>
+            </div>
+        </aside>
+    </main>
+
+    <section class="marquee-container mb-12">
+        <div class="marquee-content" id="marquee-track">
+            <img src="Imagens/pilates-betim.png" alt="Pilates Betim" >
+            <img src="Imagens/pilates-1.jpg" alt="Pilates 1" >
+            <img src="Imagens/pilates-2.jpg" alt="Pilates 2" >
+            <img src="Imagens/pilates-3.jpg" alt="Pilates 3" >
+            <img src="Imagens/pilates-4.jpg" alt="Pilates 4" >
+        </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 mb-20">
+        <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
+            <h3 class="text-2xl font-black text-blue-900 mb-6 uppercase italic">Inscrição Rápida para Pilates</h3>
+            <p class="text-sm text-slate-600 mb-4">Preencha a ficha rápida abaixo para iniciar sua inscrição. Ao enviar, você será redirecionado para a ficha completa.</p>
+            <form action="Inscricao.html" method="get" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <input type="hidden" name="modalidade" value="pilates">
+                <div>
+                    <label class="block text-sm font-bold text-slate-700">Nome Completo</label>
+                    <input name="nome" required class="mt-2 p-3 border rounded-lg w-full" />
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-slate-700">Data de Nascimento</label>
+                    <input type="date" name="dataNascimento" required class="mt-2 p-3 border rounded-lg w-full" />
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-slate-700">Celular (WhatsApp)</label>
+                    <input type="tel" name="telefone" required placeholder="(31) 90000-0000" class="mt-2 p-3 border rounded-lg w-full" />
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-bold text-slate-700">Núcleo de Interesse</label>
+                    <select name="nucleo" class="mt-2 p-3 border rounded-lg w-full">
+                        <option>Poliesportivo Divino Braga</option>
+                        <option>Clube da Fiat</option>
+                        <option>Ginásio Municipal Central</option>
+                    </select>
+                </div>
+                <div class="flex items-end">
+                    <button type="submit" class="bg-blue-900 text-white px-6 py-3 rounded-lg font-bold">Enviar Inscrição</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-blue-950 text-white py-10 text-center text-xs font-black uppercase tracking-widest border-t-[8px] border-yellow-400">Secretaria de Esportes - Gestão 2026 &copy; Betim</footer>
+</body>
+</html>

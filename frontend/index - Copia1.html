@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal do Esporte - Prefeitura de Betim</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        :root {
+            --sidebar-width: 300px;
+            --betim-bg: #020617;
+            --card-bg: #0f172a;
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--betim-bg); color: #f1f5f9; margin: 0; }
+        
+        #map { height: 450px; border: 2px solid #1e3a8a; border-radius: 24px; z-index: 10; width: 100%; background: #1e293b; }
+        .leaflet-tile { filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7); }
+
+        /* SIDEBAR COMPLETA */
+        .sidebar {
+            position: fixed;
+            top: 0; left: 0; height: 100vh; width: var(--sidebar-width);
+            background: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(255,255,255,0.1);
+            z-index: 2000;
+            transform: translateX(-100%);
+            transition: var(--transition);
+            padding: 80px 20px 20px;
+        }
+        .sidebar:hover { transform: translateX(0); box-shadow: 20px 0 60px rgba(0,0,0,0.8); }
+        .sidebar-trigger {
+            position: absolute; right: -40px; top: 50%; transform: translateY(-50%);
+            width: 40px; height: 80px; background: #0f172a; border: 1px solid rgba(255,255,255,0.1);
+            border-left: none; border-radius: 0 20px 20px 0;
+            display: flex; align-items: center; justify-content: center; color: white; cursor: pointer;
+        }
+
+        .side-item {
+            padding: 12px 15px; display: flex; align-items: center; gap: 15px;
+            color: #94a3b8; font-weight: 800; text-transform: uppercase;
+            font-size: 11px; border-radius: 12px; transition: 0.3s; cursor: pointer; margin-bottom: 2px;
+        }
+        .side-item:hover { background: #1e293b; transform: translateX(10px); color: #fbbf24; }
+
+        /* CARROSSEL PRINCIPAL */
+        .carousel-container { position: relative; width: 100%; height: 500px; overflow: hidden; background: #000; }
+        .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1s; }
+        .slide.active { opacity: 1; z-index: 5; }
+        .slide-bg { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; }
+        .slogan-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 20; pointer-events: none; }
+
+        /* MARQUEE */
+        .marquee-container { width: 100%; overflow: hidden; background: #020617; padding: 40px 0; border-top: 2px solid #1e3a8a; }
+        .marquee-content { display: flex; width: max-content; animation: scrollMarquee 40s linear infinite; }
+        .marquee-content img { width: 350px; height: 200px; object-fit: cover; margin: 0 20px; border-radius: 25px; border: 2px solid #1e293b; flex-shrink: 0; }
+        @keyframes scrollMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* CARDS */
+        .rendimento-card { background: #0f172a; border-radius: 12px; padding: 24px; transition: 0.3s; border: 3px solid; text-align: center; }
+        .escola-card { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 3px dashed; border-radius: 24px; padding: 30px 20px; text-align: center; }
+        
+        .page { display: none; }
+        .page.active { display: block; }
+
+        #video-destaque .video-container { 
+            position: relative; 
+            overflow: hidden; 
+            border-radius: 30px; 
+            background: #000; 
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); 
+            border: 4px solid rgba(255,255,255,0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-trigger"><i class="fas fa-chevron-right text-xl"></i></div>
+        <div class="mb-6 px-4"><h3 class="text-blue-400 font-black text-sm uppercase italic tracking-widest">Navegação</h3></div>
+        <nav class="flex flex-col">
+            <div class="side-item" onclick="showPage('home')"><i class="fas fa-home w-5"></i> Início</div>
+            <div class="side-item" onclick="location.href='#noticias'"><i class="fas fa-newspaper w-5"></i> Notícias</div>
+            <div class="side-item" onclick="location.href='#video-destaque'"><i class="fas fa-play-circle w-5"></i> Vídeos</div>
+            <div class="side-item" onclick="location.href='#rendimento'"><i class="fas fa-trophy w-5"></i> Rendimento</div>
+            <div class="side-item" onclick="location.href='#escola'"><i class="fas fa-graduation-cap w-5"></i> Escolas Esporte</div>
+            <div class="side-item" onclick="location.href='#map-section'"><i class="fas fa-map-marker-alt w-5"></i> Unidades</div>
+            <div class="side-item" onclick="location.href='#impacto-social'"><i class="fas fa-chart-line w-5"></i> Infraestrutura</div>
+            <div class="border-t border-white/10 my-4"></div>
+            <div class="side-item" onclick="location.href='downloads.html'"><i class="fas fa-file-download w-5"></i> Downloads / PDFs</div>
+            <div class="side-item" onclick="location.href='presenca.html'"><i class="fas fa-clipboard-check w-5"></i> Folha de Presença</div>
+        </nav>
+    </aside>
+
+    <header class="bg-blue-950 text-white py-2 text-[10px] font-bold uppercase tracking-widest text-center">
+        Prefeitura Municipal de Betim - Secretaria Municipal de Esportes
+    </header>
+
+    <nav class="bg-[#0f172a] border-b border-white/5 sticky top-0 z-50 shadow-2xl h-24 flex items-center px-6">
+        <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
+            <div class="flex items-center gap-4 cursor-pointer" onclick="showPage('home')">
+                <div class="bg-blue-600 text-white font-black p-2 rounded-lg text-2xl w-12 h-12 flex items-center justify-center">B</div>
+                <h1 class="text-white font-black text-2xl uppercase italic tracking-tighter leading-none">Portal do Esporte</h1>
+            </div>
+            <ul class="hidden lg:flex gap-8 font-bold text-slate-300 uppercase text-[12px] items-center">
+                <li class="cursor-pointer hover:text-blue-400" onclick="showPage('home')">Início</li>
+                <li class="cursor-pointer hover:text-blue-400" onclick="location.href='presenca.html'">Frequência</li>
+                <li><button class="bg-blue-600 text-white px-8 py-3 rounded-full font-black hover:bg-yellow-500 transition shadow-lg uppercase text-xs">Inscreva-se</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="home" class="page active">
+        <div class="carousel-container">
+            <div class="slogan-overlay">
+                <h2 class="text-6xl md:text-8xl font-black uppercase italic tracking-tighter text-white text-center drop-shadow-2xl">
+                    Betim Respira <br><span class="text-yellow-400">Esporte</span>
+                </h2>
+            </div>
+            <div class="slide active"><img src="Imagens/Poliesportivo Divino Braga.jpeg" class="slide-bg"></div>
+            <div class="slide"><img src="Imagens/Poliesportivo Ricardo Mediole.jpeg" class="slide-bg"></div>
+            <div class="slide"><img src="Imagens/Futebol Bom Repouso.jpeg" class="slide-bg"></div>
+        </div>
+
+        <section class="max-w-7xl mx-auto px-4 -mt-16 relative z-30">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">                
+                <div class="bg-[#0f172a] p-6 rounded-[30px] border-b-4 border-blue-600 shadow-2xl">
+                    <i class="fas fa-map-marked-alt text-blue-400 mb-2"></i>
+                    <p class="text-3xl font-black text-white italic">10</p>
+                    <h4 class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Regionais</h4>
+                </div>
+                <div class="bg-[#0f172a] p-6 rounded-[30px] border-b-4 border-yellow-500 shadow-2xl">
+                    <i class="fas fa-users text-yellow-500 mb-2"></i>
+                    <p class="text-3xl font-black text-white italic">6.500</p>
+                    <h4 class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Jovens</h4>
+                </div>
+                <div class="bg-[#0f172a] p-6 rounded-[30px] border-b-4 border-emerald-500 shadow-2xl">
+                    <i class="fas fa-wheelchair text-emerald-500 mb-2"></i>
+                    <p class="text-3xl font-black text-white italic">450</p>
+                    <h4 class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">PCDs</h4>
+                </div>
+                <div class="bg-[#0f172a] p-6 rounded-[30px] border-b-4 border-red-600 shadow-2xl">
+                    <i class="fas fa-building text-red-500 mb-2"></i>
+                    <p class="text-3xl font-black text-white italic">17</p>
+                    <h4 class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Núcleos</h4>
+                </div>
+                <div class="bg-[#0f172a] p-6 rounded-[30px] border-b-4 border-purple-600 shadow-2xl">
+                    <i class="fas fa-swimmer text-purple-500 mb-2"></i>
+                    <p class="text-3xl font-black text-white italic">22</p>
+                    <h4 class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Modalidades</h4>
+                </div>
+                <div class="bg-[#0f172a] p-6 rounded-[30px] border-b-4 border-orange-500 shadow-2xl">
+                    <i class="fas fa-medal text-orange-500 mb-2"></i>
+                    <p class="text-3xl font-black text-white italic">120</p>
+                    <h4 class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Medalhas</h4>
+                </div>
+            </div>
+        </section>
+
+        <main class="max-w-7xl mx-auto px-4 py-20">
+            <section id="noticias" class="mb-32">
+                <div class="border-l-8 border-blue-600 pl-6 mb-12 text-white">
+                    <h3 class="text-4xl font-black uppercase italic leading-none">Notícias</h3>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                    <div class="lg:col-span-2 relative rounded-[40px] h-[500px] overflow-hidden bg-black shadow-2xl">
+                        <img src="Imagens/Rio.jpeg" class="absolute inset-0 w-full h-full object-contain z-10 mx-auto">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black p-12 flex flex-col justify-end z-20">
+                            <span class="bg-yellow-400 text-black text-xs font-black uppercase px-4 py-1 w-fit mb-4 italic">Rumo ao Rio</span>
+                            <h4 class="text-white text-4xl font-black uppercase italic mb-4 leading-tight">Seletiva Grand Slam 2026</h4>
+                            <p class="text-slate-300 text-lg">Apoio total da SEMES para os atletas de rendimento de Betim.</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <div class="bg-[#0f172a] p-6 rounded-3xl border-l-8 border-blue-600 flex-1 flex items-center">
+                            <div><span class="text-blue-400 text-[10px] font-black uppercase tracking-widest">Editais</span><h5 class="text-white font-black uppercase italic text-lg mt-1">Bolsa Atleta 2026</h5></div>
+                        </div>
+                        <div class="bg-[#0f172a] p-6 rounded-3xl border-l-8 border-green-600 flex-1 flex items-center">
+                            <div><span class="text-green-400 text-[10px] font-black uppercase">Infra</span><h5 class="text-white font-black uppercase italic text-lg mt-1">Reforma Divino Braga</h5></div>
+                        </div>
+                        <div class="bg-[#0f172a] p-6 rounded-3xl border-l-8 border-purple-600 flex-1 flex items-center">
+                            <div><span class="text-purple-400 text-[10px] font-black uppercase">Esporte</span><h5 class="text-white font-black uppercase italic text-lg mt-1">Recorde Escolar</h5></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="video-destaque" class="mb-32">
+                <div class="flex items-center gap-3 mb-10 border-l-8 border-red-600 pl-4 text-white">
+                    <h3 class="text-3xl font-black uppercase italic tracking-tighter leading-none">Ação em Vídeo</h3>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                    <div class="lg:col-span-3 video-container aspect-video relative group">
+                        <video class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-110" muted loop autoplay><source src="Imagens/esporte.mp4" type="video/mp4"></video>
+                        <video id="mainVideo" class="relative z-10 w-full h-full object-contain mx-auto" controls><source src="Imagens/esporte.mp4" type="video/mp4"></video>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <div class="bg-blue-900/40 p-6 rounded-[24px] text-white border border-blue-500/20 shadow-lg flex-1 flex flex-col justify-center">
+                            <h4 class="font-black uppercase italic text-lg mb-2 text-blue-400">Protocolo Mídia</h4>
+                            <p class="text-[10px] opacity-80 italic">Envie fotos e vídeos pelo WhatsApp (31) 9 9327-0326 em formato documento. [cite: 21, 24]</p>
+                        </div>
+                        <div class="bg-yellow-400/10 p-6 rounded-[24px] text-yellow-400 border border-yellow-400/20 shadow-lg flex-1 flex flex-col justify-center">
+                            <h4 class="font-black uppercase italic text-lg mb-2 text-yellow-500">Viva o Esporte</h4>
+                            <p class="text-[10px] font-bold italic">Betim conta com 17 núcleos esportivos atendendo as regionais. [cite: 48, 66]</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="rendimento" class="mb-32">
+                <div class="flex items-center gap-4 mb-12 border-l-8 border-red-600 pl-6 text-white"><h3 class="text-3xl font-black uppercase italic tracking-tighter">Rendimento</h3></div>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+                    <div class="rendimento-card border-red-600"><i class="fas fa-fist-raised text-3xl text-red-600 mb-2"></i><h4 class="text-white text-xs font-black uppercase mt-4 italic">Taekwondo</h4></div>
+                    <div class="rendimento-card border-amber-500"><i class="fas fa-running text-3xl text-amber-500 mb-2"></i><h4 class="text-white text-xs font-black uppercase mt-4 italic">Atletismo</h4></div>
+                    <div class="rendimento-card border-blue-500"><i class="fas fa-swimmer text-3xl text-blue-500 mb-2"></i><h4 class="text-white text-xs font-black uppercase mt-4 italic">Natação</h4></div>
+                    <div class="rendimento-card border-emerald-500"><i class="fas fa-volleyball-ball text-3xl text-emerald-500 mb-2"></i><h4 class="text-white text-xs font-black uppercase mt-4 italic">Voleibol</h4></div>
+                    <div class="rendimento-card border-purple-600"><i class="fas fa-basketball-ball text-3xl text-purple-600 mb-2"></i><h4 class="text-white text-xs font-black uppercase mt-4 italic">Basquete</h4></div>
+                </div>
+            </section>
+
+            <section id="escola" class="mb-32">
+                <div class="flex items-center gap-4 mb-12 border-l-8 border-blue-500 pl-6 text-white"><h3 class="text-3xl font-black uppercase italic tracking-tighter text-nowrap">Escolas de Esporte</h3></div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                    <div class="escola-card border-blue-600"><p class="text-white font-black uppercase text-xs">Futsal</p></div>
+                    <div class="escola-card border-emerald-500"><p class="text-white font-black uppercase text-xs">Vôlei</p></div>
+                    <div class="escola-card border-orange-500"><p class="text-white font-black uppercase text-xs">Xadrez</p></div>
+                    <div class="escola-card border-red-600"><p class="text-white font-black uppercase text-xs">Ballet</p></div>
+                    <div class="escola-card border-purple-600"><p class="text-white font-black uppercase text-xs">Taekwondo</p></div>
+                    <div class="escola-card border-yellow-500"><p class="text-white font-black uppercase text-xs">Judô</p></div>
+                </div>
+            </section>
+
+            <section id="map-section" class="mb-32">
+                <div class="border-l-8 border-yellow-400 pl-6 mb-8 text-white"><h3 class="text-3xl font-black uppercase italic tracking-tighter leading-none">Onde Treinar em Betim</h3></div>
+                <div id="map" class="shadow-2xl"></div>
+            </section>
+        </main>
+
+        <section id="impacto-social" class="max-w-7xl mx-auto px-4 py-20">
+            <div class="border-l-8 border-blue-600 pl-6 mb-10 text-white"><h3 class="text-3xl font-black uppercase italic tracking-tighter">Infraestrutura em Números</h3></div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
+                <div class="bg-[#0f172a] p-6 rounded-[30px] border-b-4 border-yellow-500 shadow-xl">
+                    <p class="text-3xl font-black text-white italic">34</p>
+                    <h4 class="text-[9px] font-black text-slate-400 uppercase tracking-tighter">Campos Iluminados</h4>
+                </div>
+                <div class="bg-[#0f172a] p-6 rounded-[30px] border-b-4 border-red-600 shadow-xl">
+                    <p class="text-3xl font-black text-white italic">12</p>
+                    <h4 class="text-[9px] font-black text-slate-400 uppercase tracking-tighter">Quadras Reformadas</h4>
+                </div>
+                <div class="bg-[#0f172a] p-6 rounded-[30px] border-b-4 border-emerald-500 shadow-xl">
+                    <p class="text-3xl font-black text-white italic">45</p>
+                    <h4 class="text-[9px] font-black text-slate-400 uppercase tracking-tighter">Academias Praça</h4>
+                </div>
+                <div class="bg-[#0f172a] p-6 rounded-[30px] border-b-4 border-blue-600 shadow-xl">
+                    <p class="text-3xl font-black text-white italic">28</p>
+                    <h4 class="text-[9px] font-black text-slate-400 uppercase">Escolas Esporte</h4>
+                </div>
+                <div class="bg-[#0f172a] p-6 rounded-[30px] border-b-4 border-purple-600 shadow-xl">
+                    <p class="text-3xl font-black text-white italic">320</p>
+                    <h4 class="text-[9px] font-black text-slate-400 uppercase tracking-tighter">Atletas Rendimento</h4>
+                </div>
+                <div class="bg-[#0f172a] p-6 rounded-[30px] border-b-4 border-orange-500 shadow-xl">
+                    <p class="text-3xl font-black text-white italic">+6k</p>
+                    <h4 class="text-[9px] font-black text-slate-400 uppercase tracking-tighter">Vidas Impactadas</h4>
+                </div>
+            </div>
+        </section>
+
+        <section class="marquee-container">
+            <div class="marquee-content" id="marquee-track">
+                <img src="Imagens/Poliesportivo Divino Braga.jpeg" alt="Horto Municipal [cite: 49]">
+                <img src="Imagens/Poliesportivo Ricardo Mediole.jpeg" alt="Complexo Riccardo Medioli [cite: 67]">
+                <img src="Imagens/Futebol Bom Repouso.jpeg" alt="Campo do Real [cite: 27]">
+                <img src="Imagens/1.jpeg">
+                <img src="Imagens/2.jpeg">
+                <img src="Imagens/3.jpg">
+            </div>
+        </section>
+    </div>
+
+    <footer class="bg-black text-slate-500 py-12 text-center text-xs font-black uppercase tracking-widest border-t-[12px] border-yellow-400">
+        <div class="flex flex-col gap-2">
+            <p>Prefeitura de Betim - Secretaria Municipal de Esportes &copy; 2026</p>
+            <p class="text-slate-400 opacity-60">Desenvolvido por Fundação BETA</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        const unidades = [
+            { n: "Horto Municipal Homero Gomes", c: [-19.9678, -44.1983] }, // Angola [cite: 49]
+            { n: "Complexo Riccardo Medioli", c: [-19.9450, -44.1350] }, // Teresópolis [cite: 67]
+            { n: "Estádio Pedro Butti (Bilezão)", c: [-20.0050, -44.2450] }, // Citrolândia [cite: 34]
+            { n: "Campo do Real", c: [-19.9550, -44.1880] } // N. S. das Graças [cite: 28]
+        ];
+
+        function showPage(id) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            if(id === 'home') setTimeout(() => { map.invalidateSize(); }, 300);
+            window.scrollTo(0,0);
+        }
+
+        let slideIdx = 0;
+        const slides = document.querySelectorAll('.slide');
+        setInterval(() => {
+            slides[slideIdx].classList.remove('active');
+            slideIdx = (slideIdx + 1) % slides.length;
+            slides[slideIdx].classList.add('active');
+        }, 6000);
+
+        const map = L.map('map', { scrollWheelZoom: false }).setView([-19.9678, -44.1983], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        unidades.forEach(u => { L.marker(u.c).addTo(map).bindPopup(`<b>${u.n}</b>`); });
+
+        const track = document.getElementById('marquee-track');
+        track.innerHTML += track.innerHTML;
+    </script>
+</body>
+</html>

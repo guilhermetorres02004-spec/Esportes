@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Voleibol - Portal do Esporte Betim</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* CARROSSEL RODAPÉ (MARQUEE) */
+        .marquee-container { width: 100%; overflow: hidden; background: white; padding: 40px 0; border-top: 2px solid #1e3a8a; border-bottom: 2px solid #1e3a8a; display: flex; }
+        .marquee-content { display: flex; white-space: nowrap; animation: scrollMarquee 40s linear infinite; }
+        .marquee-content img { width: 350px; height: 200px; object-fit: cover; margin: 0 20px; border-radius: 25px; border: 2px solid #e2e8f0; flex-shrink: 0; }
+        @keyframes scrollMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    </style>
+</head>
+<body class="bg-slate-50">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md p-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-blue-900 font-black uppercase flex items-center gap-2">
+                <i class="fas fa-arrow-left"></i> Voltar ao Portal
+            </a>
+            <img src="https://www.betim.mg.gov.br/img/logo_prefeitura.png" class="h-8">
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="relative bg-blue-900 text-white py-20 overflow-hidden">
+        <img src="Imagens/volei3.jpeg" class="absolute inset-0 w-full h-full object-cover opacity-20" alt="Jogadora de vôlei se preparando para o saque">
+        <div class="relative max-w-7xl mx-auto px-4">
+            <span class="bg-yellow-400 text-blue-900 px-3 py-1 rounded-full text-xs font-bold uppercase">Esporte Coletivo</span>
+            <h1 class="text-5xl font-black uppercase mt-4 italic">Vôlei de Betim</h1>
+            <p class="text-blue-100 mt-4 max-w-2xl text-lg">Modalidade oferecida nos núcleos esportivos de Betim, com turmas para iniciação, formação e equipes municipais conforme a programação da SEMES.</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-12 grid lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 space-y-12">
+            
+            <!-- Sobre a Modalidade -->
+            <section class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
+                <h3 class="text-2xl font-black text-blue-900 mb-6 uppercase italic">Vôlei em Betim</h3>
+                <div class="space-y-4 text-slate-700 leading-relaxed">
+                    <p>Em Betim, o vôlei integra as ações da Secretaria Municipal de Esportes para ampliar o acesso de crianças, adolescentes e jovens às modalidades coletivas. Os treinos priorizam convivência, disciplina, trabalho em equipe e permanência no esporte.</p>
+                    <p>As atividades são organizadas por núcleo, faixa etária e disponibilidade de vagas. Além da iniciação esportiva, a modalidade apoia a formação de equipes para representar Betim em eventos e competições municipais e regionais.</p>
+                </div>
+            </section>
+
+            <!-- Galeria de Fotos -->
+            <section>
+                <h3 class="text-2xl font-black text-blue-900 mb-6 uppercase italic pl-4 border-l-4 border-yellow-400">Galeria</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="aspect-square rounded-2xl overflow-hidden shadow-lg">
+                        <img src="Imagens/volei3.jpeg" alt="Jogadores de vôlei bloqueando na rede" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="aspect-square rounded-2xl overflow-hidden shadow-lg">
+                        <img src="Imagens/volei1.jpeg" alt="Jogadora de vôlei sacando" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="aspect-square rounded-2xl overflow-hidden shadow-lg">
+                        <img src="Imagens/volei2.jpeg" alt="Time de vôlei comemorando um ponto" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Onde Praticar -->
+            <section class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
+                <h3 class="text-2xl font-black text-blue-900 mb-6 uppercase italic">Onde Praticar</h3>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4 p-4 border-l-4 border-yellow-400 bg-slate-50 rounded-r-lg">
+                        <i class="fas fa-map-marker-alt mt-1 text-blue-900"></i>
+                        <div>
+                            <p class="font-bold">Horto Municipal</p>
+                            <p class="text-sm text-slate-600">Terças e Quintas: 09:00 às 11:00 (Feminino) | 15:00 às 17:00 (Masculino)</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 border-l-4 border-blue-900 bg-slate-50 rounded-r-lg">
+                        <i class="fas fa-map-marker-alt mt-1 text-blue-900"></i>
+                        <div>
+                            <p class="font-bold">Poliesportivo Divino Braga</p>
+                            <p class="text-sm text-slate-600">Segundas e Quartas: 19:00 às 21:00 (Equipes de Rendimento)</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Sidebar de Inscrição -->
+        <aside class="space-y-8 sticky top-24">
+            <div class="bg-white p-6 rounded-3xl shadow-lg border-t-8 border-emerald-500">
+                <h4 class="font-black text-blue-900 mb-4 uppercase">Inscrições Abertas</h4>
+                <p class="text-sm text-slate-600 mb-6">Faça parte das turmas municipais de vôlei de Betim. As inscrições seguem a disponibilidade dos polos e a organização da Secretaria de Esportes.</p>
+                <h5 class="font-bold text-blue-900 mb-3 uppercase text-sm">Requisitos</h5>
+                <ul class="text-sm space-y-3 text-slate-600">
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Idade entre 12 e 17 anos</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Estar matriculado na rede escolar</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Cópia do RG ou Certidão de Nascimento</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Comprovante de Residência (Betim)</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Atestado Médico de Aptidão Física</li>
+                </ul>
+                <a href="Inscricao.html?modalidade=volei" class="block w-full mt-8 bg-blue-900 text-white text-center py-4 rounded-xl font-black uppercase tracking-widest hover:bg-blue-800 transition shadow-lg">
+                    Quero me Inscrever
+                </a>
+            </div>
+
+            <!-- Card SEMES Betim -->
+            <div class="bg-white p-6 rounded-3xl shadow-lg border-t-8 border-blue-900">
+                <h4 class="font-black text-blue-900 mb-4 uppercase">Rede Municipal</h4>
+                <p class="text-sm text-slate-600 mb-6">Acompanhe pelo portal os eventos, treinos, torneios e ações da Secretaria de Esportes relacionados ao vôlei em Betim.</p>
+                <a href="agenda.html" class="block w-full bg-yellow-400 text-blue-900 text-center py-4 rounded-xl font-black uppercase tracking-widest hover:bg-yellow-500 transition shadow-lg">
+                    Ver Agenda <i class="fas fa-calendar-alt ml-2"></i>
+                </a>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Carrossel Deslizante -->
+    <section class="marquee-container mb-12">
+        <div class="marquee-content" id="marquee-track">
+            <img src="Imagens/quadra.jpg" alt="Quadra de Vôlei" onerror="this.src='Imagens/quadra.jpeg'">
+            <img src="Imagens/quadra1.jpg" alt="Quadra de Vôlei 1" onerror="this.onerror=null; this.src='Imagens/quadra1.png'">
+            <img src="Imagens/quadra2.jpg" alt="Quadra de Vôlei 2" onerror="this.src='Imagens/quadra2.jpeg'">
+            <img src="Imagens/volei3.jpg" alt="Equipe de Vôlei" onerror="this.src='Imagens/volei3.jpeg'">
+            <img src="Imagens/volei1.jpg" alt="Vôlei Feminino" onerror="this.src='Imagens/volei1.jpeg'">
+            <img src="Imagens/volei2.jpg" alt="Vôlei Masculino" onerror="this.src='Imagens/volei2.jpeg'">
+        </div>
+    </section>
+
+    <footer class="bg-blue-950 text-white py-10 text-center text-xs font-black uppercase tracking-widest border-t-[8px] border-yellow-400">
+        Secretaria de Esportes - Gestão 2026 &copy; Betim
+    </footer>
+
+    <!-- Script do Carrossel -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const track = document.getElementById('marquee-track');
+            track.innerHTML += track.innerHTML;
+        });
+    </script>
+</body>
+</html>
+

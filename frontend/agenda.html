@@ -1,0 +1,519 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Eventos Esportivos - SEMES Betim</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #1e3a8a; border-radius: 10px; }
+        .calendar-day {
+            min-height: 110px;
+            overflow-y: auto;
+        }
+        .event-badge {
+            font-size: 0.8rem;
+            padding: 3px 4px;
+            border-radius: 3px;
+            word-break: break-word;
+            word-wrap: break-word;
+            display: block;
+            margin-top: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            line-height: 1.2;
+            max-height: 100%;
+            color: #1e3a8a;
+            background: transparent;
+        }
+        .event-badge:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-slate-100 font-sans p-4 md:p-8">
+
+    <div class="max-w-7xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden">
+        
+        <div class="bg-blue-900 p-6 text-white">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="bg-white text-blue-900 font-black h-12 w-12 flex items-center justify-center rounded-lg text-2xl shadow-lg">B</div>
+                    <div>
+                        <h1 class="text-xl font-black uppercase italic tracking-tight">Agenda de Eventos</h1>
+                        <p class="text-xs font-bold text-blue-200 uppercase tracking-widest">Secretaria de Esportes - Betim</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-3 bg-blue-800/50 p-3 rounded-xl border border-blue-700/50">
+                    <div class="h-10 w-10 bg-yellow-400 rounded-full flex items-center justify-center text-blue-900">
+                        <i class="fas fa-calendar-alt text-xl"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-[10px] font-black uppercase text-blue-300 leading-none">MÊS ATUAL</p>
+                        <p id="mesAno" class="text-sm font-bold text-white uppercase">Abril 2026</p>
+                        <p class="text-[9px] font-bold text-yellow-400 uppercase">PRÓXIMO: 15/04</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-6">
+            <div class="mb-6 flex justify-between items-center">
+                <h2 class="text-lg font-black text-blue-900 uppercase">CALENDÁRIO DE EVENTOS</h2>
+                <div class="flex gap-2">
+                    <button onclick="mesAnterior()" class="px-4 py-2 bg-blue-900 text-white font-bold rounded-lg hover:bg-yellow-400 hover:text-blue-900 transition-all text-xs uppercase">
+                        <i class="fas fa-chevron-left"></i> ANTERIOR
+                    </button>
+                    <button onclick="proximoMes()" class="px-4 py-2 bg-blue-900 text-white font-bold rounded-lg hover:bg-yellow-400 hover:text-blue-900 transition-all text-xs uppercase">
+                        PRÓXIMO <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button onclick="abrirFormularioNovoEvento()" class="px-4 py-2 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition-all text-xs uppercase">
+                        <i class="fas fa-plus"></i> NOVO EVENTO
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-6">
+                <div class="grid grid-cols-7 gap-2 mb-2">
+                    <div class="text-center font-black text-blue-900 text-sm p-2">Dom</div>
+                    <div class="text-center font-black text-blue-900 text-sm p-2">Seg</div>
+                    <div class="text-center font-black text-blue-900 text-sm p-2">Ter</div>
+                    <div class="text-center font-black text-blue-900 text-sm p-2">Qua</div>
+                    <div class="text-center font-black text-blue-900 text-sm p-2">Qui</div>
+                    <div class="text-center font-black text-blue-900 text-sm p-2">Sex</div>
+                    <div class="text-center font-black text-blue-900 text-sm p-2">Sab</div>
+                </div>
+                <div id="calendario" class="grid grid-cols-7 gap-2">
+                    <!-- Calendário será preenchido por JavaScript -->
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex gap-3 w-full md:w-auto">
+                    <button onclick="window.location.href='index.html'" class="flex-1 md:flex-none px-12 py-4 bg-slate-600 text-white font-black rounded-xl hover:bg-slate-700 transition-all shadow-lg flex items-center justify-center gap-3 tracking-widest uppercase text-xs">
+                        <i class="fas fa-arrow-left"></i> Voltar ao Portal
+                    </button>
+                    <button onclick="window.print()" class="flex-1 md:flex-none px-12 py-4 bg-blue-900 text-white font-black rounded-xl hover:bg-yellow-400 hover:text-blue-900 transition-all shadow-lg flex items-center justify-center gap-3 tracking-widest uppercase text-xs">
+                        <i class="fas fa-print"></i> Imprimir Agenda
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Formulário -->
+        <div id="modalFormulario" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto">
+                <h2 class="text-2xl font-black text-blue-900 mb-6" id="tituloModal">Novo Evento</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-[10px] font-black text-slate-400 uppercase mb-1">Data do Evento</label>
+                        <input type="date" id="dataEvento" class="w-full p-2 border rounded-lg font-bold text-blue-900 outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-black text-slate-400 uppercase mb-1">Nome do Evento</label>
+                        <input type="text" id="nomeEvento" class="w-full p-2 border rounded-lg font-bold text-blue-900 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ex: Torneio de Futsal">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-black text-slate-400 uppercase mb-1">Categoria</label>
+                        <input type="text" id="categoriaEvento" class="w-full p-2 border rounded-lg font-bold text-blue-900 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ex: Sub-15">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-black text-slate-400 uppercase mb-1">Local</label>
+                        <input type="text" id="localEvento" class="w-full p-2 border rounded-lg font-bold text-blue-900 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ex: Ginásio Municipal">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-black text-slate-400 uppercase mb-1">Hora</label>
+                        <input type="time" id="horaEvento" class="w-full p-2 border rounded-lg font-bold text-blue-900 outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-black text-slate-400 uppercase mb-1">Responsável</label>
+                        <input type="text" id="responsavelEvento" class="w-full p-2 border rounded-lg font-bold text-blue-900 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ex: Prof. João Silva">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-black text-slate-400 uppercase mb-1">Descrição</label>
+                        <textarea id="descricaoEvento" class="w-full p-2 border rounded-lg font-bold text-blue-900 outline-none focus:ring-2 focus:ring-blue-500" rows="3" placeholder="Descrição do evento"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-black text-slate-400 uppercase mb-1">Materiais necessários</label>
+                        <textarea id="materiaisEvento" class="w-full p-2 border rounded-lg font-bold text-blue-900 outline-none focus:ring-2 focus:ring-blue-500" rows="3" placeholder="Ex: 10 bolas, 20 cones, 2 redes, coletes, mesa de apoio"></textarea>
+                    </div>
+                </div>
+
+                <div class="mt-6 flex gap-3">
+                    <button onclick="salvarEvento()" class="flex-1 px-6 py-3 bg-green-600 text-white font-black rounded-xl hover:bg-green-700 transition-all text-sm uppercase">
+                        <i class="fas fa-save mr-2"></i> Salvar
+                    </button>
+                    <button onclick="fecharFormulario()" class="flex-1 px-6 py-3 bg-slate-300 text-slate-900 font-black rounded-xl hover:bg-slate-400 transition-all text-sm uppercase">
+                        <i class="fas fa-times mr-2"></i> Cancelar
+                    </button>
+                    <button id="btnDeletarEvento" onclick="deletarEvento()" class="flex-1 px-6 py-3 bg-red-600 text-white font-black rounded-xl hover:bg-red-700 transition-all text-sm uppercase hidden">
+                        <i class="fas fa-trash mr-2"></i> Deletar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let eventosData = {
+            "2026-03-10": [{
+                titulo: "Seleção de Atletas - Futsal",
+                categoria: "Peneira Geral",
+                local: "Ginásio Poliesportivo Central",
+                hora: "14:00",
+                responsavel: "Prof. Ricardo Silva",
+                descricao: "Seleção geral de atletas para as categorias de futsal 2026.",
+                materiais: "Bolas de futsal, cones, coletes, apito, prancheta e fichas de avaliação.",
+                id: 0
+            }],
+            "2026-03-18": [{
+                titulo: "Treinamento de Ginástica Artística",
+                categoria: "Preparação",
+                local: "Centro Esportivo Betim",
+                hora: "15:30",
+                responsavel: "Prof. Sofia Rocha",
+                descricao: "Treinamento preparatório para competição estadual.",
+                materiais: "Colchonetes, cones, caixa de som, fita de marcação e kit de primeiros socorros.",
+                id: 1
+            }],
+            "2026-04-15": [{
+                titulo: "Torneio Municipal de Futsal Masculino",
+                categoria: "Categoria Sub-15",
+                local: "Ginásio Poliesportivo Central",
+                hora: "10:00",
+                responsavel: "Prof. Ricardo Silva",
+                descricao: "Competição municipal de futsal para meninos da categoria sub-15.",
+                materiais: "Bolas de futsal, coletes por equipe, placar manual, súmula, apitos e cones.",
+                id: 2
+            }],
+            "2026-04-22": [{
+                titulo: "Campeonato de Vôlei Feminino",
+                categoria: "Fase Classificatória",
+                local: "Quadra Esportiva do Horto",
+                hora: "14:00",
+                responsavel: "Prof. Maria Oliveira",
+                descricao: "Confrontos pela fase classificatória do campeonato de vôlei feminino.",
+                materiais: "Rede de vôlei, bolas, antenas, placar, súmula, apito e bomba de calibragem.",
+                id: 3
+            }],
+            "2026-04-29": [{
+                titulo: "Jogos de Basquete Misto",
+                categoria: "Rodada 3",
+                local: "Ginásio Municipal",
+                hora: "16:00",
+                responsavel: "Prof. Roberto Alves",
+                descricao: "Terceira rodada dos jogos de basquete misto.",
+                materiais: "Bolas de basquete, coletes, placar, súmula, apito e kit de primeiros socorros.",
+                id: 4
+            }],
+            "2026-05-06": [{
+                titulo: "Torneio de Handebol Masculino",
+                categoria: "Semifinais",
+                local: "Centro Esportivo Betim",
+                hora: "09:00",
+                responsavel: "Prof. Eduardo Santos",
+                descricao: "Confrontos das semifinais do torneio de handebol masculino.",
+                materiais: "Bolas de handebol, coletes, cones, placar, súmula e apitos.",
+                id: 5
+            }],
+            "2026-05-13": [{
+                titulo: "Festival de Atletismo",
+                categoria: "Provas de Corrida",
+                local: "Estádio Municipal",
+                hora: "08:00",
+                responsavel: "Prof. Carlos Mendes",
+                descricao: "Festival com diferentes provas de corrida e atletismo.",
+                materiais: "Cronômetros, cones, fitas de demarcação, coletes, pranchetas e medalhas.",
+                id: 6
+            }],
+            "2026-05-20": [{
+                titulo: "Campeonato de Natação",
+                categoria: "Eliminatórias",
+                local: "Piscina Municipal",
+                hora: "11:00",
+                responsavel: "Prof. Juliana Ferreira",
+                descricao: "Provas eliminatórias do campeonato de natação.",
+                materiais: "Pranchetas, cronômetros, raias, toucas de identificação e kit de primeiros socorros.",
+                id: 7
+            }]
+        };
+
+        let dataAtual = new Date(2026, 3, 1); // Abril 2026
+        let eventoEmEdicao = null;
+
+        function carregarEventos() {
+            const dadosSalvos = localStorage.getItem('eventosEsporte');
+            if (dadosSalvos) {
+                eventosData = JSON.parse(dadosSalvos);
+                // Garantir que seja array para cada data
+                for (const data in eventosData) {
+                    if (!Array.isArray(eventosData[data])) {
+                        eventosData[data] = [eventosData[data]];
+                    }
+                }
+            } else {
+                salvarEventos();
+            }
+        }
+
+        function salvarEventos() {
+            localStorage.setItem('eventosEsporte', JSON.stringify(eventosData));
+        }
+
+        function gerarCalendario() {
+            const ano = dataAtual.getFullYear();
+            const mes = dataAtual.getMonth();
+            
+            document.getElementById('mesAno').innerText = dataAtual.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' }).toUpperCase();
+            
+            const primeiroDia = new Date(ano, mes, 1);
+            const ultimoDia = new Date(ano, mes + 1, 0);
+            const diasDoMes = ultimoDia.getDate();
+            const diaInicial = primeiroDia.getDay();
+
+            const calendario = document.getElementById('calendario');
+            calendario.innerHTML = '';
+
+            // Dias do mês anterior
+            const mesAnteriorData = new Date(ano, mes, 0);
+            const diasMesAnterior = mesAnteriorData.getDate();
+            const inicialDiasAnterior = diasMesAnterior - diaInicial + 1;
+            
+            for (let dia = inicialDiasAnterior; dia <= diasMesAnterior; dia++) {
+                const div = document.createElement('div');
+                div.className = 'bg-gray-100 rounded-lg p-2 calendar-day text-slate-400';
+                div.innerHTML = `<div class="font-bold text-lg">${dia}</div>`;
+                calendario.appendChild(div);
+            }
+
+            // Dias do mês atual
+            for (let dia = 1; dia <= diasDoMes; dia++) {
+                const div = document.createElement('div');
+                const dataStr = `${ano}-${String(mes + 1).padStart(2, '0')}-${String(dia).padStart(2, '0')}`;
+                const eventosDia = eventosData[dataStr] || [];
+                const temEvento = eventosDia.length > 0;
+                
+                div.className = `bg-white border-2 border-slate-200 rounded-lg p-2 calendar-day ${temEvento ? 'border-blue-600 bg-blue-200' : ''} cursor-pointer hover:shadow-md transition-all`;
+                div.innerHTML = `<div class="font-bold text-blue-900 text-lg">${dia}</div>`;
+                
+                if (temEvento) {
+                    eventosDia.forEach((evento, index) => {
+                        const eventDiv = document.createElement('div');
+                        eventDiv.className = 'event-badge font-bold';
+                        eventDiv.innerHTML = evento.titulo;
+                        eventDiv.onclick = (e) => {
+                            e.stopPropagation();
+                            mostrarSelecaoEventos(dataStr);
+                        };
+                        div.appendChild(eventDiv);
+                    });
+                }
+                
+                div.onclick = () => {
+                    if (!temEvento) {
+                        abrirFormularioNovoEvento(dataStr);
+                    } else {
+                        mostrarSelecaoEventos(dataStr);
+                    }
+                };
+                
+                calendario.appendChild(div);
+            }
+
+            // Dias do próximo mês
+            const diasRestantes = 42 - (diaInicial + diasDoMes);
+            for (let dia = 1; dia <= diasRestantes; dia++) {
+                const div = document.createElement('div');
+                div.className = 'bg-gray-100 rounded-lg p-2 calendar-day text-slate-400';
+                div.innerHTML = `<div class="font-bold text-lg">${dia}</div>`;
+                calendario.appendChild(div);
+            }
+        }
+
+        function mesAnterior() {
+            dataAtual.setMonth(dataAtual.getMonth() - 1);
+            gerarCalendario();
+        }
+
+        function proximoMes() {
+            dataAtual.setMonth(dataAtual.getMonth() + 1);
+            gerarCalendario();
+        }
+
+        function verDetalhes(dataStr, eventoId) {
+            const eventosDia = eventosData[dataStr] || [];
+            const evento = eventosDia.find(e => e.id === eventoId);
+            if (evento) {
+                localStorage.setItem('eventoSelecionado', JSON.stringify({ ...evento, data: dataStr }));
+                window.location.href = 'detalhes-evento.html';
+            }
+        }
+
+        function mostrarSelecaoEventos(dataStr) {
+            const eventosDia = eventosData[dataStr] || [];
+            if (eventosDia.length === 0) return;
+
+            // Criar modal de seleção
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4">
+                    <h2 class="text-2xl font-black text-blue-900 mb-6">Eventos em ${new Date(dataStr + 'T00:00:00').toLocaleDateString('pt-BR')}</h2>
+                    <div class="space-y-3 max-h-60 overflow-y-auto">
+                        ${eventosDia.map(evento => `
+                            <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                                <div class="font-bold text-blue-900">${evento.titulo}</div>
+                                <div class="text-sm text-blue-600 mb-2">${evento.hora} - ${evento.local}</div>
+                                <div class="flex gap-2">
+                                    <button onclick="verDetalhes('${dataStr}', ${evento.id}); this.closest('.fixed').remove();" class="px-3 py-1 bg-blue-600 text-white text-xs rounded hover:bg-blue-700">
+                                        Ver Detalhes
+                                    </button>
+                                    <button onclick="editarEvento('${dataStr}', ${evento.id}); this.closest('.fixed').remove();" class="px-3 py-1 bg-yellow-600 text-white text-xs rounded hover:bg-yellow-700">
+                                        Editar
+                                    </button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="mt-6 flex gap-3">
+                        <button onclick="abrirFormularioNovoEvento('${dataStr}'); this.closest('.fixed').remove();" class="flex-1 px-6 py-3 bg-green-600 text-white font-black rounded-xl hover:bg-green-700 transition-all text-sm uppercase">
+                            <i class="fas fa-plus mr-2"></i> Novo Evento
+                        </button>
+                        <button onclick="this.closest('.fixed').remove();" class="flex-1 px-6 py-3 bg-slate-300 text-slate-900 font-black rounded-xl hover:bg-slate-400 transition-all text-sm uppercase">
+                            <i class="fas fa-times mr-2"></i> Fechar
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        function abrirFormularioNovoEvento(dataStr) {
+            eventoEmEdicao = null;
+            document.getElementById('tituloModal').innerText = 'Novo Evento';
+            document.getElementById('btnDeletarEvento').classList.add('hidden');
+            
+            if (dataStr) {
+                const data = new Date(dataStr + 'T00:00:00');
+                document.getElementById('dataEvento').valueAsDate = data;
+            } else {
+                document.getElementById('dataEvento').value = '';
+            }
+            
+            document.getElementById('nomeEvento').value = '';
+            document.getElementById('categoriaEvento').value = '';
+            document.getElementById('localEvento').value = '';
+            document.getElementById('horaEvento').value = '';
+            document.getElementById('responsavelEvento').value = '';
+            document.getElementById('descricaoEvento').value = '';
+            document.getElementById('materiaisEvento').value = '';
+            
+            document.getElementById('modalFormulario').classList.remove('hidden');
+        }
+
+        function editarEvento(dataStr, eventoId) {
+            const eventosDia = eventosData[dataStr] || [];
+            const evento = eventosDia.find(e => e.id === eventoId);
+            if (!evento) return;
+            
+            eventoEmEdicao = `${dataStr}|${eventoId}`;
+            document.getElementById('tituloModal').innerText = 'Editar Evento';
+            document.getElementById('btnDeletarEvento').classList.remove('hidden');
+            
+            const data = new Date(dataStr + 'T00:00:00');
+            document.getElementById('dataEvento').valueAsDate = data;
+            document.getElementById('nomeEvento').value = evento.titulo;
+            document.getElementById('categoriaEvento').value = evento.categoria;
+            document.getElementById('localEvento').value = evento.local;
+            document.getElementById('horaEvento').value = evento.hora;
+            document.getElementById('responsavelEvento').value = evento.responsavel;
+            document.getElementById('descricaoEvento').value = evento.descricao;
+            document.getElementById('materiaisEvento').value = evento.materiais || '';
+            
+            document.getElementById('modalFormulario').classList.remove('hidden');
+        }
+
+        function salvarEvento() {
+            const data = document.getElementById('dataEvento').value;
+            const titulo = document.getElementById('nomeEvento').value.trim();
+            const categoria = document.getElementById('categoriaEvento').value.trim();
+            const local = document.getElementById('localEvento').value.trim();
+            const hora = document.getElementById('horaEvento').value;
+            const responsavel = document.getElementById('responsavelEvento').value.trim();
+            const descricao = document.getElementById('descricaoEvento').value.trim();
+            const materiais = document.getElementById('materiaisEvento').value.trim();
+            
+            if (!data || !titulo || !categoria || !local || !hora || !responsavel) {
+                alert('Por favor, preencha todos os campos obrigatórios!');
+                return;
+            }
+            
+            // Se estava editando, remover evento antigo
+            if (eventoEmEdicao) {
+                const [dataAntiga, idAntigo] = eventoEmEdicao.split('|');
+                const eventosDia = eventosData[dataAntiga] || [];
+                eventosData[dataAntiga] = eventosDia.filter(e => e.id !== parseInt(idAntigo));
+            }
+            
+            // Inicializar array se não existir
+            if (!eventosData[data]) {
+                eventosData[data] = [];
+            }
+            
+            const novoId = Math.max(...Object.values(eventosData).flat().map(e => e.id), -1) + 1;
+            
+            eventosData[data].push({
+                titulo,
+                categoria,
+                local,
+                hora,
+                responsavel,
+                descricao,
+                materiais,
+                id: novoId
+            });
+            
+            salvarEventos();
+            fecharFormulario();
+            gerarCalendario();
+        }
+
+        function deletarEvento() {
+            if (!eventoEmEdicao) return;
+            
+            if (confirm('Tem certeza que deseja deletar este evento?')) {
+                const [data, id] = eventoEmEdicao.split('|');
+                const eventosDia = eventosData[data] || [];
+                eventosData[data] = eventosDia.filter(e => e.id !== parseInt(id));
+                salvarEventos();
+                fecharFormulario();
+                gerarCalendario();
+            }
+        }
+
+        function fecharFormulario() {
+            document.getElementById('modalFormulario').classList.add('hidden');
+            eventoEmEdicao = null;
+        }
+
+        // Fechar modal ao clicar fora
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('modalFormulario').addEventListener('click', (e) => {
+                if (e.target.id === 'modalFormulario') {
+                    fecharFormulario();
+                }
+            });
+        });
+
+        carregarEventos();
+        gerarCalendario();
+    </script>
+</body>
+</html>
+
+
