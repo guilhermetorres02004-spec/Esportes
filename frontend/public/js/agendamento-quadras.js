@@ -42,7 +42,7 @@ function nomeQuadra(numero) {
     return `${quadra?.nome || `Quadra ${numero}`}${detalhe ? ` · ${detalhe}` : ""}`;
 }
 
-function conflito(inicio = Number(inicioInput.value), fim = Number(fimInput.value), quadra = estado.quadra) {
+function conflito(inicio = Number.parseInt(inicioInput.value, 10), fim = Number.parseInt(fimInput.value, 10), quadra = estado.quadra) {
     return haConflito(estado.reservas, quadra, dataInput.value, inicio, fim);
 }
 
@@ -77,6 +77,7 @@ function desenharQuadras() {
         botao.querySelector(".horto-court-type").textContent = quadra.tipo === "AREIA"
             ? "Quadra de areia" : quadra.coberta ? "Quadra coberta" : "Quadra";
         botao.querySelector(".horto-court-status").textContent = !estado.pronto ? "Consultando…"
+            : !inicioInput.value || !fimInput.value ? "Selecione um horário"
             : indisponivel ? "Indisponível no período"
             : periodoPassado(dataInput.value, Number(inicioInput.value)) ? "Período encerrado" : "Disponível no período";
         const total = estado.reservas.filter(reserva => reserva.quadra === quadra.numero).length;
@@ -94,7 +95,7 @@ function desenharQuadras() {
 }
 
 function desenharSlots() {
-    const inicio = Number(inicioInput.value), fim = Number(fimInput.value);
+    const inicio = Number.parseInt(inicioInput.value, 10), fim = Number.parseInt(fimInput.value, 10);
     const agora = agoraLocal();
     const itens = [];
     for (let minuto = 0; minuto < 1440; minuto += 60) {
@@ -144,34 +145,37 @@ function desenharReservas() {
 function atualizarTela() {
     const hoje = agoraLocal().data;
     dataInput.min = hoje;
-    const inicio = Number(inicioInput.value), fim = Number(fimInput.value);
+    const inicio = Number.parseInt(inicioInput.value, 10), fim = Number.parseInt(fimInput.value, 10);
+    const horariosSelecionados = Number.isFinite(inicio) && Number.isFinite(fim);
     const passado = periodoPassado(dataInput.value, inicio);
     const ocupado = conflito();
     for (const opcao of inicioInput.options) {
         const minuto = Number(opcao.value);
-        opcao.disabled = !estado.pronto || periodoPassado(dataInput.value, minuto) || conflito(minuto, minuto + 60);
+        opcao.disabled = opcao.value !== "" && (!estado.pronto || periodoPassado(dataInput.value, minuto) || conflito(minuto, minuto + 60));
     }
     for (const opcao of fimInput.options) {
         const minuto = Number(opcao.value);
-        opcao.disabled = !estado.pronto || minuto <= inicio || conflito(inicio, minuto);
+        opcao.disabled = opcao.value !== "" && (!estado.pronto || minuto <= inicio || conflito(inicio, minuto));
     }
     const esporteValido = estado.esportes.some(item => item.codigo === esporteInput.value);
-    const permitido = estado.pronto && !estado.salvando && !passado && !ocupado && esporteValido && fim - inicio >= 60;
+    const permitido = estado.pronto && !estado.salvando && horariosSelecionados && !passado && !ocupado && esporteValido && fim - inicio >= 60;
     elemento("confirmar").disabled = !permitido;
     elemento("confirmar").textContent = estado.salvando ? "Confirmando reserva…" : "Confirmar reserva →";
     elemento("status-periodo").textContent = !estado.pronto ? "Aguarde a atualização da agenda para reservar."
+        : !horariosSelecionados ? "Selecione os horários de início e término."
         : passado ? "Escolha uma data e um horário futuros."
         : ocupado ? "Período indisponível. Há uma reserva nesse intervalo."
         : !esporteValido ? "Selecione o tipo de esporte para confirmar."
         : "Período disponível para agendamento.";
     elemento("status-periodo").classList.toggle("unavailable", passado || ocupado);
     const duracao = (fim - inicio) / 60;
-    elemento("duracao").textContent = `${duracao} ${duracao === 1 ? "hora" : "horas"}`;
+    elemento("duracao").textContent = horariosSelecionados ? `${duracao} ${duracao === 1 ? "hora" : "horas"}` : "—";
     elemento("quadra-selecionada").textContent = nomeQuadra(estado.quadra).toLocaleUpperCase("pt-BR");
     elemento("form-quadra").textContent = nomeQuadra(estado.quadra);
     elemento("form-data").textContent = dataCurta(dataInput.value);
     elemento("data-extenso").textContent = new Intl.DateTimeFormat("pt-BR", { timeZone: "UTC", day: "numeric", month: "long", year: "numeric" }).format(new Date(`${dataInput.value}T12:00:00Z`));
-    elemento("resumo-disponibilidade").textContent = `Disponibilidade para ${horario(inicio)} às ${horario(fim)}.`;
+    elemento("resumo-disponibilidade").textContent = horariosSelecionados
+        ? `Disponibilidade para ${horario(inicio)} às ${horario(fim)}.` : "Selecione um horário para consultar a disponibilidade.";
     for (const id of ["data-reserva", "dia-anterior", "dia-seguinte", "hoje", "atualizar", "inicio", "fim", "responsavel", "esporte"]) elemento(id).disabled = estado.salvando;
     elemento("dia-anterior").disabled = estado.salvando || dataInput.value <= hoje;
     desenharQuadras();
@@ -242,6 +246,7 @@ elemento("reserva-form").addEventListener("submit", async evento => {
     try {
         await requisitar("/api/horto/reservas", { method: "POST",
             headers: { "Content-Type": "application/json" }, body: JSON.stringify(pedido) });
+        elemento("reserva-form").reset();
         mensagem(`Reserva confirmada! ${nomeQuadra(pedido.quadra)}, ${dataCurta(pedido.dataReserva)}, das ${horario(pedido.inicioMinutos)} às ${horario(pedido.fimMinutos)}.`);
     } catch (erro) {
         mensagem(erro.message || "Não foi possível confirmar a reserva. Atualize a agenda antes de tentar novamente.", true);
@@ -255,7 +260,7 @@ dataInput.addEventListener("change", () => {
     selecionarData(dataInput.value || agoraLocal().data);
 });
 inicioInput.addEventListener("change", () => {
-    if (Number(fimInput.value) <= Number(inicioInput.value)) fimInput.value = String(Number(inicioInput.value) + 60);
+    if (inicioInput.value && Number(fimInput.value) <= Number(inicioInput.value)) fimInput.value = String(Number(inicioInput.value) + 60);
     mensagem(); atualizarTela();
 });
 fimInput.addEventListener("change", () => { mensagem(); atualizarTela(); });

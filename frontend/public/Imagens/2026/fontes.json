@@ -1,0 +1,70 @@
+{
+    "verificadoEm":  "2026-11-04",
+    "nota":  "As datas indicam a publicação oficial em 2026; a data exata da captura não foi informada nas páginas. Fonte identifica o veículo de publicação, não a autoria individual da fotografia.",
+    "instagram":  "Perfil oficial pesquisado: https://www.instagram.com/prefeiturabetim . Acesso indisponível na ferramenta de pesquisa; nenhuma foto do Instagram foi utilizada.",
+    "imagens":  [
+                    {
+                        "arquivo":  "atletismo-2026.jpg",
+                        "titulo":  "Betim conquista oito medalhas no Open Internacional de Atletismo",
+                        "dataPublicacao":  "2026-09-07",
+                        "fonte":  "Prefeitura Municipal de Betim",
+                        "paginaOrigem":  "https://www.betim.mg.gov.br/portal/noticias/0/3/15571/betim-conquista-oito-medalhas-no-open-internacional-de-atletismo",
+                        "imagemOriginal":  "https://www.betim.mg.gov.br/fotos/dd806836cda70d2056e92b3a4b8f3fd5.jpg",
+                        "sha256":  "585c40251819b57f6bd1eb9585060f82344e37bbde7802e4aec187d06be48c71"
+                    },
+                    {
+                        "arquivo":  "conquistas-outubro-2026.jpg",
+                        "titulo":  "Confira as conquistas dos atletas de Betim desta semana",
+                        "dataPublicacao":  "2026-10-19",
+                        "fonte":  "Prefeitura Municipal de Betim",
+                        "paginaOrigem":  "https://www.betim.mg.gov.br/portal/noticias/0/3/15692/confira-as-conquistas-dos-atletas-de-betim-desta-semana/",
+                        "imagemOriginal":  "https://www.betim.mg.gov.br/fotos/07b156394a1a697ae1c6e9fd8d9f96df.jpg",
+                        "sha256":  "c548ceb983250540d037f798c13087617b5addd50a5ee32fb089242d6689346e"
+                    },
+                    {
+                        "arquivo":  "equipamentos-2026.jpg",
+                        "titulo":  "Programa Viva Esporte amplia estrutura e beneficia cerca de 6 mil alunos com novos equipamentos...",
+                        "dataPublicacao":  "2026-05-14",
+                        "fonte":  "Prefeitura Municipal de Betim",
+                        "paginaOrigem":  "https://www.betim.mg.gov.br/portal/noticias/0/3/15177/programa-viva-esporte-amplia-estrutura-e-beneficia-cerca-de-6-mil-alunos-com-novos-equipamentos-esportivos/",
+                        "imagemOriginal":  "https://www.betim.mg.gov.br/fotos/abf8377174570818c89ff8bf86f9bf8e.jpg",
+                        "sha256":  "e6bc686ec245346435f9aa2d093562b60894179d67ce2404f84597e19fb337a1"
+                    },
+                    {
+                        "arquivo":  "futsal-2026.jpg",
+                        "titulo":  "Finais do Estadual de Futsal reúnem grandes equipes em Betim nas categorias Sub-14 e Adulto",
+                        "dataPublicacao":  "2026-10-14",
+                        "fonte":  "Prefeitura Municipal de Betim",
+                        "paginaOrigem":  "https://www.betim.mg.gov.br/portal/noticias/0/3/15676/finais-do-estadual-de-futsal-reunem-grandes-equipes-em-betim-nas-categorias-sub-14-e-adulto",
+                        "imagemOriginal":  "https://www.betim.mg.gov.br/fotos/5517f3f8bccb31ecae1642220e179472.jpg",
+                        "sha256":  "fd8c0332250c5fc3d85bdc3de903f7f89cd713e821963e3bf34d75c5fc465bd4"
+                    },
+                    {
+                        "arquivo":  "jeb-2026.jpg",
+                        "titulo":  "Jogos Escolares de Betim de 2026 registram recorde de 10 mil estudantes",
+                        "dataPublicacao":  "2026-08-31",
+                        "fonte":  "Prefeitura Municipal de Betim",
+                        "paginaOrigem":  "https://www.betim.mg.gov.br/portal/noticias/0/3/15557/jogos-escolares-de-betim-de-2026-registram-recorde-de-10-mil-estudantes/",
+                        "imagemOriginal":  "https://www.betim.mg.gov.br/fotos/94cc413ac2a78c023ba9d8771dac7dc8.jpg",
+                        "sha256":  "5c79eba832c659a805268182d12de1ad0927e0039ca8e788d294e1135f0996af"
+                    },
+                    {
+                        "arquivo":  "judo-2026.jpg",
+                        "titulo":  "Betim é campeã geral da 35ª Copa Betim Open de Judô",
+                        "dataPublicacao":  "2026-08-31",
+                        "fonte":  "Prefeitura Municipal de Betim",
+                        "paginaOrigem":  "https://www.betim.mg.gov.br/portal/noticias/0/3/15559/betim-e-campea-geral-da-35-copa-betim-open-de-judo/",
+                        "imagemOriginal":  "https://www.betim.mg.gov.br/fotos/441aa1e683c431b11d27f8185fb05c30.jpg",
+                        "sha256":  "532c68737c4acf9024e6ec447cbb42c17af20102d0612ada8361881a312bb6cd"
+                    },
+                    {
+                        "arquivo":  "viva-esporte-2026.jpg",
+                        "titulo":  "Viva o Esporte retoma atividades e movimenta quadras e campos em Betim",
+                        "dataPublicacao":  "2026-02-12",
+                        "fonte":  "Prefeitura Municipal de Betim",
+                        "paginaOrigem":  "https://www.betim.mg.gov.br/portal/noticias/0/3/14875/viva-o-esporte-retoma-atividades-e-movimenta-quadras-e-campos-em-betim/",
+                        "imagemOriginal":  "https://www.betim.mg.gov.br/fotos/83f315bb3f2cd68b85f63ae4710c79ed.jpg",
+                        "sha256":  "bbcdf56bfa8636fa4d9c8955f0d45272a15467d444f5a54d3e6cae55139fd06c"
+                    }
+                ]
+}

@@ -61,6 +61,8 @@
         .slide.active { opacity: 1; z-index: 5; }
         .slide-bg { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; }
         .slogan-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 20; pointer-events: none; }
+        .photo-credit { position: absolute; right: 16px; bottom: 12px; z-index: 21; max-width: calc(100% - 32px); padding: 6px 10px; border-radius: 8px; background: rgba(15, 23, 42, 0.85); color: white; font-size: 11px; line-height: 1.5; }
+        .photo-credit:hover, .photo-credit:focus-visible { text-decoration: underline; }
 
         /* NOTÍCIAS AMPLIADAS */
         .news-main-card { height: 550px; }
@@ -87,7 +89,10 @@
         /* MARQUEE */
         .marquee-container { width: 100%; overflow: hidden; background: white; padding: 40px 0; border-top: 2px solid #004a8d; border-bottom: 2px solid #004a8d; display: flex; }
         .marquee-content { display: flex; white-space: nowrap; animation: scrollMarquee 40s linear infinite; }
-        .marquee-content img { width: 350px; height: 200px; object-fit: cover; margin: 0 20px; border-radius: 25px; border: 2px solid #e2e8f0; flex-shrink: 0; }
+        .marquee-content figure { flex: 0 0 350px; margin: 0 20px; white-space: normal; }
+        .marquee-content img { width: 350px; height: 200px; object-fit: cover; border-radius: 25px; border: 2px solid #e2e8f0; }
+        .marquee-content figcaption { padding: 10px 6px 0; color: #475569; font-size: 12px; line-height: 1.5; }
+        .marquee-content a:hover, .marquee-content a:focus-visible { text-decoration: underline; }
         @keyframes scrollMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
         .page { display: none; }
@@ -153,9 +158,9 @@
     <div id="home" class="page active">
         <div class="carousel-container">
             <div class="slogan-overlay"><h2 class="text-6xl md:text-9xl font-black uppercase italic tracking-tighter text-white text-center">Betim Respira <br><span class="text-yellow-400">Esporte</span></h2></div>
-            <div class="slide active"><img src="Imagens/Poliesportivo Divino Braga.jpeg" class="slide-bg" onerror="this.src='https://images.unsplash.com/photo-1519315901367-f34ff9154487?q=80&w=1200'"></div>
-            <div class="slide"><img src="Imagens/Poliesportivo Ricardo Mediole.jpeg" class="slide-bg" onerror="this.src='https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=1200'"></div>
-            <div class="slide"><img src="Imagens/Futebol Bom Repouso.jpeg" class="slide-bg" onerror="this.src='https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1200'"></div>
+            <div class="slide active"><img src="/Imagens/2026/jeb-2026.jpg" class="slide-bg" width="800" height="533" fetchpriority="high" alt="Estudantes reunidos no ginásio durante os Jogos Escolares de Betim 2026"><a class="photo-credit" href="https://www.betim.mg.gov.br/portal/noticias/0/3/15557/jogos-escolares-de-betim-de-2026-registram-recorde-de-10-mil-estudantes/" target="_blank" rel="noopener noreferrer" tabindex="0">JEB 2026 · Fonte: Prefeitura de Betim · 31/08/2026</a></div>
+            <div class="slide"><img src="/Imagens/2026/futsal-2026.jpg" class="slide-bg" width="800" height="533" alt="Jogadores disputam a bola em partida de futsal divulgada no Estadual de 2026"><a class="photo-credit" href="https://www.betim.mg.gov.br/portal/noticias/0/3/15676/finais-do-estadual-de-futsal-reunem-grandes-equipes-em-betim-nas-categorias-sub-14-e-adulto" target="_blank" rel="noopener noreferrer" tabindex="-1">Futsal · Fonte: Prefeitura de Betim · 14/10/2026</a></div>
+            <div class="slide"><img src="/Imagens/2026/conquistas-outubro-2026.jpg" class="slide-bg" width="800" height="533" alt="Raysa Mendonça em prova de lançamento de dardo, em publicação de outubro de 2026"><a class="photo-credit" href="https://www.betim.mg.gov.br/portal/noticias/0/3/15692/confira-as-conquistas-dos-atletas-de-betim-desta-semana/" target="_blank" rel="noopener noreferrer" tabindex="-1">Atletismo · Fonte: Prefeitura de Betim · 19/10/2026</a></div>
             <div class="dots-container absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-2 z-30" id="dots"></div>
         </div>
 
@@ -237,12 +242,13 @@
                 <div class="flex justify-between items-end mb-12 border-l-8 border-blue-900 pl-6"><h3 class="text-4xl font-black text-blue-900 uppercase italic tracking-tighter leading-none">Notícias</h3></div>
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
                     <div class="lg:col-span-2 relative rounded-[40px] news-main-card overflow-hidden bg-black shadow-2xl">
-                        <img id="noticia-img-principal" src="Imagens/Rio.jpeg" class="absolute inset-0 w-full h-full object-contain z-10 mx-auto">
-                        <img id="noticia-img-blur" src="Imagens/Rio.jpeg" class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-50">
+                        <img id="noticia-img-principal" src="/Imagens/2026/conquistas-outubro-2026.jpg" width="800" height="533" loading="lazy" alt="Raysa Mendonça em prova de lançamento de dardo" class="absolute inset-0 w-full h-full object-contain z-10 mx-auto">
+                        <img id="noticia-img-blur" src="/Imagens/2026/conquistas-outubro-2026.jpg" loading="lazy" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-50">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent p-12 flex flex-col justify-end z-20">
-                            <span class="bg-yellow-400 text-blue-900 text-xs font-black uppercase px-4 py-1 w-fit mb-4 italic">Rumo ao Rio</span>
-                            <h4 class="text-white text-4xl font-black uppercase italic mb-4">Partiu Rio de Janeiro!</h4>
-                            <p class="text-white/80 text-lg leading-relaxed max-w-2xl">Grand Slam de Taekwondo - seletiva 2026. Agradeço à Secretaria de Esportes por todo apoio e suporte.</p>
+                            <span class="bg-yellow-400 text-blue-900 text-xs font-black uppercase px-4 py-1 w-fit mb-4 italic">Conquistas de 2026</span>
+                            <h4 class="text-white text-4xl font-black uppercase italic mb-4">Betim em destaque no esporte</h4>
+                            <p class="text-white/80 text-lg leading-relaxed max-w-2xl">Atletas de atletismo e wrestling recebem convocações para representar o Brasil em competições internacionais.</p>
+                            <a href="https://www.betim.mg.gov.br/portal/noticias/0/3/15692/confira-as-conquistas-dos-atletas-de-betim-desta-semana/" target="_blank" rel="noopener noreferrer" class="text-white text-xs mt-4 underline">Leia a notícia · Imagem e fonte: Prefeitura de Betim · 19/10/2026</a>
                         </div>
                     </div>
                     <div class="flex flex-col gap-6">
@@ -361,8 +367,9 @@
                             </div>
                         </div>
                         <div class="relative min-h-[500px]">
-                            <img src="https://www.betim.mg.gov.br/fotos/88a498819481063584ddadff1af2d4b6.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Projeto Viva o Esporte">
+                            <img src="/Imagens/2026/viva-esporte-2026.jpg" width="800" height="600" loading="lazy" class="absolute inset-0 w-full h-full object-cover" alt="Participantes do Viva o Esporte em atividade na quadra coberta, na retomada de 2026">
                             <div class="absolute inset-0 bg-blue-900/10 mix-blend-multiply"></div>
+                            <a class="photo-credit" href="https://www.betim.mg.gov.br/portal/noticias/0/3/14875/viva-o-esporte-retoma-atividades-e-movimenta-quadras-e-campos-em-betim/" target="_blank" rel="noopener noreferrer">Viva o Esporte · Fonte: Prefeitura de Betim · 12/02/2026</a>
                         </div>
                     </div>
                 </div>
@@ -409,14 +416,14 @@
             </div>
         </section>
 
-        <section class="marquee-container mb-32">
+        <section class="marquee-container mb-32" aria-label="Fotos do esporte em Betim publicadas em 2026">
             <div class="marquee-content" id="marquee-track">
-                <img src="Imagens/Poliesportivo Divino Braga.jpeg" alt="Divino Braga">
-                <img src="Imagens/Poliesportivo Ricardo Mediole.jpeg" alt="Ricardo Mediole">
-                <img src="Imagens/Futebol Bom Repouso.jpeg" alt="Futebol Betim">
-                <img src="Imagens/1.jpeg" alt="Sementes">
-                <img src="Imagens/2.jpeg" alt="Competição">
-                <img src="Imagens/3.jpg" alt="Viva Esporte">
+                <figure><img src="/Imagens/2026/jeb-2026.jpg" width="800" height="533" loading="lazy" alt="Delegações escolares reunidas no ginásio nos Jogos Escolares de Betim 2026"><figcaption><a href="https://www.betim.mg.gov.br/portal/noticias/0/3/15557/jogos-escolares-de-betim-de-2026-registram-recorde-de-10-mil-estudantes/" target="_blank" rel="noopener noreferrer">Jogos Escolares de Betim · 31/08/2026<br>Fonte: Prefeitura de Betim</a></figcaption></figure>
+                <figure><img src="/Imagens/2026/futsal-2026.jpg" width="800" height="533" loading="lazy" alt="Disputa de bola em jogo de futsal divulgado nas finais do Estadual de 2026"><figcaption><a href="https://www.betim.mg.gov.br/portal/noticias/0/3/15676/finais-do-estadual-de-futsal-reunem-grandes-equipes-em-betim-nas-categorias-sub-14-e-adulto" target="_blank" rel="noopener noreferrer">Estadual de Futsal · 14/10/2026<br>Fonte: Prefeitura de Betim</a></figcaption></figure>
+                <figure><img src="/Imagens/2026/judo-2026.jpg" width="800" height="533" loading="lazy" alt="Equipe de Betim com medalhas e troféus da 35ª Copa Betim Open de Judô"><figcaption><a href="https://www.betim.mg.gov.br/portal/noticias/0/3/15559/betim-e-campea-geral-da-35-copa-betim-open-de-judo/" target="_blank" rel="noopener noreferrer">Copa Betim Open de Judô · 31/08/2026<br>Fonte: Prefeitura de Betim</a></figcaption></figure>
+                <figure><img src="/Imagens/2026/atletismo-2026.jpg" width="800" height="600" loading="lazy" alt="Equipe do Viva o Esporte com medalhas do Open Internacional de Atletismo de 2026"><figcaption><a href="https://www.betim.mg.gov.br/portal/noticias/0/3/15571/betim-conquista-oito-medalhas-no-open-internacional-de-atletismo" target="_blank" rel="noopener noreferrer">Open Internacional de Atletismo · 07/09/2026<br>Fonte: Prefeitura de Betim</a></figcaption></figure>
+                <figure><img src="/Imagens/2026/equipamentos-2026.jpg" width="800" height="600" loading="lazy" alt="Equipamentos esportivos apresentados na quadra do Ginásio Divino Braga em maio de 2026"><figcaption><a href="https://www.betim.mg.gov.br/portal/noticias/0/3/15177/programa-viva-esporte-amplia-estrutura-e-beneficia-cerca-de-6-mil-alunos-com-novos-equipamentos-esportivos/" target="_blank" rel="noopener noreferrer">Novos equipamentos no Divino Braga · 14/05/2026<br>Fonte: Prefeitura de Betim</a></figcaption></figure>
+                <figure><img src="/Imagens/2026/viva-esporte-2026.jpg" width="800" height="600" loading="lazy" alt="Atividade esportiva em quadra coberta durante a retomada do Viva o Esporte em 2026"><figcaption><a href="https://www.betim.mg.gov.br/portal/noticias/0/3/14875/viva-o-esporte-retoma-atividades-e-movimenta-quadras-e-campos-em-betim/" target="_blank" rel="noopener noreferrer">Viva o Esporte · 12/02/2026<br>Fonte: Prefeitura de Betim</a></figcaption></figure>
             </div>
         </section>
     </div>
@@ -496,28 +503,16 @@
             window.scrollTo(0,0);
         }
 
-        // Notícias: sempre mostra as fotos da pasta Imagens/Exibindo
-        fetch('/api/imagens/exibindo').then(r => r.ok ? r.json() : []).then((fotos) => {
-            if (!fotos.length) return;
-            const principal = document.getElementById('noticia-img-principal');
-            const blur = document.getElementById('noticia-img-blur');
-            let idx = 0;
-            const atualizar = () => {
-                const src = `Imagens/Exibindo/${encodeURIComponent(fotos[idx])}`;
-                principal.src = src;
-                blur.src = src;
-                idx = (idx + 1) % fotos.length;
-            };
-            atualizar();
-            if (fotos.length > 1) setInterval(atualizar, 6000);
-        }).catch(() => {});
+        // A foto da notícia acompanha a matéria de 2026 e seu link de origem.
 
         let slideIdx = 0;
         const slides = document.querySelectorAll('.slide');
         setInterval(() => {
             slides[slideIdx].classList.remove('active');
+            slides[slideIdx].querySelector('a').tabIndex = -1;
             slideIdx = (slideIdx + 1) % slides.length;
             slides[slideIdx].classList.add('active');
+            slides[slideIdx].querySelector('a').tabIndex = 0;
         }, 6000);
 
         const map = L.map('map', { scrollWheelZoom: false }).setView([-19.9678, -44.1983], 13);
