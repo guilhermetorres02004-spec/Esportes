@@ -12,3 +12,9 @@ vite*.log
 frontend/Imagens/volei3.html
 frontend/Imagens/volei3_files/
 frontend/public/Imagens/volei3.html
+
+# Arquivos locais de execucao e credenciais
+*.log
+.env
+.env.*
+!.env.example

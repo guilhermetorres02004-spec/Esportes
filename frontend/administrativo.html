@@ -61,15 +61,27 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 font-sans text-slate-900 flex flex-col min-h-screen">
+<body class="bg-slate-50 font-sans text-slate-900 flex flex-col min-h-screen" style="visibility:hidden">
 
     <script>
-        // Guarda de acesso: sem sessão válida, volta para o login.
-        fetch("/api/auth/me", { credentials: "include" }).then((response) => {
-            if (!response.ok) {
+        // Guarda de acesso: sem sessão válida (ou resposta inesperada), volta para o login.
+        // Só revela a página depois de confirmar sessão autenticada de verdade.
+        fetch("/api/auth/me", { credentials: "include" })
+            .then((response) => {
+                if (!response.ok) throw new Error("not authenticated");
+                return response.json();
+            })
+            .then((data) => {
+                if (!data || !data.username) throw new Error("invalid session payload");
+                document.body.style.visibility = "visible";
+                // Sessão de uso único: encerra a sessão assim que o acesso é concedido,
+                // para que qualquer novo acesso a esta página exija login novamente,
+                // mesmo dentro da mesma sessão de navegador.
+                fetch("/logout", { method: "POST", credentials: "include" });
+            })
+            .catch(() => {
                 window.location.href = "login.html";
-            }
-        });
+            });
 
         function sair() {
             fetch("/logout", { method: "POST", credentials: "include" })
