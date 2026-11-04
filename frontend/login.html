@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login Administrativo - Portal do Esporte Betim</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/css/tailwind.css">
 </head>
 <body class="bg-slate-100 min-h-screen flex items-center justify-center p-4">
 
@@ -73,18 +73,27 @@
             body.set("username", document.getElementById("username").value);
             body.set("password", document.getElementById("password").value);
 
-            const response = await fetch("/login", {
-                method: "POST",
-                credentials: "include",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body,
-            });
+            try {
+                const response = await fetch("/login", {
+                    method: "POST",
+                    credentials: "include",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body,
+                });
 
-            if (response.ok) {
-                window.location.href = "administrativo.html";
-            } else {
-                errorMsg.classList.remove("hidden");
+                if (response.ok) {
+                    const proxima = new URLSearchParams(window.location.search).get("proxima");
+                    window.location.href = proxima === "agendamento-quadras.html"
+                        ? proxima : "administrativo.html";
+                    return;
+                }
+                errorMsg.textContent = response.status === 401
+                    ? "Usuário ou senha inválidos."
+                    : "Não foi possível acessar o servidor. Tente novamente em instantes.";
+            } catch {
+                errorMsg.textContent = "Não foi possível conectar ao servidor. Verifique sua conexão.";
             }
+            errorMsg.classList.remove("hidden");
         });
     </script>
 </body>

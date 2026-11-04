@@ -15,6 +15,7 @@ public class CorsConfig {
         // Restrito a origens locais conhecidas (proxy do frontend via Docker/Nginx
         // e o servidor de dev do Vite). Ajuste para o domínio real ao publicar.
         configuration.addAllowedOriginPattern("http://localhost:*");
+        configuration.addAllowedOriginPattern("http://127.0.0.1:*");
         configuration.addAllowedHeader("*");
         configuration.addAllowedMethod("*");
         configuration.setAllowCredentials(true);

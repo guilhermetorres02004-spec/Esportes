@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrativo - Portal do Esporte Betim</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/tailwind.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -74,10 +74,6 @@
             .then((data) => {
                 if (!data || !data.username) throw new Error("invalid session payload");
                 document.body.style.visibility = "visible";
-                // Sessão de uso único: encerra a sessão assim que o acesso é concedido,
-                // para que qualquer novo acesso a esta página exija login novamente,
-                // mesmo dentro da mesma sessão de navegador.
-                fetch("/logout", { method: "POST", credentials: "include" });
             })
             .catch(() => {
                 window.location.href = "login.html";
@@ -117,6 +113,10 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <a href="agendamento-quadras.html" class="admin-card border-blue-900 shadow-md block">
+                <h3 class="text-lg font-black text-blue-900 uppercase italic mb-4">Quadras do Horto</h3>
+                <div class="doc-item"><span>Agendamento e disponibilidade</span><i class="fas fa-calendar-check text-blue-900"></i></div>
+            </a>
             <div class="admin-card border-blue-900 shadow-md">
                 <h3 class="text-lg font-black text-blue-900 uppercase italic mb-4">Legislação</h3>
                 <div class="doc-item"><span>Lei de Incentivo ao Esporte</span><i class="fas fa-file-pdf text-red-500"></i></div>

@@ -4,15 +4,22 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "test:horto": "node --test tests/horto-utils.test.mjs",
+    "build:css": "tailwindcss -i ./src/tailwind.css -o ./public/css/tailwind.css --minify",
+    "watch:css": "npm run build:css -- --watch",
+    "predev": "npm run build:css",
     "dev": "vite",
+    "prebuild": "npm run build:css",
     "build": "vite build && node scripts/copy-html-pages.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^5.0.0",
-    "vite": "^7.0.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "vite": "^7.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
 }

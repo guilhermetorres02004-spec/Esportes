@@ -34,6 +34,7 @@ public class SecurityConfig {
                                 "/api/imagens/exibindo").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/inscricoes").permitAll()
                         .requestMatchers("/api/auth/me").permitAll()
+                        .requestMatchers("/api/horto/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .formLogin(form -> form
                         .loginProcessingUrl("/login")

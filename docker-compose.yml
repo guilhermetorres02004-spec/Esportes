@@ -7,6 +7,7 @@ services:
       - APP_UPLOAD_DIR=/app/videos
       - APP_UPLOAD_IMAGENS_DIR=/app/imagens
     volumes:
+      - esporte-dados:/app/data
       - ./frontend/public/Videos:/app/videos
       - ./frontend/public/Imagens:/app/imagens
 
@@ -19,3 +20,6 @@ services:
     volumes:
       - ./frontend/public/Videos:/usr/share/nginx/html/Videos
       - ./frontend/public/Imagens:/usr/share/nginx/html/Imagens
+
+volumes:
+  esporte-dados:
