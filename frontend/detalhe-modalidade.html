@@ -1,20 +1,16 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Judô - Portal do Esporte Betim</title>
     <link rel="stylesheet" href="/css/tailwind.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/portal-header.css">
+    <link rel="stylesheet" href="/css/portal-base.css">
 </head>
-<body class="bg-slate-50">
-    <nav class="bg-white shadow-md p-4">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-blue-900 font-black uppercase flex items-center gap-2">
-                <i class="fas fa-arrow-left"></i> Voltar ao Início
-            </a>
-            <img src="https://www.betim.mg.gov.br/img/logo_prefeitura.png" class="h-8">
-        </div>
-    </nav>
+<body class="portal-standard bg-slate-50">
+    <script src="/js/portal-header.js"></script>
 
     <header class="bg-blue-900 text-white py-16">
         <div class="max-w-7xl mx-auto px-4">
@@ -34,6 +30,10 @@
                 </div>
             </section>
 
+            <section class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
+                <h3 class="text-2xl font-black text-blue-900 mb-6 uppercase italic">Fotos oficiais do Judô</h3>
+                <div data-fotos-galeria="judo" class="grid grid-cols-1 sm:grid-cols-3 gap-4"><p class="col-span-full text-sm text-slate-500">As fotos oficiais aparecerão quando a sincronização estiver disponível.</p></div>
+            </section>
             <section class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
                 <h3 class="text-2xl font-black text-blue-900 mb-6 uppercase italic">Onde Praticar</h3>
                 <div class="space-y-4">

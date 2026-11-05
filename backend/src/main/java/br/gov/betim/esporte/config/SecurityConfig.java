@@ -31,10 +31,13 @@ public class SecurityConfig {
                                 "/api/noticias/**",
                                 "/api/modalidades/**",
                                 "/api/locais-esportivos/**",
+                                "/api/fotos/**",
                                 "/api/imagens/exibindo").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/inscricoes").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/inscricoes", "/api/suporte/mensagens").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/suporte/status").permitAll()
                         .requestMatchers("/api/auth/me").permitAll()
                         .requestMatchers("/api/horto/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/fotos/atualizar").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .formLogin(form -> form
                         .loginProcessingUrl("/login")

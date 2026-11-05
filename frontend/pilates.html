@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pilates - Portal do Esporte Betim</title>
     <link rel="stylesheet" href="/css/tailwind.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -11,19 +12,14 @@
         .marquee-content img { width: 350px; height: 200px; object-fit: cover; margin: 0 20px; border-radius: 25px; border: 2px solid #e2e8f0; flex-shrink: 0; }
         @keyframes scrollMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     </style>
+    <link rel="stylesheet" href="/css/portal-header.css">
+    <link rel="stylesheet" href="/css/portal-base.css">
 </head>
-<body class="bg-slate-50">
-    <nav class="bg-white shadow-md p-4">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-blue-900 font-black uppercase flex items-center gap-2">
-                <i class="fas fa-arrow-left"></i> Voltar ao Portal
-            </a>
-            <img src="https://www.betim.mg.gov.br/img/logo_prefeitura.png" class="h-8">
-        </div>
-    </nav>
+<body class="portal-standard bg-slate-50">
+    <script src="/js/portal-header.js"></script>
 
     <header class="relative bg-blue-900 text-white py-20 overflow-hidden">
-        <img src="Imagens/pilates.jpg" class="absolute inset-0 w-full h-full object-cover opacity-20" onerror="this.src='https://images.unsplash.com/photo-1584467735871-6b0f0f9d0d2b?q=80&w=1200'" alt="Pilates">
+        <img data-foto-categoria="pilates" data-foto-indice="0" src="Imagens/pilates.jpg" class="absolute inset-0 w-full h-full object-cover opacity-20" onerror="this.src='https://images.unsplash.com/photo-1584467735871-6b0f0f9d0d2b?q=80&w=1200'" alt="Pilates">
         <div class="relative max-w-7xl mx-auto px-4">
             <span class="bg-yellow-400 text-blue-900 px-3 py-1 rounded-full text-xs font-bold uppercase">Atividades</span>
             <h1 class="text-5xl font-black uppercase mt-4 italic">Pilates</h1>
@@ -46,13 +42,13 @@
                 <h3 class="text-2xl font-black text-blue-900 mb-6 uppercase italic pl-4 border-l-4 border-yellow-400">Galeria</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div class="aspect-square rounded-2xl overflow-hidden shadow-lg">
-                        <img src="Imagens/pilates1.jpg" alt="Pilates" onerror="this.src='https://images.unsplash.com/photo-1584467735871-6b0f0f9d0d2b?q=80&w=400'" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        <img data-foto-categoria="pilates" data-foto-indice="1" src="Imagens/pilates1.jpg" alt="Pilates" onerror="this.src='https://images.unsplash.com/photo-1584467735871-6b0f0f9d0d2b?q=80&w=400'" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="aspect-square rounded-2xl overflow-hidden shadow-lg">
-                        <img src="Imagens/pilates2.jpg" alt="Pilates" onerror="this.src='https://images.unsplash.com/photo-1558611848-73f7eb4001d5?q=80&w=400'" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        <img data-foto-categoria="pilates" data-foto-indice="2" src="Imagens/pilates2.jpg" alt="Pilates" onerror="this.src='https://images.unsplash.com/photo-1558611848-73f7eb4001d5?q=80&w=400'" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="aspect-square rounded-2xl overflow-hidden shadow-lg">
-                        <img src="Imagens/pilates3.jpg" alt="Pilates" onerror="this.src='https://images.unsplash.com/photo-1558611848-73f7eb4001d5?q=80&w=400'" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        <img data-foto-categoria="pilates" data-foto-indice="3" src="Imagens/pilates3.jpg" alt="Pilates" onerror="this.src='https://images.unsplash.com/photo-1558611848-73f7eb4001d5?q=80&w=400'" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
                 </div>
             </section>
@@ -75,11 +71,11 @@
 
     <section class="marquee-container mb-12">
         <div class="marquee-content" id="marquee-track">
-            <img src="Imagens/pilates-betim.png" alt="Pilates Betim" >
-            <img src="Imagens/pilates-1.jpg" alt="Pilates 1" >
-            <img src="Imagens/pilates-2.jpg" alt="Pilates 2" >
-            <img src="Imagens/pilates-3.jpg" alt="Pilates 3" >
-            <img src="Imagens/pilates-4.jpg" alt="Pilates 4" >
+            <img data-foto-categoria="pilates" data-foto-indice="4" src="Imagens/pilates-betim.png" alt="Pilates Betim" >
+            <img data-foto-categoria="pilates" data-foto-indice="5" src="Imagens/pilates-1.jpg" alt="Pilates 1" >
+            <img data-foto-categoria="pilates" data-foto-indice="6" src="Imagens/pilates-2.jpg" alt="Pilates 2" >
+            <img data-foto-categoria="pilates" data-foto-indice="7" src="Imagens/pilates-3.jpg" alt="Pilates 3" >
+            <img data-foto-categoria="pilates" data-foto-indice="8" src="Imagens/pilates-4.jpg" alt="Pilates 4" >
         </div>
     </section>
 

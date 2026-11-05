@@ -43,7 +43,8 @@ class HortoServiceTest {
     void limparReservasDeTeste() { reservas.deleteAll(); }
 
     private ReservaHortoRequest pedido(int quadra, LocalDate dia, int inicio, int fim) {
-        return new ReservaHortoRequest(quadra, dia, inicio, fim, "Responsável de teste", EsporteHorto.FUTSAL);
+        return new ReservaHortoRequest(quadra, dia, inicio, fim, "Responsável de teste",
+                quadra == 6 || quadra == 7 ? EsporteHorto.VOLEI_PRAIA : EsporteHorto.FUTSAL);
     }
 
     private void rejeita(ReservaHortoRequest pedido, int status) {
@@ -100,6 +101,44 @@ class HortoServiceTest {
         assertThat(reservas.count()).isZero();
         horto.reservar(pedido(1, data, 1380, 1440), "admin");
         assertThat(reservas.count()).isEqualTo(1);
+    }
+
+    @Test
+    void quadrasDeAreiaRejeitamEsportesDePiso() {
+        for (int quadra : List.of(6, 7)) {
+            for (EsporteHorto esporte : EsporteHorto.values()) {
+                if (esporte.getTipoQuadra().equals("AREIA")) continue;
+                rejeita(new ReservaHortoRequest(quadra, data, 600, 660, "Pessoa", esporte), 400);
+            }
+        }
+        assertThat(reservas.count()).isZero();
+    }
+
+    @Test
+    void modalidadesDeAreiaSaoAceitasSomenteNasQuadrasDeAreia() {
+        int inicio = 600;
+        for (EsporteHorto esporte : List.of(EsporteHorto.VOLEI_PRAIA, EsporteHorto.FUTEVOLEI,
+                EsporteHorto.BEACH_TENNIS, EsporteHorto.FUTEBOL_AREIA, EsporteHorto.HANDEBOL_AREIA)) {
+            for (int quadra : List.of(6, 7)) {
+                var reserva = horto.reservar(new ReservaHortoRequest(quadra, data, inicio,
+                        inicio + 60, "Pessoa", esporte), "admin");
+                assertThat(reserva.esporte()).isEqualTo(esporte);
+            }
+            for (int quadra : List.of(1, 2, 3, 4, 5)) {
+                rejeita(new ReservaHortoRequest(quadra, data, inicio, inicio + 60, "Pessoa", esporte), 400);
+            }
+            inicio += 60;
+        }
+        assertThat(reservas.count()).isEqualTo(10);
+    }
+
+    @Test
+    void preservaEsporteDeReservasAntigasNasQuadrasDeAreia() {
+        var quadra = horto.listarQuadras().get(5);
+        reservas.saveAndFlush(new br.gov.betim.esporte.model.ReservaHorto(
+                quadra, data, 600, 660, "Pessoa", "admin", EsporteHorto.VOLEIBOL));
+        assertThat(horto.listarDia(data)).extracting(ReservaHortoResponse::esporte)
+                .containsExactly(EsporteHorto.VOLEIBOL);
     }
 
     @Test
@@ -170,7 +209,11 @@ class HortoServiceTest {
                 .content(json.writeValueAsString(pedido(2, data, 600, 660)).replace("FUTSAL", "INEXISTENTE")))
                 .andExpect(status().isBadRequest());
         mvc.perform(get("/api/horto/esportes").session(sessao))
-                .andExpect(status().isOk()).andExpect(jsonPath("$[0].codigo").value("FUTSAL"));
+                .andExpect(status().isOk()).andExpect(jsonPath("$[0].codigo").value("FUTSAL"))
+                .andExpect(jsonPath("$[0].tipoQuadra").value("QUADRA"))
+                .andExpect(jsonPath("$[8].codigo").value("VOLEI_PRAIA"))
+                .andExpect(jsonPath("$[8].tipoQuadra").value("AREIA"))
+                .andExpect(jsonPath("$.length()").value(13));
         assertThat(reservas.count()).isEqualTo(1);
     }
 }

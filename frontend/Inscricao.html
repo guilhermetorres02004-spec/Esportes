@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -20,18 +20,29 @@
             border-left: 5px solid #004a99;
         }
         .form-label { font-weight: 500; color: #444; }
+        .inscricao-actions .btn { padding: 6px 16px; border: 2px solid #1e3a8a; border-radius: 999px; font-size: 12px; font-weight: 800; line-height: 1.5; text-transform: uppercase; }
+        .inscricao-actions .btn-outline-primary { color: #1e3a8a; }
+        .inscricao-actions .btn-primary, .inscricao-actions .btn-outline-primary:hover { background-color: #1e3a8a; color: white; }
+        .inscricao-actions .btn-primary:hover { background-color: #1e40af; border-color: #1e40af; }
+        #termoImagem { width: min(680px, calc(100vw - 32px)); max-height: 90vh; max-height: 90dvh; padding: 0; border: 0; border-radius: 24px; color: #334155; box-shadow: 0 24px 80px #0f172a55; }
+        #termoImagem::backdrop { background: #0f172a99; }
+        #termoImagem .termo-painel { display: flex; flex-direction: column; max-height: 90vh; max-height: 90dvh; }
+        #termoImagem .termo-cabecalho { display: flex; align-items: start; justify-content: space-between; gap: 16px; padding: 24px; border-bottom: 1px solid #e2e8f0; }
+        #termoImagem h2 { margin: 0; color: #1e3a8a; font-size: 22px; font-weight: 800; }
+        #termoImagem .termo-corpo { padding: 24px; overflow-y: auto; font-size: 14px; line-height: 1.7; }
+        #termoImagem .termo-rodape { padding: 20px 24px; border-top: 1px solid #e2e8f0; }
+        #termoImagem .termo-opcoes { display: flex; flex-wrap: wrap; gap: 12px 24px; padding: 0; margin: 12px 0; }
+        #termoImagem .termo-opcoes label { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+        #termoImagem .termo-opcoes input { width: 18px; height: 18px; accent-color: #1e3a8a; }
+        body:has(#termoImagem[open]) { overflow: hidden; }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/portal-header.css">
+    <link rel="stylesheet" href="/css/portal-base.css">
 </head>
-<body>
+<body class="portal-standard">
 
-<nav class="navbar navbar-expand-lg navbar-dark navbar-custom shadow-sm">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-trophy-fill me-2"></i>Portal do Esporte</a>
-        <div class="ms-auto">
-            <a id="btnVoltarModalidade" class="btn btn-outline-light btn-sm" href="index.html"><i class="bi bi-arrow-left"></i> Voltar</a>
-        </div>
-    </div>
-</nav>
+    <script src="/js/portal-header.js"></script>
 
 <div class="container mb-5">
     <div class="form-container shadow">
@@ -40,7 +51,7 @@
             <p id="subtituloFicha" class="text-muted">Preencha todos os campos abaixo para efetivar sua participação.</p>
         </div>
         
-        <form id="formInscricao">
+        <form id="formInscricao" method="post">
             
             <div class="section-title"><i class="bi bi-person-fill me-2"></i>Identificação do Atleta</div>
             <div class="row g-3 mb-4">
@@ -75,27 +86,27 @@
             <div class="row g-3 mb-4">
                 <div class="col-md-3">
                     <label class="form-label">CEP</label>
-                    <input type="text" class="form-control" placeholder="32000-000">
+                    <input type="text" class="form-control" placeholder="32000-000" name="cep">
                 </div>
                 <div class="col-md-7">
                     <label class="form-label">Logradouro (Rua/Av)</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="logradouro">
                 </div>
                 <div class="col-md-2">
                     <label class="form-label">Nº</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="numero">
                 </div>
                 <div class="col-md-5">
                     <label class="form-label">Bairro</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="bairro">
                 </div>
                 <div class="col-md-4">
                     <label class="form-label">Telefone Celular (WhatsApp)</label>
-                    <input type="tel" class="form-control" placeholder="(31) 90000-0000" required>
+                    <input type="tel" class="form-control" placeholder="(31) 90000-0000" required name="telefone">
                 </div>
                 <div class="col-md-3">
                     <label class="form-label">Número do NIS (Se houver)</label>
-                    <input type="text" class="form-control" placeholder="Cadastro Único">
+                    <input type="text" class="form-control" placeholder="Cadastro Único" name="nis">
                 </div>
             </div>
 
@@ -103,7 +114,7 @@
             <div class="row g-3 mb-4">
                 <div class="col-md-6">
                     <label class="form-label">Nome do Pai/Mãe ou Tutor</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="nomeResponsavel">
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">CPF do Responsável</label>
@@ -116,7 +127,7 @@
             <div class="row g-3 mb-4">
                 <div class="col-md-6">
                     <label class="form-label">Modalidade Pretendida</label>
-                    <select id="modalidadePretendida" class="form-select" required>
+                    <select id="modalidadePretendida" class="form-select" required name="modalidade">
                         <option value="">Selecione...</option>
                         <option value="futebol">Futebol de Campo - Bom de Bola, Bom de Escola</option>
                         <option value="funcional-soccer">Funcional Soccer</option>
@@ -126,20 +137,20 @@
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Núcleo / Polo de Interesse</label>
-                    <select id="nucleoInteresse" class="form-select" required>
+                    <select id="nucleoInteresse" class="form-select" required name="nucleo">
                         <option value="">Selecione a modalidade primeiro...</option>
                     </select>
                 </div>
                 <div class="col-md-3">
                     <label class="form-label">Tamanho Camiseta</label>
-                    <select class="form-select">
+                    <select class="form-select" name="tamanhoCamiseta">
                         <option>P</option><option>M</option><option>G</option><option>GG</option>
                         <option>10 anos</option><option>12 anos</option><option>14 anos</option>
                     </select>
                 </div>
                 <div class="col-md-3">
                     <label class="form-label">Tamanho Calçado</label>
-                    <input type="number" class="form-control" placeholder="Ex: 38">
+                    <input type="number" class="form-control" placeholder="Ex: 38" name="tamanhoCalcado">
                 </div>
             </div>
 
@@ -147,18 +158,18 @@
             <div class="row g-3 mb-4">
                 <div class="col-md-3">
                     <label class="form-label">Tipo Sanguíneo</label>
-                    <select class="form-select">
+                    <select class="form-select" name="tipoSanguineo">
                         <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
                         <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
                     </select>
                 </div>
                 <div class="col-md-9">
                     <label class="form-label">Alergias ou Restrições Alimentares</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="alergias">
                 </div>
                 <div class="col-12">
                     <label class="form-label">Faz uso de algum medicamento controlado? Qual?</label>
-                    <textarea class="form-control" rows="2"></textarea>
+                    <textarea class="form-control" rows="2" name="medicamentos"></textarea>
                 </div>
                 <div class="col-12">
                     <div class="alert alert-warning py-2">
@@ -167,13 +178,45 @@
                 </div>
             </div>
 
-            <div class="d-grid gap-3 d-md-flex justify-content-md-end mt-5">
-                <button type="reset" class="btn btn-light btn-lg border">Limpar Campos</button>
-                <button type="submit" class="btn btn-primary btn-lg px-5">Finalizar e Enviar</button>
+            <p id="resultadoInscricao" class="alert" role="status" aria-live="polite" hidden></p>
+            <div class="inscricao-actions d-flex flex-wrap gap-2 justify-content-end mt-4">
+                <button type="reset" class="btn btn-outline-primary">Limpar Campos</button>
+                <button type="submit" class="btn btn-primary">Finalizar e Enviar</button>
             </div>
         </form>
     </div>
 </div>
+
+<dialog id="termoImagem" aria-labelledby="tituloTermoImagem" aria-describedby="resumoTermoImagem" data-versao="2026-11-04">
+    <div class="termo-painel">
+        <div class="termo-cabecalho">
+            <div><h2 id="tituloTermoImagem">Autorização de uso de imagem</h2><p id="resumoTermoImagem" class="small text-secondary mb-0 mt-2">Sua escolha é opcional e não interfere na inscrição.</p></div>
+            <button type="button" class="btn-close" data-fechar-termo aria-label="Fechar e voltar à ficha"></button>
+        </div>
+        <div class="termo-corpo" tabindex="0">
+            <p>A Prefeitura Municipal de Betim, por meio da Secretaria Municipal de Esportes, solicita autorização para utilizar fotografias e vídeos em que o participante apareça durante aulas, treinamentos, jogos, competições e eventos esportivos do município.</p>
+            <p>Se autorizadas, essas imagens poderão ser utilizadas gratuitamente para registrar e divulgar as atividades e os programas esportivos, no portal, nas redes sociais oficiais e em materiais institucionais da Prefeitura. A autorização é limitada a essas finalidades, com respeito à dignidade e à privacidade do participante, sem venda da imagem ou utilização para publicidade comercial de terceiros.</p>
+            <p>A autorização poderá ser revogada mediante solicitação à Secretaria Municipal de Esportes. <a href="https://www.gov.br/anpd/pt-br/assuntos/titular-de-dados-1/direito-dos-titulares" target="_blank" rel="noopener noreferrer">Consulte os direitos do titular na ANPD.</a></p>
+            <p>Para participantes menores de 18 anos, a decisão deve ser tomada pelo responsável legal.</p>
+            <p class="mb-0"><strong>Você pode negar ou continuar sem escolher.</strong> A falta de autorização não impede a inscrição ou a participação nas atividades. Sem uma autorização expressa, não haverá permissão de uso de imagem por este termo.</p>
+        </div>
+        <div class="termo-rodape">
+            <fieldset>
+                <legend class="fs-6 fw-bold mb-1">Deseja autorizar o uso de imagem? <span class="fw-normal text-secondary">(opcional)</span></legend>
+                <div class="termo-opcoes">
+                    <label><input type="radio" name="usoImagem" value="sim"> Sim, autorizo</label>
+                    <label><input type="radio" name="usoImagem" value="nao"> Não autorizo</label>
+                </div>
+                <button id="limparEscolhaImagem" type="button" class="btn btn-link btn-sm p-0">Limpar escolha</button>
+            </fieldset>
+            <p id="erroTermoImagem" class="alert alert-danger mt-3 mb-0" role="alert" hidden></p>
+            <div class="inscricao-actions d-flex flex-wrap gap-2 justify-content-end mt-3">
+                <button type="button" class="btn btn-outline-primary" data-fechar-termo>Voltar à ficha</button>
+                <button id="concluirInscricao" type="button" class="btn btn-primary">Concluir inscrição</button>
+            </div>
+        </div>
+    </div>
+</dialog>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -328,5 +371,6 @@
         }
     });
 </script>
+<script src="/js/inscricao-imagem.js"></script>
 </body>
 </html>

@@ -28,3 +28,7 @@ export function haConflito(reservas, quadra, data, inicio, fim) {
 export function periodoPassado(data, inicio, agora = agoraLocal()) {
     return data < agora.data || (data === agora.data && inicio <= agora.minutos);
 }
+
+export function esportesParaQuadra(esportes, quadra) {
+    return quadra ? esportes.filter(esporte => esporte.tipoQuadra === quadra.tipo) : [];
+}

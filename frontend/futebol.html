@@ -1,7 +1,8 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Futebol - Portal do Esporte Betim</title>
     <link rel="stylesheet" href="/css/tailwind.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -14,21 +15,16 @@
         @keyframes scrollMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         #mapaFutebol { height: 640px; width: 100%; border-radius: 24px; border: 3px solid #1e3a8a; z-index: 10; }
     </style>
+    <link rel="stylesheet" href="/css/portal-header.css">
+    <link rel="stylesheet" href="/css/portal-base.css">
 </head>
-<body class="bg-slate-50">
+<body class="portal-standard bg-slate-50">
     <!-- Navbar -->
-    <nav class="bg-white shadow-md p-4">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-blue-900 font-black uppercase flex items-center gap-2">
-                <i class="fas fa-arrow-left"></i> Voltar ao Portal
-            </a>
-            <img src="https://www.betim.mg.gov.br/img/logo_prefeitura.png" class="h-8">
-        </div>
-    </nav>
+    <script src="/js/portal-header.js"></script>
 
     <!-- Header -->
     <header class="relative bg-blue-900 text-white py-20 overflow-hidden">
-        <img src="Imagens/Futebol Bom Repouso.jpeg" class="absolute inset-0 w-full h-full object-cover opacity-20" onerror="this.src='https://images.unsplash.com/photo-1518605368461-1e1e38ce156d?q=80&w=1200'" alt="Campo de Futebol">
+        <img data-foto-categoria="futebol" data-foto-indice="0" src="Imagens/Futebol Bom Repouso.jpeg" class="absolute inset-0 w-full h-full object-cover opacity-20" onerror="this.src='https://images.unsplash.com/photo-1518605368461-1e1e38ce156d?q=80&w=1200'" alt="Campo de Futebol">
         <div class="relative max-w-7xl mx-auto px-4">
             <span class="bg-yellow-400 text-blue-900 px-3 py-1 rounded-full text-xs font-bold uppercase">Esporte Coletivo</span>
             <h1 class="text-5xl font-black uppercase mt-4 italic">Futebol de Betim</h1>
@@ -54,13 +50,13 @@
                 <h3 class="text-2xl font-black text-blue-900 mb-6 uppercase italic pl-4 border-l-4 border-yellow-400">Galeria</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div class="aspect-square rounded-2xl overflow-hidden shadow-lg">
-                        <img src="Imagens/Futebol Bom Repouso.jpeg" alt="Campo de Futebol Bom Repouso" onerror="this.src='https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=400'" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        <img data-foto-categoria="futebol" data-foto-indice="1" src="Imagens/Futebol Bom Repouso.jpeg" alt="Campo de Futebol Bom Repouso" onerror="this.src='https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=400'" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="aspect-square rounded-2xl overflow-hidden shadow-lg">
-                        <img src="Imagens/1.jpeg" alt="Atletas de Futebol" onerror="this.src='https://images.unsplash.com/photo-1511886929837-354d827aae26?q=80&w=400'" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        <img data-foto-categoria="futebol" data-foto-indice="2" src="Imagens/1.jpeg" alt="Atletas de Futebol" onerror="this.src='https://images.unsplash.com/photo-1511886929837-354d827aae26?q=80&w=400'" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="aspect-square rounded-2xl overflow-hidden shadow-lg">
-                        <img src="Imagens/2.jpeg" alt="Competição Municipal" onerror="this.src='https://images.unsplash.com/photo-1431324155629-1a6d0a11f581?q=80&w=400'" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        <img data-foto-categoria="futebol" data-foto-indice="3" src="Imagens/2.jpeg" alt="Competição Municipal" onerror="this.src='https://images.unsplash.com/photo-1431324155629-1a6d0a11f581?q=80&w=400'" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
                 </div>
             </section>
@@ -186,12 +182,12 @@
     <!-- Carrossel Deslizante -->
     <section class="marquee-container mb-12">
         <div class="marquee-content" id="marquee-track">
-            <img src="Imagens/Futebol Bom Repouso.jpeg" alt="Campo de Futebol" onerror="this.src='https://images.unsplash.com/photo-1518605368461-1e1e38ce156d?q=80&w=600'">
-            <img src="Imagens/1.jpeg" alt="Treino Futebol" onerror="this.src='https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=600'">
-            <img src="Imagens/2.jpeg" alt="Torneio" onerror="this.src='https://images.unsplash.com/photo-1511886929837-354d827aae26?q=80&w=600'">
-            <img src="Imagens/3.jpg" alt="Viva Esporte" onerror="this.src='https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&w=600'">
-            <img src="Imagens/futebol1.jpeg" alt="Jogo de Futebol" onerror="this.src='https://images.unsplash.com/photo-1431324155629-1a6d0a11f581?q=80&w=600'">
-            <img src="Imagens/futebol2.jpeg" alt="Atletas" onerror="this.src='https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=600'">
+            <img data-foto-categoria="futebol" data-foto-indice="4" src="Imagens/Futebol Bom Repouso.jpeg" alt="Campo de Futebol" onerror="this.src='https://images.unsplash.com/photo-1518605368461-1e1e38ce156d?q=80&w=600'">
+            <img data-foto-categoria="futebol" data-foto-indice="5" src="Imagens/1.jpeg" alt="Treino Futebol" onerror="this.src='https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=600'">
+            <img data-foto-categoria="futebol" data-foto-indice="6" src="Imagens/2.jpeg" alt="Torneio" onerror="this.src='https://images.unsplash.com/photo-1511886929837-354d827aae26?q=80&w=600'">
+            <img data-foto-categoria="futebol" data-foto-indice="7" src="Imagens/3.jpg" alt="Viva Esporte" onerror="this.src='https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&w=600'">
+            <img data-foto-categoria="futebol" data-foto-indice="8" src="Imagens/futebol1.jpeg" alt="Jogo de Futebol" onerror="this.src='https://images.unsplash.com/photo-1431324155629-1a6d0a11f581?q=80&w=600'">
+            <img data-foto-categoria="futebol" data-foto-indice="9" src="Imagens/futebol2.jpeg" alt="Atletas" onerror="this.src='https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=600'">
         </div>
     </section>
 

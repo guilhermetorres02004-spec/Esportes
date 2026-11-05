@@ -44,6 +44,10 @@ public class HortoService {
         // Ela permanece até o commit, serializando a verificação e a gravação.
         QuadraHorto quadra = quadras.buscarParaReserva(pedido.quadra())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Quadra não encontrada."));
+        if (!pedido.esporte().getTipoQuadra().equals(quadra.getTipo())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "Selecione um esporte compatível com o tipo da quadra.");
+        }
         if (reservas.existeConflito(pedido.quadra(), pedido.dataReserva(),
                 pedido.inicioMinutos(), pedido.fimMinutos())) {
             throw new ResponseStatusException(HttpStatus.CONFLICT,

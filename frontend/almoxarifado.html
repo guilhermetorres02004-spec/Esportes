@@ -13,33 +13,16 @@
             .print-area { box-shadow: none !important; border: none !important; }
         }
     </style>
+    <link rel="stylesheet" href="/css/portal-header.css">
+    <link rel="stylesheet" href="/css/portal-base.css">
 </head>
-<body class="bg-slate-100 font-sans text-slate-900">
-    <header class="bg-blue-950 text-white py-2 text-[10px] font-bold uppercase tracking-widest text-center">
-        Secretaria Municipal de Esportes - Almoxarifado
-    </header>
-
-    <nav class="bg-white border-b sticky top-0 z-50 shadow-sm h-20 flex items-center no-print">
-        <div class="max-w-7xl mx-auto w-full px-4 flex justify-between items-center gap-4">
-            <a href="index.html" class="flex items-center gap-3 text-blue-900 font-black uppercase italic">
-                <div class="bg-blue-900 text-white w-10 h-10 rounded-lg flex items-center justify-center">B</div>
-                Portal do Esporte
-            </a>
-            <div class="flex gap-2">
-                <a href="index.html" class="bg-white border-2 border-blue-900 text-blue-900 px-4 py-2 rounded-xl font-black uppercase text-xs hover:bg-blue-900 hover:text-white">
-                    <i class="fas fa-arrow-left mr-2"></i> Página Principal
-                </a>
-                <button onclick="window.print()" class="bg-slate-200 text-blue-900 px-4 py-2 rounded-xl font-black uppercase text-xs hover:bg-slate-300">
-                    <i class="fas fa-print mr-2"></i> Imprimir
-                </button>
-                <a href="agenda.html" class="bg-blue-900 text-white px-4 py-2 rounded-xl font-black uppercase text-xs hover:bg-yellow-400 hover:text-blue-900">
-                    <i class="fas fa-calendar-alt mr-2"></i> Agenda
-                </a>
-            </div>
-        </div>
-    </nav>
+<body class="portal-standard bg-slate-100 font-sans text-slate-900">
+    <script src="/js/portal-header.js"></script>
 
     <main class="max-w-7xl mx-auto px-4 py-10">
+        <div class="flex justify-end mb-4 no-print">
+            <button onclick="window.print()" class="bg-slate-200 text-blue-900 px-4 py-2 rounded-xl font-black uppercase text-xs hover:bg-slate-300"><i class="fas fa-print mr-2"></i> Imprimir</button>
+        </div>
         <section class="mb-8">
             <div class="border-l-8 border-blue-900 pl-5">
                 <h1 class="text-4xl font-black text-blue-900 uppercase italic tracking-tight">Almoxarifado SEMES</h1>

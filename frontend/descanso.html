@@ -1,7 +1,8 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BETA - Matrix Impact</title>
     <style>
         body {
@@ -17,8 +18,12 @@
             display: block;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/portal-header.css">
+    <link rel="stylesheet" href="/css/portal-base.css">
 </head>
-<body>
+<body class="portal-standard portal-matrix-page">
+    <script src="/js/portal-header.js"></script>
 
     <canvas id="matrix"></canvas>
 
@@ -34,7 +39,7 @@
 
         function init() {
             width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
+            height = canvas.height = Math.max(0, window.innerHeight - canvas.getBoundingClientRect().top);
             columns = Math.floor(width / fontSize);
             drops = [];
             for (let i = 0; i < columns; i++) {

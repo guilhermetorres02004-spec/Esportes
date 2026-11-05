@@ -1,0 +1,65 @@
+[
+  {
+    "arquivo": "lei-fomento-betim.pdf",
+    "fonte": "https://legislativo.camarabetim.mg.gov.br/NormaJuridica/ShowNormaJuridica/73704",
+    "bytes": 91310,
+    "consultadoEm": "2026-11-04",
+    "sha256": "abfe7fadab5ac74ad53722b4d8f696db3d36f05e31321b7c4d54c791b4f5f483"
+  },
+  {
+    "arquivo": "organizacao-betim.pdf",
+    "fonte": "https://legislativo.camarabetim.mg.gov.br/NormaJuridica/DownloadNormaJuridica/83085",
+    "bytes": 1595704,
+    "consultadoEm": "2026-11-04",
+    "sha256": "8f44292724e7f97faeaa73605b5f36897bdfe91c3dd59a88343a3ca6ccc5111a"
+  },
+  {
+    "arquivo": "codigo-etica-betim.pdf",
+    "fonte": "https://servidor.betim.digital/documentos/CodigoDeEtica.pdf",
+    "bytes": 1758430,
+    "consultadoEm": "2026-11-04",
+    "sha256": "0440a2cd9485bdcfdce4593df8661f91fe8ac50163f7f914d64b7fdf088ce1df"
+  },
+  {
+    "arquivo": "manual-instrutor-pst.pdf",
+    "fonte": "https://www.gov.br/mds/pt-br/acoes-e-programas/outros/segundo-tempo/arquivos/2019_07_10_diretrizes_pst_padrao_2018.pdf",
+    "bytes": 1158153,
+    "consultadoEm": "2026-11-04",
+    "sha256": "f222737f573d4807992ea694f42e0f86d9cb82d0447827fff285f5f734e56ccc"
+  },
+  {
+    "arquivo": "manual-frota-ifmg.pdf",
+    "fonte": "https://www.formiga.ifmg.edu.br/documents/2016/Normas/Manual_de_conducao_utilizacao_e_conservacao_de_veiculos_oficiais.pdf",
+    "bytes": 155402,
+    "consultadoEm": "2026-11-04",
+    "sha256": "10289470c090353da967ecdc7dc9efeda18c9ccb48dbea35805c770dd95798db"
+  },
+  {
+    "arquivo": "manual-almoxarifado-cldf.pdf",
+    "fonte": "https://biblioteca.cl.df.gov.br/dspace/bitstream/123456789/708/1/Manual%20de%20gest%C3%A3o%20de%20material%20de%20consumo%20CLDF%20-%20rotinas%20e%20procedimentos%202022.pdf",
+    "bytes": 604210,
+    "consultadoEm": "2026-11-04",
+    "sha256": "705c5560fa94fdf69b5f998984c35d23c2ea73043f019e2e86df384f6cf4cec0"
+  },
+  {
+    "arquivo": "gestao-contratos-mgi.pdf",
+    "fonte": "https://www.gov.br/compras/pt-br/acesso-a-informacao/manuais/manual-governanca-nas-contratacoes/Rev_ManualoperacionalFiscalizao_final.pdf",
+    "bytes": 884329,
+    "consultadoEm": "2026-11-04",
+    "sha256": "6086f4d1a555e49e077b890c44fd8cb9bda79a3a2ac624d083f17e587fbc794e"
+  },
+  {
+    "arquivo": "orgao-oficial-betim.pdf",
+    "fonte": "https://www.betim.mg.gov.br/uploads/diario_202620032246d0565a91189ad7aa68a0f03b7f605e7e.pdf",
+    "bytes": 689557,
+    "consultadoEm": "2026-11-04",
+    "sha256": "b59a2caabb9c3528f899bde25a638454fe48bfc1ddc292f747902cdba6c866d9"
+  },
+  {
+    "arquivo": "edital-adm0017-2026.pdf",
+    "fonte": "https://www.betim.mg.gov.br/editais/adm0017-26_inex_04-26_cred_01-26_-_organizac%CC%A7a%CC%83o_e_execuc%CC%A7a%CC%83_08041130.pdf",
+    "bytes": 914527,
+    "consultadoEm": "2026-11-04",
+    "sha256": "01aea279cce3c21ce30f64dd955904a1784bf6f7014bcded11eb9f90b39b785f"
+  }
+]

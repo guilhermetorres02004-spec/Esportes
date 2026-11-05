@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
+import java.time.Instant;
 import java.time.LocalDate;
 
 @Entity
@@ -18,6 +20,11 @@ public class Inscricao {
     private String telefone;
     private String modalidade;
     private LocalDate dataInscricao;
+    private Boolean autorizaUsoImagem;
+    private String termoImagemVersao;
+    private Instant decisaoImagemEm;
+    @Lob
+    private String dadosFicha;
 
     public Long getId() {
         return id;
@@ -74,4 +81,13 @@ public class Inscricao {
     public void setDataInscricao(LocalDate dataInscricao) {
         this.dataInscricao = dataInscricao;
     }
+
+    public Boolean getAutorizaUsoImagem() { return autorizaUsoImagem; }
+    public void setAutorizaUsoImagem(Boolean autorizaUsoImagem) { this.autorizaUsoImagem = autorizaUsoImagem; }
+    public String getTermoImagemVersao() { return termoImagemVersao; }
+    public void setTermoImagemVersao(String termoImagemVersao) { this.termoImagemVersao = termoImagemVersao; }
+    public Instant getDecisaoImagemEm() { return decisaoImagemEm; }
+    public void setDecisaoImagemEm(Instant decisaoImagemEm) { this.decisaoImagemEm = decisaoImagemEm; }
+    public String getDadosFicha() { return dadosFicha; }
+    public void setDadosFicha(String dadosFicha) { this.dadosFicha = dadosFicha; }
 }

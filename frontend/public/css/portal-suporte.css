@@ -1,0 +1,37 @@
+#portal-suporte { position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); z-index: 150; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; font: 14px/1.5 'Segoe UI', Arial, sans-serif; color: #1e293b; text-align: left; }
+#portal-suporte * { box-sizing: border-box; }
+#portal-suporte [hidden] { display: none !important; }
+#portal-suporte button { cursor: pointer; font: inherit; }
+#portal-suporte button:focus-visible, #portal-suporte input:focus-visible, #portal-suporte a:focus-visible, #portal-suporte [role="log"]:focus-visible { outline: 3px solid #eab308; outline-offset: 2px; }
+#portal-suporte button:disabled { opacity: .55; cursor: wait; }
+#portal-suporte .suporte-abrir { display: flex; align-items: center; gap: 10px; border: 2px solid white; border-radius: 32px; padding: 13px 22px; background: #1e3a8a; color: white; font-weight: 800; box-shadow: 0 8px 25px #0f172a40; }
+#portal-suporte .suporte-painel { display: flex; flex-direction: column; width: min(390px, calc(100vw - 32px)); height: min(620px, calc(100vh - 110px)); height: min(620px, calc(100dvh - 110px)); min-height: 200px; overflow: hidden; background: white; border: 1px solid #cbd5e1; border-radius: 20px; box-shadow: 0 20px 65px #0f172a40; }
+#portal-suporte .suporte-cabecalho { display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; padding: 16px 18px; background: #1e3a8a; color: white; }
+#portal-suporte .suporte-cabecalho strong { display: block; font-size: 16px; }
+#portal-suporte .suporte-cabecalho span { display: block; font-size: 12px; color: #dbeafe; }
+#portal-suporte .suporte-cabecalho button { border: 0; background: transparent; color: white; font-size: 26px; line-height: 1; padding: 6px; }
+#portal-suporte .suporte-mensagens { flex: 1 1 0; min-height: 0; overflow-y: scroll; overflow-x: hidden; overscroll-behavior: contain; scrollbar-gutter: stable; scrollbar-width: auto; scrollbar-color: #64748b #e2e8f0; padding: 16px 12px; background: #f8fafc; }
+#portal-suporte .suporte-mensagens::-webkit-scrollbar { width: 10px; }
+#portal-suporte .suporte-mensagens::-webkit-scrollbar-track { background: #e2e8f0; border-radius: 8px; }
+#portal-suporte .suporte-mensagens::-webkit-scrollbar-thumb { background: #64748b; border: 2px solid #e2e8f0; border-radius: 8px; }
+#portal-suporte .suporte-mensagens::-webkit-scrollbar-thumb:hover { background: #334155; }
+#portal-suporte .suporte-balao { max-width: 94%; margin: 0 0 12px; padding: 12px; border: 1px solid #e2e8f0; border-radius: 14px; overflow-wrap: anywhere; }
+#portal-suporte .suporte-assistant { margin-right: auto; background: white; }
+#portal-suporte .suporte-user { margin-left: auto; color: white; background: #1e3a8a; border-color: #1e3a8a; }
+#portal-suporte .suporte-autor { display: block; margin-bottom: 5px; font-size: 11px; }
+#portal-suporte .suporte-balao p { margin: 0; white-space: pre-wrap; font: inherit; }
+#portal-suporte .suporte-balao a { display: block; margin-top: 10px; font-size: 12px; color: #1e40af; text-decoration: underline; }
+#portal-suporte .suporte-balao small { display: block; margin-top: 10px; font-size: 10px; color: #64748b; }
+#portal-suporte .suporte-sugestoes { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 12px; flex-shrink: 0; }
+#portal-suporte .suporte-sugestoes button { max-width: 100%; border: 1px solid #cbd5e1; border-radius: 16px; padding: 5px 9px; background: #f8fafc; color: #1e3a8a; font-size: 11px; }
+#portal-suporte .suporte-status { flex-shrink: 0; margin: 0; padding: 0 12px; color: #475569; font-size: 12px; }
+#portal-suporte .suporte-status:not(:empty) { padding-bottom: 8px; }
+#portal-suporte .suporte-form { flex-shrink: 0; margin: 0; padding: 12px; border-top: 1px solid #e2e8f0; }
+#portal-suporte .suporte-form > div { display: flex; gap: 8px; }
+#portal-suporte .suporte-form input { flex: 1; min-width: 0; height: 42px; border: 1px solid #cbd5e1; border-radius: 20px; padding: 9px 12px; background: white; color: #1e293b; font: inherit; }
+#portal-suporte .suporte-form button { width: 42px; height: 42px; flex-shrink: 0; border: 0; border-radius: 50%; background: #1e3a8a; color: white; }
+#portal-suporte .suporte-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+#portal-suporte .suporte-rodape { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px; flex-shrink: 0; margin: 0; padding: 0 12px 12px; background: white; color: #64748b; font-size: 10px; text-transform: none; letter-spacing: normal; border: 0; }
+#portal-suporte .suporte-rodape button { border: 0; background: none; padding: 0; color: #1e3a8a; text-decoration: underline; font-size: 10px; }
+@media (max-height: 500px) { #portal-suporte { bottom: 8px; gap: 6px; } #portal-suporte .suporte-painel { height: calc(100dvh - 70px); } #portal-suporte .suporte-abrir { padding: 6px 14px; } #portal-suporte .suporte-sugestoes, #portal-suporte .suporte-rodape { display: none; } }
+@media print { #portal-suporte { display: none !important; } }

@@ -1,8 +1,31 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { agoraLocal, horario, dataCurta, deslocarData, haConflito, periodoPassado } from "../public/js/horto-utils.js";
+import { agoraLocal, horario, dataCurta, deslocarData, haConflito, periodoPassado, esportesParaQuadra } from "../public/js/horto-utils.js";
 
 const reservas = [{ quadra: 1, dataReserva: "2027-01-10", inicioMinutos: 600, fimMinutos: 720 }];
+
+const esportes = [
+    ...["FUTSAL", "FUTEBOL", "VOLEIBOL", "BASQUETE", "HANDEBOL", "TENIS", "BADMINTON", "OUTRO"]
+        .map(codigo => ({ codigo, tipoQuadra: "QUADRA" })),
+    ...["VOLEI_PRAIA", "FUTEVOLEI", "BEACH_TENNIS", "FUTEBOL_AREIA", "HANDEBOL_AREIA"]
+        .map(codigo => ({ codigo, tipoQuadra: "AREIA" })),
+];
+
+test("quadras 6 e 7 mostram somente esportes de areia", () => {
+    for (const numero of [6, 7]) {
+        assert.deepEqual(esportesParaQuadra(esportes, { numero, tipo: "AREIA" }).map(item => item.codigo),
+            ["VOLEI_PRAIA", "FUTEVOLEI", "BEACH_TENNIS", "FUTEBOL_AREIA", "HANDEBOL_AREIA"]);
+    }
+});
+
+test("outras quadras preservam as modalidades de piso sem alterar o catálogo", () => {
+    for (const numero of [1, 2, 3, 4, 5]) {
+        assert.equal(esportesParaQuadra(esportes, { numero, tipo: "QUADRA" }).length, 8);
+    }
+    assert.deepEqual(esportesParaQuadra(esportes, null), []);
+    assert.deepEqual(esportesParaQuadra([], { tipo: "AREIA" }), []);
+    assert.equal(esportes.length, 13);
+});
 
 test("bloqueia horários iguais, sobrepostos e que englobam uma reserva", () => {
     for (const [inicio, fim] of [[600, 720], [540, 660], [660, 780], [540, 780], [600, 660]]) {

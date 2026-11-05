@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Importar Imagens - Portal do Esporte Betim</title>
+<title>Arquivos - Importar Imagens - Portal do Esporte Betim</title>
 <link rel="stylesheet" href="/css/tailwind.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/portal-header.css">
+    <link rel="stylesheet" href="/css/portal-base.css">
 </head>
-<body class="bg-slate-50 font-sans text-slate-900 flex flex-col min-h-screen">
+<body class="portal-standard bg-slate-50 font-sans text-slate-900 flex flex-col min-h-screen">
 
     <script>
         function sair() {
@@ -16,29 +18,11 @@
         }
     </script>
 
-    <header class="bg-blue-950 text-white py-2 text-xs font-bold uppercase tracking-widest text-center">
-        Comunicação - Secretaria Municipal de Esportes
-    </header>
-
-    <nav class="bg-white border-b sticky top-0 z-50 shadow-sm h-20 flex items-center">
-        <div class="max-w-7xl mx-auto w-full px-4 flex justify-between items-center">
-            <div class="flex items-center gap-4 cursor-pointer" onclick="location.href='comunicacao.html'">
-                <div class="bg-blue-900 text-white font-black p-2 rounded-lg text-xl w-10 h-10 flex items-center justify-center">B</div>
-                <h1 class="text-blue-900 font-black text-xl uppercase italic tracking-tighter">Portal do Esporte</h1>
-            </div>
-            <div class="flex items-center gap-3">
-                <button onclick="location.href='comunicacao.html'" class="border-2 border-blue-900 text-blue-900 px-4 py-1.5 rounded-full font-black hover:bg-blue-900 hover:text-white transition text-xs uppercase">
-                    Voltar
-                </button>
-                <button onclick="sair()" class="border-2 border-red-600 text-red-600 px-4 py-1.5 rounded-full font-black hover:bg-red-600 hover:text-white transition text-xs uppercase">
-                    Sair
-                </button>
-            </div>
-        </div>
-    </nav>
+    <script src="/js/portal-header.js"></script>
 
     <main class="max-w-3xl mx-auto px-4 py-12 flex-grow w-full">
         <div class="border-l-8 border-blue-900 pl-6 mb-10">
+            <a href="comunicacao.html" class="inline-block text-blue-900 font-bold text-xs uppercase mb-3 hover:underline">← Arquivos</a>
             <h2 class="text-4xl font-black text-blue-900 uppercase italic tracking-tighter leading-none">Importar Imagens</h2>
             <p class="text-slate-500 font-bold uppercase text-xs mt-2 tracking-widest">Exibição no portal</p>
         </div>

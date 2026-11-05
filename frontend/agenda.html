@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="/css/tailwind.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        .calendar-day[aria-current="date"] { outline: 3px solid #eab308; outline-offset: -3px; }
+        .calendar-day.calendar-day-past { background: #f1f5f9; border-color: #e2e8f0; opacity: .55; cursor: default; pointer-events: none; }
+        .calendar-day-past, .calendar-day-past * { color: #94a3b8; }
+        #mesAnterior:disabled { opacity: .45; cursor: not-allowed; }
+        #mesAnterior:disabled:hover { background: #1e3a8a; color: white; }
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #1e3a8a; border-radius: 10px; }
@@ -33,8 +38,12 @@
             transform: scale(1.05);
         }
     </style>
+    <link rel="stylesheet" href="/css/portal-header.css">
+    <link rel="stylesheet" href="/css/portal-base.css">
 </head>
-<body class="bg-slate-100 font-sans p-4 md:p-8">
+<body class="portal-standard bg-slate-100 font-sans">
+    <script src="/js/portal-header.js"></script>
+    <div class="portal-page-content p-4 md:p-8">
 
     <div class="max-w-7xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden">
         
@@ -53,9 +62,8 @@
                         <i class="fas fa-calendar-alt text-xl"></i>
                     </div>
                     <div class="text-left">
-                        <p class="text-[10px] font-black uppercase text-blue-300 leading-none">MÊS ATUAL</p>
-                        <p id="mesAno" class="text-sm font-bold text-white uppercase">Abril 2026</p>
-                        <p class="text-[9px] font-bold text-yellow-400 uppercase">PRÓXIMO: 15/04</p>
+                        <p id="mesAno" class="text-sm font-bold text-white uppercase" aria-live="polite">Carregando…</p>
+                        <p id="hojeAgenda" class="text-[9px] font-bold text-yellow-400 uppercase"></p>
                     </div>
                 </div>
             </div>
@@ -65,12 +73,13 @@
             <div class="mb-6 flex justify-between items-center">
                 <h2 class="text-lg font-black text-blue-900 uppercase">CALENDÁRIO DE EVENTOS</h2>
                 <div class="flex gap-2">
-                    <button onclick="mesAnterior()" class="px-4 py-2 bg-blue-900 text-white font-bold rounded-lg hover:bg-yellow-400 hover:text-blue-900 transition-all text-xs uppercase">
+                    <button id="mesAnterior" type="button" onclick="mesAnterior()" disabled class="px-4 py-2 bg-blue-900 text-white font-bold rounded-lg hover:bg-yellow-400 hover:text-blue-900 transition-all text-xs uppercase">
                         <i class="fas fa-chevron-left"></i> ANTERIOR
                     </button>
                     <button onclick="proximoMes()" class="px-4 py-2 bg-blue-900 text-white font-bold rounded-lg hover:bg-yellow-400 hover:text-blue-900 transition-all text-xs uppercase">
                         PRÓXIMO <i class="fas fa-chevron-right"></i>
                     </button>
+                    <button type="button" onclick="irParaHoje()" class="px-4 py-2 bg-blue-900 text-white font-bold rounded-lg hover:bg-yellow-400 hover:text-blue-900 transition-all text-xs uppercase">HOJE</button>
                     <button onclick="abrirFormularioNovoEvento()" class="px-4 py-2 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition-all text-xs uppercase">
                         <i class="fas fa-plus"></i> NOVO EVENTO
                     </button>
@@ -243,7 +252,19 @@
             }]
         };
 
-        let dataAtual = new Date(2026, 3, 1); // Abril 2026
+        function hojeEmSaoPaulo() {
+            const partes = Object.fromEntries(new Intl.DateTimeFormat('en-CA', {
+                timeZone: 'America/Sao_Paulo', year: 'numeric', month: '2-digit', day: '2-digit',
+            }).formatToParts(new Date()).map(parte => [parte.type, parte.value]));
+            return `${partes.year}-${partes.month}-${partes.day}`;
+        }
+
+        function primeiroDiaMesAtual() {
+            return new Date(`${hojeEmSaoPaulo().slice(0, 7)}-01T12:00:00`);
+        }
+
+        let diaAtualAgenda = hojeEmSaoPaulo();
+        let dataAtual = primeiroDiaMesAtual();
         let eventoEmEdicao = null;
 
         function carregarEventos() {
@@ -266,10 +287,15 @@
         }
 
         function gerarCalendario() {
+            const hoje = hojeEmSaoPaulo();
+            const limite = primeiroDiaMesAtual();
+            if (dataAtual < limite) dataAtual = limite;
             const ano = dataAtual.getFullYear();
             const mes = dataAtual.getMonth();
             
             document.getElementById('mesAno').innerText = dataAtual.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' }).toUpperCase();
+            document.getElementById('hojeAgenda').textContent = `HOJE: ${hoje.split('-').reverse().join('/')}`;
+            document.getElementById('mesAnterior').disabled = dataAtual.getTime() <= limite.getTime();
             
             const primeiroDia = new Date(ano, mes, 1);
             const ultimoDia = new Date(ano, mes + 1, 0);
@@ -297,30 +323,38 @@
                 const dataStr = `${ano}-${String(mes + 1).padStart(2, '0')}-${String(dia).padStart(2, '0')}`;
                 const eventosDia = eventosData[dataStr] || [];
                 const temEvento = eventosDia.length > 0;
+                const passado = dataStr < hoje;
                 
-                div.className = `bg-white border-2 border-slate-200 rounded-lg p-2 calendar-day ${temEvento ? 'border-blue-600 bg-blue-200' : ''} cursor-pointer hover:shadow-md transition-all`;
+                div.className = `bg-white border-2 border-slate-200 rounded-lg p-2 calendar-day ${temEvento ? 'border-blue-600 bg-blue-200' : ''} ${passado ? 'calendar-day-past' : 'cursor-pointer hover:shadow-md transition-all'}`;
                 div.innerHTML = `<div class="font-bold text-blue-900 text-lg">${dia}</div>`;
+                div.dataset.data = dataStr;
+                if (dataStr === hoje) div.setAttribute('aria-current', 'date');
+                if (passado) div.setAttribute('aria-disabled', 'true');
                 
                 if (temEvento) {
                     eventosDia.forEach((evento, index) => {
                         const eventDiv = document.createElement('div');
                         eventDiv.className = 'event-badge font-bold';
                         eventDiv.innerHTML = evento.titulo;
-                        eventDiv.onclick = (e) => {
-                            e.stopPropagation();
-                            mostrarSelecaoEventos(dataStr);
-                        };
+                        if (!passado) {
+                            eventDiv.onclick = (e) => {
+                                e.stopPropagation();
+                                mostrarSelecaoEventos(dataStr);
+                            };
+                        }
                         div.appendChild(eventDiv);
                     });
                 }
                 
-                div.onclick = () => {
-                    if (!temEvento) {
-                        abrirFormularioNovoEvento(dataStr);
-                    } else {
-                        mostrarSelecaoEventos(dataStr);
-                    }
-                };
+                if (!passado) {
+                    div.onclick = () => {
+                        if (!temEvento) {
+                            abrirFormularioNovoEvento(dataStr);
+                        } else {
+                            mostrarSelecaoEventos(dataStr);
+                        }
+                    };
+                }
                 
                 calendario.appendChild(div);
             }
@@ -336,7 +370,7 @@
         }
 
         function mesAnterior() {
-            dataAtual.setMonth(dataAtual.getMonth() - 1);
+            if (dataAtual > primeiroDiaMesAtual()) dataAtual.setMonth(dataAtual.getMonth() - 1);
             gerarCalendario();
         }
 
@@ -345,7 +379,29 @@
             gerarCalendario();
         }
 
+        function irParaHoje() {
+            diaAtualAgenda = hojeEmSaoPaulo();
+            dataAtual = primeiroDiaMesAtual();
+            gerarCalendario();
+        }
+
+        function atualizarDiaAgenda() {
+            const hoje = hojeEmSaoPaulo();
+            if (hoje === diaAtualAgenda) return;
+            diaAtualAgenda = hoje;
+            gerarCalendario();
+        }
+
+        function bloquearDiaPassado(dataStr) {
+            if (dataStr && dataStr < hojeEmSaoPaulo()) {
+                atualizarDiaAgenda();
+                return true;
+            }
+            return false;
+        }
+
         function verDetalhes(dataStr, eventoId) {
+            if (bloquearDiaPassado(dataStr)) return;
             const eventosDia = eventosData[dataStr] || [];
             const evento = eventosDia.find(e => e.id === eventoId);
             if (evento) {
@@ -355,6 +411,7 @@
         }
 
         function mostrarSelecaoEventos(dataStr) {
+            if (bloquearDiaPassado(dataStr)) return;
             const eventosDia = eventosData[dataStr] || [];
             if (eventosDia.length === 0) return;
 
@@ -394,16 +451,12 @@
         }
 
         function abrirFormularioNovoEvento(dataStr) {
+            if (bloquearDiaPassado(dataStr)) return;
             eventoEmEdicao = null;
             document.getElementById('tituloModal').innerText = 'Novo Evento';
             document.getElementById('btnDeletarEvento').classList.add('hidden');
             
-            if (dataStr) {
-                const data = new Date(dataStr + 'T00:00:00');
-                document.getElementById('dataEvento').valueAsDate = data;
-            } else {
-                document.getElementById('dataEvento').value = '';
-            }
+            document.getElementById('dataEvento').value = dataStr || hojeEmSaoPaulo();
             
             document.getElementById('nomeEvento').value = '';
             document.getElementById('categoriaEvento').value = '';
@@ -417,6 +470,7 @@
         }
 
         function editarEvento(dataStr, eventoId) {
+            if (bloquearDiaPassado(dataStr)) return;
             const eventosDia = eventosData[dataStr] || [];
             const evento = eventosDia.find(e => e.id === eventoId);
             if (!evento) return;
@@ -512,7 +566,11 @@
 
         carregarEventos();
         gerarCalendario();
+        setInterval(() => { if (!document.hidden) atualizarDiaAgenda(); }, 30000);
+        window.addEventListener('focus', atualizarDiaAgenda);
+        document.addEventListener('visibilitychange', () => { if (!document.hidden) atualizarDiaAgenda(); });
     </script>
+    </div>
 </body>
 </html>
 

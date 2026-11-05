@@ -1,4 +1,4 @@
-import { agoraLocal, horario, dataCurta, deslocarData, haConflito, periodoPassado } from "./horto-utils.js";
+import { agoraLocal, horario, dataCurta, deslocarData, haConflito, periodoPassado, esportesParaQuadra } from "./horto-utils.js";
 
 const elemento = id => document.getElementById(id);
 const estado = { quadra: 1, quadras: [], esportes: [], reservas: [], pronto: false, carregando: false, salvando: false, sequencia: 0 };
@@ -44,6 +44,20 @@ function nomeQuadra(numero) {
 
 function conflito(inicio = Number.parseInt(inicioInput.value, 10), fim = Number.parseInt(fimInput.value, 10), quadra = estado.quadra) {
     return haConflito(estado.reservas, quadra, dataInput.value, inicio, fim);
+}
+
+function atualizarEsportes() {
+    const quadra = estado.quadras.find(item => item.numero === estado.quadra);
+    const esportes = esportesParaQuadra(estado.esportes, quadra);
+    const assinatura = JSON.stringify(esportes);
+    if (esporteInput.dataset.opcoes !== assinatura) {
+        const escolhido = esporteInput.value;
+        esporteInput.replaceChildren(new Option("Selecione o esporte", ""),
+            ...esportes.map(item => new Option(item.nome, item.codigo)));
+        esporteInput.value = esportes.some(item => item.codigo === escolhido) ? escolhido : "";
+        esporteInput.dataset.opcoes = assinatura;
+    }
+    return esportes.some(item => item.codigo === esporteInput.value);
 }
 
 function prepararHorarios() {
@@ -157,7 +171,7 @@ function atualizarTela() {
         const minuto = Number(opcao.value);
         opcao.disabled = opcao.value !== "" && (!estado.pronto || minuto <= inicio || conflito(inicio, minuto));
     }
-    const esporteValido = estado.esportes.some(item => item.codigo === esporteInput.value);
+    const esporteValido = atualizarEsportes();
     const permitido = estado.pronto && !estado.salvando && horariosSelecionados && !passado && !ocupado && esporteValido && fim - inicio >= 60;
     elemento("confirmar").disabled = !permitido;
     elemento("confirmar").textContent = estado.salvando ? "Confirmando reserva…" : "Confirmar reserva →";
@@ -184,6 +198,11 @@ function atualizarTela() {
 }
 
 async function carregarDia() {
+    const hoje = agoraLocal().data;
+    if (dataInput.value < hoje) {
+        dataInput.value = hoje;
+        estado.reservas = [];
+    }
     const sequencia = ++estado.sequencia;
     estado.pronto = false;
     estado.carregando = true;
@@ -199,12 +218,6 @@ async function carregarDia() {
         if (!Array.isArray(quadras) || !Array.isArray(reservas) || !Array.isArray(esportes)) throw new Error("A agenda retornou uma resposta inválida.");
         estado.quadras = quadras;
         estado.reservas = reservas;
-        if (JSON.stringify(estado.esportes) !== JSON.stringify(esportes)) {
-            const escolhido = esporteInput.value;
-            esporteInput.replaceChildren(new Option("Selecione o esporte", ""),
-                ...esportes.map(item => new Option(item.nome, item.codigo)));
-            esporteInput.value = esportes.some(item => item.codigo === escolhido) ? escolhido : "";
-        }
         estado.esportes = esportes;
         estado.pronto = true;
         elemento("atualizacao").textContent = "Agenda atualizada agora";
@@ -269,12 +282,6 @@ elemento("dia-anterior").addEventListener("click", () => selecionarData(deslocar
 elemento("dia-seguinte").addEventListener("click", () => selecionarData(deslocarData(dataInput.value, 1)));
 elemento("hoje").addEventListener("click", () => selecionarData(agoraLocal().data));
 elemento("atualizar").addEventListener("click", () => carregarDia());
-elemento("sair").addEventListener("click", async () => {
-    try { await fetch("/logout", { method: "POST", credentials: "include", signal: AbortSignal.timeout(12000) });
-        window.location.href = "login.html";
-    } catch { mensagem("Não foi possível encerrar a sessão. Tente novamente.", true); }
-});
-
 async function iniciar() {
     try {
         const usuario = await requisitar("/api/auth/me");

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -60,8 +60,11 @@
             text-align: center;
         }
     </style>
+    <link rel="stylesheet" href="/css/portal-header.css">
+    <link rel="stylesheet" href="/css/portal-base.css">
+    <link rel="stylesheet" href="/css/admin-documentos.css">
 </head>
-<body class="bg-slate-50 font-sans text-slate-900 flex flex-col min-h-screen" style="visibility:hidden">
+<body class="portal-standard bg-slate-50 font-sans text-slate-900 flex flex-col min-h-screen" style="visibility:hidden">
 
     <script>
         // Guarda de acesso: sem sessão válida (ou resposta inesperada), volta para o login.
@@ -85,26 +88,7 @@
         }
     </script>
 
-    <header class="bg-blue-950 text-white py-2 text-xs font-bold uppercase tracking-widest text-center">
-        Área Administrativa - Secretaria Municipal de Esportes
-    </header>
-
-    <nav class="bg-white border-b sticky top-0 z-50 shadow-sm h-20 flex items-center">
-        <div class="max-w-7xl mx-auto w-full px-4 flex justify-between items-center">
-            <div class="flex items-center gap-4 cursor-pointer" onclick="location.href='index.html'">
-                <div class="bg-blue-900 text-white font-black p-2 rounded-lg text-xl w-10 h-10 flex items-center justify-center">B</div>
-                <h1 class="text-blue-900 font-black text-xl uppercase italic tracking-tighter">Portal do Esporte</h1>
-            </div>
-            <div class="flex items-center gap-3">
-                <button onclick="location.href='index.html'" class="border-2 border-blue-900 text-blue-900 px-4 py-1.5 rounded-full font-black hover:bg-blue-900 hover:text-white transition text-xs uppercase">
-                    Voltar
-                </button>
-                <button onclick="sair()" class="border-2 border-red-600 text-red-600 px-4 py-1.5 rounded-full font-black hover:bg-red-600 hover:text-white transition text-xs uppercase">
-                    Sair
-                </button>
-            </div>
-        </div>
-    </nav>
+    <script src="/js/portal-header.js"></script>
 
     <main class="max-w-7xl mx-auto px-4 py-12 flex-grow w-full">
         <div class="border-l-8 border-blue-900 pl-6 mb-10">
@@ -119,40 +103,36 @@
             </a>
             <div class="admin-card border-blue-900 shadow-md">
                 <h3 class="text-lg font-black text-blue-900 uppercase italic mb-4">Legislação</h3>
-                <div class="doc-item"><span>Lei de Incentivo ao Esporte</span><i class="fas fa-file-pdf text-red-500"></i></div>
-                <div class="doc-item"><span>Regimento Interno</span><i class="fas fa-file-pdf text-red-500"></i></div>
+                <button type="button" class="doc-item" data-documento="lei-incentivo" aria-haspopup="dialog" aria-controls="adminDocumento"><span>Lei de Incentivo ao Esporte</span><i class="fas fa-file-pdf text-red-500"></i></button>
+                <button type="button" class="doc-item" data-documento="regimento" aria-haspopup="dialog" aria-controls="adminDocumento"><span>Regimento e competências</span><i class="fas fa-file-pdf text-red-500"></i></button>
             </div>
             <div class="admin-card border-yellow-400 shadow-md">
                 <h3 class="text-lg font-black text-blue-900 uppercase italic mb-4">Recursos Humanos</h3>
-                <div class="doc-item"><span>Manual do Instrutor 2026</span><i class="fas fa-file-word text-blue-500"></i></div>
-                <div class="doc-item"><span>Código de Ética</span><i class="fas fa-file-pdf text-red-500"></i></div>
+                <button type="button" class="doc-item" data-documento="manual-instrutor" aria-haspopup="dialog" aria-controls="adminDocumento"><span>Manual do Instrutor</span><i class="fas fa-file-word text-blue-500"></i></button>
+                <button type="button" class="doc-item" data-documento="codigo-etica" aria-haspopup="dialog" aria-controls="adminDocumento"><span>Código de Ética</span><i class="fas fa-file-pdf text-red-500"></i></button>
             </div>
             <div class="admin-card border-emerald-500 shadow-md">
                 <h3 class="text-lg font-black text-blue-900 uppercase italic mb-4">Atos Oficiais</h3>
-                <div class="doc-item"><span>Portarias 2026</span><i class="fas fa-file-pdf text-red-500"></i></div>
-                <div class="doc-item"><span>Editais Abertos</span><i class="fas fa-external-link-alt text-slate-400"></i></div>
+                <button type="button" class="doc-item" data-documento="portarias" aria-haspopup="dialog" aria-controls="adminDocumento"><span>Portarias 2026</span><i class="fas fa-file-pdf text-red-500"></i></button>
+                <button type="button" class="doc-item" data-documento="editais" aria-haspopup="dialog" aria-controls="adminDocumento"><span>Editais e Chamamentos</span><i class="fas fa-external-link-alt text-slate-400"></i></button>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <div class="admin-card border-red-600 shadow-md">
                 <h3 class="text-lg font-black text-blue-900 uppercase italic mb-4">Controle de Frota</h3>
-                <div class="doc-item"><span>Veículos</span><i class="fas fa-car-side text-blue-900"></i></div>
-                <div class="doc-item"><span>Motoristas</span><i class="fas fa-calendar-alt text-slate-400"></i></div>
+                <button type="button" class="doc-item" data-documento="veiculos" aria-haspopup="dialog" aria-controls="adminDocumento"><span>Veículos</span><i class="fas fa-car-side text-blue-900"></i></button>
+                <button type="button" class="doc-item" data-documento="motoristas" aria-haspopup="dialog" aria-controls="adminDocumento"><span>Motoristas</span><i class="fas fa-calendar-alt text-slate-400"></i></button>
             </div>
             <div class="admin-card border-purple-600 shadow-md">
                 <h3 class="text-lg font-black text-blue-900 uppercase italic mb-4">Almoxarifado</h3>
-                <div class="doc-item"><span>Estoque</span><i class="fas fa-boxes text-purple-600"></i></div>
-                <div class="doc-item"><span>Pedidos</span><i class="fas fa-clipboard-list text-slate-400"></i></div>
+                <button type="button" class="doc-item" data-documento="estoque" aria-haspopup="dialog" aria-controls="adminDocumento"><span>Estoque</span><i class="fas fa-boxes text-purple-600"></i></button>
+                <button type="button" class="doc-item" data-documento="pedidos" aria-haspopup="dialog" aria-controls="adminDocumento"><span>Pedidos</span><i class="fas fa-clipboard-list text-slate-400"></i></button>
             </div>
             <div class="admin-card border-orange-500 shadow-md">
                 <h3 class="text-lg font-black text-blue-900 uppercase italic mb-4">Contratos</h3>
-                <div class="doc-item"><span>Termos</span><i class="fas fa-file-signature text-orange-500"></i></div>
-                <div class="doc-item"><span>Gestão</span><i class="fas fa-handshake text-slate-400"></i></div>
-            </div>
-            <div class="admin-card border-pink-600 shadow-md cursor-pointer hover:-translate-y-1 transition" onclick="location.href='comunicacao.html'">
-                <h3 class="text-lg font-black text-blue-900 uppercase italic mb-4">Comunicação</h3>
-                <div class="doc-item"><span>Importar Vídeos</span><i class="fas fa-video text-pink-600"></i></div>
+                <button type="button" class="doc-item" data-documento="termos" aria-haspopup="dialog" aria-controls="adminDocumento"><span>Termos</span><i class="fas fa-file-signature text-orange-500"></i></button>
+                <button type="button" class="doc-item" data-documento="gestao" aria-haspopup="dialog" aria-controls="adminDocumento"><span>Gestão</span><i class="fas fa-handshake text-slate-400"></i></button>
             </div>
         </div>
 
@@ -256,6 +236,38 @@
             </section>
         </div>
     </main>
+
+    <dialog id="adminDocumento" aria-labelledby="adminDocumentoTitulo" aria-describedby="adminDocumentoFonte">
+        <div class="admin-doc-painel">
+            <header class="admin-doc-cabecalho">
+                <div>
+                    <p id="adminDocumentoCategoria" class="admin-doc-categoria"></p>
+                    <h2 id="adminDocumentoTitulo" tabindex="-1"></h2>
+                    <p id="adminDocumentoFonte" class="admin-doc-fonte"></p>
+                </div>
+                <button type="button" class="admin-doc-fechar" data-fechar-documento aria-label="Fechar documento">×</button>
+            </header>
+            <div class="admin-doc-modos" aria-label="Modo de leitura">
+                <button id="adminModoResumo" type="button" class="admin-doc-botao" aria-pressed="false">Resumo de consulta</button>
+                <button id="adminModoPdf" type="button" class="admin-doc-botao" aria-pressed="false">Documento integral</button>
+            </div>
+            <div class="admin-doc-corpo">
+                <section id="adminDocumentoResumo" class="admin-doc-resumo"></section>
+                <div id="adminDocumentoPdf" hidden>
+                    <iframe id="adminDocumentoLeitor" class="admin-doc-leitor" title="Leitor de documento" referrerpolicy="no-referrer"></iframe>
+                    <p class="admin-doc-nota">Use os controles do leitor para buscar no texto, ampliar ou navegar pelas páginas. Você também pode abrir o PDF em outra aba.</p>
+                </div>
+            </div>
+            <footer class="admin-doc-rodape">
+                <a id="adminDocumentoAcao" class="admin-doc-botao admin-doc-primario" hidden></a>
+                <a id="adminDocumentoRelacionado" class="admin-doc-botao" target="_blank" rel="noopener noreferrer" hidden></a>
+                <a id="adminDocumentoOriginal" class="admin-doc-botao" target="_blank" rel="noopener noreferrer" hidden>Abrir PDF em outra aba</a>
+                <a id="adminDocumentoSite" class="admin-doc-botao" target="_blank" rel="noopener noreferrer">Fonte oficial</a>
+                <button type="button" class="admin-doc-botao" data-fechar-documento>Fechar</button>
+            </footer>
+        </div>
+    </dialog>
+    <script type="module" src="/js/admin-documentos.js"></script>
 
     <footer class="bg-blue-950 text-white py-10 text-center text-xs font-black uppercase tracking-widest border-t-[8px] border-yellow-400">
         Secretaria de Esportes - Gestão 2026 &copy; Betim

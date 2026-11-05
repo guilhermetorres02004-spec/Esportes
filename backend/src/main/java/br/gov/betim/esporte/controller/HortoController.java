@@ -28,7 +28,8 @@ public class HortoController {
     @GetMapping("/esportes")
     public List<Map<String, String>> esportes() {
         return java.util.Arrays.stream(EsporteHorto.values())
-                .map(esporte -> Map.of("codigo", esporte.name(), "nome", esporte.getNome())).toList();
+                .map(esporte -> Map.of("codigo", esporte.name(), "nome", esporte.getNome(),
+                        "tipoQuadra", esporte.getTipoQuadra())).toList();
     }
 
     @GetMapping("/reservas")

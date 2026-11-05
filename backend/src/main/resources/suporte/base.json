@@ -1,0 +1,617 @@
+{
+  "versao": 1,
+  "documentos": [
+    {
+      "id": "vagas",
+      "topico": "inscricao",
+      "titulo": "Confirmar vagas nas turmas",
+      "url": "Inscricao.html",
+      "palavras": "vaga vagas disponibilidade disponivel disponiveis lotada lotado aberta abertas turma turmas confirmacao",
+      "texto": "As inscrições e turmas dependem da disponibilidade de cada núcleo. O portal não publica um saldo de vagas atualizado por turma para consulta pelo chat. Consulte a página da modalidade e confirme com o núcleo ou com a Secretaria de Esportes antes de contar com a vaga. Enviar a ficha não confirma automaticamente uma vaga.",
+      "guia": true
+    },
+    {
+      "id": "portal",
+      "topico": "portal",
+      "titulo": "Navegação do portal",
+      "url": "index.html",
+      "palavras": "menu navegar inicio voltar paginas ajuda funcionalidades",
+      "texto": "Abra o botão Menu no topo para acessar esportes, Administrativo, Arquivos, Downloads, presença, agenda e Quadras do Horto. Clique na opção para abrir a página; clique fora ou pressione Escape para fechar o menu. Na página inicial, os links de seções levam à área correspondente.",
+      "guia": true
+    },
+    {
+      "id": "inscricao",
+      "topico": "inscricao",
+      "titulo": "Como fazer a inscrição",
+      "url": "Inscricao.html",
+      "palavras": "inscricao inscrever cadastrar cadastro participar matricula ficha formulario finalizar enviar documentos requisitos",
+      "texto": "Abra a modalidade e clique em Quero me Inscrever, ou abra a Ficha de Inscrição. Preencha identificação, contato, modalidade, núcleo e os demais campos obrigatórios. Clique em Finalizar e Enviar, escolha se autoriza o uso de imagem e conclua. A autorização de imagem é opcional. Aguarde a confirmação de envio; preencher a ficha não garante vaga, que depende da disponibilidade do núcleo. As modalidades oferecidas na ficha são Futebol, Funcional Soccer, Voleibol e Pilates.",
+      "guia": true
+    },
+    {
+      "id": "imagem",
+      "topico": "inscricao",
+      "titulo": "Autorização de uso de imagem",
+      "url": "Inscricao.html",
+      "palavras": "imagem autorizar autorizacao consentimento negar recusar obrigatorio opcional termo fotos aceitar",
+      "texto": "Ao finalizar a inscrição, abre uma janela com o termo de uso de imagem. Você pode autorizar, negar ou concluir sem responder; a escolha não impede a inscrição e nenhuma opção vem marcada. Para menores de 18 anos, a decisão cabe ao responsável legal. O termo permite solicitar a revogação à Secretaria de Esportes.",
+      "guia": true
+    },
+    {
+      "id": "cpf",
+      "topico": "inscricao",
+      "titulo": "CPF e validação da ficha",
+      "url": "Inscricao.html",
+      "palavras": "cpf invalido erro formulario campos limpar validar responsavel menor idade",
+      "texto": "A ficha valida os dígitos do CPF do atleta e, quando preenchido, do responsável. Confira os números e os campos obrigatórios indicados antes de enviar. Para menores, preencha os dados do responsável legal. Não envie CPF, senha ou dados médicos neste chat. Limpar Campos apaga o preenchimento da ficha.",
+      "guia": true
+    },
+    {
+      "id": "acesso",
+      "topico": "acesso",
+      "titulo": "Login e acesso administrativo",
+      "url": "login.html",
+      "palavras": "login entrar acesso senha usuario credenciais esqueci recuperar bloqueado administrador sessao sair",
+      "texto": "Use Login no cabeçalho e informe seu usuário e senha administrativos. Se aparecer Usuário ou senha inválidos, confira as credenciais; se a sessão expirar, entre novamente. Não há recuperação automática de senha nesta tela: solicite orientação à administração. As reservas do Horto e as operações administrativas protegidas exigem acesso autorizado. O chat não conhece senhas e não altera permissões.",
+      "guia": true
+    },
+    {
+      "id": "quadras",
+      "topico": "quadras",
+      "titulo": "Como agendar uma quadra",
+      "url": "agendamento-quadras.html",
+      "palavras": "quadra quadras horto reservar reserva agendar agendamento marcar coberta",
+      "texto": "Abra Quadras do Horto pelo menu ou pelo cartão da Gestão Administrativa e faça login administrativo. Selecione a quadra, a data, o esporte, o responsável e os horários de início e fim. São sete quadras: a Quadra 1 é coberta e as Quadras 6 e 7 são de areia. Confirme pela página de agendamento; esta conversa não cria nem cancela reservas.",
+      "guia": true
+    },
+    {
+      "id": "areia",
+      "topico": "quadras",
+      "titulo": "Esportes das quadras de areia",
+      "url": "agendamento-quadras.html",
+      "palavras": "areia praia beach tennis futevolei volei futebol handebol quadra 6 7 esportes filtro modalidades compativeis",
+      "texto": "As Quadras 6 e 7 são de areia. Nelas o filtro oferece apenas vôlei de praia, futevôlei, beach tennis, futebol de areia e handebol de areia. Ao trocar o tipo da quadra, uma modalidade incompatível é desmarcada. Escolha um esporte permitido antes de reservar.",
+      "guia": true
+    },
+    {
+      "id": "duracao",
+      "topico": "quadras",
+      "titulo": "Horários e conflitos de reserva",
+      "url": "agendamento-quadras.html",
+      "palavras": "duracao hora horas intervalo minimo minima trinta minutos sobreposicao conflito reservada passado ontem",
+      "texto": "A reserva usa horas inteiras, dura pelo menos uma hora e deve terminar no mesmo dia. O horário 24:00 indica o encerramento desse dia. Não são aceitas datas anteriores a hoje nem horários de hoje que já passaram. A mesma quadra não aceita períodos sobrepostos; períodos consecutivos são permitidos.",
+      "guia": true
+    },
+    {
+      "id": "disponibilidade",
+      "topico": "quadras",
+      "titulo": "Consultar horários livres",
+      "url": "agendamento-quadras.html",
+      "palavras": "disponibilidade disponivel disponiveis livre livres ocupada ocupadas vaga vagas hoje amanha reservada verificar consultar",
+      "texto": "Para confirmar se uma quadra está livre, abra a agenda do Horto, entre com acesso administrativo e selecione a data e a quadra. A grade considera as reservas registradas e a disponibilidade pode mudar. Não consulto reservas nem vagas em tempo real nesta conversa; a confirmação deve ser feita na agenda.",
+      "guia": true
+    },
+    {
+      "id": "agenda",
+      "topico": "agenda",
+      "titulo": "Consultar a agenda de eventos",
+      "url": "agenda.html",
+      "palavras": "agenda calendario eventos torneio campeonato programacao proximo mes hoje anterior dias apagados clicar passado",
+      "texto": "A Agenda de Eventos abre no mês atual e destaca hoje no horário de São Paulo. Use Próximo para avançar e Hoje para retornar ao mês atual. Meses e dias passados ficam bloqueados, e os dias anteriores aparecem apagados. A data é atualizada automaticamente ao longo do dia e ao voltar à aba. Eventos mantêm suas datas originais.",
+      "guia": true
+    },
+    {
+      "id": "eventos",
+      "topico": "agenda",
+      "titulo": "Eventos e detalhes",
+      "url": "agenda.html",
+      "palavras": "evento criar novo editar excluir deletar materiais local responsavel detalhes salvar",
+      "texto": "Na agenda, selecione uma data permitida e use Novo Evento para preencher nome, categoria, local, hora, responsável, descrição e materiais necessários. Abra um evento para consultar os detalhes. Os eventos desta tela são armazenados no navegador; o chat não lê esse armazenamento e não confirma a programação atual. Consulte a própria agenda.",
+      "guia": true
+    },
+    {
+      "id": "arquivos",
+      "topico": "arquivos",
+      "titulo": "Onde ficam os arquivos",
+      "url": "comunicacao.html",
+      "palavras": "arquivos arquivo comunicacao videos fotos imagens importar armazenar armazenamento enviar upload",
+      "texto": "A área Arquivos fica no menu de navegação e reúne Importar Vídeos e Importar Imagens. Ela não fica nos cartões da Gestão Administrativa. Abra a opção correspondente, selecione os arquivos e envie pela própria tela com acesso administrativo autorizado.",
+      "guia": true
+    },
+    {
+      "id": "downloads",
+      "topico": "downloads",
+      "titulo": "Documentos para download",
+      "url": "downloads.html",
+      "palavras": "downloads baixar download pdf tac par q parq questionario conduta protocolo guia unidades formulario documento",
+      "texto": "Na Central de Downloads estão o Termo de Ajustamento de Conduta (TAC), o Protocolo de Fotos e Vídeos, o Questionário PAR-Q e a lista de Unidades Esportivas. Clique no botão do documento para abrir ou baixar o PDF. Consulte os documentos e assine os formulários quando indicado.",
+      "guia": true
+    },
+    {
+      "id": "materiais",
+      "topico": "almoxarifado",
+      "titulo": "Retirada e devolução de materiais",
+      "url": "almoxarifado.html",
+      "palavras": "almoxarifado material materiais emprestar emprestimo retirada devolver devolucao quantidade estoque pedido requisicao",
+      "texto": "No Almoxarifado, registre uma retirada informando material, quantidade, estado de conservação, responsáveis e data de entrega; há campos para evento, previsão de devolução, foto e observações. Para devolver, selecione a retirada em aberto e preencha quantidade devolvida, data, estado e quem recebeu. As movimentações desta tela ficam no navegador; o chat não consulta saldos nem altera registros.",
+      "guia": true
+    },
+    {
+      "id": "frequencia",
+      "topico": "presenca",
+      "titulo": "Registrar frequência",
+      "url": "frequenciapreenchimento.html",
+      "palavras": "frequencia presenca chamada falta justificada instrutor turma aluno finalizar salvar",
+      "texto": "Abra Folha de Presença no menu. Confira a data, selecione a turma e o instrutor, e marque presença, falta ou falta justificada para cada atleta. Use Finalizar e Salvar na própria tela. Não informe dados de alunos no chat: esta conversa não lança nem verifica presenças.",
+      "guia": true
+    },
+    {
+      "id": "relatorio",
+      "topico": "presenca",
+      "titulo": "Relatório de presença",
+      "url": "presenca.html",
+      "palavras": "relatorio imprimir impressao folha presenca legenda assinatura cref",
+      "texto": "Abra Relatório de Presença e use Imprimir Relatório. A legenda é P para presença, F para falta e FJ para falta justificada. Confira modalidade, instrutor, núcleo e mês antes de usar o documento: esta página apresenta um modelo de relatório e não deve ser tratada pelo chat como consulta atual de alunos.",
+      "guia": true
+    },
+    {
+      "id": "administrativo",
+      "topico": "administrativo",
+      "titulo": "Documentos da Gestão Administrativa",
+      "url": "administrativo.html",
+      "palavras": "administrativo administrativa gestao legislacao manuais manual regulamento regimento etica portarias editais frota contratos termos",
+      "texto": "Na Gestão Administrativa, clique em uma opção para abrir a janela com resumo, identificação da fonte e, quando disponível, o PDF integral. É possível alternar Resumo e Documento integral. Referências de órgãos federais, IFMG e CLDF são identificadas como materiais dessas instituições, sem afirmar que são regulamentos municipais. Quadras do Horto abre diretamente o agendamento. A área exige login.",
+      "guia": true
+    },
+    {
+      "id": "rendimento",
+      "topico": "rendimento",
+      "titulo": "Esporte de Rendimento",
+      "url": "index.html#rendimento",
+      "palavras": "rendimento atleta atletas competicao competicoes alto desempenho",
+      "texto": "A seção Esporte de Rendimento fica na página inicial e apresenta modalidades e ações voltadas ao treinamento e às competições. Abra a seção para consultar as informações publicadas; o chat não confirma seleção, convocação ou vaga de atleta.",
+      "guia": true
+    },
+    {
+      "id": "atividades",
+      "topico": "atividades",
+      "titulo": "Atividades Esportivas",
+      "url": "index.html#atividades-esportivas",
+      "palavras": "atividades atividade esportivas modalidades praticar exercicio pilates",
+      "texto": "A seção Atividades Esportivas na página inicial permite conhecer as atividades divulgadas no portal. Abra a modalidade para conferir requisitos e orientações antes de se inscrever. Para disponibilidade atual de turmas e vagas, consulte o núcleo responsável.",
+      "guia": true
+    },
+    {
+      "id": "escola",
+      "topico": "escola",
+      "titulo": "Escola de Esportes",
+      "url": "index.html#escola",
+      "palavras": "escola esporte esportes crianca criancas jovens iniciacao",
+      "texto": "A Escola de Esportes tem uma seção na página inicial. Consulte a modalidade de interesse para verificar faixa etária, requisitos e locais publicados. A participação depende da organização e disponibilidade de cada núcleo.",
+      "guia": true
+    },
+    {
+      "id": "viva",
+      "topico": "viva",
+      "titulo": "Viva o Esporte e locais de treino",
+      "url": "index.html#viva-esporte",
+      "palavras": "viva esporte unidades onde treinar locais endereco nucleo polos bairro mapa",
+      "texto": "Consulte Viva o Esporte e o mapa Onde Treinar em Betim na página inicial. A Central de Downloads também oferece a lista de Unidades Esportivas. Se disser a modalidade e o bairro, posso procurar as informações publicadas nas páginas do portal.",
+      "guia": true
+    },
+    {
+      "id": "matrix",
+      "topico": "matrix",
+      "titulo": "Matrix Impact",
+      "url": "descanso.html",
+      "palavras": "matrix impact descanso beta animacao",
+      "texto": "Matrix Impact é a página de animação visual do portal. Use o menu para acessar outra área ou Voltar para retornar à página inicial.",
+      "guia": true
+    },
+    {
+      "id": "contato",
+      "topico": "contato",
+      "titulo": "Atendimento da Secretaria de Esportes",
+      "url": "https://www.betim.mg.gov.br/portal/secretarias/13/secretaria-municipal-de-esportes",
+      "palavras": "contato telefone whatsapp atendimento atendente humano secretaria falar reclamar duvida nao resolvida",
+      "texto": "Para atendimento humano, confirmação de vagas, correção de cadastro ou questões de acesso, consulte os canais publicados na página oficial da Secretaria Municipal de Esportes de Betim. Este chat orienta sobre o portal, mas não registra protocolos nem promete retorno de uma equipe.",
+      "guia": true
+    },
+    {
+      "id": "admin-lei-incentivo",
+      "topico": "administrativo",
+      "titulo": "Lei de Incentivo ao Esporte",
+      "url": "/docs/administrativo/lei-fomento-betim.pdf",
+      "palavras": "Lei de Incentivo ao Esporte Legislação Lei Municipal nº 7.077, de 31 de maio de 2022",
+      "texto": "Lei Municipal nº 7.077, de 31 de maio de 2022. Fonte: Câmara Municipal de Betim. Abrangência: Municipal. A lei institui o Programa Municipal de Fomento ao Esporte e o Fundo Municipal do Esporte de Betim, com foco no acesso ao esporte, na inclusão e no apoio a projetos esportivos. O texto trata dos recursos do programa, dos projetos apoiados, da apresentação e avaliação de propostas e da prestação de contas. As condições de cada seleção são estabelecidas nos respectivos editais.",
+      "guia": false
+    },
+    {
+      "id": "admin-regimento",
+      "topico": "administrativo",
+      "titulo": "Regimento e competências",
+      "url": "/docs/administrativo/organizacao-betim.pdf",
+      "palavras": "Regimento e competências Legislação Lei Municipal nº 7.810/2025 — organização administrativa",
+      "texto": "Lei Municipal nº 7.810/2025 — organização administrativa. Fonte: Câmara Municipal de Betim. Abrangência: Base legal municipal. A referência localizada para a organização da Secretaria Municipal de Esportes é a Lei nº 7.810/2025. O artigo 39 reúne suas competências e a página oficial da SEMES identifica suas unidades administrativas. Entre as atribuições estão planejar e executar ações esportivas, administrar equipamentos, incentivar programas inclusivos e acompanhar os conselhos vinculados ao esporte. O documento apresentado é a lei de organização municipal.",
+      "guia": false
+    },
+    {
+      "id": "admin-manual-instrutor",
+      "topico": "administrativo",
+      "titulo": "Manual do Instrutor",
+      "url": "/docs/administrativo/manual-instrutor-pst.pdf",
+      "palavras": "Manual do Instrutor Recursos Humanos Diretrizes do Programa Segundo Tempo — edição 2018",
+      "texto": "Diretrizes do Programa Segundo Tempo — edição 2018. Fonte: Secretaria Especial do Esporte. Abrangência: Referência técnica federal · 2018. As diretrizes do Programa Segundo Tempo descrevem a organização dos núcleos, a proposta pedagógica e as atribuições de profissionais e monitores de educação física e esporte. O material aborda planejamento das atividades, organização do atendimento, acompanhamento dos participantes e condições para uma prática esportiva segura e inclusiva. Trata-se de uma referência federal, identificada pela edição original de 2018.",
+      "guia": false
+    },
+    {
+      "id": "admin-codigo-etica",
+      "topico": "administrativo",
+      "titulo": "Código de Ética",
+      "url": "/docs/administrativo/codigo-etica-betim.pdf",
+      "palavras": "Código de Ética Recursos Humanos Código de Ética Profissional — Decreto nº 51.496/2025",
+      "texto": "Código de Ética Profissional — Decreto nº 51.496/2025. Fonte: Prefeitura de Betim · Portal do Servidor. Abrangência: Municipal. O código orienta a atuação dos agentes públicos de Betim, incluindo servidores, comissionados, contratados, terceirizados, estagiários e integrantes da alta administração. O documento apresenta princípios, compromissos, condutas vedadas e procedimentos de apuração ética. Destaca o interesse público, a impessoalidade, o respeito, a integridade, a proteção das informações e o zelo pelo patrimônio público.",
+      "guia": false
+    },
+    {
+      "id": "admin-portarias",
+      "topico": "administrativo",
+      "titulo": "Portarias 2026",
+      "url": "/docs/administrativo/orgao-oficial-betim.pdf",
+      "palavras": "Portarias 2026 Atos Oficiais Órgão Oficial de Betim — edição nº 3523, de 03/11/2026",
+      "texto": "Órgão Oficial de Betim — edição nº 3523, de 03/11/2026. Fonte: Prefeitura de Betim. Abrangência: Publicação municipal · consulta de 04/11/2026. O Órgão Oficial reúne as publicações administrativas do Município. A edição selecionada nesta consulta é a nº 3523, publicada em 3 de novembro de 2026. No leitor, utilize a busca do PDF para localizar o número da portaria, o assunto ou a secretaria. O portal oficial permite consultar outras edições por palavra-chave, número e intervalo de datas.",
+      "guia": false
+    },
+    {
+      "id": "admin-editais",
+      "topico": "administrativo",
+      "titulo": "Editais e Chamamentos",
+      "url": "/docs/administrativo/edital-adm0017-2026.pdf",
+      "palavras": "Editais e Chamamentos Atos Oficiais Credenciamento ADM0017/2026 — organização e execução de eventos",
+      "texto": "Credenciamento ADM0017/2026 — organização e execução de eventos. Fonte: Prefeitura de Betim · SEMES. Abrangência: Processo municipal · situação na fonte oficial. O processo ADM0017/2026 está vinculado à Secretaria Municipal de Esportes e trata do credenciamento de serviços para eventos socioesportivos, de lazer e recreação. O objeto inclui organização de eventos, arbitragem, apoio de público, equipes de apoio, sonorização e outros serviços descritos no edital. Consulte o documento e suas movimentações na fonte para conferir requisitos, prazos e situação do processo.",
+      "guia": false
+    },
+    {
+      "id": "admin-veiculos",
+      "topico": "administrativo",
+      "titulo": "Veículos",
+      "url": "/docs/administrativo/manual-frota-ifmg.pdf",
+      "palavras": "Veículos Controle de Frota Manual de condução, utilização e conservação de veículos oficiais",
+      "texto": "Manual de condução, utilização e conservação de veículos oficiais. Fonte: IFMG · Campus Formiga. Abrangência: Referência técnica de outra instituição pública. O manual do IFMG apresenta responsabilidades e rotinas para utilização e conservação de veículos oficiais, incluindo controle de movimentação, condições do veículo e comunicação de falhas. O documento é uma referência técnica do Campus Formiga para consulta sobre organização da frota, manutenção e registros de utilização.",
+      "guia": false
+    },
+    {
+      "id": "admin-motoristas",
+      "topico": "administrativo",
+      "titulo": "Motoristas",
+      "url": "/docs/administrativo/manual-frota-ifmg.pdf",
+      "palavras": "Motoristas Controle de Frota Manual do IFMG — responsabilidades do condutor",
+      "texto": "Manual do IFMG — responsabilidades do condutor. Fonte: IFMG · Campus Formiga. Abrangência: Referência técnica de outra instituição pública. A seção de responsabilidades do manual do IFMG reúne orientações para condutores: registrar a movimentação, verificar documentação e condições do veículo e comunicar problemas ao setor responsável. Também são tratados cuidados de conservação e procedimentos relacionados a ocorrências durante os deslocamentos. O leitor abre na seção de responsabilidades, mantendo a identificação da instituição de origem.",
+      "guia": false
+    },
+    {
+      "id": "admin-estoque",
+      "topico": "administrativo",
+      "titulo": "Estoque",
+      "url": "/docs/administrativo/manual-almoxarifado-cldf.pdf",
+      "palavras": "Estoque Almoxarifado Manual de gestão de material de consumo — rotinas e procedimentos, 2022",
+      "texto": "Manual de gestão de material de consumo — rotinas e procedimentos, 2022. Fonte: Câmara Legislativa do Distrito Federal. Abrangência: Referência técnica · CLDF. O manual da CLDF descreve recebimento, aceitação, registro de entrada, armazenagem, controle de estoque e inventário de materiais de consumo. A publicação organiza rotinas para acompanhar movimentações, planejar reposições e manter os registros de materiais. É apresentada como referência técnica da instituição que a publicou.",
+      "guia": false
+    },
+    {
+      "id": "admin-pedidos",
+      "topico": "administrativo",
+      "titulo": "Pedidos",
+      "url": "/docs/administrativo/manual-almoxarifado-cldf.pdf",
+      "palavras": "Pedidos Almoxarifado Manual da CLDF — requisição, entrega e devolução de materiais",
+      "texto": "Manual da CLDF — requisição, entrega e devolução de materiais. Fonte: Câmara Legislativa do Distrito Federal. Abrangência: Referência técnica · CLDF. As rotinas de distribuição do manual da CLDF incluem cadastro de requisitantes, requisição de materiais, responsabilidades dos servidores, entrega e devolução. Consulte especialmente os tópicos 3.5 a 3.10 para acompanhar o fluxo de uma solicitação e os registros envolvidos na movimentação de materiais.",
+      "guia": false
+    },
+    {
+      "id": "admin-termos",
+      "topico": "administrativo",
+      "titulo": "Termos",
+      "url": "https://www.gov.br/compras/pt-br/nllc/modelos-de-licitacoes-e-contratos",
+      "palavras": "Termos Contratos Modelos de licitações e contratos — AGU/MGI",
+      "texto": "Modelos de licitações e contratos — AGU/MGI. Fonte: Portal de Compras do Governo Federal. Abrangência: Referência federal · modelos e instrumentos. O Portal de Compras reúne os modelos padronizados de documentos relacionados à Lei nº 14.133/2021, com referências da Advocacia-Geral da União e do Ministério da Gestão. A consulta inclui modelos para pregão, concorrência, contratação direta e outros objetos. Acesse a fonte para selecionar o termo de referência ou instrumento contratual correspondente ao tipo de contratação.",
+      "guia": false
+    },
+    {
+      "id": "admin-gestao",
+      "topico": "administrativo",
+      "titulo": "Gestão",
+      "url": "/docs/administrativo/gestao-contratos-mgi.pdf",
+      "palavras": "Gestão Contratos Manual Operacional de Gestão e Fiscalização Contratual — junho de 2025",
+      "texto": "Manual Operacional de Gestão e Fiscalização Contratual — junho de 2025. Fonte: Ministério da Gestão e da Inovação em Serviços Públicos. Abrangência: Referência técnica federal. O manual do MGI reúne orientações sobre designação e atuação de gestores e fiscais de contratos, com referência à Lei nº 14.133/2021. O conteúdo diferencia gestão contratual e modalidades de fiscalização, apresenta o modelo de gestão e aborda o acompanhamento da execução e a documentação dos procedimentos.",
+      "guia": false
+    },
+    {
+      "id": "pagina-futebol.html-0-0",
+      "topico": "futebol",
+      "titulo": "Futebol Funcional Soccer — Futebol Funcional Soccer",
+      "url": "futebol.html",
+      "palavras": "Futebol Funcional Soccer Futebol Funcional Soccer",
+      "texto": "Esporte Coletivo Futebol de Betim Escola de futebol de campo Bom de Bola, Bom de Escola, com núcleos municipais em Betim para alunos de 6 a 15 anos, além do Funcional Soccer para participantes acima de 16 anos.",
+      "guia": false
+    },
+    {
+      "id": "pagina-futebol.html-1-0",
+      "topico": "futebol",
+      "titulo": "Futebol Funcional Soccer — Futebol em Betim",
+      "url": "futebol.html",
+      "palavras": "Futebol Funcional Soccer Futebol em Betim",
+      "texto": "Futebol em Betim O futebol de campo em Betim é ofertado por meio da Escola de Futebol de Campo Bom de Bola, Bom de Escola, com turmas organizadas por faixa etária e limite de até 30 alunos por turma. As aulas acontecem em campos e estádios municipais distribuídos por regionais da cidade. O atendimento contempla crianças e adolescentes de 6 a 15 anos, com horários pela manhã e à tarde conforme cada núcleo. Para jovens e adultos acima de 16 anos, o município também oferece o Funcional Soccer, com turmas feminina e masculina no período da noite.",
+      "guia": false
+    },
+    {
+      "id": "pagina-futebol.html-3-0",
+      "topico": "futebol",
+      "titulo": "Futebol Funcional Soccer — Inscrições Abertas",
+      "url": "futebol.html",
+      "palavras": "Futebol Funcional Soccer Inscrições Abertas",
+      "texto": "Inscrições Abertas Faça parte das turmas municipais de futebol de Betim. As vagas seguem a disponibilidade dos núcleos e o limite de até 30 alunos por turma. Requisitos Bom de Bola: 6 a 15 anos Funcional Soccer: acima de 16 anos Estar matriculado na rede escolar Cópia do RG ou Certidão de Nascimento Comprovante de Residência (Betim) Atestado Médico de Aptidão Física Quero me Inscrever",
+      "guia": false
+    },
+    {
+      "id": "pagina-futebol.html-4-0",
+      "topico": "futebol",
+      "titulo": "Futebol Funcional Soccer — Rede Municipal",
+      "url": "futebol.html",
+      "palavras": "Futebol Funcional Soccer Rede Municipal",
+      "texto": "Rede Municipal Consulte a agenda do portal para acompanhar eventos, torneios e ações esportivas realizadas pela Secretaria de Esportes em Betim. Ver Agenda",
+      "guia": false
+    },
+    {
+      "id": "pagina-futebol.html-5-0",
+      "topico": "futebol",
+      "titulo": "Futebol Funcional Soccer — Núcleos Bom de Bola, Bom de Escola",
+      "url": "futebol.html",
+      "palavras": "Futebol Funcional Soccer Núcleos Bom de Bola, Bom de Escola",
+      "texto": "Alterosa Campo do Alterosa - Rua Mignonete, 125, Jardim das Alterosas II Terças e quintas: 08:00 às 09:30 (6 a 10), 09:30 às 11:00 (11 a 15), 14:00 às 15:30 (6 a 10), 15:30 às 17:00 (11 a 15). Educador físico: Duílio",
+      "guia": false
+    },
+    {
+      "id": "pagina-futebol.html-5-1",
+      "topico": "futebol",
+      "titulo": "Futebol Funcional Soccer — Núcleos Bom de Bola, Bom de Escola",
+      "url": "futebol.html",
+      "palavras": "Futebol Funcional Soccer Núcleos Bom de Bola, Bom de Escola",
+      "texto": "Citrolândia Estádio Municipal Pedro Butti - Rua Duque de Caxias, 42, Citrolândia Segundas e quartas: 08:00 às 09:30 (6 a 10), 09:30 às 11:00 (11 a 15), 14:00 às 15:30 (6 a 10), 15:30 às 17:00 (11 a 15). Educador físico: Alírio",
+      "guia": false
+    },
+    {
+      "id": "pagina-futebol.html-5-2",
+      "topico": "futebol",
+      "titulo": "Futebol Funcional Soccer — Núcleos Bom de Bola, Bom de Escola",
+      "url": "futebol.html",
+      "palavras": "Futebol Funcional Soccer Núcleos Bom de Bola, Bom de Escola",
+      "texto": "Santa Inês Estádio Municipal Silma Alves Benevides - Rua Ferroviária, s/n, Santa Inês Terças e quintas: 08:00 às 09:30 (6 a 10), 09:30 às 11:00 (11 a 15), 14:00 às 15:30 (6 a 10), 15:30 às 17:00 (11 a 15). Educador físico: Duílio",
+      "guia": false
+    },
+    {
+      "id": "pagina-futebol.html-5-3",
+      "topico": "futebol",
+      "titulo": "Futebol Funcional Soccer — Núcleos Bom de Bola, Bom de Escola",
+      "url": "futebol.html",
+      "palavras": "Futebol Funcional Soccer Núcleos Bom de Bola, Bom de Escola",
+      "texto": "Senhora das Graças Campo do Senhora das Graças - Rua Minas Gerais, s/n, N. S. das Graças Segundas e quartas: 08:00 às 09:30 (6 a 10), 09:30 às 11:00 (11 a 15), 14:00 às 15:30 (6 a 10), 15:30 às 17:00 (11 a 15). Educador físico: Duílio",
+      "guia": false
+    },
+    {
+      "id": "pagina-futebol.html-5-4",
+      "topico": "futebol",
+      "titulo": "Futebol Funcional Soccer — Núcleos Bom de Bola, Bom de Escola",
+      "url": "futebol.html",
+      "palavras": "Futebol Funcional Soccer Núcleos Bom de Bola, Bom de Escola",
+      "texto": "São João Campo do São João - Rua Cachopa, s/n, São João Terças e quintas: 08:00 às 09:00 (6 a 9), 09:00 às 10:00 (10 a 12), 10:00 às 11:00 (13 a 15), 14:00 às 15:30 (6 a 10), 15:30 às 17:00 (11 a 15). Educadora física: Aline Guedes",
+      "guia": false
+    },
+    {
+      "id": "pagina-futebol.html-5-5",
+      "topico": "futebol",
+      "titulo": "Futebol Funcional Soccer — Núcleos Bom de Bola, Bom de Escola",
+      "url": "futebol.html",
+      "palavras": "Futebol Funcional Soccer Núcleos Bom de Bola, Bom de Escola",
+      "texto": "Cruzeiro do Sul Campo do Cruzeiro do Sul - Rua 20, s/n, Cruzeiro do Sul Segundas e quartas: 08:00 às 09:30 (6 a 10), 09:30 às 11:00 (11 a 15), 14:00 às 15:30 (6 a 10), 15:30 às 17:00 (11 a 15). Educador físico: Leonardo Sette",
+      "guia": false
+    },
+    {
+      "id": "pagina-futebol.html-5-6",
+      "topico": "futebol",
+      "titulo": "Futebol Funcional Soccer — Núcleos Bom de Bola, Bom de Escola",
+      "url": "futebol.html",
+      "palavras": "Futebol Funcional Soccer Núcleos Bom de Bola, Bom de Escola",
+      "texto": "Itacolomi Campo do Itacolomi - Rua Torpedo, nº 235, Itacolomi Terças e quintas: 08:00 às 09:30 (6 a 10), 09:30 às 11:00 (11 a 15), 14:00 às 15:30 (6 a 10), 15:30 às 17:00 (11 a 15). Educador físico: Leonardo Sette",
+      "guia": false
+    },
+    {
+      "id": "pagina-futebol.html-5-7",
+      "topico": "futebol",
+      "titulo": "Futebol Funcional Soccer — Núcleos Bom de Bola, Bom de Escola",
+      "url": "futebol.html",
+      "palavras": "Futebol Funcional Soccer Núcleos Bom de Bola, Bom de Escola",
+      "texto": "Pingo D'Água Estádio Municipal João Evangelista de Souza - Rua Virgílio Fernandes Filho, s/n, Pingo D'Água Segundas e quartas: 08:00 às 09:30 (6 a 10), 09:30 às 11:00 (11 a 15), 14:00 às 15:30 (6 a 10), 15:30 às 17:00 (11 a 15). Educadora física: Aline Guedes",
+      "guia": false
+    },
+    {
+      "id": "pagina-futebol.html-6-0",
+      "topico": "futebol",
+      "titulo": "Futebol Funcional Soccer — Funcional Soccer",
+      "url": "futebol.html",
+      "palavras": "Futebol Funcional Soccer Funcional Soccer",
+      "texto": "São João Campo do São João - Rua Cachopa, s/n, São João Terças e quintas: 18:00 às 19:00 (turma feminina) e 19:00 às 20:00 (turma masculina). Educadora física: Aline Guedes",
+      "guia": false
+    },
+    {
+      "id": "pagina-futebol.html-6-1",
+      "topico": "futebol",
+      "titulo": "Futebol Funcional Soccer — Funcional Soccer",
+      "url": "futebol.html",
+      "palavras": "Futebol Funcional Soccer Funcional Soccer",
+      "texto": "Senhora das Graças Campo do Senhora das Graças - Rua Minas Gerais, s/n, N. S. das Graças 18:00 às 19:00 (turma feminina) e 19:00 às 20:00 (turma masculina). Educador físico: Leonardo Sette",
+      "guia": false
+    },
+    {
+      "id": "pagina-futebol.html-7-0",
+      "topico": "futebol",
+      "titulo": "Futebol Funcional Soccer — Mapa dos Núcleos",
+      "url": "futebol.html",
+      "palavras": "Futebol Funcional Soccer Mapa dos Núcleos",
+      "texto": "Mapa dos Núcleos Locais de atendimento do futebol municipal em Betim. Localização por bairro",
+      "guia": false
+    },
+    {
+      "id": "pagina-volei.html-0-0",
+      "topico": "volei",
+      "titulo": "Vôlei Voleibol — Vôlei Voleibol",
+      "url": "volei.html",
+      "palavras": "Vôlei Voleibol Vôlei Voleibol",
+      "texto": "Esporte Coletivo Vôlei de Betim Modalidade oferecida nos núcleos esportivos de Betim, com turmas para iniciação, formação e equipes municipais conforme a programação da SEMES.",
+      "guia": false
+    },
+    {
+      "id": "pagina-volei.html-1-0",
+      "topico": "volei",
+      "titulo": "Vôlei Voleibol — Vôlei em Betim",
+      "url": "volei.html",
+      "palavras": "Vôlei Voleibol Vôlei em Betim",
+      "texto": "Vôlei em Betim Em Betim, o vôlei integra as ações da Secretaria Municipal de Esportes para ampliar o acesso de crianças, adolescentes e jovens às modalidades coletivas. Os treinos priorizam convivência, disciplina, trabalho em equipe e permanência no esporte. As atividades são organizadas por núcleo, faixa etária e disponibilidade de vagas. Além da iniciação esportiva, a modalidade apoia a formação de equipes para representar Betim em eventos e competições municipais e regionais.",
+      "guia": false
+    },
+    {
+      "id": "pagina-volei.html-3-0",
+      "topico": "volei",
+      "titulo": "Vôlei Voleibol — Onde Praticar",
+      "url": "volei.html",
+      "palavras": "Vôlei Voleibol Onde Praticar",
+      "texto": "Onde Praticar Horto Municipal Terças e Quintas: 09:00 às 11:00 (Feminino) | 15:00 às 17:00 (Masculino) Poliesportivo Divino Braga Segundas e Quartas: 19:00 às 21:00 (Equipes de Rendimento)",
+      "guia": false
+    },
+    {
+      "id": "pagina-volei.html-4-0",
+      "topico": "volei",
+      "titulo": "Vôlei Voleibol — Inscrições Abertas",
+      "url": "volei.html",
+      "palavras": "Vôlei Voleibol Inscrições Abertas",
+      "texto": "Inscrições Abertas Faça parte das turmas municipais de vôlei de Betim. As inscrições seguem a disponibilidade dos polos e a organização da Secretaria de Esportes. Requisitos Idade entre 12 e 17 anos Estar matriculado na rede escolar Cópia do RG ou Certidão de Nascimento Comprovante de Residência (Betim) Atestado Médico de Aptidão Física Quero me Inscrever",
+      "guia": false
+    },
+    {
+      "id": "pagina-volei.html-5-0",
+      "topico": "volei",
+      "titulo": "Vôlei Voleibol — Rede Municipal",
+      "url": "volei.html",
+      "palavras": "Vôlei Voleibol Rede Municipal",
+      "texto": "Rede Municipal Acompanhe pelo portal os eventos, treinos, torneios e ações da Secretaria de Esportes relacionados ao vôlei em Betim. Ver Agenda",
+      "guia": false
+    },
+    {
+      "id": "pagina-detalhe-modalidade.html-0-0",
+      "topico": "detalhe-modalidade",
+      "titulo": "Judô — Judô",
+      "url": "detalhe-modalidade.html",
+      "palavras": "Judô Judô",
+      "texto": "Artes Marciais Judô Municipal Modalidade desenvolvida nos espaços esportivos municipais de Betim, com foco em disciplina, respeito, convivência e formação de atletas da cidade.",
+      "guia": false
+    },
+    {
+      "id": "pagina-detalhe-modalidade.html-1-0",
+      "topico": "detalhe-modalidade",
+      "titulo": "Judô — Judô em Betim",
+      "url": "detalhe-modalidade.html",
+      "palavras": "Judô Judô em Betim",
+      "texto": "Judô em Betim O judô municipal de Betim integra as ações da Secretaria de Esportes para oferecer formação esportiva, disciplina e acompanhamento regular aos alunos dos núcleos da cidade. As aulas são organizadas por local, faixa etária e disponibilidade de vagas, atendendo desde a iniciação até grupos de treinamento. A participação prioriza vínculo com Betim e regularidade nas atividades.",
+      "guia": false
+    },
+    {
+      "id": "pagina-detalhe-modalidade.html-2-0",
+      "topico": "detalhe-modalidade",
+      "titulo": "Judô — Fotos oficiais do Judô",
+      "url": "detalhe-modalidade.html",
+      "palavras": "Judô Fotos oficiais do Judô",
+      "texto": "Fotos oficiais do Judô As fotos oficiais aparecerão quando a sincronização estiver disponível.",
+      "guia": false
+    },
+    {
+      "id": "pagina-detalhe-modalidade.html-3-0",
+      "topico": "detalhe-modalidade",
+      "titulo": "Judô — Onde Praticar",
+      "url": "detalhe-modalidade.html",
+      "palavras": "Judô Onde Praticar",
+      "texto": "Onde Praticar Vila Olímpica de Betim Terças e Quintas: 08:00 às 10:00 | 14:00 às 16:00 Poliesportivo Divino Braga Segundas e Quartas: 18:00 às 20:00 (Adulto)",
+      "guia": false
+    },
+    {
+      "id": "pagina-detalhe-modalidade.html-4-0",
+      "topico": "detalhe-modalidade",
+      "titulo": "Judô — Requisitos",
+      "url": "detalhe-modalidade.html",
+      "palavras": "Judô Requisitos",
+      "texto": "Requisitos Estar matriculado na rede escolar Cópia do RG ou Certidão Comprovante de Residência (Betim) Atestado Médico de Aptidão Física Quero me Inscrever",
+      "guia": false
+    },
+    {
+      "id": "pagina-pilates.html-0-0",
+      "topico": "pilates",
+      "titulo": "Pilates — Pilates",
+      "url": "pilates.html",
+      "palavras": "Pilates Pilates",
+      "texto": "Atividades Pilates A prática de pilates busca fortalecimento do core, melhora postural, flexibilidade e controle corporal, indicada para todas as idades com acompanhamento especializado.",
+      "guia": false
+    },
+    {
+      "id": "pagina-pilates.html-1-0",
+      "topico": "pilates",
+      "titulo": "Pilates — Sobre o Pilates",
+      "url": "pilates.html",
+      "palavras": "Pilates Sobre o Pilates",
+      "texto": "Sobre o Pilates As aulas de pilates oferecidas pela Secretaria têm foco em reequilíbrio postural, fortalecimento profundo (core) e prevenção de lesões. As turmas são organizadas por nível e condição física. As sessões são conduzidas por profissional especializado e incluem exercícios em solo e acessórios quando disponíveis. Recomenda-se avaliação prévia e atestado médico quando necessário. Vagas limitadas conforme disponibilidade dos núcleos. Procure o núcleo mais próximo para mais informações e inscrição.",
+      "guia": false
+    },
+    {
+      "id": "pagina-pilates.html-3-0",
+      "topico": "pilates",
+      "titulo": "Pilates — Inscrições",
+      "url": "pilates.html",
+      "palavras": "Pilates Inscrições",
+      "texto": "Inscrições Para se inscrever nas turmas de pilates, consulte o formulário de inscrições e verifique os pré-requisitos. Quero me Inscrever",
+      "guia": false
+    },
+    {
+      "id": "inicio-rendimento",
+      "topico": "rendimento",
+      "titulo": "Esporte de Rendimento",
+      "url": "index.html#rendimento",
+      "palavras": "Esporte de Rendimento",
+      "texto": "Esporte de Rendimento Futebol Taekwondo Atletismo Natação Voleibol Basquete Esta seção apresenta informações gerais. Não publica aqui todas as faixas etárias, horários ou vagas; confirme esses detalhes com o núcleo responsável.",
+      "guia": false
+    },
+    {
+      "id": "inicio-atividades-esportivas",
+      "topico": "atividades-esportivas",
+      "titulo": "Atividades Esportivas",
+      "url": "index.html#atividades-esportivas",
+      "palavras": "Atividades Esportivas",
+      "texto": "Atividades Esportivas I.E. Iniciação Esportiva Primeiro contato com práticas esportivas, coordenação motora e convivência nos núcleos de Betim. Ginástica para a saúde Atividade orientada para promoção da saúde, bem-estar e qualidade de vida. AFA - Atividade Física Adaptada Práticas adaptadas para ampliar participação, autonomia e inclusão pelo esporte. Pilates Fortalecimento, postura, mobilidade e controle corporal com acompanhamento orientado. Lian Gong Prática corporal chinesa com foco em alongamento, respiração, equilíbrio e prevenção de dores. Atividade Aquática Adaptada Atendimento aquático inclusivo, respeitando necessidades, segurança e desenvolvimento dos participantes. Esta seção apresenta informações gerais. Não publica aqui todas as faixas etárias, horários ou vagas; confirme esses detalhes com o núcleo responsável.",
+      "guia": false
+    },
+    {
+      "id": "inicio-escola",
+      "topico": "escola",
+      "titulo": "Escola de Esportes",
+      "url": "index.html#escola",
+      "palavras": "Escola de Esportes",
+      "texto": "Escola de Esportes Natação Vôlei Basquete Atletismo Tênis Karatê Esta seção apresenta informações gerais. Não publica aqui todas as faixas etárias, horários ou vagas; confirme esses detalhes com o núcleo responsável.",
+      "guia": false
+    },
+    {
+      "id": "inicio-viva-esporte",
+      "topico": "viva-esporte",
+      "titulo": "Programa Viva o Esporte",
+      "url": "index.html#viva-esporte",
+      "palavras": "Programa Viva o Esporte",
+      "texto": "Edição 2026 Programa Viva o Esporte O esporte volta a ganhar espaço, em Betim, a partir desta segunda-feira (16), com o início das atividades da edição 2026 do programa Viva o Esporte. A iniciativa, executada pela Prefeitura de Betim, por meio da Secretaria Municipal de Esportes, levará ao local uma programação regular de aulas e treinamentos voltados para crianças, jovens e adultos. A abertura das atividades contará, no período da noite, com a apresentação da equipe de treinamento de judô, marcando o início das práticas esportivas no espaço, que passa a sediar um dos núcleos do programa municipal. A partir dos dias seguintes, as aulas da Escola de Esportes passam a ocorrer regularmente nos turnos da manhã e da tarde, com modalidades como basquetebol, futsal e voleibol, destinadas a participantes a partir de 9 anos até o público adulto. No período noturno, também serão oferecidas aulas de judô e taekwondo para alunos a partir de 8 anos. Outra novidade é a transferência do núcleo do Jardim Petrópolis para o Clube da Fiat no turno da tarde, com atividades de futsal e ginástica para a saúde. Inicialmente, o espaço atenderá 280 alunos-atletas que migraram dos núcleos Horto, Petrópolis e da Escola Gino, com previsão de abertura de novas vagas posteriormente. O atletismo também terá presença no local, com a participação de 40 atletas da modalidade. O Clube da Fiat, que passa a sediar as atividades do programa, está localizado na Praça Geni Nair, 40, no bairro São Luiz. Viva o Esporte · Fonte: Prefeitura de Betim · 12/02/2026 Esta seção apresenta informações gerais. Não publica aqui todas as faixas etárias, horários ou vagas; confirme esses detalhes com o núcleo responsável.",
+      "guia": false
+    }
+  ]
+}

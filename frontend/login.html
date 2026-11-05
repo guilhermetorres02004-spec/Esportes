@@ -5,8 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login Administrativo - Portal do Esporte Betim</title>
 <link rel="stylesheet" href="/css/tailwind.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/portal-header.css">
+    <link rel="stylesheet" href="/css/portal-base.css">
 </head>
-<body class="bg-slate-100 min-h-screen flex items-center justify-center p-4">
+<body class="portal-standard bg-slate-100 min-h-screen flex flex-col">
+    <script src="/js/portal-header.js"></script>
+    <main class="flex-grow flex items-center justify-center w-full p-4">
 
     <div class="w-full max-w-4xl bg-white shadow-2xl rounded-3xl overflow-hidden grid md:grid-cols-2">
 
@@ -60,6 +65,8 @@
         </div>
 
     </div>
+
+    </main>
 
     <script>
         const form = document.getElementById("login-form");

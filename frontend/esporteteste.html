@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -30,11 +30,10 @@
             padding: 80px 20px 20px;
             overflow-y: auto;
         }
-        .sidebar:hover { transform: translateX(0); box-shadow: 20px 0 60px rgba(0,0,0,0.15); }
         .sidebar.open { transform: translateX(0); box-shadow: 20px 0 60px rgba(0,0,0,0.15); }
         
         .sidebar-trigger {
-            position: fixed; left: 16px; top: 112px;
+            position: fixed; left: 16px; top: 16px;
             width: auto; min-width: 92px; height: 44px; background: #1e3a8a; border: 2px solid white;
             border-radius: 999px;
             display: flex; align-items: center; justify-content: center; gap: 8px; color: white; cursor: pointer;
@@ -93,8 +92,10 @@
         .page { display: none; }
         .page.active { display: block; }
     </style>
+    <link rel="stylesheet" href="/css/portal-header.css">
+    <link rel="stylesheet" href="/css/portal-base.css">
 </head>
-<body class="bg-slate-50 font-sans text-slate-900">
+<body class="portal-standard bg-slate-50 font-sans text-slate-900">
 
     <aside class="sidebar">
         <div class="mb-10 px-4"><h3 class="text-blue-900 font-black text-sm uppercase italic tracking-widest">Navegação</h3></div>
@@ -103,50 +104,30 @@
             <div class="side-item" onclick="location.href='#unidades'"><i class="fas fa-map-marker-alt"></i> Unidades Esportivas</div>
             <div class="side-item" onclick="location.href='#protocolo'"><i class="fas fa-camera"></i>Transparência</div>
             <div class="side-item" onclick="location.href='administrativo.html'"><i class="fas fa-file-contract"></i> Administrativo</div>
-            <div class="side-item" onclick="location.href='#rendimento'"><i class="fas fa-trophy"></i> Rendimento</div>
-            <div class="side-item" onclick="location.href='#atividades-esportivas'"><i class="fas fa-person-running"></i> Atividades Esportivas</div>
-            <div class="side-item" onclick="location.href='#escola'"><i class="fas fa-graduation-cap"></i> Escola Esporte</div>
-            <div class="side-item" onclick="location.href='#viva-esporte'"><i class="fas fa-heart"></i> Viva o Esporte</div>
+            <a class="side-item" href="comunicacao.html"><i class="fas fa-folder-open"></i> Arquivos</a>
+            <div class="side-item" onclick="scrollToSection('rendimento')"><i class="fas fa-trophy"></i> Rendimento</div>
+            <div class="side-item" onclick="scrollToSection('atividades-esportivas')"><i class="fas fa-person-running"></i> Atividades Esportivas</div>
+            <div class="side-item" onclick="scrollToSection('escola')"><i class="fas fa-graduation-cap"></i> Escola Esporte</div>
+            <div class="side-item" onclick="scrollToSection('viva-esporte')"><i class="fas fa-heart"></i> Viva o Esporte</div>
             <div class="side-item" onclick="location.href='downloads.html'"><i class="fas fa-file-download"></i> Central de Downloads</div>
             <div class="side-item" onclick="location.href='almoxarifado.html'"><i class="fas fa-boxes"></i> Almoxarifado</div>
             <div class="side-item" onclick="location.href='frequenciapreenchimento.html'"><i class="fas fa-clipboard-check"></i> Folha de Presença</div>
             <div class="side-item" onclick="location.href='agenda.html'"><i class="fas fa-calendar-alt"></i> Agenda de Eventos</div>
         </nav>
     </aside>
-    <button class="sidebar-trigger" type="button" onclick="toggleSidebar()" aria-label="Abrir menu lateral">
+    <button class="sidebar-trigger" type="button" onclick="toggleSidebar()" aria-label="Abrir menu lateral" aria-expanded="false">
         <i class="fas fa-bars"></i>
         <span>Menu</span>
     </button>
 
-    <header class="bg-blue-950 text-white py-2 text-[10px] font-bold uppercase tracking-widest">
-        <div class="max-w-7xl mx-auto px-4 flex items-center justify-between gap-3">
-            <span>Prefeitura Municipal de Betim - Secretaria Municipal de Esportes</span>
-            <a href="index.html" class="whitespace-nowrap hover:text-yellow-300 transition-colors">
-                <i class="fas fa-arrow-left mr-1"></i> Voltar
-            </a>
-        </div>
-    </header>
-
-    <nav class="bg-white border-b sticky top-0 z-50 shadow-sm h-24 flex items-center">
-        <div class="max-w-7xl mx-auto w-full px-4 flex justify-between items-center">
-            <div class="flex items-center gap-4 cursor-pointer" onclick="showPage('home')">
-                <div class="bg-blue-900 text-white font-black p-2 rounded-lg text-2xl w-12 h-12 flex items-center justify-center">B</div>
-                <h1 class="text-blue-900 font-black text-2xl uppercase italic tracking-tighter">Portal do Esporte</h1>
-            </div>
-            <ul class="hidden lg:flex gap-8 font-bold text-gray-700 uppercase text-[12px] items-center">
-                <li class="cursor-pointer hover:text-blue-900" onclick="showPage('home')">Início</li>
-                <li class="cursor-pointer hover:text-blue-900" onclick="showPage('frequencia')">Frequência</li>
-                <li><button onclick="showPage('inscricao')" class="bg-blue-900 text-white px-8 py-3 rounded-full font-black hover:bg-yellow-400 hover:text-blue-900 transition shadow-lg">Inscreva-se</button></li>
-            </ul>
-        </div>
-    </nav>
+    <script src="/js/portal-header.js"></script>
 
     <div id="home" class="page active">
         <div class="carousel-container">
             <div class="slogan-overlay"><h2 class="text-6xl md:text-9xl font-black uppercase italic tracking-tighter text-white text-center">Betim Respira <br><span class="text-yellow-400">Esporte</span></h2></div>
-            <div class="slide active"><img src="Imagens/Poliesportivo Divino Braga.jpeg" class="slide-bg" onerror="this.src='https://images.unsplash.com/photo-1519315901367-f34ff9154487?q=80&w=1200'"></div>
-            <div class="slide"><img src="Imagens/Poliesportivo Ricardo Mediole.jpeg" class="slide-bg" onerror="this.src='https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=1200'"></div>
-            <div class="slide"><img src="Imagens/Futebol Bom Repouso.jpeg" class="slide-bg" onerror="this.src='https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1200'"></div>
+            <div class="slide active"><img data-foto-categoria="principal" data-foto-indice="0" src="Imagens/Poliesportivo Divino Braga.jpeg" class="slide-bg" onerror="this.src='https://images.unsplash.com/photo-1519315901367-f34ff9154487?q=80&w=1200'"></div>
+            <div class="slide"><img data-foto-categoria="principal" data-foto-indice="1" src="Imagens/Poliesportivo Ricardo Mediole.jpeg" class="slide-bg" onerror="this.src='https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=1200'"></div>
+            <div class="slide"><img data-foto-categoria="principal" data-foto-indice="2" src="Imagens/Futebol Bom Repouso.jpeg" class="slide-bg" onerror="this.src='https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1200'"></div>
             <div class="dots-container absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-2 z-30" id="dots"></div>
         </div>
 
@@ -228,8 +209,8 @@
                 <div class="flex justify-between items-end mb-12 border-l-8 border-blue-900 pl-6"><h3 class="text-4xl font-black text-blue-900 uppercase italic tracking-tighter leading-none">Notícias</h3></div>
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
                     <div class="lg:col-span-2 relative rounded-[40px] news-main-card overflow-hidden bg-black shadow-2xl">
-                        <img src="Imagens/Rio.jpeg" class="absolute inset-0 w-full h-full object-contain z-10 mx-auto">
-                        <img src="Imagens/Rio.jpeg" class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-50">
+                        <img data-foto-categoria="principal" data-foto-indice="3" src="Imagens/Rio.jpeg" class="absolute inset-0 w-full h-full object-contain z-10 mx-auto">
+                        <img data-foto-categoria="principal" data-foto-indice="4" src="Imagens/Rio.jpeg" class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-50">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent p-12 flex flex-col justify-end z-20">
                             <span class="bg-yellow-400 text-blue-900 text-xs font-black uppercase px-4 py-1 w-fit mb-4 italic">Rumo ao Rio</span>
                             <h4 class="text-white text-4xl font-black uppercase italic mb-4">Partiu Rio de Janeiro!</h4>
@@ -353,7 +334,7 @@
                             </div>
                         </div>
                         <div class="relative min-h-[500px]">
-                            <img src="https://www.betim.mg.gov.br/fotos/88a498819481063584ddadff1af2d4b6.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Projeto Viva o Esporte">
+                            <img data-foto-categoria="principal" data-foto-indice="5" src="https://www.betim.mg.gov.br/fotos/88a498819481063584ddadff1af2d4b6.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Projeto Viva o Esporte">
                             <div class="absolute inset-0 bg-blue-900/10 mix-blend-multiply"></div>
                         </div>
                     </div>
@@ -403,12 +384,12 @@
 
         <section class="marquee-container mb-32">
             <div class="marquee-content" id="marquee-track">
-                <img src="Imagens/Poliesportivo Divino Braga.jpeg" alt="Divino Braga">
-                <img src="Imagens/Poliesportivo Ricardo Mediole.jpeg" alt="Ricardo Mediole">
-                <img src="Imagens/Futebol Bom Repouso.jpeg" alt="Futebol Betim">
-                <img src="Imagens/1.jpeg" alt="Sementes">
-                <img src="Imagens/2.jpeg" alt="Competição">
-                <img src="Imagens/3.jpg" alt="Viva Esporte">
+                <img data-foto-categoria="principal" data-foto-indice="6" src="Imagens/Poliesportivo Divino Braga.jpeg" alt="Divino Braga">
+                <img data-foto-categoria="principal" data-foto-indice="7" src="Imagens/Poliesportivo Ricardo Mediole.jpeg" alt="Ricardo Mediole">
+                <img data-foto-categoria="principal" data-foto-indice="8" src="Imagens/Futebol Bom Repouso.jpeg" alt="Futebol Betim">
+                <img data-foto-categoria="principal" data-foto-indice="9" src="Imagens/1.jpeg" alt="Sementes">
+                <img data-foto-categoria="principal" data-foto-indice="10" src="Imagens/2.jpeg" alt="Competição">
+                <img data-foto-categoria="principal" data-foto-indice="11" src="Imagens/3.jpg" alt="Viva Esporte">
             </div>
         </section>
     </div>
@@ -416,57 +397,11 @@
     <div id="frequencia" class="page min-h-screen py-24 text-center"><h2 class="text-5xl font-black text-blue-900 uppercase italic">Portal do Atleta</h2></div>
     <div id="inscricao" class="page min-h-screen py-24 text-center"><h2 class="text-5xl font-black text-blue-900 uppercase italic leading-none">Inscrição 2026</h2></div>
 
-    <!-- Chat do Secretário -->
-    <div id="chat-container" class="fixed bottom-6 right-6 z-[100] flex flex-col items-end">
-        <!-- Janela do Chat -->
-        <div id="chat-window" class="bg-white w-80 rounded-2xl shadow-2xl overflow-hidden mb-4 border-2 border-blue-900 hidden transition-all duration-300 transform scale-0 opacity-0 origin-bottom-right flex-col h-[400px]">
-            <!-- Cabeçalho -->
-            <div class="bg-blue-900 text-white p-4 flex justify-between items-center shadow-md z-10 relative">
-                <div class="flex items-center gap-3">
-                    <div class="relative">
-                        <img src="https://ui-avatars.com/api/?name=Secretario&background=facc15&color=1e3a8a" class="w-10 h-10 rounded-full border-2 border-white" alt="Avatar Secretário">
-                        <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
-                    </div>
-                    <div>
-                        <h4 class="font-black text-sm uppercase italic leading-none">Secretário</h4>
-                        <span class="text-[10px] text-blue-200">Online agora</span>
-                    </div>
-                </div>
-                <button onclick="toggleChat()" class="text-white hover:text-red-400 transition">
-                    <i class="fas fa-times text-lg"></i>
-                </button>
-            </div>
-            
-            <!-- Área de Mensagens -->
-            <div id="chat-messages" class="flex-1 p-4 overflow-y-auto bg-slate-50 flex flex-col gap-3 text-sm">
-                <div class="flex gap-2">
-                    <img src="https://ui-avatars.com/api/?name=Secretario&background=facc15&color=1e3a8a" class="w-8 h-8 rounded-full shadow-sm" alt="Avatar">
-                    <div class="bg-white border border-slate-200 text-slate-800 p-3 rounded-2xl rounded-tl-none shadow-sm">
-                        Olá! Sou o Secretário de Esportes. Como posso ajudar você hoje?
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Entrada de Texto -->
-            <div class="p-3 bg-white border-t border-slate-200 flex gap-2 z-10 relative shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
-                <input type="text" id="chat-input" placeholder="Digite sua mensagem..." class="flex-1 bg-slate-100 border border-slate-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-900" onkeypress="handleChatKeyPress(event)">
-                <button onclick="sendMessage()" class="bg-blue-900 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-yellow-400 hover:text-blue-900 transition-all shadow-md">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Botão de Abertura do Chat -->
-        <button onclick="toggleChat()" class="bg-blue-900 text-white w-16 h-16 rounded-full shadow-2xl flex items-center justify-center hover:bg-yellow-400 hover:text-blue-900 transition-all hover:scale-110 group relative border-2 border-white">
-            <i class="fas fa-comments text-3xl group-hover:scale-110 transition-transform"></i>
-            <span class="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-black w-6 h-6 flex items-center justify-center rounded-full border-2 border-white shadow-sm">1</span>
-        </button>
-    </div>
-
     <footer class="bg-blue-950 text-white py-16 text-center text-xs font-black uppercase tracking-widest border-t-[12px] border-yellow-400">
         Prefeitura de Betim - Secretaria Municipal de Esportes - Fundação Beta &copy; 2026
     </footer>
 
+    <script src="/js/section-navigation.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         const unidades = [
@@ -478,8 +413,21 @@
         ];
 
         function toggleSidebar() {
-            document.querySelector('.sidebar').classList.toggle('open');
+            const isOpen = document.querySelector('.sidebar').classList.toggle('open');
+            document.querySelector('.sidebar-trigger').setAttribute('aria-expanded', isOpen);
         }
+
+        function closeSidebar() {
+            document.querySelector('.sidebar').classList.remove('open');
+            document.querySelector('.sidebar-trigger').setAttribute('aria-expanded', 'false');
+        }
+
+        document.addEventListener('click', (event) => {
+            if (event.target.closest('.sidebar-trigger')) return;
+            if (!event.target.closest('.sidebar') || event.target.closest('.side-item')) {
+                closeSidebar();
+            }
+        }, { capture: true });
 
         function showPage(id) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -510,82 +458,6 @@
         const track = document.getElementById('marquee-track');
         track.innerHTML += track.innerHTML;
 
-        // ---- Lógica do Chat do Secretário ----
-        function toggleChat() {
-            const chatWindow = document.getElementById('chat-window');
-            if (chatWindow.classList.contains('hidden')) {
-                chatWindow.classList.remove('hidden');
-                // Pequeno delay para a transição do Tailwind funcionar após remover o 'hidden'
-                setTimeout(() => {
-                    chatWindow.classList.remove('scale-0', 'opacity-0');
-                    chatWindow.classList.add('scale-100', 'opacity-100');
-                }, 10);
-            } else {
-                chatWindow.classList.remove('scale-100', 'opacity-100');
-                chatWindow.classList.add('scale-0', 'opacity-0');
-                setTimeout(() => {
-                    chatWindow.classList.add('hidden');
-                }, 300); 
-            }
-        }
-
-        function handleChatKeyPress(e) {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        }
-
-        function sendMessage() {
-            const input = document.getElementById('chat-input');
-            const message = input.value.trim();
-            if (!message) return;
-
-            const messagesContainer = document.getElementById('chat-messages');
-            
-            // Renderiza mensagem do usuário
-            const userMsgHTML = `
-                <div class="flex gap-2 justify-end">
-                    <div class="bg-blue-900 text-white p-3 rounded-2xl rounded-tr-none shadow-sm max-w-[85%] break-words">
-                        ${message}
-                    </div>
-                </div>
-            `;
-            messagesContainer.insertAdjacentHTML('beforeend', userMsgHTML);
-            input.value = '';
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-            // Simula os "três pontinhos" de digitação
-            setTimeout(() => {
-                const typingId = 'typing-' + Date.now();
-                const typingHTML = `
-                    <div id="${typingId}" class="flex gap-2">
-                        <img src="https://ui-avatars.com/api/?name=Secretario&background=facc15&color=1e3a8a" class="w-8 h-8 rounded-full shadow-sm" alt="Avatar">
-                        <div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-none shadow-sm flex gap-1 items-center">
-                            <div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></div>
-                            <div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
-                            <div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
-                        </div>
-                    </div>
-                `;
-                messagesContainer.insertAdjacentHTML('beforeend', typingHTML);
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-                // Simula a resposta do Secretário
-                setTimeout(() => {
-                    document.getElementById(typingId).remove();
-                    const replyHTML = `
-                        <div class="flex gap-2">
-                            <img src="https://ui-avatars.com/api/?name=Secretario&background=facc15&color=1e3a8a" class="w-8 h-8 rounded-full shadow-sm" alt="Avatar">
-                            <div class="bg-white border border-slate-200 text-slate-800 p-3 rounded-2xl rounded-tl-none shadow-sm max-w-[85%] break-words">
-                                Agradeço sua mensagem: <em>"${message}"</em>. Como este é um ambiente de demonstração, minha equipe entrará em contato em breve!
-                            </div>
-                        </div>
-                    `;
-                    messagesContainer.insertAdjacentHTML('beforeend', replyHTML);
-                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-                }, 1500);
-            }, 500);
-        }
     </script>
 </body>
 </html>

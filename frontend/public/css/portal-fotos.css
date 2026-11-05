@@ -1,0 +1,8 @@
+.fotos-fontes { margin: 16px 0; color: #64748b; font: 12px/1.6 Arial, sans-serif; }
+.fotos-fontes summary { cursor: pointer; color: #1e3a8a; font-weight: 700; }
+.fotos-fontes ul { padding-left: 18px; margin-top: 8px; }
+.fotos-fontes a, .foto-oficial-legenda { color: #1e40af; text-decoration: underline; }
+[data-fotos-galeria] figure { margin: 0; }
+[data-fotos-galeria] img { display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 16px; }
+.foto-oficial-legenda { display: block; margin-top: 8px; font: 11px/1.5 Arial, sans-serif; }
+#fotos-sync-atualizar[hidden] { display: none !important; }
