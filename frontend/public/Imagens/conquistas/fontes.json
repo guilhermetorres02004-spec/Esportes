@@ -1,0 +1,18 @@
+{
+  "verificadoEm": "2026-11-10",
+  "nota": "Fotos publicadas pela Prefeitura de Betim. Crédito identifica a publicação, não necessariamente o autor da fotografia. Fotos coletivas são apresentadas com legenda e sem identificação individual por posição.",
+  "imagens": [
+    {
+      "arquivo": "raysa-convocacao.jpg",
+      "paginaOrigem": "https://www.betim.mg.gov.br/portal/noticias/0/3/14315/atleta-de-betim-vai-representar-o-brasil-no-campeonato-mundial-de-atletismo-na-australia",
+      "imagemOriginal": "https://www.betim.mg.gov.br/fotos/9fdd06eaa09f31a8c12054fb8b08792a.jpg",
+      "tipo": "individual"
+    },
+    {
+      "arquivo": "delegacao-2025.jpg",
+      "paginaOrigem": "https://www.betim.mg.gov.br/portal/noticias/0/3/14461/atletas-do-viva-o-esporte-conquistam-seis-medalhas-no-campeonato-brasileiro-de-jovens-circuito-loterias-caixa",
+      "imagemOriginal": "https://www.betim.mg.gov.br/fotos/21f65f942a2c2861473936f63838ffbd.jpg",
+      "tipo": "coletiva"
+    }
+  ]
+}

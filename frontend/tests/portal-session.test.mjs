@@ -24,6 +24,14 @@ function preparar(respostas = [conta]) {
 }
 const pronto = () => new Promise(resolve => setImmediate(resolve));
 
+test('mantém login oculto para visitante quando o acesso está temporariamente desativado', async () => {
+    const t = preparar([{ status: 401 }]);
+    t.elementos['portal-session-login'].dataset = { temporariamenteDesativado: 'true' };
+    await pronto();
+    assert.equal(t.elementos['portal-session-login'].hidden, true);
+    assert.equal(t.elementos['portal-session-status'].hidden, true);
+});
+
 test('reconhece o admin pela sessão do servidor e envia o cookie em toda página', async () => {
     const t = preparar(); await pronto();
     assert.equal(t.elementos['portal-session-user'].textContent, 'Conectado: admin');
@@ -76,11 +84,12 @@ test('resposta antiga não restaura o login depois de Sair', async () => {
     assert.equal(t.elementos['portal-session-user'].hidden, true);
 });
 
-test('sessão é compartilhada pelas vinte páginas sem decidir acesso pelo nome da página', () => {
+test('sessão é compartilhada pelas 21 páginas sem decidir acesso pelo nome da página', () => {
     const header = readFileSync(new URL('../public/js/portal-header.js', import.meta.url), 'utf8');
     assert.match(header, /portal-session\.js/);
     assert.doesNotMatch(header, /const administrative|onclick="sair/);
     const paginas = readdirSync(new URL('../', import.meta.url)).filter(p => p.endsWith('.html'))
         .filter(p => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8').includes('/js/portal-header.js'));
-    assert.equal(paginas.length, 20);
+    assert.equal(paginas.length, 21);
+    assert.ok(paginas.includes('conquistas.html'));
 });

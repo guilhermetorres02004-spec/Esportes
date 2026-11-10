@@ -162,3 +162,41 @@ minimo 300); `FOTOS_CACHE_DIR` define o armazenamento. No Docker, a pasta padrao
 A atualizacao depende de a API estar em execucao. Fontes indisponiveis sao tentadas novamente no proximo ciclo.
 
 Testes: `npm run test:fotos` em `frontend` e `./mvnw.cmd test` em `backend`.
+
+## Conquistas com atualização automática
+
+`conquistas.html` consulta `/api/conquistas` ao abrir, a cada minuto e ao voltar à aba.
+O backend consulta as três primeiras páginas da editoria Esportes da Prefeitura a cada hora,
+com primeira busca cinco segundos após iniciar. Cada ciclo lê até 24 notícias candidatas.
+O filtro considera títulos de resultados (medalhas, pódios, conquistas, campeões e recordes),
+exclui anúncios de eventos futuros e aceita publicações oficiais a partir de 2025.
+O filtro depende do texto dos títulos e da estrutura do site; não garante cobertura completa.
+
+Novas notícias recebem cards com título oficial, resumo, data da publicação e fonte.
+Menções a atletas já cadastrados acrescentam notícias às timelines, sem atribuir a eles
+automaticamente todas as medalhas de uma notícia coletiva. Novos nomes ficam no título
+oficial do card; a rotina não inventa perfis individuais. Os perfis continuam sem fotos.
+As datas automáticas indicam publicação, não necessariamente o dia da competição.
+
+- `GET /api/conquistas`: `{ atualizadoEm, conquistas: [{ id, titulo, resumo, publicadoEm, fonte, atletas }] }`.
+- `GET /api/conquistas/status`: estado, horário, intervalo e aviso da última busca.
+- `POST /api/conquistas/atualizar`: solicita nova busca; requer sessão de administrador.
+
+O histórico é deduplicado pelo ID da notícia e salvo atomicamente em
+`backend/data/conquistas-oficiais/acervo.json`. É recuperado após reiniciar e preservado
+quando a fonte fica indisponível. Os destaques estáticos continuam disponíveis sem a API.
+Os marcos automáticos são ordenados pela data de publicação.
+
+A página exibe no máximo seis cards por ano, reunindo perfis originais e notícias importadas.
+A seleção é recalculada em cada atualização: alcance internacional, nacional, estadual e local;
+dentro do mesmo alcance, recordes, títulos/ouros, pratas e bronzes; depois publicação mais recente
+e ID como desempate estável. É uma regra editorial baseada no texto, não um ranking oficial.
+Notícias da mesma fonte dos perfis originais não geram cards repetidos. Cards que perdem posição
+saem da seleção, mas o histórico completo da API e as timelines dos atletas são preservados.
+Anos com menos de seis candidatos mostram apenas os registros disponíveis.
+
+Variáveis: `CONQUISTAS_SYNC_ENABLED` (padrão `true`), `CONQUISTAS_SYNC_INTERVALO`
+(segundos; padrão `3600`, mínimo `300`) e `CONQUISTAS_CACHE_DIR` (padrão
+`./data/conquistas-oficiais`). O backend deve permanecer ligado e com acesso HTTPS à Prefeitura.
+
+Testes: `node --test tests/conquistas*.test.mjs` em `frontend` e `./mvnw.cmd test` em `backend`.

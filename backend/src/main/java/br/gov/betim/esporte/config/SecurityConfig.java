@@ -32,12 +32,14 @@ public class SecurityConfig {
                                 "/api/modalidades/**",
                                 "/api/locais-esportivos/**",
                                 "/api/fotos/**",
+                                "/api/conquistas/**",
                                 "/api/imagens/exibindo").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/inscricoes", "/api/suporte/mensagens").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/suporte/status").permitAll()
                         .requestMatchers("/api/auth/me").permitAll()
                         .requestMatchers("/api/horto/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/fotos/atualizar").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/conquistas/atualizar").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .formLogin(form -> form
                         .loginProcessingUrl("/login")

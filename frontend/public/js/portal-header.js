@@ -16,15 +16,13 @@
 
     const page = window.location.pathname.split('/').pop().toLowerCase();
     const home = page === '' || page === 'index.html';
+    // Reativar os dois acessos do cabeçalho alterando esta opção para true.
+    const acessosHabilitados = false;
     const backId = page === 'inscricao.html' ? 'id="btnVoltarModalidade"' : '';
     const categorias = [
         ['Modalidades', [['Futebol', 'futebol.html'], ['Voleibol', 'volei.html'], ['Judô', 'detalhe-modalidade.html']]],
         ['Programas', [['Rendimento', 'index.html#rendimento'], ['Atividades Esportivas', 'index.html#atividades-esportivas'],
-            ['Escola Esporte', 'index.html#escola'], ['Viva o Esporte', 'index.html#viva-esporte']]],
-        ['Eventos', [['Agenda de Eventos', 'agenda.html'], ['Detalhes do Evento', 'detalhes-evento.html'], ['Quadras do Horto', 'agendamento-quadras.html']]],
-        ['Gestão', [['Administrativo', 'administrativo.html'], ['Arquivos', 'comunicacao.html'], ['Central de Downloads', 'downloads.html'],
-            ['Almoxarifado', 'almoxarifado.html'], ['Folha de Presença', 'frequenciapreenchimento.html'], ['Relatório de Presença', 'presenca.html'],
-            ['Matrix Impact', 'descanso.html'], ['Página Base', 'esporteteste.html']]]
+            ['Escola Esporte', 'index.html#escola'], ['Viva o Esporte', 'index.html#viva-esporte']]]
     ];
     const atual = href => !href.includes('#') && href === page ? ' aria-current="page"' : '';
     const menus = categorias.map(([nome, itens]) => `
@@ -55,7 +53,7 @@
                     </a>
                 </div>
                 <a href="index.html" class="portal-header-title">Portal do Esporte</a>
-                <a href="Inscricao.html" class="portal-header-primary">Inscreva-se</a>
+                ${acessosHabilitados ? '<a href="Inscricao.html" class="portal-header-primary">Inscreva-se</a>' : ''}
             </div>
         </header>
         <nav id="portal-site-header" class="portal-header-nav" aria-label="Acesso ao portal">
@@ -78,7 +76,7 @@
                     <div class="portal-header-actions">
                         <span id="portal-session-status" class="portal-header-session-status" role="status">Verificando sessão…</span>
                         <span id="portal-session-user" class="portal-header-user" hidden></span>
-                        <a id="portal-session-login" href="login.html" class="portal-header-action" hidden>Login</a>
+                        <a id="portal-session-login" href="login.html" class="portal-header-action" data-temporariamente-desativado="${!acessosHabilitados}" hidden>Login</a>
                         <button id="sair" type="button" class="portal-header-action portal-header-logout" hidden>Sair</button>
                     </div>
                     <details class="portal-header-menu">

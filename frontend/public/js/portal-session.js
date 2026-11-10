@@ -11,7 +11,7 @@
         usuario.setAttribute('data-initial', conta ? conta.username.trim().slice(0, 1).toUpperCase() : '');
         usuario.hidden = !conta;
         sair.hidden = !conta;
-        login.hidden = Boolean(conta);
+        login.hidden = Boolean(conta) || login.dataset?.temporariamenteDesativado === 'true';
         status.hidden = true;
     }
 
