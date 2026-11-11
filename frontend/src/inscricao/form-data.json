@@ -1,0 +1,299 @@
+{
+  "fonte": "Ficha_Inscricao_Programa_Viva_Esportes.xlsx · Ficha de Inscrição · A1:D40",
+  "sections": [
+    {
+      "titulo": "1. Dados do participante",
+      "campos": [
+        {
+          "name": "nome",
+          "label": "Nome completo",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "dataNascimento",
+          "label": "Data de nascimento",
+          "type": "date",
+          "required": true
+        },
+        {
+          "name": "cpf",
+          "label": "CPF",
+          "type": "text",
+          "required": false,
+          "inputMode": "numeric",
+          "maxLength": 14,
+          "placeholder": "000.000.000-00"
+        },
+        {
+          "name": "rg",
+          "label": "RG (se houver)",
+          "type": "text",
+          "required": false
+        },
+        {
+          "name": "genero",
+          "label": "Sexo (opcional)",
+          "type": "select",
+          "required": false,
+          "options": [
+            {
+              "value": "",
+              "text": "Prefiro não informar"
+            },
+            {
+              "value": "M",
+              "text": "Masculino"
+            },
+            {
+              "value": "F",
+              "text": "Feminino"
+            },
+            {
+              "value": "O",
+              "text": "Outro"
+            }
+          ]
+        },
+        {
+          "name": "endereco",
+          "label": "Endereço",
+          "type": "text",
+          "required": false
+        },
+        {
+          "name": "bairro",
+          "label": "Bairro",
+          "type": "text",
+          "required": false
+        },
+        {
+          "name": "cep",
+          "label": "CEP",
+          "type": "text",
+          "required": false,
+          "inputMode": "numeric",
+          "placeholder": "32000-000"
+        },
+        {
+          "name": "telefone",
+          "label": "Telefone / WhatsApp",
+          "type": "tel",
+          "required": true
+        },
+        {
+          "name": "email",
+          "label": "E-mail",
+          "type": "email",
+          "required": false
+        }
+      ]
+    },
+    {
+      "titulo": "2. Responsável legal (para menores de 18 anos)",
+      "campos": [
+        {
+          "name": "nomeResponsavel",
+          "label": "Nome completo do responsável",
+          "type": "text",
+          "required": false
+        },
+        {
+          "name": "parentesco",
+          "label": "Parentesco",
+          "type": "text",
+          "required": false
+        },
+        {
+          "name": "cpfResponsavel",
+          "label": "CPF do responsável",
+          "type": "text",
+          "required": false,
+          "inputMode": "numeric",
+          "maxLength": 14,
+          "placeholder": "000.000.000-00"
+        },
+        {
+          "name": "telefoneResponsavel",
+          "label": "Telefone / WhatsApp do responsável",
+          "type": "tel",
+          "required": false
+        },
+        {
+          "name": "telefoneAlternativo",
+          "label": "Telefone alternativo",
+          "type": "tel",
+          "required": false
+        }
+      ]
+    },
+    {
+      "titulo": "3. Informações da atividade esportiva",
+      "campos": [
+        {
+          "name": "modalidade",
+          "label": "Modalidade pretendida",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "nucleo",
+          "label": "Núcleo / local",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "turno",
+          "label": "Turno de preferência",
+          "type": "select",
+          "required": false,
+          "options": [
+            {
+              "value": "",
+              "text": "Selecione…"
+            },
+            {
+              "value": "Manhã",
+              "text": "Manhã"
+            },
+            {
+              "value": "Tarde",
+              "text": "Tarde"
+            },
+            {
+              "value": "Noite",
+              "text": "Noite"
+            }
+          ]
+        },
+        {
+          "name": "turmaHorario",
+          "label": "Turma / horário",
+          "type": "text",
+          "required": false
+        }
+      ]
+    },
+    {
+      "titulo": "4. Saúde e segurança",
+      "campos": [
+        {
+          "name": "possuiCondicaoSaude",
+          "label": "Possui condição de saúde, deficiência, restrição ou adaptação relevante para a prática esportiva?",
+          "type": "select",
+          "required": false,
+          "options": [
+            {
+              "value": "",
+              "text": "Selecione…"
+            },
+            {
+              "value": "nao",
+              "text": "Não"
+            },
+            {
+              "value": "sim",
+              "text": "Sim"
+            }
+          ]
+        },
+        {
+          "name": "informacoesSaude",
+          "label": "Informações necessárias",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "name": "contatoEmergencia",
+          "label": "Contato de emergência",
+          "type": "text",
+          "required": false
+        },
+        {
+          "name": "telefoneEmergencia",
+          "label": "Telefone do contato de emergência",
+          "type": "tel",
+          "required": false
+        }
+      ]
+    },
+    {
+      "titulo": "5. Declaração e autorização",
+      "campos": [
+        {
+          "name": "dataDeclaracao",
+          "label": "Betim, data",
+          "type": "date",
+          "required": true
+        },
+        {
+          "name": "assinatura",
+          "label": "Assinatura (nome completo de quem assina)",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "aceiteDeclaracao",
+          "label": "Declaro que as informações prestadas são verdadeiras e comprometo-me a respeitar as orientações e normas do Programa Viva Esportes. Autorizo minha participação, ou a do(a) menor sob minha responsabilidade, nas atividades esportivas, observadas as orientações de segurança informadas.",
+          "type": "checkbox",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "config": {
+    "futebol": {
+      "titulo": "Ficha de Inscrição - Futebol",
+      "subtitulo": "Inscrição para Futebol de Campo - Bom de Bola, Bom de Escola.",
+      "voltarTexto": "Voltar para Futebol",
+      "voltarHref": "/futebol",
+      "modalidade": "futebol",
+      "nucleos": [
+        "Alterosa",
+        "Citrolândia",
+        "Santa Inês",
+        "Senhora das Graças",
+        "São João",
+        "Cruzeiro do Sul",
+        "Itacolomi",
+        "Pingo D'Água"
+      ]
+    },
+    "volei": {
+      "titulo": "Ficha de Inscrição - Voleibol",
+      "subtitulo": "Inscrição para as turmas municipais de voleibol de Betim.",
+      "voltarTexto": "Voltar para Vôlei",
+      "voltarHref": "/volei",
+      "modalidade": "volei",
+      "nucleos": [
+        "Horto Municipal",
+        "Poliesportivo Divino Braga"
+      ]
+    },
+    "pilates": {
+      "titulo": "Ficha de Inscrição - Pilates",
+      "subtitulo": "Inscrição para aulas de Pilates - fortalecimento, postura e mobilidade.",
+      "voltarTexto": "Voltar para Pilates",
+      "voltarHref": "/pilates",
+      "modalidade": "pilates",
+      "nucleos": [
+        "Poliesportivo Divino Braga",
+        "Clube da Fiat",
+        "Ginásio Municipal Central"
+      ]
+    },
+    "funcional-soccer": {
+      "titulo": "Ficha de Inscrição - Funcional Soccer",
+      "subtitulo": "Inscrição para Funcional Soccer acima de 16 anos.",
+      "voltarTexto": "Voltar para Futebol",
+      "voltarHref": "/futebol",
+      "modalidade": "funcional-soccer",
+      "nucleos": [
+        "São João - Turma Feminina",
+        "São João - Turma Masculina",
+        "Senhora das Graças - Turma Feminina",
+        "Senhora das Graças - Turma Masculina"
+      ]
+    }
+  }
+}

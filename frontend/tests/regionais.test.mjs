@@ -7,6 +7,7 @@ import { build } from 'esbuild';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { filtrosVazios, filtrarEquipamentos, comoChegar, catalogoValido } from '../src/regionais/regionais-utils.js';
+import { enderecosRegionais, regionalMapEmbed, regionalMapLink } from '../src/regionais/mapas-regionais.js';
 
 const data = JSON.parse(readFileSync(new URL('../public/data/regionais.json', import.meta.url)));
 const bundle = await build({ entryPoints: [fileURLToPath(new URL('../src/regionais/RegionaisPage.jsx', import.meta.url))], bundle: true,
@@ -45,20 +46,43 @@ test('Como chegar codifica o nome e endereço sem criar coordenadas', () => {
     assert.ok(url.searchParams.get('query').includes(item.endereco));
 });
 
-test('página integrada tem seleção das dez regionais, filtros, detalhes e estado pendente', () => {
+test('entrada mostra Maps e seleção regional; informações aparecem somente após selecionar', () => {
     const anterior = globalThis.window;
     globalThis.window = { location: { search: '' } };
     try {
         const html = renderToStaticMarkup(React.createElement(module.exports.default, { initialCatalog: data }));
         assert.equal((html.match(/<h1\b/g) || []).length, 1);
         assert.match(html, /O esporte mais perto de você/);
-        assert.equal((html.match(/<select\b/g) || []).length, 5);
-        assert.match(html, /Mapa territorial pendente/);
-        assert.match(html, /Como chegar/);
-        assert.match(html, /Programa Viva o Esporte/);
+        assert.equal((html.match(/<select\b/g) || []).length, 0);
+        assert.match(html, /Mapa interativo com dez pins/);
+        assert.match(html, /Clique em uma regional/);
+        assert.doesNotMatch(html, /class="regional-equipment"|Programa Viva o Esporte|regional-results-title/);
         assert.match(html, /Rodapé institucional/);
         assert.doesNotMatch(html, /Administrar catálogo/);
         const home = readFileSync(new URL('../src/home/Sections.jsx', import.meta.url), 'utf8');
         assert.match(home, /title: 'Núcleos'[^\n]+href: '\/esporte-nas-regionais'/);
+        window.location.search = '?regional=centro';
+        const selected = renderToStaticMarkup(React.createElement(module.exports.default, { initialCatalog: data }));
+        assert.equal((selected.match(/<select\b/g) || []).length, 5);
+        assert.match(selected, /Regional Centro/);
+        assert.match(selected, /Como chegar/);
+        assert.match(selected, /Programa Viva o Esporte/);
+        assert.match(selected, /Escolher outra regional/);
+        const local = data.equipamentos.find(item => item.regionais.includes('centro'));
+        const fora = data.equipamentos.find(item => !item.regionais.includes('centro'));
+        assert.ok(selected.includes(local.nome));
+        assert.ok(!selected.includes(fora.nome));
     } finally { globalThis.window = anterior; }
+});
+
+test('cada regional consulta seu endereço oficial no Maps sem inventar coordenadas', () => {
+    assert.equal(Object.keys(enderecosRegionais).length, 10);
+    for (const regional of data.regionais) {
+        const embed = new URL(regionalMapEmbed(regional));
+        assert.equal(embed.hostname, 'maps.google.com');
+        assert.equal(embed.searchParams.get('output'), 'embed');
+        assert.ok(embed.searchParams.get('q').includes(enderecosRegionais[regional.id]));
+        assert.equal(new URL(regionalMapLink(regional)).hostname, 'www.google.com');
+    }
+    assert.equal(new URL(regionalMapEmbed(null)).searchParams.get('q'), 'Betim, MG, Brasil');
 });

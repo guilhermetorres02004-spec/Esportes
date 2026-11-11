@@ -4,6 +4,13 @@ import { readFileSync } from 'node:fs';
 import { runInNewContext } from 'node:vm';
 
 const codigo = readFileSync(new URL('../public/js/portal-header.js', import.meta.url), 'utf8');
+test('menus antigos Eventos e Gestão começam ocultos e preservam destinos', () => {
+    const { html } = preparar();
+    assert.match(html, /id="portal-menu-eventos" hidden/);
+    assert.match(html, /id="portal-menu-gestao" hidden/);
+    for (const href of ['/administrativo', '/inscricao', '/agenda.html', '/comunicacao.html', '/almoxarifado.html', '/presenca.html'])
+        assert.ok(html.includes(`href="${href}"`));
+});
 class Elemento {
     constructor(textContent = '') { this.textContent = textContent; this.handlers = {}; this.children = []; this.open = false; }
     addEventListener(tipo, handler) { this.handlers[tipo] = handler; }
@@ -32,7 +39,7 @@ function preparar(hover = true) {
     return { menus, document, html };
 }
 
-test('painéis recebem título, contador e descrições; acessos temporários continuam ocultos', () => {
+test('painéis recebem descrições e Entrar fica ao lado do título sem expor inscrição', () => {
     const t = preparar();
     for (const { painel, summary, link } of t.menus) {
         assert.equal(painel.children[0].className, 'portal-menu-heading');
@@ -42,10 +49,25 @@ test('painéis recebem título, contador e descrições; acessos temporários co
         assert.match(link.children[1].textContent, /Betim/);
     }
     assert.doesNotMatch(t.html, /class="portal-header-primary"/);
-    assert.match(t.html, /data-temporariamente-desativado="true" hidden>Login/);
+    const topbar = t.html.match(/<header class="portal-header-topbar">([\s\S]*?)<\/header>/)[1];
+    assert.ok(topbar.indexOf('class="portal-header-title"') < topbar.indexOf('id="portal-session-login"'));
+    assert.match(topbar, /<a id="portal-session-login" href="login\.html" class="portal-header-action portal-header-login" data-temporariamente-desativado="false" hidden><svg[^>]*aria-hidden="true"[^>]*>[\s\S]*?<\/svg>Entrar<\/a>/);
+    assert.match(topbar, /<button id="sair" type="button" class="portal-header-action portal-header-login portal-header-logout" hidden>/);
+    assert.equal((t.html.match(/id="sair"/g) || []).length, 1);
+    assert.doesNotMatch(t.html.match(/<nav id="portal-site-header"[\s\S]*?<\/nav>/)[0], /id="sair"/);
+    assert.doesNotMatch(t.html.match(/<nav id="portal-site-header"[\s\S]*?<\/nav>/)[0], /id="portal-session-login"/);
+    assert.doesNotMatch(t.html, />Inscreva-se</);
     assert.doesNotMatch(t.html, /href="index\.html/);
     assert.match(t.html, /href="\/#noticias"/);
     assert.match(t.html, /<nav id="portal-site-header" tabindex="-1"/);
+});
+
+test('acesso Entrar usa cápsula branca e alvo mínimo de 44px no cabeçalho azul', () => {
+    const css = readFileSync(new URL('../public/css/portal-base.css', import.meta.url), 'utf8');
+    assert.match(css, /\.portal-standard \.portal-header-topbar \.portal-header-login \{[^}]*min-height: 44px;[^}]*background: white;[^}]*color: var\(--betim-blue-dark, #023568\)/);
+    assert.match(css, /\.portal-standard \.portal-header-topbar \.portal-header-login svg \{ width: 16px; height: 16px; \}/);
+    assert.match(css, /\.portal-standard \.portal-header-topbar \.portal-header-login:focus-visible \{ outline: 3px solid #facc15;/);
+    assert.match(css, /\.portal-header-primary, \.portal-header-login \{ grid-row: 1; grid-column: 2; \}/);
 });
 
 test('mouse abre ao entrar, troca de menu e fecha ao sair sem foco interno', () => {

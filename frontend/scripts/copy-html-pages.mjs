@@ -8,8 +8,20 @@ const dist = join(root, "dist");
 if (!existsSync(dist)) {
   mkdirSync(dist, { recursive: true });
 }
+mkdirSync(join(dist, 'entrar'), { recursive: true });
+mkdirSync(join(dist, 'inscricao'), { recursive: true });
+copyFileSync(join(dist, 'index.html'), join(dist, 'inscricao', 'index.html'));
+for (const legacy of ['Inscricao.html', 'inscricao.html']) writeFileSync(join(dist, legacy), '<!doctype html><html lang="pt-BR"><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/inscricao"><title>Inscrição</title><a href="/inscricao">Abrir inscrição</a><script>location.replace("/inscricao"+location.search+location.hash)</script></html>');
+mkdirSync(join(dist, 'administrativo'), { recursive: true });
+copyFileSync(join(dist, 'index.html'), join(dist, 'administrativo', 'index.html'));
+writeFileSync(join(dist, 'administrativo.html'), '<!doctype html><html lang="pt-BR"><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/administrativo"><title>Administrativo</title><a href="/administrativo">Abrir administrativo</a><script>location.replace("/administrativo"+location.search+location.hash)</script></html>');
+copyFileSync(join(dist, 'index.html'), join(dist, 'entrar', 'index.html'));
+writeFileSync(join(dist, 'login.html'), '<!doctype html><html lang="pt-BR"><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/entrar"><title>Entrar</title><a href="/entrar">Abrir login</a><script>location.replace("/entrar"+location.search+location.hash)</script></html>');
 mkdirSync(join(dist, 'esporte-nas-regionais'), { recursive: true });
 copyFileSync(join(dist, 'index.html'), join(dist, 'esporte-nas-regionais', 'index.html'));
+mkdirSync(join(dist, 'conquistas'), { recursive: true });
+copyFileSync(join(dist, 'index.html'), join(dist, 'conquistas', 'index.html'));
+writeFileSync(join(dist, 'conquistas.html'), '<!doctype html><html lang="pt-BR"><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/conquistas"><title>Conquistas</title><a href="/conquistas">Abrir conquistas</a><script>location.replace("/conquistas"+location.search+location.hash)</script></html>');
 
 for (const modalidade of modalidadesEscola) {
   const directory = join(dist, modalidade.href.slice(1));
@@ -19,7 +31,7 @@ for (const modalidade of modalidadesEscola) {
 }
 
 for (const file of readdirSync(root)) {
-  if (extname(file).toLowerCase() === ".html" && file.toLowerCase() !== "index.html" && !modalidadesEscola.some(item => item.legacyHref === file)) {
+  if (extname(file).toLowerCase() === ".html" && !['index.html', 'conquistas.html', 'login.html', 'administrativo.html', 'inscricao.html'].includes(file.toLowerCase()) && !modalidadesEscola.some(item => item.legacyHref === file)) {
     copyFileSync(join(root, file), join(dist, file));
   }
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Footer from '../home/Footer.jsx';
 import RegionalMap from './RegionalMap.jsx';
 import CatalogAdmin from './CatalogAdmin.jsx';
@@ -35,12 +35,13 @@ export default function RegionaisPage({ initialCatalog = null } = {}) {
     }, [tentativa]);
     const regionais = catalogo?.regionais || [], equipamentos = catalogo?.equipamentos || [];
     const regional = regionais.find(item => item.id === filtros.regional);
-    const resultados = filtrarEquipamentos(equipamentos, filtros);
+    const resultados = useMemo(() => filtrarEquipamentos(equipamentos, filtros), [equipamentos, filtros]);
     const daRegional = equipamentos.filter(item => !regional || item.regionais.includes(regional.id));
     const programas = (catalogo?.programas || []).filter(item => !regional || item.regionais.includes(regional.id));
     const eventos = (catalogo?.eventos || []).filter(item => !regional || item.regionais.includes(regional.id));
     function selecionar(id) {
-        setFiltros(anteriores => ({ ...anteriores, regional: id, bairro: '' }));
+        setFiltros({ ...filtrosVazios, regional: id });
+        setDetalhe(null);
         const url = new URL(window.location.href); if (id) url.searchParams.set('regional', id); else url.searchParams.delete('regional');
         window.history.replaceState(window.history.state, '', url.pathname + url.search);
     }
@@ -48,18 +49,21 @@ export default function RegionaisPage({ initialCatalog = null } = {}) {
         <main id="conteudo" className="regionais-page" tabIndex={-1}>
             {status && <p role="status" className="regional-note">{status}</p>}
             {!catalogo && <button type="button" onClick={() => setTentativa(value => value + 1)}>Tentar carregar novamente</button>}
-            {catalogo && <><RegionalMap equipamentos={resultados} />
-                <nav className="regional-selector" aria-label="Selecionar regional"><button type="button" aria-pressed={!regional} onClick={() => selecionar('')}>Todas as regionais</button>
-                    {regionais.map(item => <button type="button" key={item.id} aria-pressed={regional?.id === item.id} onClick={() => selecionar(item.id)}>{item.nome}<small>{equipamentos.filter(e => e.regionais.includes(item.id)).length} locais publicados</small></button>)}</nav>
-                {regional && <section className="regional-panel" aria-labelledby="regional-title"><p className="regional-eyebrow">Regional selecionada</p><h2 id="regional-title">Regional {regional.nome}</h2>
+            {catalogo && <><RegionalMap regional={regional} onSelect={selecionar} equipamentos={resultados} regionais={regionais} onDetails={setDetalhe} />
+                <nav className="regional-selector" aria-label="Selecionar regional">
+                    {regionais.map(item => <button type="button" key={item.id} aria-pressed={regional?.id === item.id} onClick={() => selecionar(item.id)}>{item.nome}<small>{regional?.id === item.id ? 'Selecionada' : 'Ver núcleos'}</small></button>)}</nav>
+                {!regional && <p className="regional-note" role="status">Clique em uma regional para exibir seus núcleos, atividades e demais informações.</p>}
+                {regional && <>
+                <button type="button" className="regional-reset" onClick={() => selecionar('')}>← Escolher outra regional</button>
+                <section className="regional-panel" aria-labelledby="regional-title"><p className="regional-eyebrow">Regional selecionada</p><h2 id="regional-title">Regional {regional.nome}</h2>
                     <p>Consulte os equipamentos e as informações esportivas publicados pela plataforma municipal para a Regional {regional.nome}.</p>
                     <p><strong>Modalidades informadas nos locais:</strong> {valores(daRegional, 'modalidades').join(', ') || 'Cadastro de modalidades pendente.'}</p>
-                    <a href={regional.fonte} target="_blank" rel="noopener noreferrer">Abrir página oficial da Regional {regional.nome} ↗</a></section>}
+                    <a href={regional.fonte} target="_blank" rel="noopener noreferrer">Abrir página oficial da Regional {regional.nome} ↗</a></section>
                 <section aria-labelledby="regionais-results-title"><h2 id="regionais-results-title">Encontre onde praticar</h2>
                     <form className="regional-filters" onSubmit={event => event.preventDefault()}>
-                        <label>Regional<select value={filtros.regional} onChange={event => selecionar(event.target.value)}><option value="">Todas</option>{regionais.map(item => <option key={item.id} value={item.id}>{item.nome}</option>)}</select></label>
+                        <label>Regional<select value={filtros.regional} onChange={event => selecionar(event.target.value)}>{regionais.map(item => <option key={item.id} value={item.id}>{item.nome}</option>)}</select></label>
                         {[['bairro', 'Bairro', 'bairro'], ['modalidade', 'Modalidade', 'modalidades'], ['tipo', 'Tipo de equipamento', 'tipo'], ['programa', 'Programa', 'programas']].map(([key, label, field]) => <label key={key}>{label}<select value={filtros[key]} onChange={event => setFiltros(old => ({ ...old, [key]: event.target.value }))}><option value="">Todos</option>{valores(equipamentos, field).map(value => <option key={value}>{value}</option>)}</select></label>)}
-                        <button type="button" onClick={() => { setFiltros(filtrosVazios); selecionar(''); }}>Limpar filtros</button>
+                        <button type="button" onClick={() => { setFiltros({ ...filtrosVazios, regional: regional.id }); }}>Limpar filtros</button>
                     </form><p role="status">{resultados.length} {resultados.length === 1 ? 'equipamento encontrado' : 'equipamentos encontrados'}</p>
                     {!resultados.length && <div className="regional-note">Nenhum local corresponde a esses filtros. Tente outra combinação. Ausência de cadastro não significa ausência de oferta na regional.</div>}
                     <div className="regional-equipment-grid">{resultados.map(item => <EquipmentCard key={item.id} item={item} regionais={regionais} onDetails={setDetalhe} />)}</div>
@@ -70,7 +74,9 @@ export default function RegionaisPage({ initialCatalog = null } = {}) {
                 <section className="regional-panel"><h2>Eventos e competições{regional ? ` · ${regional.nome}` : ''}</h2>{eventos.length ? <ul>{eventos.map(item => <li key={item.id}><a href={item.fonte} target="_blank" rel="noopener noreferrer">{item.nome}</a>{item.data && ` · ${item.data}`}</li>)}</ul> : <p>Ainda não há eventos vinculados à seleção neste catálogo.</p>}<a href="/agenda.html">Consultar a agenda do portal →</a></section>
                 <section className="regional-panel"><h2>Fotografias dos locais{regional ? ` · ${regional.nome}` : ''}</h2><div className="regional-gallery">{daRegional.filter(item => item.foto).slice(0, 6).map(item => <figure key={item.id}><LocalPhoto item={item} /><figcaption><a href={item.fonte} target="_blank" rel="noopener noreferrer">{item.nome} · Fonte municipal</a></figcaption></figure>)}</div>{!daRegional.some(item => item.foto) && <p>Galeria pendente de fotografias confirmadas para esta seleção.</p>}</section>
                 <p className="regional-source">Dados consultados em {new Date(catalogo.atualizadoEm).toLocaleDateString('pt-BR')}. Horários, acessibilidade, fotos ou endereços ausentes permanecem indicados como não confirmados. <a href="https://regionais.betim.digital/" target="_blank" rel="noopener noreferrer">Fonte: Regionais Conectadas — Prefeitura de Betim.</a></p>
-                <CatalogAdmin catalogo={catalogo} onSave={setCatalogo} /><EquipmentDetails item={detalhe} onClose={() => setDetalhe(null)} />
+                <EquipmentDetails item={detalhe} onClose={() => setDetalhe(null)} />
+                </>}
+                <CatalogAdmin catalogo={catalogo} onSave={setCatalogo} />
             </>}
         </main><Footer /></>;
 }

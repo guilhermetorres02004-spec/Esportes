@@ -3,6 +3,7 @@
     const login = document.getElementById('portal-session-login');
     const sair = document.getElementById('sair');
     const status = document.getElementById('portal-session-status');
+    const menusAutenticados = ['portal-menu-eventos', 'portal-menu-gestao'].map(id => document.getElementById(id)).filter(Boolean);
     if (!usuario || !login || !sair || !status) return;
     let sequencia = 0, consultando = false, saindo = false;
 
@@ -12,6 +13,7 @@
         usuario.hidden = !conta;
         sair.hidden = !conta;
         login.hidden = Boolean(conta) || login.dataset?.temporariamenteDesativado === 'true';
+        for (const menu of menusAutenticados) { menu.hidden = !conta; if (!conta) menu.open = false; }
         status.hidden = true;
     }
 

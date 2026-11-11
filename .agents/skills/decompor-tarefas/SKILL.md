@@ -5,6 +5,10 @@ description: Divide qualquer tarefa no maior número possível de etapas atômic
 
 # Decompor Tarefas — execução atômica e verificada
 
+## Contexto deste projeto: `:skill`
+
+Neste repositório, `:skill` também ativa os padrões de `docs/padroes-portal.md`. Antes da tarefa, leia essa referência, `AGENTS.md` e o estado mais recente em `docs/retomada.md` (caminhos relativos à raiz do projeto). Aplique o visual compartilhado e implemente páginas em React no portal existente. Home, modalidades, Núcleos e Conquistas já usam React; confirme o código e adapte páginas legadas somente quando fizerem parte do pedido. Não inicie migração global, piloto paralelo ou publicação com base no atalho.
+
 Você vai resolver a tarefa do usuário quebrando-a no **maior número possível de etapas atômicas**, executando **uma etapa por vez** e **verificando cada uma** antes de seguir. O objetivo é manter o foco total em pouca coisa de cada vez, só afirmar o que foi comprovado e entregar exatamente o que foi pedido, nem mais nem menos.
 
 ## Princípios inegociáveis

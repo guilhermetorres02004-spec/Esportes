@@ -1,0 +1,92 @@
+[
+  {
+    "id": "perfil-raysa",
+    "atleta": "raysa",
+    "titulo": "Raysa Mendonça",
+    "categoria": "Atletismo · Open Internacional CBDI",
+    "resultado": "Dois ouros e duas pratas",
+    "resumo": "Venceu os 100 m e o lançamento de dardo. Também subiu ao pódio nos 200 m e no arremesso de peso, em São Caetano do Sul.",
+    "fonte": "https://www.betim.mg.gov.br/portal/noticias/0/3/15571/betim-conquista-oito-medalhas-no-open-internacional-de-atletismo",
+    "publicadoEm": "2026-09-07"
+  },
+  {
+    "id": "perfil-juliana",
+    "atleta": "juliana",
+    "titulo": "Juliana da Silva",
+    "categoria": "Atletismo · Open Internacional CBDI",
+    "resultado": "Prata no lançamento de dardo",
+    "resumo": "Garantiu um lugar no pódio internacional e contribuiu para as oito medalhas da delegação betinense.",
+    "fonte": "https://www.betim.mg.gov.br/portal/noticias/0/3/15571/betim-conquista-oito-medalhas-no-open-internacional-de-atletismo",
+    "publicadoEm": "2026-09-07"
+  },
+  {
+    "id": "perfil-brunielle",
+    "atleta": "brunielle",
+    "titulo": "Brunielle Romero",
+    "categoria": "Atletismo · Open Internacional CBDI",
+    "resultado": "Dois bronzes",
+    "resumo": "Conquistou medalhas nas provas de 400 m e 800 m no Open Internacional de Atletismo.",
+    "fonte": "https://www.betim.mg.gov.br/portal/noticias/0/3/15571/betim-conquista-oito-medalhas-no-open-internacional-de-atletismo",
+    "publicadoEm": "2026-09-07"
+  },
+  {
+    "id": "perfil-lucas",
+    "atleta": "lucas",
+    "titulo": "Lucas Ribeiro",
+    "categoria": "Atletismo · Open Internacional CBDI",
+    "resultado": "Bronze no lançamento de disco",
+    "resumo": "Representou Betim no pódio do Open Internacional, disputado entre 28 e 30 de agosto.",
+    "fonte": "https://www.betim.mg.gov.br/portal/noticias/0/3/15571/betim-conquista-oito-medalhas-no-open-internacional-de-atletismo",
+    "publicadoEm": "2026-09-07"
+  },
+  {
+    "id": "perfil-equipe",
+    "atleta": "equipe",
+    "titulo": "Equipe Viva o Esporte",
+    "categoria": "Judô · 35ª Copa Betim Open",
+    "resultado": "Campeã geral",
+    "resumo": "A equipe de Betim liderou a competição entre 51 agremiações. Foram 455 pontos e 130 medalhas na Copa, realizada em agosto.",
+    "fonte": "https://www.betim.mg.gov.br/portal/noticias/0/3/15559/betim-e-campea-geral-da-35-copa-betim-open-de-judo/",
+    "publicadoEm": "2026-08-31"
+  },
+  {
+    "id": "perfil-eduardo",
+    "atleta": "eduardo",
+    "titulo": "Eduardo Monteiro",
+    "categoria": "Atletismo paralímpico · Brasileiro de Jovens",
+    "resultado": "Ouro nos 100 m",
+    "resumo": "Campeão na classe T-71 Sub-20, no Circuito Loterias Caixa, em São Paulo.",
+    "fonte": "https://www.betim.mg.gov.br/portal/noticias/0/3/14461/atletas-do-viva-o-esporte-conquistam-seis-medalhas-no-campeonato-brasileiro-de-jovens-circuito-loterias-caixa",
+    "publicadoEm": "2025-10-17"
+  },
+  {
+    "id": "perfil-joao",
+    "atleta": "joao",
+    "titulo": "João Pedro",
+    "categoria": "Atletismo paralímpico · Brasileiro de Jovens",
+    "resultado": "Prata nos 200 m e 400 m",
+    "resumo": "Dois pódios na classe T-37 Sub-20, representando o programa Viva o Esporte.",
+    "fonte": "https://www.betim.mg.gov.br/portal/noticias/0/3/14461/atletas-do-viva-o-esporte-conquistam-seis-medalhas-no-campeonato-brasileiro-de-jovens-circuito-loterias-caixa",
+    "publicadoEm": "2025-10-17"
+  },
+  {
+    "id": "perfil-richard",
+    "atleta": "richard",
+    "titulo": "Richard Gabriel",
+    "categoria": "Atletismo paralímpico · Brasileiro de Jovens",
+    "resultado": "Prata no salto em distância",
+    "resumo": "Saltou 5,27 m na classe F-20 Sub-23 e levou Betim ao pódio nacional.",
+    "fonte": "https://www.betim.mg.gov.br/portal/noticias/0/3/14461/atletas-do-viva-o-esporte-conquistam-seis-medalhas-no-campeonato-brasileiro-de-jovens-circuito-loterias-caixa",
+    "publicadoEm": "2025-10-17"
+  },
+  {
+    "id": "perfil-raphael",
+    "atleta": "raphael",
+    "titulo": "Raphael Assis",
+    "categoria": "Atletismo paralímpico · Brasileiro de Jovens",
+    "resultado": "Dois bronzes",
+    "resumo": "Medalhista no lançamento de dardo e no arremesso de peso, na classe F-37.",
+    "fonte": "https://www.betim.mg.gov.br/portal/noticias/0/3/14461/atletas-do-viva-o-esporte-conquistam-seis-medalhas-no-campeonato-brasileiro-de-jovens-circuito-loterias-caixa",
+    "publicadoEm": "2025-10-17"
+  }
+]

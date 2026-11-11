@@ -1,0 +1,15 @@
+---
+description: Instruções comuns do Portal do Esporte e atalhos de conversa
+alwaysApply: true
+---
+
+Leia e siga `AGENTS.md`, fonte comum das instruções deste projeto.
+Ao receber `:adpte`, siga `.agents/skills/adpte/SKILL.md` para adaptar a página
+indicada aos padrões do portal e a React, conforme `AGENTS.md`.
+Ao receber `:commit`, siga o versionamento de `AGENTS.md`: commit local e tag
+sequencial `v1.N`, incrementando a maior versão existente; push somente se solicitado.
+Ao receber `:skill`, leia `.agents/skills/decompor-tarefas/SKILL.md`,
+`docs/padroes-portal.md` e `docs/retomada.md`. Aplique os padrões visuais e React
+às páginas no escopo, preservando o portal existente e as páginas já migradas.
+Para `:return`, siga o fluxo de retomada de `AGENTS.md`, com confirmação entre lotes.
+Atualize `docs/retomada.md` ao concluir trabalho no projeto.

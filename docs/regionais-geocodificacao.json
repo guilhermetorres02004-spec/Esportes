@@ -1,0 +1,1111 @@
+{
+  "Rua do Rosário, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 424970601,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 1546866963,
+      "lat": "-19.9635101",
+      "lon": "-44.2031076",
+      "category": "highway",
+      "type": "tertiary",
+      "place_rank": 26,
+      "importance": 0.05339656137941554,
+      "addresstype": "tertiary",
+      "name": "Rua do Rosário",
+      "display_name": "Rua do Rosário, Regional Sede, Betim, Minas Gerais, Região Sudeste, 32604-222, Brasil",
+      "address": {
+        "road": "Rua do Rosário",
+        "neighbourhood": "Regional Sede",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32604-222",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9655383",
+        "-19.9615427",
+        "-44.2041156",
+        "-44.2019686"
+      ]
+    },
+    {
+      "place_id": 11175011,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 705647290,
+      "lat": "-19.9568680",
+      "lon": "-44.2004862",
+      "category": "highway",
+      "type": "tertiary",
+      "place_rank": 26,
+      "importance": 0.05339656137941554,
+      "addresstype": "tertiary",
+      "name": "Rua do Rosário",
+      "display_name": "Rua do Rosário, Regional Sede, Betim, Minas Gerais, Região Sudeste, 32604-122, Brasil",
+      "address": {
+        "road": "Rua do Rosário",
+        "neighbourhood": "Regional Sede",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32604-122",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9589430",
+        "-19.9547842",
+        "-44.2010748",
+        "-44.1999290"
+      ]
+    },
+    {
+      "place_id": 381551793,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 206693569,
+      "lat": "-19.9469034",
+      "lon": "-44.1988850",
+      "category": "highway",
+      "type": "tertiary",
+      "place_rank": 26,
+      "importance": 0.05339656137941554,
+      "addresstype": "tertiary",
+      "name": "Rua do Rosário",
+      "display_name": "Rua do Rosário, Regional Norte, Betim, Minas Gerais, Região Sudeste, 32604-498, Brasil",
+      "address": {
+        "road": "Rua do Rosário",
+        "neighbourhood": "Regional Norte",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32604-498",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9490185",
+        "-19.9447554",
+        "-44.1994364",
+        "-44.1985830"
+      ]
+    },
+    {
+      "place_id": 381551791,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 206693004,
+      "lat": "-19.9501310",
+      "lon": "-44.1997167",
+      "category": "highway",
+      "type": "tertiary",
+      "place_rank": 26,
+      "importance": 0.05339656137941554,
+      "addresstype": "tertiary",
+      "name": "Rua do Rosário",
+      "display_name": "Rua do Rosário, Regional Norte, Betim, Minas Gerais, Região Sudeste, 32604-035, Brasil",
+      "address": {
+        "road": "Rua do Rosário",
+        "neighbourhood": "Regional Norte",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32604-035",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9510439",
+        "-19.9490185",
+        "-44.2003841",
+        "-44.1994364"
+      ]
+    }
+  ],
+  "Avenida Campos de Ouriques, Betim, Minas Gerais, Brasil": [],
+  "Avenida Rio Madeira, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 11145453,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 717790890,
+      "lat": "-19.9728617",
+      "lon": "-44.1411273",
+      "category": "highway",
+      "type": "secondary",
+      "place_rank": 26,
+      "importance": 0.05339656137941554,
+      "addresstype": "secondary",
+      "name": "Avenida Rio Madeira",
+      "display_name": "Avenida Rio Madeira, Regional PTB, Betim, Minas Gerais, Região Sudeste, 32667-025, Brasil",
+      "address": {
+        "road": "Avenida Rio Madeira",
+        "neighbourhood": "Regional PTB",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32667-025",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9756836",
+        "-19.9699719",
+        "-44.1428100",
+        "-44.1395826"
+      ]
+    },
+    {
+      "place_id": 11159995,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 389217170,
+      "lat": "-19.9665640",
+      "lon": "-44.1387201",
+      "category": "highway",
+      "type": "secondary",
+      "place_rank": 26,
+      "importance": 0.05339656137941554,
+      "addresstype": "secondary",
+      "name": "Avenida Rio Madeira",
+      "display_name": "Avenida Rio Madeira, Regional PTB, Betim, Minas Gerais, Região Sudeste, 32665-708, Brasil",
+      "address": {
+        "road": "Avenida Rio Madeira",
+        "neighbourhood": "Regional PTB",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32665-708",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9673186",
+        "-19.9657789",
+        "-44.1389953",
+        "-44.1385524"
+      ]
+    },
+    {
+      "place_id": 11141517,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 389217171,
+      "lat": "-19.9635327",
+      "lon": "-44.1382511",
+      "category": "highway",
+      "type": "secondary",
+      "place_rank": 26,
+      "importance": 0.05339656137941554,
+      "addresstype": "secondary",
+      "name": "Avenida Rio Madeira",
+      "display_name": "Avenida Rio Madeira, Regional PTB, Betim, Minas Gerais, Região Sudeste, 32667-305, Brasil",
+      "address": {
+        "road": "Avenida Rio Madeira",
+        "neighbourhood": "Regional PTB",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32667-305",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9645035",
+        "-19.9625597",
+        "-44.1383886",
+        "-44.1381295"
+      ]
+    },
+    {
+      "place_id": 424971201,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 1546870479,
+      "lat": "-19.9677488",
+      "lon": "-44.1389547",
+      "category": "highway",
+      "type": "secondary",
+      "place_rank": 26,
+      "importance": 0.05339656137941554,
+      "addresstype": "secondary",
+      "name": "Praça Baltazar de Castro",
+      "display_name": "Praça Baltazar de Castro, Regional PTB, Betim, Minas Gerais, Região Sudeste, 32667-100, Brasil",
+      "address": {
+        "road": "Praça Baltazar de Castro",
+        "neighbourhood": "Regional PTB",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32667-100",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9678200",
+        "-19.9676382",
+        "-44.1390399",
+        "-44.1389472"
+      ]
+    }
+  ],
+  "Rua Lurossa, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 11094203,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 370588140,
+      "lat": "-19.8600470",
+      "lon": "-44.1533504",
+      "category": "highway",
+      "type": "residential",
+      "place_rank": 26,
+      "importance": 0.05339656137941554,
+      "addresstype": "residential",
+      "name": "Rua Lurossa",
+      "display_name": "Rua Lurossa, Regional Icaivera, Betim, Minas Gerais, Região Sudeste, 32611-268, Brasil",
+      "address": {
+        "road": "Rua Lurossa",
+        "neighbourhood": "Regional Icaivera",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32611-268",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.8624676",
+        "-19.8579983",
+        "-44.1553811",
+        "-44.1520537"
+      ]
+    },
+    {
+      "place_id": 11107919,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 370588141,
+      "lat": "-19.8569469",
+      "lon": "-44.1560146",
+      "category": "highway",
+      "type": "residential",
+      "place_rank": 26,
+      "importance": 0.05339656137941554,
+      "addresstype": "residential",
+      "name": "Rua Lurossa",
+      "display_name": "Rua Lurossa, Regional Icaivera, Betim, Minas Gerais, Região Sudeste, 32611-310, Brasil",
+      "address": {
+        "road": "Rua Lurossa",
+        "neighbourhood": "Regional Icaivera",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32611-310",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.8579983",
+        "-19.8558792",
+        "-44.1566202",
+        "-44.1553811"
+      ]
+    }
+  ],
+  "Avenida Dr. José Mariano, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 9757676,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 224404285,
+      "lat": "-20.0323673",
+      "lon": "-44.2280097",
+      "category": "highway",
+      "type": "tertiary",
+      "place_rank": 26,
+      "importance": 0.05339656137941554,
+      "addresstype": "tertiary",
+      "name": "Avenida Doutor José Mariano",
+      "display_name": "Avenida Doutor José Mariano, Regional Citrolândia, Betim, Minas Gerais, Região Sudeste, 32641-680, Brasil",
+      "address": {
+        "road": "Avenida Doutor José Mariano",
+        "neighbourhood": "Regional Citrolândia",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32641-680",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-20.0342874",
+        "-20.0303595",
+        "-44.2285663",
+        "-44.2270740"
+      ]
+    },
+    {
+      "place_id": 9792610,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 948391897,
+      "lat": "-20.0255371",
+      "lon": "-44.2303297",
+      "category": "highway",
+      "type": "tertiary",
+      "place_rank": 26,
+      "importance": 0.05339656137941554,
+      "addresstype": "tertiary",
+      "name": "Avenida Doutor José Mariano",
+      "display_name": "Avenida Doutor José Mariano, Regional Citrolândia, Betim, Minas Gerais, Região Sudeste, 32641-834, Brasil",
+      "address": {
+        "road": "Avenida Doutor José Mariano",
+        "neighbourhood": "Regional Citrolândia",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32641-834",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-20.0272110",
+        "-20.0234809",
+        "-44.2304579",
+        "-44.2291635"
+      ]
+    },
+    {
+      "place_id": 9770114,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 1339094629,
+      "lat": "-20.0285856",
+      "lon": "-44.2280980",
+      "category": "highway",
+      "type": "tertiary",
+      "place_rank": 26,
+      "importance": 0.05339656137941554,
+      "addresstype": "tertiary",
+      "name": "Avenida Doutor José Mariano",
+      "display_name": "Avenida Doutor José Mariano, Regional Citrolândia, Betim, Minas Gerais, Região Sudeste, 32641-754, Brasil",
+      "address": {
+        "road": "Avenida Doutor José Mariano",
+        "neighbourhood": "Regional Citrolândia",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32641-754",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-20.0303595",
+        "-20.0272110",
+        "-44.2291635",
+        "-44.2280397"
+      ]
+    },
+    {
+      "place_id": 9738718,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 1339094630,
+      "lat": "-20.0349495",
+      "lon": "-44.2254285",
+      "category": "highway",
+      "type": "tertiary",
+      "place_rank": 26,
+      "importance": 0.05339656137941554,
+      "addresstype": "tertiary",
+      "name": "Avenida Doutor José Mariano",
+      "display_name": "Avenida Doutor José Mariano, Regional Citrolândia, Betim, Minas Gerais, Região Sudeste, 32641-370, Brasil",
+      "address": {
+        "road": "Avenida Doutor José Mariano",
+        "neighbourhood": "Regional Citrolândia",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32641-370",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-20.0350439",
+        "-20.0342874",
+        "-44.2270740",
+        "-44.2235775"
+      ]
+    }
+  ],
+  "Avenida São Caetano, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 11144367,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 717427957,
+      "lat": "-19.9375961",
+      "lon": "-44.1122286",
+      "category": "highway",
+      "type": "tertiary",
+      "place_rank": 26,
+      "importance": 0.05339656137941554,
+      "addresstype": "tertiary",
+      "name": "Avenida São Caetano",
+      "display_name": "Avenida São Caetano, Regional Imbiruçu, Betim, Minas Gerais, Região Sudeste, 32677-800, Brasil",
+      "address": {
+        "road": "Avenida São Caetano",
+        "neighbourhood": "Regional Imbiruçu",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32677-800",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9390183",
+        "-19.9360049",
+        "-44.1131120",
+        "-44.1111792"
+      ]
+    },
+    {
+      "place_id": 11144790,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 224364023,
+      "lat": "-19.9402633",
+      "lon": "-44.1081389",
+      "category": "highway",
+      "type": "tertiary",
+      "place_rank": 26,
+      "importance": 0.05339656137941554,
+      "addresstype": "tertiary",
+      "name": "Avenida São Caetano",
+      "display_name": "Avenida São Caetano, Regional Imbiruçu, Betim, Minas Gerais, Região Sudeste, 32677-312, Brasil",
+      "address": {
+        "road": "Avenida São Caetano",
+        "neighbourhood": "Regional Imbiruçu",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32677-312",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9406132",
+        "-19.9399347",
+        "-44.1090581",
+        "-44.1072277"
+      ]
+    },
+    {
+      "place_id": 424038747,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 1546866917,
+      "lat": "-19.9393289",
+      "lon": "-44.1104642",
+      "category": "highway",
+      "type": "tertiary",
+      "place_rank": 26,
+      "importance": 0.05339656137941554,
+      "addresstype": "tertiary",
+      "name": "Avenida São Caetano",
+      "display_name": "Avenida São Caetano, Regional Imbiruçu, Betim, Minas Gerais, Região Sudeste, 32677-342, Brasil",
+      "address": {
+        "road": "Avenida São Caetano",
+        "neighbourhood": "Regional Imbiruçu",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32677-342",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9396375",
+        "-19.9390183",
+        "-44.1111792",
+        "-44.1097483"
+      ]
+    },
+    {
+      "place_id": 424038748,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 1546866918,
+      "lat": "-19.9396878",
+      "lon": "-44.1096282",
+      "category": "highway",
+      "type": "tertiary",
+      "place_rank": 26,
+      "importance": 0.05339656137941554,
+      "addresstype": "tertiary",
+      "name": "Avenida São Caetano",
+      "display_name": "Avenida São Caetano, Regional Imbiruçu, Betim, Minas Gerais, Região Sudeste, 32677-340, Brasil",
+      "address": {
+        "road": "Avenida São Caetano",
+        "neighbourhood": "Regional Imbiruçu",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32677-340",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9397381",
+        "-19.9396375",
+        "-44.1097483",
+        "-44.1095082"
+      ]
+    }
+  ],
+  "Rua Cambuci, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 11022605,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 502222905,
+      "lat": "-19.9483932",
+      "lon": "-44.1099198",
+      "category": "highway",
+      "type": "tertiary",
+      "place_rank": 26,
+      "importance": 0.05339656137941554,
+      "addresstype": "tertiary",
+      "name": "Rua Cambuci",
+      "display_name": "Rua Cambuci, Regional Teresópolis, Betim, Minas Gerais, Região Sudeste, 32684-018, Brasil",
+      "address": {
+        "road": "Rua Cambuci",
+        "neighbourhood": "Regional Teresópolis",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32684-018",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9491405",
+        "-19.9476991",
+        "-44.1110420",
+        "-44.1087594"
+      ]
+    },
+    {
+      "place_id": 11021191,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 126352325,
+      "lat": "-19.9475650",
+      "lon": "-44.1085436",
+      "category": "highway",
+      "type": "tertiary",
+      "place_rank": 26,
+      "importance": 0.05339656137941554,
+      "addresstype": "tertiary",
+      "name": "Rua Cambuci",
+      "display_name": "Rua Cambuci, Regional Teresópolis, Betim, Minas Gerais, Região Sudeste, 32684-025, Brasil",
+      "address": {
+        "road": "Rua Cambuci",
+        "neighbourhood": "Regional Teresópolis",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32684-025",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9476853",
+        "-19.9474447",
+        "-44.1087359",
+        "-44.1083514"
+      ]
+    },
+    {
+      "place_id": 11010243,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 126352336,
+      "lat": "-19.9474648",
+      "lon": "-44.1086511",
+      "category": "highway",
+      "type": "tertiary_link",
+      "place_rank": 27,
+      "importance": 0.040063228046082235,
+      "addresstype": "road",
+      "name": "Rua Cambuci",
+      "display_name": "Rua Cambuci, Regional Teresópolis, Betim, Minas Gerais, Região Sudeste, 32684-025, Brasil",
+      "address": {
+        "road": "Rua Cambuci",
+        "neighbourhood": "Regional Teresópolis",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32684-025",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9476853",
+        "-19.9472469",
+        "-44.1087458",
+        "-44.1086463"
+      ]
+    }
+  ],
+  "Rua Índia, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 9754618,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 507403962,
+      "lat": "-20.0020653",
+      "lon": "-44.1220827",
+      "category": "highway",
+      "type": "unclassified",
+      "place_rank": 26,
+      "importance": 0.05339656137941554,
+      "addresstype": "unclassified",
+      "name": "Rua Índia",
+      "display_name": "Rua Índia, Regional Petrovale, Betim, Minas Gerais, Região Sudeste, 32668-102, Brasil",
+      "address": {
+        "road": "Rua Índia",
+        "neighbourhood": "Regional Petrovale",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32668-102",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-20.0055485",
+        "-19.9999267",
+        "-44.1244041",
+        "-44.1194576"
+      ]
+    },
+    {
+      "place_id": 423656877,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 29175910,
+      "lat": "-19.9984861",
+      "lon": "-44.1173564",
+      "category": "highway",
+      "type": "residential",
+      "place_rank": 26,
+      "importance": 0.053395316243228776,
+      "addresstype": "residential",
+      "name": "Rua Índia",
+      "display_name": "Rua Índia, Regional Petrovale, Betim, Minas Gerais, Região Sudeste, 32668-102, Brasil",
+      "address": {
+        "road": "Rua Índia",
+        "neighbourhood": "Regional Petrovale",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32668-102",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9999267",
+        "-19.9984371",
+        "-44.1200155",
+        "-44.1143929"
+      ]
+    }
+  ],
+  "Rua Conceição Lima, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 9801629,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 370754742,
+      "lat": "-20.0205282",
+      "lon": "-44.2420619",
+      "category": "highway",
+      "type": "unclassified",
+      "place_rank": 26,
+      "importance": 0.05339656137941554,
+      "addresstype": "unclassified",
+      "name": "Rua Conceição Lima",
+      "display_name": "Rua Conceição Lima, Regional Citrolândia, Betim, Minas Gerais, Região Sudeste, 32636-205, Brasil",
+      "address": {
+        "road": "Rua Conceição Lima",
+        "neighbourhood": "Regional Citrolândia",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32636-205",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-20.0206543",
+        "-20.0203367",
+        "-44.2426160",
+        "-44.2413372"
+      ]
+    }
+  ],
+  "Regional Sede, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 11229627,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "relation",
+      "osm_id": 5418304,
+      "lat": "-19.9817337",
+      "lon": "-44.1862792",
+      "category": "boundary",
+      "type": "administrative",
+      "place_rank": 18,
+      "importance": 0.16006322804608222,
+      "addresstype": "neighbourhood",
+      "name": "Regional Sede",
+      "display_name": "Regional Sede, Betim, Minas Gerais, Região Sudeste, Brasil",
+      "address": {
+        "neighbourhood": "Regional Sede",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-20.0308423",
+        "-19.9482821",
+        "-44.2420055",
+        "-44.1403195"
+      ]
+    }
+  ],
+  "Regional Norte, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 11244316,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "relation",
+      "osm_id": 5418305,
+      "lat": "-19.8905913",
+      "lon": "-44.1979422",
+      "category": "boundary",
+      "type": "administrative",
+      "place_rank": 18,
+      "importance": 0.16006322804608222,
+      "addresstype": "neighbourhood",
+      "name": "Regional Norte",
+      "display_name": "Regional Norte, Betim, Minas Gerais, Região Sudeste, Brasil",
+      "address": {
+        "neighbourhood": "Regional Norte",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9576843",
+        "-19.8317114",
+        "-44.2302527",
+        "-44.1673089"
+      ]
+    }
+  ],
+  "Regional Alterosas, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 11202506,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "relation",
+      "osm_id": 19370154,
+      "lat": "-19.9377877",
+      "lon": "-44.1640836",
+      "category": "boundary",
+      "type": "administrative",
+      "place_rank": 18,
+      "importance": 0.16006322804608222,
+      "addresstype": "neighbourhood",
+      "name": "Regional Alterosas",
+      "display_name": "Regional Alterosas, Betim, Minas Gerais, Região Sudeste, Brasil",
+      "address": {
+        "neighbourhood": "Regional Alterosas",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9651554",
+        "-19.8864548",
+        "-44.1928339",
+        "-44.1314770"
+      ]
+    }
+  ],
+  "Regional PTB, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 10988641,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "relation",
+      "osm_id": 19370152,
+      "lat": "-19.9715795",
+      "lon": "-44.1166821",
+      "category": "boundary",
+      "type": "administrative",
+      "place_rank": 18,
+      "importance": 0.16006322804608222,
+      "addresstype": "neighbourhood",
+      "name": "Regional PTB",
+      "display_name": "Regional PTB, Betim, Minas Gerais, Região Sudeste, Brasil",
+      "address": {
+        "neighbourhood": "Regional PTB",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9947751",
+        "-19.9553068",
+        "-44.1582280",
+        "-44.0692362"
+      ]
+    }
+  ],
+  "Regional Icaivera, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 11209748,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "relation",
+      "osm_id": 19370155,
+      "lat": "-19.8819199",
+      "lon": "-44.1657490",
+      "category": "boundary",
+      "type": "administrative",
+      "place_rank": 18,
+      "importance": 0.16006322804608222,
+      "addresstype": "neighbourhood",
+      "name": "Regional Icaivera",
+      "display_name": "Regional Icaivera, Betim, Minas Gerais, Região Sudeste, Brasil",
+      "address": {
+        "neighbourhood": "Regional Icaivera",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9212269",
+        "-19.8419819",
+        "-44.1834220",
+        "-44.1493484"
+      ]
+    }
+  ],
+  "Regional Citrol?ndia, Betim, Minas Gerais, Brasil": [],
+  "Regional Imbiru?u, Betim, Minas Gerais, Brasil": [],
+  "Regional Teres?polis, Betim, Minas Gerais, Brasil": [],
+  "Regional Petrovale, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 419365451,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "relation",
+      "osm_id": 19370153,
+      "lat": "-20.0055389",
+      "lon": "-44.1365899",
+      "category": "boundary",
+      "type": "administrative",
+      "place_rank": 18,
+      "importance": 0.16006322804608222,
+      "addresstype": "neighbourhood",
+      "name": "Regional Petrovale",
+      "display_name": "Regional Petrovale, Betim, Minas Gerais, Região Sudeste, Brasil",
+      "address": {
+        "neighbourhood": "Regional Petrovale",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-20.0310831",
+        "-19.9778293",
+        "-44.1688088",
+        "-44.1075181"
+      ]
+    }
+  ],
+  "Regional Vian?polis, Betim, Minas Gerais, Brasil": [],
+  "Regional Citrolândia, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 9689325,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "relation",
+      "osm_id": 19370157,
+      "lat": "-20.0132988",
+      "lon": "-44.2267392",
+      "category": "boundary",
+      "type": "administrative",
+      "place_rank": 18,
+      "importance": 0.16006322804608222,
+      "addresstype": "neighbourhood",
+      "name": "Regional Citrolândia",
+      "display_name": "Regional Citrolândia, Betim, Minas Gerais, Região Sudeste, Brasil",
+      "address": {
+        "neighbourhood": "Regional Citrolândia",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-20.0525967",
+        "-19.9729283",
+        "-44.2770244",
+        "-44.1748972"
+      ]
+    }
+  ],
+  "Regional Imbiruçu, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 421748286,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "relation",
+      "osm_id": 19370151,
+      "lat": "-19.9398330",
+      "lon": "-44.1232476",
+      "category": "boundary",
+      "type": "administrative",
+      "place_rank": 18,
+      "importance": 0.16006322804608222,
+      "addresstype": "neighbourhood",
+      "name": "Regional Imbiruçu",
+      "display_name": "Regional Imbiruçu, Betim, Minas Gerais, Região Sudeste, Brasil",
+      "address": {
+        "neighbourhood": "Regional Imbiruçu",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9567013",
+        "-19.9266152",
+        "-44.1495504",
+        "-44.0800178"
+      ]
+    }
+  ],
+  "Regional Teresópolis, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 11134910,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "relation",
+      "osm_id": 19370150,
+      "lat": "-19.9495219",
+      "lon": "-44.0973888",
+      "category": "boundary",
+      "type": "administrative",
+      "place_rank": 18,
+      "importance": 0.16006322804608222,
+      "addresstype": "neighbourhood",
+      "name": "Regional Teresópolis",
+      "display_name": "Regional Teresópolis, Betim, Minas Gerais, Região Sudeste, Brasil",
+      "address": {
+        "neighbourhood": "Regional Teresópolis",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9596877",
+        "-19.9340341",
+        "-44.1380096",
+        "-44.0675650"
+      ]
+    }
+  ],
+  "Regional Vianópolis, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 11200621,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "relation",
+      "osm_id": 19370156,
+      "lat": "-19.9233003",
+      "lon": "-44.2582005",
+      "category": "boundary",
+      "type": "administrative",
+      "place_rank": 18,
+      "importance": 0.16006322804608222,
+      "addresstype": "neighbourhood",
+      "name": "Regional Vianópolis",
+      "display_name": "Regional Vianópolis, Betim, Minas Gerais, Região Sudeste, Brasil",
+      "address": {
+        "neighbourhood": "Regional Vianópolis",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9842681",
+        "-19.8535194",
+        "-44.3173799",
+        "-44.2036511"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,436 @@
+{
+  "Parque Ecologico Municipal Cleo Barbosa, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 424173658,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 1544881076,
+      "lat": "-19.9751986",
+      "lon": "-44.2228290",
+      "category": "leisure",
+      "type": "park",
+      "place_rank": 24,
+      "importance": 0.08006322804608222,
+      "addresstype": "park",
+      "name": "Parque Ecológico Municipal (Cléo Barbosa)",
+      "display_name": "Parque Ecológico Municipal (Cléo Barbosa), Betim, Minas Gerais, Região Sudeste, 32600-750, Brasil",
+      "address": {
+        "park": "Parque Ecológico Municipal (Cléo Barbosa)",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32600-750",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9765058",
+        "-19.9738643",
+        "-44.2247792",
+        "-44.2208368"
+      ]
+    }
+  ],
+  "Parque Ecologico Felisberto Neves, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 425010020,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 1370949615,
+      "lat": "-19.9555650",
+      "lon": "-44.1900755",
+      "category": "boundary",
+      "type": "protected_area",
+      "place_rank": 25,
+      "importance": 0.06672989471274891,
+      "addresstype": "protected_area",
+      "name": "Parque Ecológico Felisberto Neves",
+      "display_name": "Parque Ecológico Felisberto Neves, Betim, Minas Gerais, Região Sudeste, 32604-446, Brasil",
+      "address": {
+        "protected_area": "Parque Ecológico Felisberto Neves",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32604-446",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9615137",
+        "-19.9503673",
+        "-44.1952233",
+        "-44.1873563"
+      ]
+    }
+  ],
+  "Area de Lazer Chacara Santo Antonio II, Betim, Minas Gerais, Brasil": [],
+  "Pista de Caminhada da Avenida Edmeia Matos Lazzarotti, Betim, Minas Gerais, Brasil": [],
+  "Pista de Skate, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 11114299,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 683272044,
+      "lat": "-19.9395131",
+      "lon": "-44.1145190",
+      "category": "leisure",
+      "type": "pitch",
+      "place_rank": 30,
+      "importance": 0.00006322804608220061,
+      "addresstype": "leisure",
+      "name": "Pista de Skate",
+      "display_name": "Pista de Skate, Avenida Luzia de Jesus Barbosa, Regional Imbiruçu, Betim, Minas Gerais, Região Sudeste, 32677-505, Brasil",
+      "address": {
+        "leisure": "Pista de Skate",
+        "road": "Avenida Luzia de Jesus Barbosa",
+        "neighbourhood": "Regional Imbiruçu",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32677-505",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9397620",
+        "-19.9392643",
+        "-44.1146250",
+        "-44.1144129"
+      ]
+    }
+  ],
+  "Orla da Lagoa / Lagoa Varzea das Flores, Betim, Minas Gerais, Brasil": [],
+  "Praca do Encontro, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 11152952,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 606698601,
+      "lat": "-19.9634344",
+      "lon": "-44.1994667",
+      "category": "leisure",
+      "type": "park",
+      "place_rank": 24,
+      "importance": 0.08006322804608222,
+      "addresstype": "park",
+      "name": "Praça do Encontro Joaquim Ribeiro de Rezende",
+      "display_name": "Praça do Encontro Joaquim Ribeiro de Rezende, Betim, Minas Gerais, Região Sudeste, Brasil",
+      "address": {
+        "park": "Praça do Encontro Joaquim Ribeiro de Rezende",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9639923",
+        "-19.9628364",
+        "-44.2005137",
+        "-44.1984842"
+      ]
+    }
+  ],
+  "Praca do Alterosas, Betim, Minas Gerais, Brasil": [],
+  "Praca do Imbirucu, Betim, Minas Gerais, Brasil": [],
+  "Estadio Municipal Francisco Pereira, Betim, Minas Gerais, Brasil": [],
+  "Campo do Bairro Jardim das Alterosas, Betim, Minas Gerais, Brasil": [],
+  "Campo do Cruzeiro do Sul, Betim, Minas Gerais, Brasil": [],
+  "Campo do Santa Ines, Betim, Minas Gerais, Brasil": [],
+  "Campo Pingo Dagua, Betim, Minas Gerais, Brasil": [],
+  "Campo Cidade Verde, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 11153837,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 497236769,
+      "lat": "-19.9864365",
+      "lon": "-44.1908095",
+      "category": "leisure",
+      "type": "pitch",
+      "place_rank": 30,
+      "importance": 0.00006322804608220061,
+      "addresstype": "leisure",
+      "name": "Campo Cidade Verde",
+      "display_name": "Campo Cidade Verde, Rua de Aldebaram, Regional Sede, Betim, Minas Gerais, Região Sudeste, 32649-420, Brasil",
+      "address": {
+        "leisure": "Campo Cidade Verde",
+        "road": "Rua de Aldebaram",
+        "neighbourhood": "Regional Sede",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32649-420",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9869055",
+        "-19.9859675",
+        "-44.1912952",
+        "-44.1903237"
+      ]
+    }
+  ],
+  "Campo Sao Joao, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 11169534,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 687258747,
+      "lat": "-19.9548233",
+      "lon": "-44.1861583",
+      "category": "leisure",
+      "type": "pitch",
+      "place_rank": 30,
+      "importance": 0.00006322804608220061,
+      "addresstype": "leisure",
+      "name": "Campo Sete de Setembro",
+      "display_name": "Campo Sete de Setembro, Beco Cinco de Junho, Regional Alterosas, Betim, Minas Gerais, Região Sudeste, 32671-516, Brasil",
+      "address": {
+        "leisure": "Campo Sete de Setembro",
+        "road": "Beco Cinco de Junho",
+        "neighbourhood": "Regional Alterosas",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32671-516",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9553563",
+        "-19.9542932",
+        "-44.1865725",
+        "-44.1857441"
+      ]
+    }
+  ],
+  "Campo Petropolis, Betim, Minas Gerais, Brasil": [],
+  "Quadra Cidade Verde, Betim, Minas Gerais, Brasil": [],
+  "Campo Real Sociedad, Betim, Minas Gerais, Brasil": [],
+  "Campo do Bom Repouso, Betim, Minas Gerais, Brasil": [],
+  "Campo Homero Gil, Betim, Minas Gerais, Brasil": [],
+  "Ginasio Poliesportivo Divino Ferreira Braga, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 11132514,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 155514562,
+      "lat": "-19.9581210",
+      "lon": "-44.1982445",
+      "category": "leisure",
+      "type": "stadium",
+      "place_rank": 30,
+      "importance": 0.2024340213354661,
+      "addresstype": "leisure",
+      "name": "Ginásio Poliesportivo Divino Ferreira Braga",
+      "display_name": "Ginásio Poliesportivo Divino Ferreira Braga, 300, Rua Redelvim de Andrade, Regional Sede, Betim, Minas Gerais, Região Sudeste, 32604-125, Brasil",
+      "address": {
+        "leisure": "Ginásio Poliesportivo Divino Ferreira Braga",
+        "house_number": "300",
+        "road": "Rua Redelvim de Andrade",
+        "neighbourhood": "Regional Sede",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32604-125",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9585731",
+        "-19.9576682",
+        "-44.1986464",
+        "-44.1978459"
+      ]
+    }
+  ],
+  "Complexo esportivo do Horto, Betim, Minas Gerais, Brasil": [],
+  "Complexo Esportivo Ricardo Mediolli, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 11130274,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 687827744,
+      "lat": "-19.9476695",
+      "lon": "-44.1214304",
+      "category": "leisure",
+      "type": "park",
+      "place_rank": 24,
+      "importance": 0.08006322804608222,
+      "addresstype": "park",
+      "name": "Complexo Esportivo Ricardo Mediolli",
+      "display_name": "Complexo Esportivo Ricardo Mediolli, Industrial São Luiz, Betim, Minas Gerais, Região Sudeste, Brasil",
+      "address": {
+        "park": "Complexo Esportivo Ricardo Mediolli",
+        "suburb": "Industrial São Luiz",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9489449",
+        "-19.9459362",
+        "-44.1232297",
+        "-44.1193883"
+      ]
+    }
+  ],
+  "Nucleo Alterosa, Betim, Minas Gerais, Brasil": [],
+  "Nucleo Petropolis, Betim, Minas Gerais, Brasil": [],
+  "Galpao da Ginastica / Anexa, Betim, Minas Gerais, Brasil": [],
+  "Nucleo Ramacrisna, Betim, Minas Gerais, Brasil": [],
+  "Nucleo Pista de Bicicross, Betim, Minas Gerais, Brasil": [],
+  "Anexo Horto, Betim, Minas Gerais, Brasil": [],
+  "Horto Municipal, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 11168405,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 323121514,
+      "lat": "-19.9597235",
+      "lon": "-44.1989025",
+      "category": "leisure",
+      "type": "park",
+      "place_rank": 24,
+      "importance": 0.08006322804608222,
+      "addresstype": "park",
+      "name": "Horto Municipal Ginásio Poliesportivo",
+      "display_name": "Horto Municipal Ginásio Poliesportivo, 300, Betim, Minas Gerais, Região Sudeste, 32604-142, Brasil",
+      "address": {
+        "park": "Horto Municipal Ginásio Poliesportivo",
+        "house_number": "300",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32604-142",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9606674",
+        "-19.9584607",
+        "-44.1998601",
+        "-44.1978844"
+      ]
+    }
+  ],
+  "Instituto Ramacrisna, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 424317125,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 1544836854,
+      "lat": "-19.9144102",
+      "lon": "-44.2742439",
+      "category": "office",
+      "type": "association",
+      "place_rank": 30,
+      "importance": 0.00006322804608220061,
+      "addresstype": "office",
+      "name": "Instituto Ramacrisna",
+      "display_name": "Instituto Ramacrisna, Rua Monsenhor Horta, Regional Vianópolis, Betim, Minas Gerais, Região Sudeste, 32623-524, Brasil",
+      "address": {
+        "office": "Instituto Ramacrisna",
+        "road": "Rua Monsenhor Horta",
+        "neighbourhood": "Regional Vianópolis",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32623-524",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9157354",
+        "-19.9126201",
+        "-44.2755011",
+        "-44.2727269"
+      ]
+    },
+    {
+      "place_id": 424317127,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 1544836856,
+      "lat": "-19.9150999",
+      "lon": "-44.2732947",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00006322804608220061,
+      "addresstype": "building",
+      "name": "Instituto Ramacrisna",
+      "display_name": "Instituto Ramacrisna, 379, Rua Mestre Ramacrisna, Regional Vianópolis, Betim, Minas Gerais, Região Sudeste, 32623-524, Brasil",
+      "address": {
+        "building": "Instituto Ramacrisna",
+        "house_number": "379",
+        "road": "Rua Mestre Ramacrisna",
+        "neighbourhood": "Regional Vianópolis",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32623-524",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9153156",
+        "-19.9148668",
+        "-44.2734512",
+        "-44.2729312"
+      ]
+    }
+  ],
+  "Pista de Bicicross Aquileu Franco do Amaral, Betim, Minas Gerais, Brasil": [],
+  "Campo do Marimba, Betim, Minas Gerais, Brasil": [],
+  "Campo Real, Betim, Minas Gerais, Brasil": [
+    {
+      "place_id": 11169082,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 687258752,
+      "lat": "-19.9424746",
+      "lon": "-44.1931606",
+      "category": "leisure",
+      "type": "pitch",
+      "place_rank": 30,
+      "importance": 0.00006322804608220061,
+      "addresstype": "leisure",
+      "name": "Campo do Real Sociedade",
+      "display_name": "Campo do Real Sociedade, Rua Maria José de Melo, Regional Norte, Betim, Minas Gerais, Região Sudeste, 32604-620, Brasil",
+      "address": {
+        "leisure": "Campo do Real Sociedade",
+        "road": "Rua Maria José de Melo",
+        "neighbourhood": "Regional Norte",
+        "city": "Betim",
+        "state": "Minas Gerais",
+        "ISO3166-2-lvl4": "BR-MG",
+        "region": "Região Sudeste",
+        "postcode": "32604-620",
+        "country": "Brasil",
+        "country_code": "br"
+      },
+      "boundingbox": [
+        "-19.9429211",
+        "-19.9420200",
+        "-44.1937177",
+        "-44.1926022"
+      ]
+    }
+  ]
+}

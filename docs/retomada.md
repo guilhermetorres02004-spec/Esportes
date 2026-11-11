@@ -13,7 +13,7 @@ preservando funcionalidades, APIs, sessão, banco e uploads. Usar sempre a skill
 - Destino das mudanças: `frontend/` existente com Vite; piloto em `frontend/piloto/` não é o destino do trabalho.
 - Último endereço confirmado do portal: `http://localhost:5174`; verificar disponibilidade ao retomar.
 - Preferência explícita: cabeçalho azul, com marcas em `#023568` e navegação em `#0072e7`, em vez da faixa verde do kit.
-- Preservar menus por hover, Login/Inscreva-se ocultos, seis conquistas por ano, notícias de Betim e descrição apenas no marco da timeline.
+- Preservar menus por hover, Inscreva-se oculto e botão Entrar visível para visitantes, seis conquistas por ano, notícias de Betim e descrição apenas no marco da timeline.
 - Preservar o indicador de 1.452 medalhas e todas as integrações existentes.
 
 ## Último ponto concluído
@@ -236,3 +236,210 @@ Adaptar o rodapé no portal existente, começando pela conferência dos contatos
 - Verificações finais repetidas: build aprovado; 96 testes frontend e 78 backend aprovados. Arquivos preparados conferidos sem tokens/chaves privadas detectados e diff sem erros de whitespace.
 - Notas da versão em docs/releases/v1.2.md. Pendências visuais e de dados geográficos permanecem documentadas, sem bloqueio da publicação do código solicitado.
 - Publicação confirmada: commit f02aa2170acdee1a8b0cdb67278ba4de1afaa5e0 enviado à master e tag anotada v1.2; Release pública criada em https://github.com/guilhermetorres02004-spec/Esportes/releases/tag/v1.2 . Referências remotas conferidas após envio.
+
+## Pequenos saltos nos ícones da home — 11/11/2026
+
+- Ícones circulares dos seis indicadores da home receberam dois saltos discretos (5px e 2px) em ciclo de 3,6 segundos, com início escalonado entre os cards.
+- Centralização dos círculos preservada; animação desativada para prefers-reduced-motion. Alteração somente em home.css, sem envio adicional ao GitHub solicitado.
+- Verificação: build aprovado. Conferência visual permanece pendente por navegador indisponível.
+- Próximo passo: conferir a intensidade dos saltos no portal.
+
+## Núcleos com Google Maps e seleção prévia — 11/11/2026
+
+- Entrada da página agora mostra Google Maps de Betim e botões das dez regionais; informações, filtros, equipamentos, programas, eventos e fotos somente após seleção válida. Limpar filtros mantém a regional; Escolher outra regional retorna ao estado inicial.
+- Mapa integrado consulta o endereço publicado da administração regional selecionada, sem coordenadas inferidas ou fronteiras desenhadas. Referências em src/regionais/mapas-regionais.js; cada equipamento preserva seu próprio Como chegar.
+- Google Maps incorporado verificado por HTTP 200 e redirecionamento ao endpoint /maps/embed. Botão de abertura externa e aviso de falha disponíveis. GeoJSON municipal consultado continua indisponível.
+- Verificações: cinco testes específicos e build aprovados; suíte completa final com 97 testes aprovados. Renders verificam ausência de dados antes da seleção e dados exclusivos do Centro após selecionar; endereços das dez regionais testados nas consultas do Maps.
+- Limitação: interação real com o iframe e conferência visual pendentes por navegador indisponível. Alterações locais, sem novo envio ao GitHub solicitado.
+- Próximo passo: conferir o mapa e seleção no portal com o usuário.
+
+## Dez pins pré-definidos nas regionais — 11/11/2026
+
+- Usuário escolheu explicitamente usar o mapa interativo do portal com links para Google Maps. RegionalMap usa Leaflet existente e mostra dez pins desde a abertura.
+- Pins nomeados e acessíveis por teclado; clique escolhe a regional, destaca o pin em amarelo e revela as informações, preservando a regra de seleção prévia. Botões regionais seguem como alternativa.
+- Pontos das dez relações administrativas do OpenStreetMap confirmados via Nominatim em consultas pontuais, identificadas, limitadas e cacheadas. Não são sedes exatas nem fronteiras oficiais; precisão explicitada na interface. Centro usa a referência Sede do OSM. Tentativas de endereço ambíguas não foram usadas como posição.
+- Dados e proveniência em src/regionais/pins-regionais.json; respostas de pesquisa em docs/regionais-geocodificacao.json. Nenhuma consulta de geocodificação é feita a cada visita.
+- Verificações: oito testes específicos de pins/regionais e build aprovados; suíte frontend completa com 100 testes aprovados. Mocks verificam dez marcadores, IDs de clique, destaque e desmontagem.
+- Limitação: aparência dos pins e navegação real em navegador ainda pendentes por navegador indisponível. Alterações locais, sem novo envio ao GitHub solicitado.
+- Próximo passo: conferir pins e seleção no mapa com o usuário.
+## Zoom e pins dos equipamentos — 11/11/2026
+
+- Selecionar uma regional aproxima o mapa e mostra seus equipamentos com posição confirmada. Clicar no equipamento amplia até zoom 16 e abre balão com foto (quando disponível), nome, categoria, regional/bairro, descrição e botão Conhecer espaço, ligado ao modal existente.
+- Pins com cores e ícones por categoria: campo, quadra, praça/parque, complexo e pista. Legenda sobre o mapa, com adaptação para telas pequenas.
+- Nove dos 30 equipamentos receberam referências verificadas no OpenStreetMap; os outros 21 continuam na lista e são sinalizados como pendentes de coordenadas, sem posições inventadas. Proveniência e precisão em frontend/src/regionais/equipamentos-pins.json; pesquisa cacheada em docs/equipamentos-geocodificacao.json. Resultados ambíguos foram descartados; consultas complementares ao Overpass falharam por indisponibilidade.
+- Verificação final: 102 testes frontend e build aprovados. Testes cobrem classificação, ausência de coordenadas, zoom, conteúdo do balão e abertura dos detalhes. Conferência visual e interação real continuam pendentes por navegador indisponível nesta sessão.
+- Alterações locais, sem novo envio ao GitHub. Próximo passo: conferir visualmente e obter coordenadas confirmadas para os 21 locais restantes.
+
+## Cliques sem zoom automático — 11/11/2026
+
+- Conforme nova orientação, selecionar regionais ou clicar em equipamentos preserva o zoom atual. Removidos os reenquadramentos automáticos após a seleção; o enquadramento inicial das dez regionais permanece.
+- Balões, pins e abertura dos detalhes preservados. Texto de orientação atualizado.
+- Verificação: dez testes de pins/regionais aprovados, incluindo ausência de setView e de fitBounds adicional ao selecionar ou abrir um local. Conferência visual pendente por navegador indisponível.
+## Espaçamento dos nomes no mapa — 11/11/2026
+
+- Ampliada a altura do mapa no desktop de 480 para 640px e permitido enquadramento inicial até zoom 13, preservando todos os pontos no enquadramento.
+- Rótulos de Alterosas, Imbiruçu, Teresópolis e PTB distribuídos nas laterais dos pins para reduzir a sobreposição no trecho central. Cliques continuam sem alterar o zoom.
+- Verificação: dez testes de pins/regionais aprovados. Ajuste visual ainda requer conferência no navegador, indisponível nesta sessão.
+
+## Mapa fixo sem navegação manual — 11/11/2026
+
+- Desativados arraste, gestos de zoom, duplo clique, seleção de área, navegação pelo teclado e controles de zoom. Pins continuam acessíveis por teclado e clicáveis.
+- Desativado deslocamento automático ao focar pins ou abrir balões, preservando o enquadramento inicial.
+- Verificação: testes de pins/regionais executados após alteração; conferência visual no navegador permanece pendente.
+
+## Balão legível e fechamento no segundo clique — 11/11/2026
+
+- Balão dos equipamentos reposicionado no topo central do mapa, com largura responsiva, altura limitada e rolagem interna para evitar corte da foto e dos textos nas bordas. Fundo branco, contraste explícito e quebra de títulos longos.
+- Removido o handler que reabria o balão após o fechamento nativo do Leaflet: segundo clique no mesmo ícone agora alterna o fechamento. Mapa continua fixo.
+- Verificação: dez testes de pins/regionais aprovados, incluindo segundo clique. Conferência visual no navegador permanece pendente nesta sessão.
+
+## Página de conquistas em React — 11/11/2026
+
+- Criada ConquistasPage em React na rota /conquistas, preservando apresentação, nove perfis, fontes, linhas do tempo em diálogo nativo, foco e bloqueio de rolagem durante o perfil.
+- Consulta da API /api/conquistas migrada para effect com cancelamento e limpeza de timer/listener. Mantidos intervalo de um minuto, pausa em aba oculta, validação, fallback local e seleção de até seis destaques por ano com regras existentes.
+- Cards iniciais extraídos do HTML existente para src/conquistas/cards.json; script scripts/extract-conquistas.mjs permite repetir a extração. HTML original e scripts legados preservados como referência, sem execução na rota React.
+- Link da home usa /conquistas. Desenvolvimento/preview e build atendem rota limpa; conquistas.html redireciona mantendo consulta e fragmento no build. Cabeçalho compartilhado e acessibilidade permanecem na entrada do portal.
+- Verificação: build e 104 testes frontend aprovados, incluindo renderização dos nove perfis e entradas publicadas. Conferência visual e operação real dos diálogos em navegador permanecem pendentes nesta sessão. Sem novo envio ao GitHub.
+
+## Imagem do troféu em conquistas — 11/11/2026
+
+- Imagem enviada pelo usuário adicionada ao destaque da página React /conquistas, substituindo a foto anterior de atletismo. Mantida proporção original e descrição acessível; retirada legenda que atribuía a imagem anterior à Prefeitura.
+- Arquivo local em frontend/public/Imagens/conquistas/trofeu-destaque-esportivo-betim.png. Verificação de tamanho da cópia: 2.229.316 bytes; testes React de conquistas executados após alteração.
+
+## Padronização visual de conquistas — 11/11/2026
+
+- Aplicados tokens existentes de largura, superfícies, bordas, raios e sombras na página React. Destaque azul institucional com troféu preservado, tipografia Montserrat/Karla e navegação por anos com alvos de pelo menos 44px.
+- Cards com bordas discretas, títulos azuis, textos ajustáveis e botões azuis. Diálogo com linha do tempo azul, foco visível, fechamento de 44px e disposição em uma coluna para datas/textos em telas pequenas.
+- Incluído rodapé institucional compartilhado. Estilos específicos em frontend/src/conquistas/conquistas.css; API, nove perfis, seleção por relevância e rotas preservados.
+- Verificação: build e 104 testes frontend aprovados. Conferência visual/responsiva no navegador permanece pendente por indisponibilidade nesta sessão. Alterações locais, sem publicação.
+
+## Atalho :skill com padrões e React para as IAs — 11/11/2026
+
+- Criada referência comum docs/padroes-portal.md com identidade visual, componentes compartilhados, acessibilidade, rotas React e critérios de continuidade.
+- AGENTS.md e a skill local decompor-tarefas agora incluem essa referência ao ativar :skill. Entradas de Copilot, Claude, Gemini e Cursor apontam para as mesmas regras; Codex segue AGENTS.md.
+- Registrado o estado real: home, 22 modalidades, Núcleos e Conquistas já em React. Páginas legadas devem ser adaptadas quando estiverem no escopo, sem declarar migração global concluída nem recriar o portal.
+- Alteração somente de instruções; não modifica páginas ou instala extensões. Aplicação depende de cada ferramenta carregar suas instruções locais. Verificados caminhos de referência e consistência das cinco entradas.
+
+## Atalho :commit com versão sequencial — 11/11/2026
+
+- Definido em AGENTS.md e referenciado nas entradas de Copilot, Claude, Gemini e Cursor. Invocar :commit autoriza commit local e tag anotada v1.N, incrementando o inteiro da maior tag da série, com revisão, verificações e notas de versão.
+- Tags locais verificadas neste momento: v1.1 e v1.2; a próxima local seria v1.3, sujeita à consulta remota ao executar o atalho. Sequência numérica prevê v1.9 → v1.10.
+- Sem alterações, não cria versão vazia. Não inclui automaticamente arquivos locais excluídos anteriormente, segredos ou dados operacionais. Push/Release/deploy exigem pedido adicional.
+- Verificação documental: referências do atalho conferidas nas cinco entradas; nenhum commit, tag ou envio executado durante a criação do comando.
+
+## Skills externas para atalhos — 11/11/2026
+
+- Criadas três skills independentes em `C:\Users\walter\Desktop\skills`: `decompor-tarefas` (`:skill`), `retomada` (`:return`) e `commit` (`:commit`).
+- Cada pasta contém um `SKILL.md` com frontmatter e instruções adaptadas das regras vigentes; os arquivos de instrução originais não foram alterados nesta tarefa.
+- Conferidos os três arquivos, nomes, frontmatter e regras essenciais. A instalação/configuração para descoberta automática pela ferramenta não foi solicitada nem realizada.
+
+## Limpeza de logs de testes — 11/11/2026
+
+- Removidos da raiz 15 logs temporários com nomes `*-tests.log`: saídas de execuções Node.js e Maven sem referências no código/documentação e já ignoradas pela regra `*.log`.
+- Não foram removidos logs de runtime. `regionais-runtime.log` e `viva-api-runtime.log` permaneceram presentes na verificação final.
+- Verificação: nenhum arquivo `*tests.log` restou na raiz. Os logs foram descartados como saídas reproduzíveis de testes; não houve alteração de código nem execução de testes.
+
+## Topo da página ao recarregar — 11/11/2026
+
+- Em `frontend/public/js/section-navigation.js`, uma recarga manual agora desativa a restauração automática do scroll até o evento `load`, força a página ao topo e depois restaura a preferência anterior do navegador.
+- O fragmento não reposiciona a página durante essa recarga; depois de `load`, os eventos de fragmento voltam a navegar normalmente. Navegações sem recarga preservam o comportamento anterior.
+- Testes: `node --test tests/section-navigation.test.mjs` (2/2); suíte frontend (`node --test tests/*.test.mjs`, 106/106); `npm run build` concluído. Desenvolvimento serviu `/` e `/js/section-navigation.js` com HTTP 200.
+- Próximo passo deste ajuste: confirmar no navegador que uma recarga manual feita após rolar a página retorna ao topo; a sessão não forneceu ferramenta de interação com navegador.
+
+## Entrada de usuário no cabeçalho — 11/11/2026
+
+- Ativado o acesso existente `login.html` para visitantes e apresentado como botão “Entrar”, com ícone decorativo e cápsula branca no cabeçalho azul institucional.
+- A área de inscrição segue desativada; autenticação, verificação de sessão, saída e ocultação do acesso para usuário autenticado permanecem no fluxo existente.
+- Verificações: testes de cabeçalho e sessão 14/14; suíte frontend 107/107; build de produção concluído; `/js/portal-header.js`, `/css/portal-base.css` e `/login.html` responderam HTTP 200 no servidor local.
+- Conferência visual interativa em navegador não realizada nesta sessão.
+
+## Posicionamento do botão Entrar — 11/11/2026
+
+- Movido o botão “Entrar” da navegação azul para a faixa superior, à direita do título “Portal do Esporte”, preservando o mesmo link, identificador e controle de sessão.
+- A cápsula branca mantém alvo mínimo de 44px e agora tem foco visível contrastante; em telas menores fica no canto superior direito, sem alterar a lógica de inscrição ou autenticação.
+- Verificações: testes de cabeçalho e sessão 14/14; suíte frontend 107/107; `npm run build` concluído. A conferência visual interativa não foi realizada nesta sessão.
+## Login React e conferência das skills exportadas — 11/11/2026
+
+- Página de login migrada para React em /entrar, com estilos do portal: azul institucional, Montserrat/Karla, raios e sombras compartilhados, foto local e rodapé institucional. Formulário responsivo com labels, autocomplete, foco no erro, indicação de envio e bloqueio de duplicação.
+- Preservados POST /login, conteúdo form-urlencoded, cookie de sessão e destinos administrativos existentes. Destino proxima aceita somente agendamento-quadras.html; demais valores seguem para administrativo.html. Requisição tem timeout e cancelamento ao desmontar. Sem armazenamento de senhas no navegador.
+- login.html redireciona para /entrar preservando query/fragmento no build; desenvolvimento/preview atendem ambas as entradas. Endpoint /login e backend preservados. HTML original permanece como referência.
+- Build e 111 testes frontend aprovados. HTTP 200 de /entrar e redirecionamento do login antigo com proxima confirmados. Login real com credenciais e conferência visual não executados nesta sessão.
+- Conferida a pasta C:/Users/walter/Desktop/skills: já contém decompor-tarefas, retomada e commit, cada uma com SKILL.md e regras correspondentes aos atalhos. Arquivos existentes preservados; diretório externo não é incluído automaticamente no Git nem instalado automaticamente nas ferramentas.
+- Sem commit ou publicação. Próximo passo: conferir visualmente o login e validar acesso em ambiente autorizado com credenciais do usuário.
+
+## Marcas no cabeçalho fixo ao rolar — 11/11/2026
+
+- Adicionadas marcas compactas na navegação compartilhada: Prefeitura à esquerda dos menus; Fundação Beta imediatamente à esquerda de Portais. Permanecem ocultas enquanto a faixa superior das marcas está visível.
+- Script portal-header-scroll.js observa a saída da faixa superior com IntersectionObserver, com alternativa de scroll passivo; atualiza também no resize e pageshow. Voltar ao topo oculta as marcas compactas. Links ocultos ficam fora da navegação por teclado.
+- Entrada com deslocamento de 8px e opacidade em 280ms; prefers-reduced-motion remove a animação. Em telas menores, menus ficam em linha própria para acomodar as marcas.
+- Oito testes específicos de cabeçalho aprovados, incluindo saída/retorno da faixa e alternativa sem IntersectionObserver. Conferência visual no navegador permanece pendente nesta sessão. Sem publicação.
+
+## Atalho :adpte para padronização e React — 11/11/2026
+
+- Criada .agents/skills/adpte/SKILL.md e registrada em AGENTS.md, Copilot, Claude, Gemini e Cursor. Uso: :adpte seguido de página, arquivo ou rota; adapta aos padrões e migra para React, ou reutiliza o componente já migrado.
+- Sem página explícita, usa somente destino inequívoco da tarefa ativa; caso contrário solicita o destino. Preserva conteúdo, APIs, sessão e compatibilidade das rotas, verifica a entrega e atualiza o registro. Não autoriza commit/publicação.
+- Cópia adicionada a C:/Users/walter/Desktop/skills/adpte/SKILL.md, com hash idêntico ao arquivo local. Demais skills externas preservadas.
+- Verificadas referências nas cinco entradas, metadados e caminhos da skill. Alteração somente de instruções; nenhuma página migrada nesta tarefa.
+
+## Administrativo adaptado para React — 11/11/2026
+
+- Pedido :adapte administrativo.html interpretado como invocação da skill adpte. Criada rota /administrativo com componentes AdminPage, AdminContent e AdminDocument, no frontend existente.
+- Preservados sete cards de gestão, 12 opções de documentos, resumos/PDFs/fontes/ações, acesso ao agendamento, estrutura, quadro de cargos e valores da folha já existentes. Conteúdo migrado de forma declarativa pelo script scripts/extract-admin-react.mjs; scripts legados não são executados na rota React.
+- Mantida guarda baseada em sessão válida de /api/auth/me com cookie, sem cache, timeout e limpeza ao desmontar. Não renderiza painel antes da validação; falha redireciona a /entrar. Revalida ao retornar à aba/página. Permissões e autenticação do backend preservadas.
+- Aplicados identidade azul, tipografia e tokens do portal, cards de 16px, foco visível, botões de 44px, tabelas com rolagem horizontal quando necessário, diálogo nativo com retorno de foco e rodapé compartilhado.
+- administrativo.html redireciona para a rota limpa em desenvolvimento/preview e build. Query e fragmento preservados pelo redirecionamento da saída; HTML original mantido como referência.
+- Verificação: build e 118 testes frontend aprovados; testes novos cobrem sessão inválida, conteúdo oculto antes de autenticar, IDs dos documentos, tabelas, PDFs/resumos e entradas publicadas. HTTP 200 de /administrativo e redirecionamento legado com query confirmados.
+- Limitação: acesso real com credenciais e conferência visual/responsiva do painel e diálogos não executados por navegador indisponível. Sem commit, publicação ou alteração de banco.
+
+## Login retorna à home e libera Eventos/Gestão — 11/11/2026
+
+- Após autenticar em /entrar, destino agora é sempre /, inclusive quando há proxima na URL. Substitui a orientação anterior de redirecionar ao administrativo/agendamento.
+- Restaurados os dois menus antigos identificados no histórico: Eventos (agenda, detalhes e Horto) e Gestão (Administrativo, Arquivos, Downloads, Almoxarifado, Presença, Matrix Impact e Página Base). Usuário confirmou Gestão e o outro menu.
+- Menus iniciam ocultos e são exibidos somente após sessão válida de /api/auth/me. Logout e sessão expirada ocultam e fecham os menus. Permissões das APIs permanecem no backend; exibir links não altera autorizações.
+- Ajustada quebra da navegação autenticada nas larguras intermediárias para acomodar os itens. Mantidos cabeçalho azul, marcas no scroll e menus por hover/teclado.
+- Verificação: build e 119 testes frontend aprovados, incluindo destinos, menus inicialmente ocultos, exibição autenticada, expiração e logout. Conferência visual e login com credenciais reais continuam pendentes nesta sessão. Sem publicação.
+
+## Botão Sair no lugar de Entrar — 11/11/2026
+
+- Movido o único botão Sair da navegação para a faixa superior, na mesma posição de Entrar. Reutiliza a classe da cápsula branca, alinhamento e regra responsiva; largura mínima de 110px em ambos mantém dimensões coerentes.
+- Alternância segue a sessão existente: visitante vê Entrar, autenticado vê Sair. Preservados POST /logout, bloqueio durante envio e mensagens de falha; ícone de saída decorativo adicionado.
+- Verificação de estrutura cobre Sair somente na faixa superior e ausência de IDs duplicados. Conferência visual no navegador permanece pendente.
+
+## Inscrição no menu Gestão — 11/11/2026
+
+- Adicionada opção Inscrição no menu Gestão, após Administrativo, apontando para /Inscricao.html existente. Mantida visibilidade do menu apenas com sessão válida; botão público Inscreva-se continua oculto.
+- Verificação: testes de cabeçalho e sessão executados após a alteração.
+
+## Inscrição adaptada para React — 11/11/2026
+
+- Pedido :adapte inscricao.html aplicado com a skill adpte. Criados InscricaoPage, ImageConsent e TermText na rota /inscricao, com fontes, tokens, cards, botões azuis, labels associados, fieldsets e rodapé compartilhado. Bootstrap e scripts legados não são executados nessa rota.
+- Preservados os 20 campos, cinco seções, quatro modalidades existentes e seus núcleos. Contexto por query modalidade e retorno para a modalidade mantidos. Conteúdo extraído de Inscricao.html por scripts/extract-inscricao-react.mjs; dados em src/inscricao/form-data.json.
+- Preservadas máscara e validação dos CPFs opcionais do atleta/responsável. O termo de imagem mantém texto e versão 2026-11-04, sem autorização pré-marcada: sim=true, não=false, ausência=null. Retorno de foco, bloqueio de fechamento durante envio e recuperação de rolagem implementados no diálogo nativo.
+- POST /api/inscricoes continua com JSON, cookie e dadosFicha completos. Confirma protocolo antes de limpar o formulário; erro mantém os dados e escolha. Bloqueio de duplicação, timeout de 20s e cancelamento ao desmontar; nenhum dado pessoal é salvo no armazenamento do navegador. Backend preservado.
+- Menu Gestão aponta à rota limpa. Inscricao.html/inscricao.html continuam compatíveis em desenvolvimento/preview e build, mantendo modalidade e fragmento no redirecionamento.
+- Verificação: build e 125 testes frontend aprovados. Novos testes cobrem CPF, três estados de autorização, payload, erros, protocolo, 20 campos, contextos e fluxo React com bloqueio de envio duplicado. HTTP 200 de /inscricao e redirecionamento antigo com modalidade confirmados.
+- Limitação: conferência visual/responsiva e envio real com dados de inscrição não executados nesta sessão; não foram criados registros de teste no banco operacional. Sem commit/publicação.
+
+## Inscrição conforme planilha Viva Esportes — 11/11/2026
+
+- Página /inscricao reorganizada conforme Ficha_Inscricao_Programa_Viva_Esportes.xlsx fornecida pelo usuário, aba Ficha de Inscrição, A1:D40. Planilha original não modificada.
+- Seis blocos preservados: participante, responsável, atividade, saúde/segurança, declaração e uso exclusivo da Secretaria. Agora 26 controles incluem aceite da declaração; adicionados e-mail, parentesco, telefones, turno, turma, emergência, condição/adaptação, data e nome de quem assina. Campos antigos ausentes no modelo foram substituídos.
+- Responsável exigido quando menor de 18 anos; sexo sem seleção obrigatória; turnos e resposta de saúde seguem listas da planilha. Modalidade/núcleo aceitam texto livre com sugestões existentes, sem limitar Viva Esportes às quatro modalidades anteriores.
+- Declaração de participação separada do uso de imagem, que continua opcional e sem seleção inicial. Área da Secretaria somente leitura: protocolo/data confirmados pela API; situação/servidor não inferidos. Não implementado editor administrativo desses campos.
+- API e banco preservados. Campos completos em dadosFicha; e-mail também no campo próprio já suportado. Sem persistência de dados pessoais no navegador.
+- Referência, mapeamento de células e adaptações em docs/ficha-viva-esportes.md. Script build-viva-form.mjs mantém a estrutura; extrator HTML antigo não sobrescreve a nova ficha.
+- Verificação: build e 127 testes frontend aprovados. HTTP 200 da rota. Conferência visual e envio real continuam pendentes; nenhum registro inserido no banco operacional. Sem commit/publicação.
+
+## Aplicação de :adpte na ficha Viva Esportes — 11/11/2026
+
+- Revisada apresentação da página já em React: destaque azul institucional, título em duas linhas, etiqueta do portal e instruções com contraste sobre o fundo azul.
+- Seções com numeração circular azul e títulos acessíveis; campos em duas colunas no desktop e uma no celular, com nomes/endereço/assinatura em largura ampliada. Inputs usam superfície branca e foco azul conforme padrão do portal.
+- Ações finais em painel compartilhando bordas, raios e sombra dos cards; área exclusiva da Secretaria destacada com fundo suave e borda tracejada. Mantidos todos os 26 controles, seis blocos, consentimento e API.
+- Verificação: build e 15 testes de inscrição aprovados. Conferência visual no navegador permanece pendente nesta sessão. Sem publicação.
+
+## Preparação da versão 1.3 — 11/11/2026
+
+- Atalho :commit solicitado. Tags locais e origin consultadas: maior v1.2; próxima versão v1.3. Branch master, sem arquivos staged anteriores à preparação.
+- Escopo: mudanças do portal desde v1.2, componentes React, inscrição Viva Esportes, mapas, cabeçalho/sessão, imagens, testes e instruções. Excluídos ajustes .vscode, frontend/piloto, frontend/vendor e frontend/.yarnrc.yml, conforme orientação vigente.
+- Verificação final repetida: build de produção e 127 testes frontend aprovados. Notas em docs/releases/v1.3.md, incluindo limitações visuais, dados geográficos pendentes e arquivos externos não incluídos.
+- Preparar commit release: v1.3 e tag anotada local. Sem autorização de push/publicação neste pedido.

@@ -8,7 +8,7 @@ const indicators = [
     { title: 'Acessibilidade', value: '450 PCDs', icon: 'fa-wheelchair' },
     { title: 'Estrutura', value: '17 Núcleos', icon: 'fa-building' },
     { title: 'Diversidade', value: '22 Modalidades', icon: 'fa-swimmer' },
-    { title: 'Conquistas', value: '1.452 Medalhas', icon: 'fa-medal', href: 'conquistas.html' },
+    { title: 'Conquistas', value: '1.452 Medalhas', icon: 'fa-medal', href: '/conquistas' },
 ];
 
 export function Indicators() {

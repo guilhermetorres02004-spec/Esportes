@@ -45,3 +45,60 @@
 @media (max-width: 1000px) { .regional-equipment-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .regional-selector { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 639px) { .regional-equipment-grid, .regional-program-grid, .regional-filters { grid-template-columns: minmax(0, 1fr); } .regional-selector, .regional-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } .regional-panel, .regional-filters { padding: 16px; } }
 @media (prefers-reduced-motion: reduce) { .regional-equipment { transition: none; } }
+
+/* Mapa de entrada e informações exibidas após selecionar uma regional. */
+.regional-google-map { display: block; width: 100%; height: 440px; border: 0; border-radius: 12px; background: var(--portal-accent-soft); }
+.regional-map-heading { display: flex; justify-content: space-between; align-items: start; gap: 20px; margin-bottom: 16px; }
+.regional-map-heading > a { flex-shrink: 0; padding: 10px 0; }
+.regional-map-caption { margin-top: 12px !important; font-size: .8125rem; color: var(--portal-muted); }
+.regional-map-loading { font-size: .875rem; }
+.regional-reset { margin-bottom: 20px; }
+@media (max-width: 639px) { .regional-map-heading { flex-direction: column; gap: 0; } .regional-google-map { height: 340px; } }
+
+.regional-pins-map { width: 100%; height: 640px; border-radius: 12px; z-index: 0; background: var(--portal-accent-soft); }
+.regional-map-pin { background: transparent; border: 0; }
+.regional-pin-shape { display: grid; place-items: center; width: 32px; height: 32px; border: 2px solid #fff; border-radius: 50% 50% 50% 0; background: #023568; color: #fff; box-shadow: 0 2px 8px rgb(0 0 0 / .3); transform: rotate(-45deg); }
+.regional-pin-shape > span { font: 700 13px/1 Arial, sans-serif; transform: rotate(45deg); }
+.regional-map-pin-selected .regional-pin-shape { background: #facc15; color: #023568; border-color: #023568; }
+.regional-pin-label { font: 700 12px/1.4 var(--font-body, Arial, sans-serif); }
+.regional-map-pin:focus-visible { outline: 3px solid #0072e7; outline-offset: 5px; }
+@media (max-width: 639px) { .regional-pins-map { height: 380px; } }
+
+/* Pins e balões dos equipamentos esportivos. */
+.equipment-type-campo { --equipment-color: #07851b; }
+.equipment-type-quadra { --equipment-color: #075de5; }
+.equipment-type-praca { --equipment-color: #c56a00; }
+.equipment-type-complexo { --equipment-color: #8631cd; }
+.equipment-type-pista { --equipment-color: #007f7d; }
+.equipment-type-espaco { --equipment-color: #023568; }
+.equipment-map-pin { background: transparent; border: 0; }
+.equipment-pin-shape { display: grid; place-items: center; width: 34px; height: 34px; border: 3px solid #fff; border-radius: 50% 50% 50% 0; background: var(--equipment-color); color: #fff; box-shadow: 0 3px 8px rgb(0 0 0 / .35); transform: rotate(-45deg); }
+.equipment-pin-shape i { transform: rotate(45deg); font-size: 15px; }
+.equipment-map-pin:focus-visible { outline: 3px solid #023568; outline-offset: 5px; }
+.equipment-map-legend { display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 16px; margin: 12px 0; list-style: none; border: 1px solid var(--portal-border); border-radius: 12px; background: var(--portal-surface); }
+.equipment-map-legend li { display: flex; align-items: center; gap: 8px; font-size: .8125rem; }
+.equipment-legend-icon { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--equipment-color); color: #fff; }
+.equipment-leaflet-popup .leaflet-popup-content-wrapper { padding: 0; overflow: hidden; border: 2px solid #fff; border-radius: 16px; box-shadow: 0 8px 24px rgb(2 26 62 / .25); }
+.equipment-leaflet-popup .leaflet-popup-content { width: min(300px, 70vw) !important; margin: 0; font-family: var(--font-body); }
+.equipment-popup-photo { display: block; width: 100%; height: 150px; object-fit: cover; }
+.equipment-popup-no-photo { display: grid; place-items: center; min-height: 90px; padding: 16px; background: var(--portal-accent-soft); color: var(--portal-muted); font-size: .8rem; }
+.equipment-popup-body { padding: 12px; }
+.equipment-popup-heading { display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px; }
+.equipment-popup-heading h3 { margin: 0; font-size: 1rem; color: var(--portal-text); }
+.equipment-map-badge { align-self: flex-start; border-radius: 4px; padding: 3px 6px; background: var(--equipment-color); color: #fff; font-size: .7rem; font-weight: 700; }
+.equipment-map-popup p { margin: 0 0 8px; font-size: .8125rem; line-height: 1.4; }
+.equipment-popup-description { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.regionais-page button.equipment-popup-action { width: 100%; min-height: 40px; padding: 8px 12px; border: 0; border-radius: 6px; background: linear-gradient(#0072e7, #023568); color: #fff; font-size: .8125rem; }
+.equipment-leaflet-popup .leaflet-popup-close-button { border-radius: 50%; background: #fff; color: #023568; }
+.regional-pins-map .leaflet-popup-pane { width: 100%; height: 100%; pointer-events: none; }
+.regional-pins-map .equipment-leaflet-popup { top: 16px !important; left: 50% !important; bottom: auto !important; transform: translateX(-50%) !important; margin: 0; width: min(320px, calc(100% - 24px)); max-height: calc(100% - 32px); pointer-events: auto; }
+.equipment-leaflet-popup .leaflet-popup-content-wrapper { max-height: inherit; overflow: auto; background: #fff; color: #172033; }
+.equipment-leaflet-popup .leaflet-popup-content { width: auto !important; max-height: inherit; }
+.equipment-leaflet-popup .leaflet-popup-tip-container { display: none; }
+.equipment-popup-heading h3 { line-height: 1.35; overflow-wrap: anywhere; }
+.equipment-map-popup { background: #fff; color: #172033; }
+.equipment-map-popup p { color: #334155; }
+
+.regional-map-stage { position: relative; }
+.regional-map-stage .equipment-map-legend { position: absolute; right: 12px; bottom: 32px; z-index: 500; display: grid; gap: 8px; max-width: 220px; margin: 0; padding: 12px; box-shadow: 0 3px 12px rgb(2 26 62 / .18); pointer-events: none; }
+@media (max-width: 639px) { .regional-map-stage .equipment-map-legend { position: static; display: flex; max-width: none; margin-top: 12px; box-shadow: none; } }

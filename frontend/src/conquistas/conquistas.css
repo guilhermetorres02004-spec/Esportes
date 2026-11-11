@@ -1,0 +1,50 @@
+/* Adaptação da página React aos tokens compartilhados do portal. */
+.hall { max-width: var(--portal-width); padding: 40px 24px 64px; color: var(--portal-text); }
+.hall-back { color: #023568; font-size: .875rem; }
+.hall-hero { gap: 32px; padding: clamp(24px, 4vw, 48px); border-radius: var(--radius-kit); background: linear-gradient(120deg, #023568, #1e3a8a); box-shadow: var(--shadow-kit); }
+.hall-kicker { display: inline-block; margin: 0; padding: 6px 12px; border: 1px solid rgb(255 255 255 / .4); border-radius: 999px; color: #fff; font-size: .8125rem; letter-spacing: .02em; text-transform: none; }
+.hall-hero h1 { font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.15; }
+.hall-hero p { line-height: 1.65; }
+.hall-hero img { border-radius: var(--radius-kit-sm); aspect-ratio: 1672 / 941; object-fit: contain; }
+.hall-years { gap: 12px; margin-top: 24px; }
+.hall-years a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 20px; border: 1px solid rgb(255 255 255 / .5); border-radius: 8px; background: #fff; color: #023568; font-weight: 700; text-decoration: none; }
+.hall-years a:hover { background: #eff6ff; }
+.hall-note { margin: 24px 0; color: var(--portal-muted); font-size: .875rem; line-height: 1.65; }
+.hall #conquistas-sync-status { padding: 16px 20px; border: 1px solid var(--portal-border); border-left: 4px solid #0072e7; border-radius: var(--radius-kit-sm); background: var(--portal-surface); }
+.hall section { margin-top: 40px; }
+.hall-section-title { border-left-color: #0072e7; padding-left: 16px; }
+.hall-section-title h2 { color: #023568; font-size: clamp(1.5rem, 3vw, 2rem); }
+.hall-section-title span { color: var(--portal-muted); font-size: .875rem; }
+.hall-grid { gap: 24px; align-items: stretch; }
+.hall-card { min-width: 0; padding: 24px; border: 1px solid var(--portal-border); border-radius: var(--radius-kit); background: var(--portal-surface); box-shadow: var(--shadow-kit); overflow-wrap: anywhere; }
+.hall-card:has(.hall-profile-button):hover { transform: none; box-shadow: var(--shadow-kit-hover); border-color: #0072e7; }
+.hall-sport { color: var(--portal-muted); font-size: .8125rem; font-weight: 600; text-transform: none; letter-spacing: normal; }
+.hall-card h3 { margin: 12px 0; color: #023568; font-size: 1.25rem; line-height: 1.35; }
+.hall-result { color: var(--portal-text); font-weight: 700; line-height: 1.5; }
+.hall-card a { color: #1e3a8a; font-size: .875rem; font-weight: 600; padding-top: 16px; }
+.hall-profile-button { position: relative; z-index: 2; display: inline-flex; align-items: center; justify-content: center; width: 100%; min-height: 44px; margin-top: 20px; padding: 10px 16px; border: 1px solid #023568; border-radius: 8px; background: #023568; color: #fff; font-size: .875rem; font-weight: 700; text-align: center; }
+.hall-profile-button:hover { background: #1e3a8a; }
+.hall-profile-button::after { content: none; }
+.hall :is(a, button):focus-visible { outline: 3px solid #0072e7; outline-offset: 4px; }
+.hall-hero a:focus-visible { outline-color: #fff; }
+.hall-footer { border-color: var(--portal-border); color: var(--portal-muted); font-size: .875rem; }
+.hall-footer a { color: #023568; }
+.conquistas-dialog { padding: 16px; border: 1px solid var(--portal-border); border-radius: var(--radius-kit); background: var(--portal-surface); color: var(--portal-text); }
+.conquistas-dialog .champion-content { padding: 24px; }
+.conquistas-dialog .champion-content :is(h2, h3, h4) { color: #023568; }
+.conquistas-dialog .champion-timeline li { border-left-color: #0072e7; }
+.conquistas-dialog .champion-timeline li:last-child { border-left-color: transparent; }
+.conquistas-dialog .champion-timeline li::before { border-color: #0072e7; }
+.conquistas-dialog .champion-date { border-radius: 8px; background: var(--portal-accent-soft); color: #023568; font-weight: 700; }
+.conquistas-dialog .champion-timeline :is(p, a) { font-size: .875rem; line-height: 1.6; }
+.conquistas-dialog .champion-note { color: var(--portal-muted); }
+.conquistas-dialog .champion-close { width: 44px; height: 44px; background: var(--portal-accent-soft); color: #023568; }
+.conquistas-dialog :is(a, button):focus-visible { outline-color: #0072e7; }
+@media (max-width: 600px) {
+    .hall { padding: 24px 16px 40px; }
+    .hall-hero { gap: 24px; padding: 24px; }
+    .hall-card { padding: 20px; }
+    .conquistas-dialog .champion-content { padding: 16px 8px; }
+    .conquistas-dialog .champion-timeline li { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+    .conquistas-dialog .champion-date { justify-self: start; }
+}

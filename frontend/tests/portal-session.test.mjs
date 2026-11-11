@@ -6,7 +6,7 @@ import { runInNewContext } from 'node:vm';
 const codigo = readFileSync(new URL('../public/js/portal-session.js', import.meta.url), 'utf8');
 const conta = { username: 'admin', authorities: [{ authority: 'ROLE_ADMIN' }] };
 function preparar(respostas = [conta]) {
-    const elementos = Object.fromEntries(['portal-session-user', 'portal-session-login', 'sair', 'portal-session-status'].map(id =>
+    const elementos = Object.fromEntries(['portal-session-user', 'portal-session-login', 'sair', 'portal-session-status', 'portal-menu-eventos', 'portal-menu-gestao'].map(id =>
         [id, { hidden: true, textContent: '', handlers: {}, setAttribute() {}, addEventListener(tipo, handler) { this.handlers[tipo] = handler; } }]));
     elementos['portal-session-status'].hidden = false;
     const pedidos = [], eventos = {}, docEventos = {};
@@ -37,6 +37,8 @@ test('reconhece o admin pela sessão do servidor e envia o cookie em toda págin
     assert.equal(t.elementos['portal-session-user'].textContent, 'Conectado: admin');
     assert.equal(t.elementos['portal-session-login'].hidden, true);
     assert.equal(t.elementos.sair.hidden, false);
+    assert.equal(t.elementos['portal-menu-eventos'].hidden, false);
+    assert.equal(t.elementos['portal-menu-gestao'].hidden, false);
     assert.equal(t.pedidos[0].credentials, 'include');
     assert.equal(t.pedidos[0].cache, 'no-store');
 });
@@ -47,6 +49,8 @@ test('visitante vê Login e a sessão expirada é reconhecida ao retornar à aba
     assert.equal(t.elementos['portal-session-login'].hidden, false);
     assert.equal(t.elementos.sair.hidden, true);
     assert.equal(t.elementos['portal-session-user'].hidden, true);
+    assert.equal(t.elementos['portal-menu-eventos'].hidden, true);
+    assert.equal(t.elementos['portal-menu-gestao'].hidden, true);
 });
 
 test('falha de conexão não apaga um usuário já identificado', async () => {
@@ -64,6 +68,8 @@ test('Sair encerra a sessão pelo servidor antes de redirecionar', async () => {
     assert.equal(t.pedidos[1].method, 'POST');
     assert.equal(t.pedidos[1].credentials, 'include');
     assert.equal(t.window.location.href, 'login.html');
+    assert.equal(t.elementos['portal-menu-eventos'].hidden, true);
+    assert.equal(t.elementos['portal-menu-gestao'].hidden, true);
     assert.equal(t.elementos['portal-session-user'].hidden, true);
 });
 

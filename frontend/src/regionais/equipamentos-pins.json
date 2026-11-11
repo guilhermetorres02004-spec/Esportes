@@ -1,0 +1,105 @@
+{
+  "consultadoEm": "2026-11-11T17:05:15.346Z",
+  "provedor": "OpenStreetMap / Nominatim",
+  "pins": [
+    {
+      "id": "4542e0bdc1ae",
+      "nome": "Parque Ecologico Municipal Cleo Barbosa",
+      "coordenadas": [
+        -19.9751986,
+        -44.222829
+      ],
+      "fonte": "https://www.openstreetmap.org/way/1544881076",
+      "nomeNaFonte": "Parque Ecológico Municipal (Cléo Barbosa)",
+      "precisao": "Ponto de referencia da estrutura no mapa"
+    },
+    {
+      "id": "df87a15bfef2",
+      "nome": "Parque Ecologico Felisberto Neves",
+      "coordenadas": [
+        -19.955565,
+        -44.1900755
+      ],
+      "fonte": "https://www.openstreetmap.org/way/1370949615",
+      "nomeNaFonte": "Parque Ecológico Felisberto Neves",
+      "precisao": "Ponto de referencia da estrutura no mapa"
+    },
+    {
+      "id": "76265c80e50e",
+      "nome": "Praca do Encontro",
+      "coordenadas": [
+        -19.9634344,
+        -44.1994667
+      ],
+      "fonte": "https://www.openstreetmap.org/way/606698601",
+      "nomeNaFonte": "Praça do Encontro Joaquim Ribeiro de Rezende",
+      "precisao": "Ponto de referencia da estrutura no mapa"
+    },
+    {
+      "id": "fe8a17ca1fe0",
+      "nome": "Campo Cidade Verde",
+      "coordenadas": [
+        -19.9864365,
+        -44.1908095
+      ],
+      "fonte": "https://www.openstreetmap.org/way/497236769",
+      "nomeNaFonte": "Campo Cidade Verde",
+      "precisao": "Ponto de referencia da estrutura no mapa"
+    },
+    {
+      "id": "81a92c301e93",
+      "nome": "Ginasio Poliesportivo Divino Ferreira Braga",
+      "coordenadas": [
+        -19.958121,
+        -44.1982445
+      ],
+      "fonte": "https://www.openstreetmap.org/way/155514562",
+      "nomeNaFonte": "Ginásio Poliesportivo Divino Ferreira Braga",
+      "precisao": "Ponto de referencia da estrutura no mapa"
+    },
+    {
+      "id": "2cc668f46779",
+      "nome": "Complexo Esportivo Ricardo Mediolli (Nucleo esportivo)",
+      "coordenadas": [
+        -19.9476695,
+        -44.1214304
+      ],
+      "fonte": "https://www.openstreetmap.org/way/687827744",
+      "nomeNaFonte": "Complexo Esportivo Ricardo Mediolli",
+      "precisao": "Ponto de referencia da estrutura no mapa"
+    },
+    {
+      "id": "2df629a0362b",
+      "nome": "Complexo esportivo do Horto",
+      "coordenadas": [
+        -19.9597235,
+        -44.1989025
+      ],
+      "fonte": "https://www.openstreetmap.org/way/323121514",
+      "nomeNaFonte": "Horto Municipal Ginásio Poliesportivo",
+      "precisao": "Ponto de referencia da estrutura no mapa"
+    },
+    {
+      "id": "220c7c529cdb",
+      "nome": "Nucleo Ramacrisna (Esporte Viva o Esporte)",
+      "coordenadas": [
+        -19.9150999,
+        -44.2732947
+      ],
+      "fonte": "https://www.openstreetmap.org/way/1544836856",
+      "nomeNaFonte": "Instituto Ramacrisna",
+      "precisao": "Referencia do edificio publicado no mapa"
+    },
+    {
+      "id": "102ee879f9d1",
+      "nome": "Campo Real Sociedad",
+      "coordenadas": [
+        -19.9424746,
+        -44.1931606
+      ],
+      "fonte": "https://www.openstreetmap.org/way/687258752",
+      "nomeNaFonte": "Campo do Real Sociedade",
+      "precisao": "Ponto de referencia da estrutura no mapa"
+    }
+  ]
+}

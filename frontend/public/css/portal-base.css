@@ -167,16 +167,22 @@ body.portal-standard { margin: 0; font-family: var(--font-body); font-size: 1rem
 .portal-standard .portal-header-actions { gap: .5rem; flex-wrap: nowrap; }
 .portal-standard .portal-header-nav .portal-header-action { padding: .375rem .75rem; color: white; border: 1px solid rgb(255 255 255 / .4); border-radius: 999px; font-size: .75rem; }
 .portal-standard .portal-header-nav .portal-header-action:hover { color: var(--betim-blue-dark, #023568); background: white; border-color: white; }
+.portal-standard .portal-header-topbar .portal-header-login { justify-self: end; display: inline-flex; align-items: center; justify-content: center; min-height: 44px; gap: .5rem; padding: .5rem 1rem; border: 1px solid white; border-radius: 999px; background: white; color: var(--betim-blue-dark, #023568); font-family: var(--font-body); font-size: .875rem; font-weight: 700; text-decoration: none; text-transform: none; letter-spacing: 0; white-space: nowrap; }
+.portal-standard .portal-header-topbar .portal-header-login:hover { background: #eff6ff; color: var(--betim-blue-dark, #023568); }
+.portal-standard .portal-header-topbar .portal-header-login svg { width: 16px; height: 16px; }
+.portal-standard .portal-header-topbar .portal-header-login { min-width: 110px; cursor: pointer; }
+.portal-standard .portal-header-topbar .portal-header-logout:disabled { opacity: .7; cursor: wait; }
 .portal-standard .portal-header-nav .portal-header-user { display: block; max-width: 150px; padding: 0; border: 0; background: transparent; color: white; font-size: .75rem; }
 .portal-standard .portal-header-user::before,.portal-standard .portal-header-user::after { content: none; }
 .portal-header-session-status { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .portal-header-topbar [hidden],.portal-header-nav [hidden] { display: none !important; }
 .portal-standard .portal-header-nav :where(a,summary,button):focus-visible,.portal-header-topbar :where(a):focus-visible { outline: 2px solid white; outline-offset: -3px; }
+.portal-standard .portal-header-topbar .portal-header-login:focus-visible { outline: 3px solid #facc15; outline-offset: 3px; }
 .portal-standard .portal-header-nav .portal-header-dropdown a:focus-visible { outline-color: var(--betim-blue-dark, #023568); }
 @media (max-width: 1023px) {
   .portal-standard .portal-header-topbar-inner { grid-template-columns: 1fr auto; gap: .75rem; padding: 1rem 0; }
   .portal-standard .portal-header-topbar .portal-header-title { grid-row: 2; grid-column: 1 / -1; font-size: 1.375rem; }
-  .portal-header-primary { grid-row: 1; grid-column: 2; }
+  .portal-header-primary, .portal-header-login { grid-row: 1; grid-column: 2; }
   .portal-standard .portal-header-inner { flex-wrap: wrap; gap: 0; }
   .portal-standard .portal-header-menus { flex-wrap: wrap; }
   .portal-header-utilities { flex-wrap: wrap; }
@@ -197,3 +203,22 @@ body.portal-standard { margin: 0; font-family: var(--font-body); font-size: 1rem
 }
 
 .portal-standard .portal-header-nav .portal-header-dropdown a.portal-menu-view-all { color: #0072e7; font-weight: 700; }
+
+/* As marcas acompanham a navegação quando a faixa institucional sai da tela. */
+.portal-scroll-city, .portal-scroll-beta { display: flex; align-items: center; justify-content: center; flex-shrink: 0; min-height: 48px; animation: portal-brand-enter 280ms ease-out both; }
+.portal-scroll-city { width: 110px; }
+.portal-scroll-beta { width: 76px; margin-left: 12px; }
+.portal-scroll-city img, .portal-scroll-beta img { display: block; width: 100%; height: auto; max-height: 42px; object-fit: contain; }
+.portal-scroll-beta img { max-height: 30px; }
+@keyframes portal-brand-enter { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 1023px) {
+  .portal-header-compact .portal-scroll-city { margin-right: 12px; }
+  .portal-standard .portal-header-compact .portal-header-menus { order: 3; width: 100%; }
+  .portal-header-compact .portal-header-utilities { width: auto; margin-left: auto; justify-content: flex-end; }
+  .portal-header-compact .portal-scroll-beta { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .portal-scroll-city, .portal-scroll-beta { animation: none; } }
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .portal-standard .portal-header-inner:has(#portal-menu-gestao:not([hidden])) { flex-wrap: wrap; }
+  .portal-standard .portal-header-inner:has(#portal-menu-gestao:not([hidden])) .portal-header-menus { flex-wrap: wrap; }
+}

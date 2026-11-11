@@ -1,0 +1,107 @@
+{
+  "consultadoEm": "2026-11-11T16:50:05.877Z",
+  "provedor": "OpenStreetMap / Nominatim",
+  "precisao": "Pontos de referencia das regionais no OpenStreetMap; nao sao enderecos exatos das administracoes ou limites oficiais.",
+  "pins": [
+    {
+      "id": "centro",
+      "nome": "Centro",
+      "coordenadas": [
+        -19.9817337,
+        -44.1862792
+      ],
+      "fonte": "https://www.openstreetmap.org/relation/5418304",
+      "referencia": "Regional Sede, Betim, Minas Gerais, Região Sudeste, Brasil"
+    },
+    {
+      "id": "norte",
+      "nome": "Norte",
+      "coordenadas": [
+        -19.8905913,
+        -44.1979422
+      ],
+      "fonte": "https://www.openstreetmap.org/relation/5418305",
+      "referencia": "Regional Norte, Betim, Minas Gerais, Região Sudeste, Brasil"
+    },
+    {
+      "id": "alterosas",
+      "nome": "Alterosas",
+      "coordenadas": [
+        -19.9377877,
+        -44.1640836
+      ],
+      "fonte": "https://www.openstreetmap.org/relation/19370154",
+      "referencia": "Regional Alterosas, Betim, Minas Gerais, Região Sudeste, Brasil"
+    },
+    {
+      "id": "ptb",
+      "nome": "PTB",
+      "coordenadas": [
+        -19.9715795,
+        -44.1166821
+      ],
+      "fonte": "https://www.openstreetmap.org/relation/19370152",
+      "referencia": "Regional PTB, Betim, Minas Gerais, Região Sudeste, Brasil"
+    },
+    {
+      "id": "icaivera",
+      "nome": "Icaivera",
+      "coordenadas": [
+        -19.8819199,
+        -44.165749
+      ],
+      "fonte": "https://www.openstreetmap.org/relation/19370155",
+      "referencia": "Regional Icaivera, Betim, Minas Gerais, Região Sudeste, Brasil"
+    },
+    {
+      "id": "citrolandia",
+      "nome": "Citrolândia",
+      "coordenadas": [
+        -20.0132988,
+        -44.2267392
+      ],
+      "fonte": "https://www.openstreetmap.org/relation/19370157",
+      "referencia": "Regional Citrolândia, Betim, Minas Gerais, Região Sudeste, Brasil"
+    },
+    {
+      "id": "imbirucu",
+      "nome": "Imbiruçu",
+      "coordenadas": [
+        -19.939833,
+        -44.1232476
+      ],
+      "fonte": "https://www.openstreetmap.org/relation/19370151",
+      "referencia": "Regional Imbiruçu, Betim, Minas Gerais, Região Sudeste, Brasil"
+    },
+    {
+      "id": "teresopolis",
+      "nome": "Teresópolis",
+      "coordenadas": [
+        -19.9495219,
+        -44.0973888
+      ],
+      "fonte": "https://www.openstreetmap.org/relation/19370150",
+      "referencia": "Regional Teresópolis, Betim, Minas Gerais, Região Sudeste, Brasil"
+    },
+    {
+      "id": "petrovale",
+      "nome": "Petrovale",
+      "coordenadas": [
+        -20.0055389,
+        -44.1365899
+      ],
+      "fonte": "https://www.openstreetmap.org/relation/19370153",
+      "referencia": "Regional Petrovale, Betim, Minas Gerais, Região Sudeste, Brasil"
+    },
+    {
+      "id": "vianopolis",
+      "nome": "Vianópolis",
+      "coordenadas": [
+        -19.9233003,
+        -44.2582005
+      ],
+      "fonte": "https://www.openstreetmap.org/relation/19370156",
+      "referencia": "Regional Vianópolis, Betim, Minas Gerais, Região Sudeste, Brasil"
+    }
+  ]
+}

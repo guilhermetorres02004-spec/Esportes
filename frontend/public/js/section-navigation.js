@@ -1,3 +1,11 @@
+const scrollRestoration = window.history.scrollRestoration;
+let initialReloadPending = window.performance?.getEntriesByType?.('navigation')?.[0]?.type === 'reload';
+
+if (initialReloadPending) {
+    window.history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+}
+
 function scrollToSection(id) {
     const section = document.getElementById(id);
     if (!section) return;
@@ -22,8 +30,22 @@ function scrollToSection(id) {
 }
 
 function scrollToCurrentSection() {
+    if (initialReloadPending) {
+        window.scrollTo(0, 0);
+        return;
+    }
     if (window.location.hash) scrollToSection(window.location.hash.slice(1));
 }
 
+function handlePageLoad() {
+    if (initialReloadPending) {
+        window.scrollTo(0, 0);
+        window.history.scrollRestoration = scrollRestoration;
+        initialReloadPending = false;
+        return;
+    }
+    scrollToCurrentSection();
+}
+
 window.addEventListener('hashchange', scrollToCurrentSection);
-window.addEventListener('load', scrollToCurrentSection);
+window.addEventListener('load', handlePageLoad);

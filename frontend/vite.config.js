@@ -5,6 +5,22 @@ import { resolveModalidade } from './src/modalidades/routes.js';
 function modalityRoutes() {
   const configure = server => { server.middlewares.use((req, res, next) => {
     const url = new URL(req.url, 'http://localhost');
+    if (/^\/inscricao(?:\.html|\/)?$/i.test(url.pathname)) {
+      if (url.pathname !== '/inscricao') { res.writeHead(302, { Location: '/inscricao' + url.search }); res.end(); return; }
+      req.url = '/index.html' + url.search; next(); return;
+    }
+    if (/^\/administrativo(?:\.html|\/)?$/.test(url.pathname)) {
+      if (url.pathname !== '/administrativo') { res.writeHead(302, { Location: '/administrativo' + url.search }); res.end(); return; }
+      req.url = '/index.html' + url.search; next(); return;
+    }
+    if (/^\/(?:entrar\/?|login\.html)$/.test(url.pathname)) {
+      if (url.pathname !== '/entrar') { res.writeHead(302, { Location: '/entrar' + url.search }); res.end(); return; }
+      req.url = '/index.html' + url.search; next(); return;
+    }
+    if (/^\/conquistas(?:\.html|\/)?$/.test(url.pathname)) {
+      if (url.pathname !== '/conquistas') { res.writeHead(302, { Location: '/conquistas' + url.search }); res.end(); return; }
+      req.url = '/index.html' + url.search; next(); return;
+    }
     if (url.pathname.replace(/\/$/, '') === '/esporte-nas-regionais') { req.url = '/index.html' + url.search; next(); return; }
     const modalidade = resolveModalidade(url.pathname);
     if (!modalidade) return next();

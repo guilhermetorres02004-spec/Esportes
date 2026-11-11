@@ -20,7 +20,7 @@ test('página principal React preserva as seções e os indicadores do portal', 
         assert.match(html, new RegExp(`id="${id}"`));
     assert.doesNotMatch(html, /id="rendimento"|Esporte de Rendimento/);
     assert.match(html, /1\.452 Medalhas/);
-    assert.match(html, /href="conquistas.html"/);
+    assert.match(html, /href="\/conquistas"/);
     assert.match(html, /Betim respira esporte/);
     assert.match(html, /Conheça as modalidades, encontre onde treinar/);
     assert.match(html, /Prefeitura de Betim/);
