@@ -1,6 +1,10 @@
 (() => {
     if (document.getElementById('portal-site-header')) return;
 
+    const librasScript = document.createElement('script');
+    librasScript.src = '/js/portal-libras.js';
+    document.head.append(librasScript);
+
     const suporteCss = document.createElement('link');
     suporteCss.rel = 'stylesheet';
     suporteCss.href = '/css/portal-suporte.css';
@@ -12,7 +16,7 @@
     const fotosScript = document.createElement('script');
     fotosScript.type = 'module';
     fotosScript.src = '/js/portal-fotos.js';
-    document.head.append(fotosScript);
+    if (document.documentElement?.dataset.reactHome !== 'true') document.head.append(fotosScript);
 
     const page = window.location.pathname.split('/').pop().toLowerCase();
     const home = page === '' || page === 'index.html';
@@ -20,11 +24,12 @@
     const acessosHabilitados = false;
     const backId = page === 'inscricao.html' ? 'id="btnVoltarModalidade"' : '';
     const categorias = [
-        ['Modalidades', [['Futebol', 'futebol.html'], ['Voleibol', 'volei.html'], ['Judô', 'detalhe-modalidade.html']]],
-        ['Programas', [['Rendimento', 'index.html#rendimento'], ['Atividades Esportivas', 'index.html#atividades-esportivas'],
-            ['Escola Esporte', 'index.html#escola'], ['Viva o Esporte', 'index.html#viva-esporte']]]
+        ['Modalidades', [['Futebol', '/futebol'], ['Voleibol', '/volei'], ['Judô', '/judo'],
+            ['Futsal', '/futsal'], ['Basquete', '/basquete'], ['Ver todas', '/#escola']]],
+        ['Programas', [['Atividades Esportivas', '/#atividades-esportivas'],
+            ['Escola Esporte', '/#escola'], ['Viva o Esporte', '/#viva-esporte']]]
     ];
-    const atual = href => !href.includes('#') && href === page ? ' aria-current="page"' : '';
+    const atual = href => !href.includes('#') && href.replace(/^\//, '') === page ? ' aria-current="page"' : '';
     const menus = categorias.map(([nome, itens]) => `
                     <details class="portal-header-menu">
                         <summary>${nome}</summary>
@@ -32,6 +37,15 @@
                     </details>`).join('');
 
     document.currentScript.insertAdjacentHTML('beforebegin', `
+        <div class="portal-accessibility-bar" role="group" aria-label="Preferências de acessibilidade">
+            <div class="portal-accessibility-inner">
+                <button type="button" data-portal-visual="aumentar" aria-label="Aumentar tamanho da fonte">A+</button>
+                <button type="button" data-portal-visual="diminuir" aria-label="Diminuir tamanho da fonte">A−</button>
+                <button type="button" data-portal-visual="contraste" aria-pressed="false">Contraste</button>
+                <button type="button" data-portal-visual="restaurar">Restaurar</button>
+                <span class="portal-institutional-sr" role="status" data-portal-visual-status></span>
+            </div>
+        </div>
         <div class="portal-institutional-bar">
             <div class="portal-institutional-inner">
                 <nav class="portal-institutional-links" aria-label="Links institucionais">
@@ -52,23 +66,23 @@
                         <img src="/logo/fundacaobeta-logo-horizontal-branco.png" alt="Fundação Beta" width="104" height="48">
                     </a>
                 </div>
-                <a href="index.html" class="portal-header-title">Portal do Esporte</a>
+                <a href="/" class="portal-header-title">Portal do Esporte</a>
                 ${acessosHabilitados ? '<a href="Inscricao.html" class="portal-header-primary">Inscreva-se</a>' : ''}
             </div>
         </header>
-        <nav id="portal-site-header" class="portal-header-nav" aria-label="Acesso ao portal">
+        <nav id="portal-site-header" tabindex="-1" class="portal-header-nav" aria-label="Acesso ao portal">
             <div class="portal-header-inner">
                 <div class="portal-header-menus" aria-label="Navegação do portal">
-                    <a href="index.html" class="portal-header-link"${home ? ' aria-current="page"' : ''}>
+                    <a href="/" class="portal-header-link"${home ? ' aria-current="page"' : ''}>
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m3 10 9-7 9 7v10H3zM9 20v-8h6v8"/></svg>Início
                     </a>
                     <details class="portal-header-menu">
                         <summary>Portal</summary>
                         <div class="portal-header-dropdown">
-                            <a href="index.html#noticias">Notícias</a>
-                            <a href="index.html#map-section">Onde treinar</a>
+                            <a href="/#noticias">Notícias</a>
+                            <a href="/#map-section">Onde treinar</a>
                             <a href="downloads.html">Documentos e downloads</a>
-                            ${home ? '' : `<a ${backId} href="index.html">← Voltar ao início</a>`}
+                            ${home ? '' : `<a ${backId} href="/">← Voltar ao início</a>`}
                         </div>
                     </details>${menus}
                 </div>
@@ -91,8 +105,60 @@
         </nav>`);
 
     const abas = [...document.querySelectorAll('.portal-header-menu')];
+    const descricoes = {
+        '/#noticias': 'Acompanhe as notícias e os destaques do esporte de Betim.',
+        '/#map-section': 'Encontre os locais para praticar esporte na cidade.',
+        'downloads.html': 'Consulte documentos e materiais do Portal do Esporte.',
+        '/': 'Volte à página principal do Portal do Esporte.',
+        '/futebol': 'Conheça o futebol e os locais de prática em Betim.',
+        '/futsal': 'Conheça o futsal e seus núcleos esportivos em Betim.',
+        '/basquete': 'Conheça o basquete e seus núcleos esportivos em Betim.',
+        '/volei': 'Explore o voleibol e suas atividades na cidade.',
+        '/judo': 'Saiba mais sobre a modalidade e suas atividades.',
+        '/#atividades-esportivas': 'Explore as atividades esportivas oferecidas no portal.',
+        '/#escola': 'Conheça o programa Escola Esporte.',
+        '/#viva-esporte': 'Saiba mais sobre o programa Viva o Esporte.',
+        'https://www.betim.mg.gov.br/': 'Acesse os serviços e as informações da Prefeitura de Betim.',
+        'https://memoria.3106705.xyz/': 'Conheça o Portal da Memória de Betim.',
+    };
+    abas.forEach(aba => {
+        const painel = aba.querySelector('.portal-header-dropdown');
+        const links = [...painel.querySelectorAll('a')];
+        const cabecalho = document.createElement('div'); cabecalho.className = 'portal-menu-heading';
+        const titulo = document.createElement('span'); titulo.textContent = aba.querySelector('summary').textContent.trim();
+        const quantidade = document.createElement('span'); quantidade.textContent = `${links.length} ${links.length === 1 ? 'página' : 'páginas'}`;
+        cabecalho.append(titulo, quantidade); painel.prepend(cabecalho);
+        links.forEach(link => {
+            if (link.textContent.trim() === 'Ver todas') {
+                link.classList.add('portal-menu-view-all');
+                link.textContent = 'Ver todas';
+                return;
+            }
+            const nome = document.createElement('strong'); nome.textContent = link.textContent;
+            const descricao = document.createElement('span'); descricao.className = 'portal-menu-description';
+            descricao.textContent = descricoes[link.getAttribute('href')] || 'Explore esta página do Portal do Esporte.';
+            link.replaceChildren(nome, descricao);
+        });
+    });
     const fechar = (exceto) => abas.forEach(aba => { if (aba !== exceto) aba.open = false; });
     abas.forEach(aba => aba.addEventListener('toggle', () => { if (aba.open) fechar(aba); }));
+    abas.forEach(aba => {
+        aba.addEventListener('pointerenter', event => {
+            if (event.pointerType !== 'mouse' || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+            fechar(aba); aba.open = true;
+        });
+        aba.addEventListener('pointerleave', event => {
+            if (event.pointerType === 'mouse' && !aba.contains(document.activeElement)) aba.open = false;
+        });
+        aba.addEventListener('focusout', event => {
+            if (!aba.contains(event.relatedTarget) && !aba.matches(':hover')) aba.open = false;
+        });
+        aba.querySelector('summary').addEventListener('keydown', event => {
+            if (event.key !== 'ArrowDown') return;
+            event.preventDefault(); fechar(aba); aba.open = true;
+            aba.querySelector('.portal-header-dropdown a').focus();
+        });
+    });
     document.addEventListener('click', (event) => {
         if (!event.target.closest('.portal-header-menu')) fechar();
         const link = event.target.closest('.portal-header-dropdown a');

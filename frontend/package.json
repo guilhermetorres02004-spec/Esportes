@@ -14,11 +14,12 @@
     "build:suporte": "node scripts/build-support-knowledge.mjs",
     "build:css": "tailwindcss -i ./src/tailwind.css -o ./public/css/tailwind.css --minify",
     "watch:css": "npm run build:css -- --watch",
-    "predev": "npm run build:suporte && npm run build:css",
+    "predev": "npm run build:modalidades && npm run build:suporte && npm run build:css",
     "dev": "vite",
-    "prebuild": "npm run build:suporte && npm run build:css",
+    "prebuild": "npm run build:modalidades && npm run build:suporte && npm run build:css",
     "build": "vite build && node scripts/copy-html-pages.mjs",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:modalidades": "node scripts/build-modality-react.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^5.0.0",

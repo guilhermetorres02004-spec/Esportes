@@ -1,0 +1,18 @@
+.portal-footer { background: #023568; color: #fff; padding: 3rem 1rem 0; }
+.portal-footer-inner { max-width: var(--portal-width, 80rem); margin: auto; }
+.portal-footer-columns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; padding-bottom: 2.5rem; }
+.portal-footer h2 { color: #fff; font-size: 1.125rem; line-height: 1.4; margin: 0 0 1rem; }
+.portal-footer p { margin: 0 0 .75rem; font-size: .875rem; line-height: 1.65; }
+.portal-footer address { font-style: normal; }
+.portal-footer a { display: inline-flex; align-items: center; min-height: 44px; max-width: 100%; color: #fff; font-size: .875rem; line-height: 1.5; text-decoration: underline; text-underline-offset: .2em; overflow-wrap: anywhere; }
+.portal-footer address a { display: flex; }
+.portal-footer a:hover { text-decoration-thickness: 2px; }
+.portal-footer a:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+.portal-footer ul { list-style: none; padding: 0; margin: 0; }
+.portal-footer-city-logo { display: block; height: 48px; width: auto; max-width: 100%; margin-bottom: 1rem; object-fit: contain; }
+.portal-footer-credits { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem 2rem; border-top: 1px solid rgb(255 255 255 / .25); padding: 1.5rem 0; }
+.portal-footer-credits p, .portal-footer-bottom p { margin: 0; }
+.portal-footer-beta img { display: block; width: auto; height: 28px; }
+.portal-footer-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 0; border-top: 1px solid rgb(255 255 255 / .25); }
+@media (max-width: 900px) { .portal-footer-columns { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .portal-footer-columns { grid-template-columns: minmax(0, 1fr); } .portal-footer-credits, .portal-footer-bottom { flex-direction: column; align-items: flex-start; } }

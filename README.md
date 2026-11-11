@@ -1,5 +1,14 @@
 # Portal Esporte Betim
 
+## Retomar trabalho com IA
+
+Digite `:return` para retomar o próximo lote registrado em [docs/retomada.md](docs/retomada.md),
+sempre com a skill decompor-tarefas. Também é possível escrever `:return` seguido de uma orientação.
+As regras comuns estão em [AGENTS.md](AGENTS.md), com adaptadores para Claude, Gemini e Copilot.
+O assistente deve concluir um lote pequeno, verificar, atualizar o registro e perguntar se pode continuar.
+O comando funciona como convenção de conversa nas ferramentas que leem essas instruções;
+não configura automaticamente outros aplicativos ou contas de IA.
+
 Estrutura inicial do projeto:
 
 ```text
@@ -20,7 +29,7 @@ portal-esporte-betim/
 
 ## Execucao local
 
-Requer Java 17 ou superior, Maven (ou o Maven local usado por `backend/mvnw.cmd`)
+Requer Java 25 (LTS), Maven (ou o Maven local usado por `backend/mvnw.cmd`)
 e Node.js compativel com Vite 7.
 
 1. Em `backend`, execute `mvn spring-boot:run` (no Windows, pode usar `./mvnw.cmd spring-boot:run`).
@@ -162,6 +171,20 @@ minimo 300); `FOTOS_CACHE_DIR` define o armazenamento. No Docker, a pasta padrao
 A atualizacao depende de a API estar em execucao. Fontes indisponiveis sao tentadas novamente no proximo ciclo.
 
 Testes: `npm run test:fotos` em `frontend` e `./mvnw.cmd test` em `backend`.
+
+## Página principal em React
+
+A página principal é renderizada em React: `frontend/src/main.jsx` monta `Home.jsx`,
+que exporta os componentes de `frontend/src/home/`. Carrossel, notícias, mapa,
+galeria e seções mantêm os endereços e a identidade visual do portal.
+O cabeçalho e o suporte continuam compartilhados com as páginas HTML existentes.
+Na página React, fotos e notícias são atualizadas por estado, sem executar o
+script legado que modifica o DOM. A consulta de fotos ocorre a cada cinco minutos
+e ao retornar à aba; falhas mantêm o conteúdo disponível. Temporizadores, consultas
+e mapa são limpos ao desmontar os componentes.
+O gerador da base de suporte lê as seções React, preservando suas referências.
+Verificação da migração: `node --test tests/home-react.test.mjs tests/fotos.test.mjs`
+em `frontend`, além de `npm run build`.
 
 ## Conquistas com atualização automática
 

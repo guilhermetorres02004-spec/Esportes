@@ -84,12 +84,12 @@ test('resposta antiga não restaura o login depois de Sair', async () => {
     assert.equal(t.elementos['portal-session-user'].hidden, true);
 });
 
-test('sessão é compartilhada pelas 21 páginas sem decidir acesso pelo nome da página', () => {
+test('sessão é compartilhada pelas 39 páginas sem decidir acesso pelo nome da página', () => {
     const header = readFileSync(new URL('../public/js/portal-header.js', import.meta.url), 'utf8');
     assert.match(header, /portal-session\.js/);
     assert.doesNotMatch(header, /const administrative|onclick="sair/);
     const paginas = readdirSync(new URL('../', import.meta.url)).filter(p => p.endsWith('.html'))
         .filter(p => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8').includes('/js/portal-header.js'));
-    assert.equal(paginas.length, 21);
+    assert.equal(paginas.length, 39);
     assert.ok(paginas.includes('conquistas.html'));
 });

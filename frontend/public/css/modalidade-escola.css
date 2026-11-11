@@ -1,0 +1,35 @@
+.modalidade-page { max-width: 960px; margin: auto; padding: 32px 20px 64px; }
+.modalidade-page nav { font-size: .875rem; margin-bottom: 32px; }
+.modalidade-page header { margin-bottom: 32px; }
+.modalidade-category { margin-bottom: 8px; color: var(--portal-accent); font-weight: 700; }
+.modalidade-page h1 { margin: 0; color: var(--portal-accent); }
+.modalidade-panel { padding: clamp(20px, 4vw, 32px); margin-bottom: 24px; border: 1px solid var(--portal-border); border-radius: var(--radius-kit); background: var(--portal-surface); box-shadow: var(--shadow-kit); }
+.modalidade-panel h2 { font-size: 1.25rem; margin: 0 0 16px; }
+.modalidade-panel p { margin: 0 0 16px; }
+.modalidade-panel ul { padding-left: 24px; margin: 0 0 16px; list-style: disc; }
+.modalidade-page a, .modalidade-footer a { color: var(--portal-accent); text-decoration: underline; text-underline-offset: 3px; }
+.modalidade-page a:focus-visible, .modalidade-footer a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.modalidade-source { margin-top: 16px !important; font-size: .875rem; color: var(--portal-muted); }
+.modalidade-back { display: inline-flex; align-items: center; min-height: 44px; }
+.modalidade-footer { border-top: 1px solid var(--portal-border); padding: 24px 20px; text-align: center; }
+
+/* Composição das modalidades baseada na página futebol.html. */
+.modalidade-hero { padding: 64px 20px; background: #023568; color: #fff; }
+.modalidade-hero-inner { max-width: var(--portal-width); margin: auto; }
+.modalidade-badge { display: inline-block; padding: 4px 12px; border-radius: 999px; background: var(--portal-highlight); color: #023568; font-size: .875rem; font-weight: 700; }
+.modalidade-hero h1 { margin: 16px 0; color: #fff; }
+.modalidade-hero p { max-width: 640px; color: #e2e8f0; font-size: 1.125rem; }
+.modalidade-page { max-width: var(--portal-width); }
+.modalidade-layout { display: grid; grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr); gap: 32px; align-items: start; }
+.modalidade-sidebar { position: sticky; top: 24px; }
+.modalidade-enrollment { border-top: 6px solid #0072e7; }
+.modalidade-network { border-top: 6px solid #023568; }
+.modalidade-panel h3 { font-size: 1rem; margin-bottom: 12px; }
+.modalidade-page a.modalidade-action { display: block; padding: 14px 16px; background: #023568; color: #fff; text-align: center; font-weight: 700; text-decoration: none; border-radius: 12px; }
+.modalidade-page a.modalidade-action-secondary { background: var(--portal-highlight); color: #023568; }
+.modalidade-action:hover { filter: brightness(.95); }
+.modalidade-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.modalidade-gallery > p { grid-column: 1 / -1; }
+.modalidade-gallery img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; }
+@media (max-width: 900px) { .modalidade-layout { grid-template-columns: minmax(0, 1fr); } .modalidade-sidebar { position: static; } }
+@media (max-width: 479px) { .modalidade-gallery { grid-template-columns: minmax(0, 1fr); } .modalidade-hero { padding-block: 40px; } }

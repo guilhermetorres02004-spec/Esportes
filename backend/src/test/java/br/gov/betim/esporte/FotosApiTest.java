@@ -1,6 +1,7 @@
 package br.gov.betim.esporte;
 
 import br.gov.betim.esporte.service.FotosService;
+import br.gov.betim.esporte.dto.FotoOficial;
 import java.util.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -41,5 +42,24 @@ class FotosApiTest {
     }
     @Test void fotoDesconhecidaRetorna404() throws Exception {
         mvc.perform(get("/api/fotos/imagens/00000000000000000000000000000000")).andExpect(status().isNotFound());
+    }
+    @Test void vivaEsportePublicoLimitaCincoFotosSemRepeticoes() throws Exception {
+        var itens = new ArrayList<FotoOficial>();
+        itens.add(new FotoOficial("fora", "Futebol", "origem", "imagem", "/fora", "", List.of("futebol")));
+        for (int i = 0; i < 7; i++) {
+            var foto = new FotoOficial("foto" + i, "Atividade " + i, "origem", "imagem", "/foto" + i, "", List.of("atividades"));
+            itens.add(foto); itens.add(foto);
+        }
+        when(fotos.acervo()).thenReturn(new FotosService.Acervo(null, itens));
+        mvc.perform(get("/api/fotos/viva-esporte")).andExpect(status().isOk())
+                .andExpect(header().string("Cache-Control", "no-store"))
+                .andExpect(jsonPath("$.intervaloSegundos").value(9))
+                .andExpect(jsonPath("$.fotos.length()").value(5))
+                .andExpect(jsonPath("$.fotos[0].id").value("foto0"))
+                .andExpect(jsonPath("$.fotos[4].id").value("foto4"));
+    }
+    @Test void vivaEsporteSemFotosRetornaListaVazia() throws Exception {
+        mvc.perform(get("/api/fotos/viva-esporte")).andExpect(status().isOk())
+                .andExpect(jsonPath("$.fotos").isEmpty()).andExpect(jsonPath("$.intervaloSegundos").value(9));
     }
 }

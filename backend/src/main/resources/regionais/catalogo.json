@@ -1,0 +1,784 @@
+{
+    "versao":  1,
+    "atualizadoEm":  "2026-11-11T15:27:07.392Z",
+    "fonteCatalogo":  "https://regionais.betim.digital/_next/static/chunks/2297-4f052270e8c85bb7.js",
+    "limitesGeojson":  null,
+    "regionais":  [
+                      {
+                          "id":  "centro",
+                          "nome":  "Centro",
+                          "fonte":  "https://regionais.betim.digital/regional/centro/esporte"
+                      },
+                      {
+                          "id":  "norte",
+                          "nome":  "Norte",
+                          "fonte":  "https://regionais.betim.digital/regional/norte/esporte"
+                      },
+                      {
+                          "id":  "alterosas",
+                          "nome":  "Alterosas",
+                          "fonte":  "https://regionais.betim.digital/regional/alterosas/esporte"
+                      },
+                      {
+                          "id":  "ptb",
+                          "nome":  "PTB",
+                          "fonte":  "https://regionais.betim.digital/regional/ptb/esporte"
+                      },
+                      {
+                          "id":  "icaivera",
+                          "nome":  "Icaivera",
+                          "fonte":  "https://regionais.betim.digital/regional/icaivera/esporte"
+                      },
+                      {
+                          "id":  "citrolandia",
+                          "nome":  "Citrolândia",
+                          "fonte":  "https://regionais.betim.digital/regional/citrolandia/esporte"
+                      },
+                      {
+                          "id":  "imbirucu",
+                          "nome":  "Imbiruçu",
+                          "fonte":  "https://regionais.betim.digital/regional/imbirucu/esporte"
+                      },
+                      {
+                          "id":  "teresopolis",
+                          "nome":  "Teresópolis",
+                          "fonte":  "https://regionais.betim.digital/regional/teresopolis/esporte"
+                      },
+                      {
+                          "id":  "petrovale",
+                          "nome":  "Petrovale",
+                          "fonte":  "https://regionais.betim.digital/regional/petrovale/esporte"
+                      },
+                      {
+                          "id":  "vianopolis",
+                          "nome":  "Vianópolis",
+                          "fonte":  "https://regionais.betim.digital/regional/vianopolis/esporte"
+                      }
+                  ],
+    "equipamentos":  [
+                         {
+                             "id":  "4542e0bdc1ae",
+                             "nome":  "Parque Ecologico Municipal Cleo Barbosa",
+                             "regionais":  [
+                                               "centro"
+                                           ],
+                             "bairro":  "Parque das Cachoeiras",
+                             "endereco":  "Av. Palmerio Ferrita Neto, 1680 - Parque das Cachoeiras, Betim",
+                             "tipo":  "Parques e Espacos Publicos com Estrutura Esportiva",
+                             "descricao":  "Parque publico com pista de caminhada, quadras e academia popular",
+                             "modalidades":  [
+                                                 "Caminhada"
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  "/Imagens/regionais/4542e0bdc1ae-640.jpg",
+                             "fonte":  "https://regionais.betim.digital/regional/centro/esporte"
+                         },
+                         {
+                             "id":  "df87a15bfef2",
+                             "nome":  "Parque Ecologico Felisberto Neves",
+                             "regionais":  [
+                                               "centro"
+                                           ],
+                             "bairro":  "Centro",
+                             "endereco":  "Regiao central, Betim",
+                             "tipo":  "Parques e Espacos Publicos com Estrutura Esportiva",
+                             "descricao":  "Area verde / reserva ecologica ideal para caminhadas",
+                             "modalidades":  [
+                                                 "Caminhada"
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  "/Imagens/regionais/df87a15bfef2-640.jpg",
+                             "fonte":  "https://regionais.betim.digital/regional/centro/esporte"
+                         },
+                         {
+                             "id":  "e1cb3a0286c5",
+                             "nome":  "Area de Lazer Chacara Santo Antonio II",
+                             "regionais":  [
+                                               "teresopolis"
+                                           ],
+                             "bairro":  "Chacaras Santo Antonio",
+                             "endereco":  "R. Rosario, 69 - Chacaras Santo Antonio II, Betim",
+                             "tipo":  "Parques e Espacos Publicos com Estrutura Esportiva",
+                             "descricao":  "Pequeno parque com pista de jogging e quadras multi-esporte",
+                             "modalidades":  [
+                                                 "Caminhada"
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  null,
+                             "fonte":  "https://regionais.betim.digital/regional/teresopolis/esporte"
+                         },
+                         {
+                             "id":  "98691403ca62",
+                             "nome":  "Pista de Caminhada da Avenida Edmeia Matos Lazzarotti",
+                             "regionais":  [
+                                               "centro"
+                                           ],
+                             "bairro":  "Centro",
+                             "endereco":  "Av. Edmeia Matos Lazzarotti, Betim",
+                             "tipo":  "Pistas de Caminhada e Rede de Caminhos",
+                             "descricao":  "Infraestrutura urbana para caminhada/corrida (~2.800 m)",
+                             "modalidades":  [
+                                                 "Caminhada"
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  "/Imagens/regionais/98691403ca62-640.jpg",
+                             "fonte":  "https://regionais.betim.digital/regional/centro/esporte"
+                         },
+                         {
+                             "id":  "c61740490e65",
+                             "nome":  "Pista de Skate",
+                             "regionais":  [
+                                               "centro"
+                                           ],
+                             "bairro":  null,
+                             "endereco":  "Regional Centro",
+                             "tipo":  "Pistas de Caminhada e Rede de Caminhos",
+                             "descricao":  "Pista de skate publica",
+                             "modalidades":  [
+                                                 "Skate"
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  "/Imagens/regionais/c61740490e65-640.jpg",
+                             "fonte":  "https://regionais.betim.digital/regional/centro/esporte"
+                         },
+                         {
+                             "id":  "324c6925b0a2",
+                             "nome":  "Orla da Lagoa / Lagoa Varzea das Flores",
+                             "regionais":  [
+                                               "icaivera"
+                                           ],
+                             "bairro":  "Varzea das Flores",
+                             "endereco":  "Varzea das Flores, Betim",
+                             "tipo":  "Pistas de Caminhada e Rede de Caminhos",
+                             "descricao":  "Caminhada e corrida com vista para a represa",
+                             "modalidades":  [
+                                                 "Caminhada"
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  "/Imagens/regionais/324c6925b0a2-640.jpg",
+                             "fonte":  "https://regionais.betim.digital/regional/icaivera/esporte"
+                         },
+                         {
+                             "id":  "76265c80e50e",
+                             "nome":  "Praca do Encontro",
+                             "regionais":  [
+                                               "centro"
+                                           ],
+                             "bairro":  "Centro",
+                             "endereco":  "Confluencia entre Av. Edmeia Matos Lazzarotti e Av. Marco Tulio Isaac, Centro",
+                             "tipo":  "Academias ao Ar Livre (Equipamentos Publicos)",
+                             "descricao":  "Equipamentos gratuitos para musculacao funcional, alongamento e ginastica.",
+                             "modalidades":  [
+
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  "/Imagens/regionais/76265c80e50e-640.jpg",
+                             "fonte":  "https://regionais.betim.digital/regional/centro/esporte"
+                         },
+                         {
+                             "id":  "c542f3da7dba",
+                             "nome":  "Praca do Alterosas",
+                             "regionais":  [
+                                               "alterosas"
+                                           ],
+                             "bairro":  "Jardim das Alterosas",
+                             "endereco":  "Av. Juiz Marco Tulio Isaac, 5600 - Jardim das Alterosas",
+                             "tipo":  "Academias ao Ar Livre (Equipamentos Publicos)",
+                             "descricao":  "Equipamentos gratuitos para musculacao funcional, alongamento e ginastica.",
+                             "modalidades":  [
+
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  "/Imagens/regionais/c542f3da7dba-640.jpg",
+                             "fonte":  "https://regionais.betim.digital/regional/alterosas/esporte"
+                         },
+                         {
+                             "id":  "e7b786ee2040",
+                             "nome":  "Praca do Imbirucu",
+                             "regionais":  [
+                                               "imbirucu"
+                                           ],
+                             "bairro":  "Imbirucu",
+                             "endereco":  "Rua Onisia Maria Sabino, 106 - Imbirucu",
+                             "tipo":  "Academias ao Ar Livre (Equipamentos Publicos)",
+                             "descricao":  "Equipamentos gratuitos para musculacao funcional, alongamento e ginastica.",
+                             "modalidades":  [
+
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  "/Imagens/regionais/e7b786ee2040-640.jpg",
+                             "fonte":  "https://regionais.betim.digital/regional/imbirucu/esporte"
+                         },
+                         {
+                             "id":  "9891a7bc2c17",
+                             "nome":  "Estadio Municipal Francisco Pereira (Campo do Marimba)",
+                             "regionais":  [
+                                               "vianopolis"
+                                           ],
+                             "bairro":  "Marimba",
+                             "endereco":  "Rua Grao Mogol, 99 - Marimba",
+                             "tipo":  "Campos e Quadras Esportivas Publicas",
+                             "descricao":  "Campo de futebol municipal",
+                             "modalidades":  [
+                                                 "Futebol"
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  "/Imagens/regionais/9891a7bc2c17-640.jpg",
+                             "fonte":  "https://regionais.betim.digital/regional/vianopolis/esporte"
+                         },
+                         {
+                             "id":  "e15b79266f60",
+                             "nome":  "Campo do Bairro Jardim das Alterosas",
+                             "regionais":  [
+                                               "alterosas"
+                                           ],
+                             "bairro":  "Jardim das Alterosas",
+                             "endereco":  "Rua Mignonete, 65 - Jardim das Alterosas",
+                             "tipo":  "Campos e Quadras Esportivas Publicas",
+                             "descricao":  "Campo de futebol",
+                             "modalidades":  [
+                                                 "Futebol"
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  "/Imagens/regionais/e15b79266f60-640.jpg",
+                             "fonte":  "https://regionais.betim.digital/regional/alterosas/esporte"
+                         },
+                         {
+                             "id":  "5c51a1048823",
+                             "nome":  "Campo do Cruzeiro do Sul",
+                             "regionais":  [
+                                               "alterosas"
+                                           ],
+                             "bairro":  "Cruzeiro do Sul",
+                             "endereco":  "Cruzeiro do Sul, Betim",
+                             "tipo":  "Campos e Quadras Esportivas Publicas",
+                             "descricao":  "Campo de futebol",
+                             "modalidades":  [
+                                                 "Futebol"
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  null,
+                             "fonte":  "https://regionais.betim.digital/regional/alterosas/esporte"
+                         },
+                         {
+                             "id":  "1e8850b61868",
+                             "nome":  "Campo do Santa Ines",
+                             "regionais":  [
+                                               "centro"
+                                           ],
+                             "bairro":  "Santa Ines",
+                             "endereco":  "Santa Ines, Betim",
+                             "tipo":  "Campos e Quadras Esportivas Publicas",
+                             "descricao":  "Campo de futebol",
+                             "modalidades":  [
+                                                 "Futebol"
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  "/Imagens/regionais/1e8850b61868-640.jpg",
+                             "fonte":  "https://regionais.betim.digital/regional/centro/esporte"
+                         },
+                         {
+                             "id":  "affc5561fa85",
+                             "nome":  "Campo Pingo Dagua (Estadio Municipal Joao Evangelista Souza)",
+                             "regionais":  [
+                                               "centro"
+                                           ],
+                             "bairro":  "Pingo Dagua",
+                             "endereco":  "Pingo Dagua, Betim",
+                             "tipo":  "Campos e Quadras Esportivas Publicas",
+                             "descricao":  "Campo de futebol",
+                             "modalidades":  [
+                                                 "Futebol"
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  "/Imagens/regionais/affc5561fa85-640.jpg",
+                             "fonte":  "https://regionais.betim.digital/regional/centro/esporte"
+                         },
+                         {
+                             "id":  "fe8a17ca1fe0",
+                             "nome":  "Campo Cidade Verde",
+                             "regionais":  [
+                                               "centro"
+                                           ],
+                             "bairro":  "Cidade Verde",
+                             "endereco":  "Cidade Verde, Betim",
+                             "tipo":  "Campos e Quadras Esportivas Publicas",
+                             "descricao":  "Campo de futebol",
+                             "modalidades":  [
+                                                 "Futebol"
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  null,
+                             "fonte":  "https://regionais.betim.digital/regional/centro/esporte"
+                         },
+                         {
+                             "id":  "15eae749493f",
+                             "nome":  "Campo Sao Joao",
+                             "regionais":  [
+                                               "centro"
+                                           ],
+                             "bairro":  "Sao Joao",
+                             "endereco":  "Sao Joao, Betim",
+                             "tipo":  "Campos e Quadras Esportivas Publicas",
+                             "descricao":  "Campo de futebol",
+                             "modalidades":  [
+                                                 "Futebol"
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  null,
+                             "fonte":  "https://regionais.betim.digital/regional/centro/esporte"
+                         },
+                         {
+                             "id":  "dfc3663420ae",
+                             "nome":  "Campo Petropolis",
+                             "regionais":  [
+                                               "centro"
+                                           ],
+                             "bairro":  "Petropolis",
+                             "endereco":  "Petropolis, Betim",
+                             "tipo":  "Campos e Quadras Esportivas Publicas",
+                             "descricao":  "Campo de futebol",
+                             "modalidades":  [
+                                                 "Futebol"
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  null,
+                             "fonte":  "https://regionais.betim.digital/regional/centro/esporte"
+                         },
+                         {
+                             "id":  "3ddb4227e577",
+                             "nome":  "Quadra Cidade Verde",
+                             "regionais":  [
+                                               "centro"
+                                           ],
+                             "bairro":  "Cidade Verde",
+                             "endereco":  "Cidade Verde, Betim",
+                             "tipo":  "Campos e Quadras Esportivas Publicas",
+                             "descricao":  "Quadra poliesportiva",
+                             "modalidades":  [
+
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  "/Imagens/regionais/3ddb4227e577-640.jpg",
+                             "fonte":  "https://regionais.betim.digital/regional/centro/esporte"
+                         },
+                         {
+                             "id":  "102ee879f9d1",
+                             "nome":  "Campo Real Sociedad",
+                             "regionais":  [
+                                               "norte"
+                                           ],
+                             "bairro":  "Senhora das Graças",
+                             "endereco":  "Rua Maria José de Melo, s/n - Senhora das Graças",
+                             "tipo":  "Campos e Quadras Esportivas Publicas",
+                             "descricao":  "Campo de futebol",
+                             "modalidades":  [
+                                                 "Futebol"
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  "/Imagens/regionais/102ee879f9d1-640.jpg",
+                             "fonte":  "https://regionais.betim.digital/regional/norte/esporte"
+                         },
+                         {
+                             "id":  "c1399477c28a",
+                             "nome":  "Campo do Bom Repouso",
+                             "regionais":  [
+                                               "norte"
+                                           ],
+                             "bairro":  "Bom Repouso",
+                             "endereco":  "Rua Júlio César de Freitas, s/n - Bom Repouso",
+                             "tipo":  "Campos e Quadras Esportivas Publicas",
+                             "descricao":  "Campo de futebol",
+                             "modalidades":  [
+                                                 "Futebol"
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  "/Imagens/regionais/c1399477c28a-640.jpg",
+                             "fonte":  "https://regionais.betim.digital/regional/norte/esporte"
+                         },
+                         {
+                             "id":  "08511c67fdbe",
+                             "nome":  "Campo Homero Gil",
+                             "regionais":  [
+                                               "norte"
+                                           ],
+                             "bairro":  "Vila das Flores",
+                             "endereco":  "Rua Lírios, s/n - Vila das Flores",
+                             "tipo":  "Campos e Quadras Esportivas Publicas",
+                             "descricao":  "Campo de futebol",
+                             "modalidades":  [
+                                                 "Futebol"
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  "/Imagens/regionais/08511c67fdbe-640.jpg",
+                             "fonte":  "https://regionais.betim.digital/regional/norte/esporte"
+                         },
+                         {
+                             "id":  "81a92c301e93",
+                             "nome":  "Ginasio Poliesportivo Divino Ferreira Braga",
+                             "regionais":  [
+                                               "centro"
+                                           ],
+                             "bairro":  "Angola",
+                             "endereco":  "Bairro Angola, Betim",
+                             "tipo":  "Ginasios, Centros e Complexos Esportivos Publicos",
+                             "descricao":  "Ginasio municipal coberto (capacidade ~6.000)",
+                             "modalidades":  [
+
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  null,
+                             "fonte":  "https://regionais.betim.digital/regional/centro/esporte"
+                         },
+                         {
+                             "id":  "2df629a0362b",
+                             "nome":  "Complexo esportivo do Horto",
+                             "regionais":  [
+                                               "centro"
+                                           ],
+                             "bairro":  "Horto",
+                             "endereco":  "Rua Redelvim Andrade, 300 - Horto",
+                             "tipo":  "Ginasios, Centros e Complexos Esportivos Publicos",
+                             "descricao":  "Centro esportivo com futsal, volei, atletismo, skate e outras atividades",
+                             "modalidades":  [
+                                                 "Futsal",
+                                                 "Vôlei",
+                                                 "Atletismo",
+                                                 "Skate"
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  "/Imagens/regionais/2df629a0362b-640.jpg",
+                             "fonte":  "https://regionais.betim.digital/regional/centro/esporte"
+                         },
+                         {
+                             "id":  "2cc668f46779",
+                             "nome":  "Complexo Esportivo Ricardo Mediolli (Nucleo esportivo)",
+                             "regionais":  [
+                                               "alterosas"
+                                           ],
+                             "bairro":  "Jardim Teresopolis",
+                             "endereco":  "Rua Dulce Brandao, 52 - Jardim Teresopolis",
+                             "tipo":  "Ginasios, Centros e Complexos Esportivos Publicos",
+                             "descricao":  "Complexo poliesportivo com varias modalidades",
+                             "modalidades":  [
+
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  "/Imagens/regionais/2cc668f46779-640.jpg",
+                             "fonte":  "https://regionais.betim.digital/regional/alterosas/esporte"
+                         },
+                         {
+                             "id":  "e52596d04982",
+                             "nome":  "Nucleo Alterosa (Esporte Viva o Esporte)",
+                             "regionais":  [
+                                               "alterosas"
+                                           ],
+                             "bairro":  "Jardim das Alterosas",
+                             "endereco":  "Rua Palma-de-Santa Rita, 329 - Jardim das Alterosas",
+                             "tipo":  "Ginasios, Centros e Complexos Esportivos Publicos",
+                             "descricao":  null,
+                             "modalidades":  [
+
+                                             ],
+                             "programas":  [
+                                               "Viva o Esporte"
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  null,
+                             "fonte":  "https://regionais.betim.digital/regional/alterosas/esporte"
+                         },
+                         {
+                             "id":  "008f6c724a8b",
+                             "nome":  "Nucleo Petropolis (Esporte Viva o Esporte)",
+                             "regionais":  [
+                                               "centro"
+                                           ],
+                             "bairro":  "Petropolis",
+                             "endereco":  "Rua Visconde de Itaborai, 101 - Petropolis",
+                             "tipo":  "Ginasios, Centros e Complexos Esportivos Publicos",
+                             "descricao":  null,
+                             "modalidades":  [
+
+                                             ],
+                             "programas":  [
+                                               "Viva o Esporte"
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  "/Imagens/regionais/008f6c724a8b-640.jpg",
+                             "fonte":  "https://regionais.betim.digital/regional/centro/esporte"
+                         },
+                         {
+                             "id":  "cc0dadd45f7f",
+                             "nome":  "Galpao da Ginastica / Anexa (Escola Municipal CAIC)",
+                             "regionais":  [
+                                               "centro"
+                                           ],
+                             "bairro":  "Centro",
+                             "endereco":  "Escola Municipal Israel Jose Carlos, Betim",
+                             "tipo":  "Ginasios, Centros e Complexos Esportivos Publicos",
+                             "descricao":  "Ginastica artistica, taekwondo e outras modalidades",
+                             "modalidades":  [
+                                                 "Ginástica artística",
+                                                 "Taekwondo"
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  null,
+                             "fonte":  "https://regionais.betim.digital/regional/centro/esporte"
+                         },
+                         {
+                             "id":  "220c7c529cdb",
+                             "nome":  "Nucleo Ramacrisna (Esporte Viva o Esporte)",
+                             "regionais":  [
+                                               "vianopolis"
+                                           ],
+                             "bairro":  "Santo Afonso",
+                             "endereco":  "Rua Sao Paulo, 379 - Santo Afonso",
+                             "tipo":  "Ginasios, Centros e Complexos Esportivos Publicos",
+                             "descricao":  null,
+                             "modalidades":  [
+
+                                             ],
+                             "programas":  [
+                                               "Viva o Esporte"
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  null,
+                             "fonte":  "https://regionais.betim.digital/regional/vianopolis/esporte"
+                         },
+                         {
+                             "id":  "316a27ff0577",
+                             "nome":  "Nucleo Pista de Bicicross",
+                             "regionais":  [
+                                               "alterosas"
+                                           ],
+                             "bairro":  "Conjunto Habitacional Olimpia Bueno Franco",
+                             "endereco":  "Rua Cicero Rabelo de Vasconcelos, 100 - Conj. Hab. Bueno Franco",
+                             "tipo":  "Ginasios, Centros e Complexos Esportivos Publicos",
+                             "descricao":  "Pista oficial para bicicross",
+                             "modalidades":  [
+
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  "/Imagens/regionais/316a27ff0577-640.jpg",
+                             "fonte":  "https://regionais.betim.digital/regional/alterosas/esporte"
+                         },
+                         {
+                             "id":  "25b3b2757bfb",
+                             "nome":  "Anexo Horto (Girassol)",
+                             "regionais":  [
+                                               "alterosas"
+                                           ],
+                             "bairro":  "Espirito Santo",
+                             "endereco":  "Rua Mato Grosso, 98 - Espirito Santo",
+                             "tipo":  "Ginasios, Centros e Complexos Esportivos Publicos",
+                             "descricao":  "Academia funcional e ginastica",
+                             "modalidades":  [
+
+                                             ],
+                             "programas":  [
+
+                                           ],
+                             "horarios":  null,
+                             "acessibilidade":  null,
+                             "coordenadas":  null,
+                             "foto":  null,
+                             "fonte":  "https://regionais.betim.digital/regional/alterosas/esporte"
+                         }
+                     ],
+    "programas":  [
+                      {
+                          "id":  "289746049399",
+                          "nome":  "Liga Desportiva de Betim",
+                          "regionais":  [
+                                            "centro"
+                                        ],
+                          "bairro":  null,
+                          "endereco":  "Regional Centro",
+                          "tipo":  "Programas Publicos de Esporte",
+                          "descricao":  "Entidade esportiva",
+                          "modalidades":  [
+
+                                          ],
+                          "programas":  [
+
+                                        ],
+                          "horarios":  null,
+                          "acessibilidade":  null,
+                          "coordenadas":  null,
+                          "foto":  null,
+                          "fonte":  "https://regionais.betim.digital/regional/centro/esporte",
+                          "orientacao":  "Consulte o canal oficial para confirmar público, locais e condições de participação."
+                      },
+                      {
+                          "id":  "40a92fa1dded",
+                          "nome":  "Programa Viva o Esporte",
+                          "regionais":  [
+                                            "centro",
+                                            "norte",
+                                            "alterosas",
+                                            "ptb",
+                                            "icaivera",
+                                            "citrolandia",
+                                            "imbirucu",
+                                            "teresopolis",
+                                            "petrovale",
+                                            "vianopolis"
+                                        ],
+                          "bairro":  null,
+                          "endereco":  "Secretaria Municipal de Esportes - Rua Para de Minas, 640, Betim",
+                          "tipo":  "Programas Publicos de Esporte",
+                          "descricao":  "Atividades em nucleos espalhados pela cidade: futsal, volei, judo, corrida, hidroginastica, pilates, ginastica, atletismo e outros.",
+                          "modalidades":  [
+
+                                          ],
+                          "programas":  [
+
+                                        ],
+                          "horarios":  null,
+                          "acessibilidade":  null,
+                          "coordenadas":  null,
+                          "foto":  null,
+                          "fonte":  "https://regionais.betim.digital/regional/centro/esporte",
+                          "orientacao":  "Consulte o canal oficial para confirmar público, locais e condições de participação."
+                      }
+                  ],
+    "eventos":  [
+
+                ]
+}

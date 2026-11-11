@@ -1,0 +1,21 @@
+.portal-accessibility-bar { background: #f5f7f8; color: #374151; font-family: var(--font-body, 'Karla', sans-serif); }
+.portal-accessibility-inner { max-width: 1280px; margin: auto; padding: .25rem 1rem; display: flex; flex-wrap: wrap; gap: .25rem; }
+.portal-accessibility-bar button { min-width: 44px; min-height: 44px; padding: .375rem .625rem; border: 1px solid transparent; border-radius: .375rem; font: 700 .875rem/1.4 var(--font-body, 'Karla', sans-serif); background: transparent; color: inherit; cursor: pointer; }
+.portal-accessibility-bar button:hover { background: #e5e7eb; }
+.portal-accessibility-bar button:focus-visible { outline: 2px solid #023568; outline-offset: -2px; }
+.portal-accessibility-bar button[aria-pressed="true"] { background: #023568; color: white; }
+.portal-accessibility-bar button:disabled { opacity: .5; cursor: default; }
+
+/* Ponte para as páginas legadas: alto contraste sem inverter fotos ou vídeos. */
+html.dark .portal-standard { --portal-text: #fff; --portal-muted: #e5e7eb; --portal-background: #000; --portal-surface: #000; --portal-border: #fff; --portal-accent-soft: #1f2937; }
+html.dark body.portal-standard,
+html.dark .portal-standard :where(header,nav,main,section,article,aside,footer,dialog,form,fieldset,table,thead,tbody,tr,th,td,details,summary,div,button,input,select,textarea,a) { background-color: #000 !important; background-image: none !important; color: #fff !important; border-color: #fff !important; }
+html.dark .portal-standard :where(h1,h2,h3,h4,h5,h6,p,span,strong,small,label,li,i) { color: inherit !important; }
+html.dark .portal-standard :where(input,textarea)::placeholder { color: #e5e7eb !important; }
+html.dark .portal-standard :where(a,button,input,select,textarea,summary):focus-visible { outline: 2px solid #fff !important; outline-offset: 2px; }
+html.dark .portal-standard :where(a[aria-current="page"],button[aria-pressed="true"]) { outline: 1px solid #fff; outline-offset: -2px; }
+html.dark .portal-standard main a { text-decoration: underline; }
+@media print { .portal-accessibility-bar { display: none !important; } }
+
+:root { --vlibras-btn-focus-visible-outline: 2px solid #fff; --vlibras-btn-focus-visible-shadow: 0 0 0 4px #023568; }
+#portal-libras-status { max-width: 1280px; margin: 0 auto; padding: 8px 16px; font-size: .875rem; }

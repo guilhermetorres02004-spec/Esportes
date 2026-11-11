@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { guiasSuporte } from './support-guides.mjs';
 import { documentosAdministrativos } from '../public/js/admin-documentos-data.js';
@@ -28,8 +28,9 @@ for (const pagina of ['futebol.html', 'volei.html', 'detalhe-modalidade.html', '
     });
 }
 
-const inicio = readFileSync(new URL('index.html', raiz), 'utf8');
-for (const secao of inicio.matchAll(/<section\b[^>]*id="(rendimento|atividades-esportivas|escola|viva-esporte)"[^>]*>([\s\S]*?)<\/section>/gi)) {
+const secoesReact = new URL('src/home/Sections.jsx', raiz);
+const inicio = readFileSync(existsSync(secoesReact) ? secoesReact : new URL('index.html', raiz), 'utf8');
+for (const secao of inicio.matchAll(/<section\b[^>]*id="(atividades-esportivas|escola|viva-esporte)"[^>]*>([\s\S]*?)<\/section>/gi)) {
     const titulo = texto(secao[2].match(/<h3[^>]*>([\s\S]*?)<\/h3>/i)?.[1] || secao[1]);
     const conteudo = texto(secao[2]);
     documentos.push({ id: `inicio-${secao[1]}`, topico: secao[1], titulo,

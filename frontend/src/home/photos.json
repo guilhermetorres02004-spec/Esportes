@@ -1,0 +1,166 @@
+{
+  "slides": [
+    {
+      "image": {
+        "data-foto-categoria": "principal",
+        "data-foto-indice": "0",
+        "src": "/Imagens/2026/jeb-2026.jpg",
+        "class": "slide-bg",
+        "width": "800",
+        "height": "533",
+        "fetchpriority": "high",
+        "alt": "Estudantes reunidos no ginásio durante os Jogos Escolares de Betim 2026"
+      },
+      "link": {
+        "class": "photo-credit",
+        "href": "https://www.betim.mg.gov.br/portal/noticias/0/3/15557/jogos-escolares-de-betim-de-2026-registram-recorde-de-10-mil-estudantes/",
+        "target": "_blank",
+        "rel": "noopener noreferrer",
+        "tabindex": "0"
+      },
+      "credit": "JEB 2026 · Fonte: Prefeitura de Betim · 31/08/2026"
+    },
+    {
+      "image": {
+        "data-foto-categoria": "principal",
+        "data-foto-indice": "1",
+        "src": "/Imagens/2026/futsal-2026.jpg",
+        "class": "slide-bg",
+        "width": "800",
+        "height": "533",
+        "alt": "Jogadores disputam a bola em partida de futsal divulgada no Estadual de 2026"
+      },
+      "link": {
+        "class": "photo-credit",
+        "href": "https://www.betim.mg.gov.br/portal/noticias/0/3/15676/finais-do-estadual-de-futsal-reunem-grandes-equipes-em-betim-nas-categorias-sub-14-e-adulto",
+        "target": "_blank",
+        "rel": "noopener noreferrer",
+        "tabindex": "-1"
+      },
+      "credit": "Futsal · Fonte: Prefeitura de Betim · 14/10/2026"
+    },
+    {
+      "image": {
+        "data-foto-categoria": "principal",
+        "data-foto-indice": "2",
+        "src": "/Imagens/2026/conquistas-outubro-2026.jpg",
+        "class": "slide-bg",
+        "width": "800",
+        "height": "533",
+        "alt": "Raysa Mendonça em prova de lançamento de dardo, em publicação de outubro de 2026"
+      },
+      "link": {
+        "class": "photo-credit",
+        "href": "https://www.betim.mg.gov.br/portal/noticias/0/3/15692/confira-as-conquistas-dos-atletas-de-betim-desta-semana/",
+        "target": "_blank",
+        "rel": "noopener noreferrer",
+        "tabindex": "-1"
+      },
+      "credit": "Atletismo · Fonte: Prefeitura de Betim · 19/10/2026"
+    }
+  ],
+  "gallery": [
+    {
+      "image": {
+        "data-foto-categoria": "escola",
+        "data-foto-indice": "0",
+        "src": "/Imagens/2026/jeb-2026.jpg",
+        "width": "800",
+        "height": "533",
+        "loading": "lazy",
+        "alt": "Delegações escolares reunidas no ginásio nos Jogos Escolares de Betim 2026"
+      },
+      "link": {
+        "href": "https://www.betim.mg.gov.br/portal/noticias/0/3/15557/jogos-escolares-de-betim-de-2026-registram-recorde-de-10-mil-estudantes/",
+        "target": "_blank",
+        "rel": "noopener noreferrer"
+      },
+      "credit": "Jogos Escolares de Betim · 31/08/2026 Fonte: Prefeitura de Betim"
+    },
+    {
+      "image": {
+        "data-foto-categoria": "futsal",
+        "data-foto-indice": "0",
+        "src": "/Imagens/2026/futsal-2026.jpg",
+        "width": "800",
+        "height": "533",
+        "loading": "lazy",
+        "alt": "Disputa de bola em jogo de futsal divulgado nas finais do Estadual de 2026"
+      },
+      "link": {
+        "href": "https://www.betim.mg.gov.br/portal/noticias/0/3/15676/finais-do-estadual-de-futsal-reunem-grandes-equipes-em-betim-nas-categorias-sub-14-e-adulto",
+        "target": "_blank",
+        "rel": "noopener noreferrer"
+      },
+      "credit": "Estadual de Futsal · 14/10/2026 Fonte: Prefeitura de Betim"
+    },
+    {
+      "image": {
+        "data-foto-categoria": "judo",
+        "data-foto-indice": "0",
+        "src": "/Imagens/2026/judo-2026.jpg",
+        "width": "800",
+        "height": "533",
+        "loading": "lazy",
+        "alt": "Equipe de Betim com medalhas e troféus da 35ª Copa Betim Open de Judô"
+      },
+      "link": {
+        "href": "https://www.betim.mg.gov.br/portal/noticias/0/3/15559/betim-e-campea-geral-da-35-copa-betim-open-de-judo/",
+        "target": "_blank",
+        "rel": "noopener noreferrer"
+      },
+      "credit": "Copa Betim Open de Judô · 31/08/2026 Fonte: Prefeitura de Betim"
+    },
+    {
+      "image": {
+        "data-foto-categoria": "atletismo",
+        "data-foto-indice": "0",
+        "src": "/Imagens/2026/atletismo-2026.jpg",
+        "width": "800",
+        "height": "600",
+        "loading": "lazy",
+        "alt": "Equipe do Viva o Esporte com medalhas do Open Internacional de Atletismo de 2026"
+      },
+      "link": {
+        "href": "https://www.betim.mg.gov.br/portal/noticias/0/3/15571/betim-conquista-oito-medalhas-no-open-internacional-de-atletismo",
+        "target": "_blank",
+        "rel": "noopener noreferrer"
+      },
+      "credit": "Open Internacional de Atletismo · 07/09/2026 Fonte: Prefeitura de Betim"
+    },
+    {
+      "image": {
+        "data-foto-categoria": "equipamentos",
+        "data-foto-indice": "0",
+        "src": "/Imagens/2026/equipamentos-2026.jpg",
+        "width": "800",
+        "height": "600",
+        "loading": "lazy",
+        "alt": "Equipamentos esportivos apresentados na quadra do Ginásio Divino Braga em maio de 2026"
+      },
+      "link": {
+        "href": "https://www.betim.mg.gov.br/portal/noticias/0/3/15177/programa-viva-esporte-amplia-estrutura-e-beneficia-cerca-de-6-mil-alunos-com-novos-equipamentos-esportivos/",
+        "target": "_blank",
+        "rel": "noopener noreferrer"
+      },
+      "credit": "Novos equipamentos no Divino Braga · 14/05/2026 Fonte: Prefeitura de Betim"
+    },
+    {
+      "image": {
+        "data-foto-categoria": "atividades",
+        "data-foto-indice": "0",
+        "src": "/Imagens/2026/viva-esporte-2026.jpg",
+        "width": "800",
+        "height": "600",
+        "loading": "lazy",
+        "alt": "Atividade esportiva em quadra coberta durante a retomada do Viva o Esporte em 2026"
+      },
+      "link": {
+        "href": "https://www.betim.mg.gov.br/portal/noticias/0/3/14875/viva-o-esporte-retoma-atividades-e-movimenta-quadras-e-campos-em-betim/",
+        "target": "_blank",
+        "rel": "noopener noreferrer"
+      },
+      "credit": "Viva o Esporte · 12/02/2026 Fonte: Prefeitura de Betim"
+    }
+  ]
+}

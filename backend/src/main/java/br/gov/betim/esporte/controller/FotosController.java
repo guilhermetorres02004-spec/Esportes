@@ -1,9 +1,13 @@
 package br.gov.betim.esporte.controller;
 
 import br.gov.betim.esporte.service.FotosService;
+import br.gov.betim.esporte.dto.FotoOficial;
 import java.nio.file.Files;
 import java.time.Duration;
 import java.util.Map;
+import java.util.List;
+import java.util.LinkedHashMap;
+import java.time.Instant;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +21,17 @@ public class FotosController {
         return ResponseEntity.ok().cacheControl(CacheControl.noStore()).body(fotos.acervo());
     }
     @GetMapping("/status") public Map<String, Object> status() { return fotos.status(); }
+    public record RotacaoFotos(Instant atualizadoEm, int intervaloSegundos, List<FotoOficial> fotos) {}
+    @GetMapping("/viva-esporte") public ResponseEntity<RotacaoFotos> vivaEsporte() {
+        var acervo = fotos.acervo();
+        var selecao = new LinkedHashMap<String, FotoOficial>();
+        for (var foto : acervo.fotos()) {
+            if (foto.categorias().contains("atividades")) selecao.putIfAbsent(foto.url(), foto);
+            if (selecao.size() == 5) break;
+        }
+        return ResponseEntity.ok().cacheControl(CacheControl.noStore())
+                .body(new RotacaoFotos(acervo.atualizadoEm(), 9, List.copyOf(selecao.values())));
+    }
     @PostMapping("/atualizar") public ResponseEntity<Map<String, String>> atualizar() {
         boolean iniciada = fotos.solicitar();
         return ResponseEntity.accepted().body(Map.of("mensagem", iniciada ? "Atualização iniciada." : "Atualização já em andamento."));

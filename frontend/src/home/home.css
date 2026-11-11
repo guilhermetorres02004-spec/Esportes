@@ -1,0 +1,142 @@
+:root {
+            --betim-blue: #1e3a8a;
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+        #map { height: 500px; border: 2px solid #004a8d; border-radius: 24px; z-index: 10; width: 100%; background: #e5e7eb; }
+
+        /* CARROSSEL PRINCIPAL */
+        .carousel-container { position: relative; width: 100%; height: 500px; overflow: hidden; background: #0f172a; }
+        .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1s; }
+        .slide.active { opacity: 1; z-index: 5; }
+        .slide-bg { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; }
+        .slogan-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 20; pointer-events: none; }
+        .photo-credit { position: absolute; right: 16px; bottom: 12px; z-index: 21; max-width: calc(100% - 32px); padding: 6px 10px; border-radius: 8px; background: rgba(15, 23, 42, 0.85); color: white; font-size: 11px; line-height: 1.5; }
+        .photo-credit:hover, .photo-credit:focus-visible { text-decoration: underline; }
+
+        /* NOTÍCIAS AMPLIADAS */
+        .news-main-card { height: 550px; }
+        .news-side-card { height: 173px; display: flex; align-items: center; padding: 25px; transition: 0.3s; background: white; border-radius: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+
+        /* RENDIMENTO - BORDAS COLORIDAS SÓLIDAS */
+        .rendimento-card { background: white; border-radius: 12px; padding: 24px; transition: 0.3s; border: 3px solid transparent; text-align: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        .rendimento-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
+        .border-taekwondo { border-color: #ef4444; }
+        .border-futebol { border-color: #16a34a; }
+        .border-atletismo { border-color: #f59e0b; }
+        .border-natacao { border-color: #3b82f6; }
+        .border-volei { border-color: #10b981; }
+        .border-basquete { border-color: #8b5cf6; }
+
+        /* ESCOLA DO ESPORTE - BORDAS TRACEJADAS COLORIDAS */
+        .escola-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+            border: 3px dashed; border-radius: 24px; transition: 0.3s;
+            text-align: center; padding: 30px 20px;
+        }
+        .escola-card:hover { transform: scale(1.05); border-style: solid; }
+
+        /* MARQUEE */
+        .marquee-container { width: 100%; overflow: hidden; background: white; padding: 40px 0; border-top: 2px solid #004a8d; border-bottom: 2px solid #004a8d; display: flex; }
+        .marquee-content { display: flex; white-space: nowrap; animation: scrollMarquee 40s linear infinite; }
+        .marquee-content figure { flex: 0 0 350px; margin: 0 20px; white-space: normal; }
+        .marquee-content img { width: 350px; height: 200px; object-fit: cover; border-radius: 25px; border: 2px solid #e2e8f0; }
+        .marquee-content figcaption { padding: 10px 6px 0; color: #475569; font-size: 12px; line-height: 1.5; }
+        .marquee-content a:hover, .marquee-content a:focus-visible { text-decoration: underline; }
+        @keyframes scrollMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        .page { display: none; }
+        .page.active { display: block; }
+
+.marquee-copy { display: flex; flex-shrink: 0; }
+
+/* Indicadores: composição da referência, com a identidade azul do esporte. */
+.home-indicators { position: relative; z-index: 30; max-width: 1280px; margin: 0 auto; padding: 72px 16px 0; }
+.home-indicators-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 72px 16px; }
+.home-indicator { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 200px; padding: 48px 24px 32px; border: 1px solid rgb(255 255 255 / .16); border-radius: 16px; background: linear-gradient(135deg, #023568, #0063c7); color: #fff; text-align: center; text-decoration: none; box-shadow: 0 8px 20px rgb(2 53 104 / .1); }
+.home-indicator-icon { position: absolute; top: -36px; left: 50%; display: grid; place-items: center; width: 72px; height: 72px; border: 4px solid #fff; border-radius: 50%; background: #023568; color: #fff; font-size: 26px; transform: translateX(-50%); }
+.portal-standard .home-indicator h2 { margin: 0 0 8px; color: #fff; font: 700 1.125rem/1.4 var(--font-body, 'Karla', sans-serif); letter-spacing: 0; }
+.home-indicator p { margin: 0; color: #fff; font-size: 1rem; line-height: 1.5; }
+.home-indicator-arrow { margin-left: 4px; }
+a.home-indicator { transition: transform 200ms, box-shadow 200ms; }
+a.home-indicator:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgb(2 53 104 / .2); }
+a.home-indicator:focus-visible { outline: 3px solid #023568; outline-offset: 5px; }
+html.dark .home-indicator { border: 1px solid #fff; }
+html.dark .home-indicator-icon { background: #000; }
+@media (max-width: 767px) { .home-indicators-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 479px) { .home-indicators-grid { grid-template-columns: minmax(0, 1fr); gap: 64px; } }
+@media (prefers-reduced-motion: reduce) { a.home-indicator { transition: none; } a.home-indicator:hover { transform: none; } }
+
+/* Escola: avanço gradual de uma modalidade por vez. */
+.portal-standard #escola { padding: clamp(24px, 4vw, 64px); }
+.school-carousel { min-width: 0; }
+.school-carousel-track:focus-visible { outline: 3px solid #023568; outline-offset: 3px; }
+.school-carousel-track { display: flex; gap: 16px; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; margin: 0; padding: 8px 0 16px; list-style: none; }
+.school-carousel-track .escola-card { flex: 0 0 calc((100% - 64px) / 5); min-width: 0; border: 1px solid var(--portal-border, #dbe3ec); scroll-snap-align: start; padding: 24px 12px; }
+.school-carousel-track .escola-card i { font-size: 28px; }
+.school-carousel-track .escola-card p { font-weight: 700; overflow-wrap: anywhere; }
+.school-carousel-track small { font-size: .75rem; }
+.school-source { display: block; margin-top: 16px; font-size: .875rem; }
+a.school-source { text-decoration: underline; }
+@media (max-width: 1023px) { .school-carousel-track .escola-card { flex-basis: calc((100% - 32px) / 3); } }
+@media (max-width: 639px) { .school-carousel-track .escola-card { flex-basis: calc((100% - 16px) / 2); } }
+@media (max-width: 359px) { .school-carousel-track .escola-card { flex-basis: 100%; } }
+
+.school-carousel-track::-webkit-scrollbar { display: none; }
+
+/* Setas laterais com fundo transparente, mantendo os cards livres. */
+.school-carousel { position: relative; padding-inline: 56px; }
+.school-carousel-arrow { position: absolute; top: 50%; z-index: 1; display: grid; place-items: center; width: 40px; height: 48px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #023568; opacity: .6; cursor: pointer; transform: translateY(-50%); }
+.school-carousel-arrow-prev { left: 0; }
+.school-carousel-arrow-next { right: 0; }
+.school-carousel-arrow:hover, .school-carousel-arrow:focus-visible { opacity: 1; background: rgb(2 53 104 / .06); }
+.school-carousel-arrow:focus-visible { outline: 2px solid #023568; outline-offset: 2px; }
+
+.school-carousel-track .escola-card { padding: 0; }
+.school-card-link { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px; width: 100%; min-height: 9rem; height: 100%; padding: 24px 12px; color: inherit; text-decoration: none; border-radius: inherit; }
+.school-card-link:hover { background: var(--portal-accent-soft, #eff6ff); }
+.school-card-link:focus-visible { outline: 3px solid #023568; outline-offset: -3px; }
+
+/* Os cards crescem progressivamente ao se aproximar do centro. */
+.school-carousel-track { position: relative; }
+.portal-standard .school-carousel-track .escola-card { transform: scale(var(--school-card-scale, 1)); transform-origin: center; transition: border-color 200ms, box-shadow 200ms; }
+@media (max-width: 639px) { .school-carousel-track { padding-inline: 15%; } .school-carousel-track .escola-card { flex-basis: 100%; scroll-snap-align: center; } }
+
+/* Indicadores finais: tipografia institucional e rótulos sem transbordamento. */
+.final-indicators { max-width: var(--portal-width, 80rem); margin: 0 auto 80px; padding-inline: 16px; }
+.final-indicators-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.final-indicator { min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 8px; padding: 24px 16px; border: 1px solid var(--portal-border); border-bottom: 3px solid var(--portal-highlight); border-radius: var(--radius-kit); background: var(--portal-surface); box-shadow: var(--shadow-kit); text-align: center; }
+.final-indicator i { font-size: 24px; color: var(--portal-accent); }
+.final-indicator-value { margin: 0; color: var(--portal-accent); font: 700 2rem/1.2 var(--font-body, 'Karla', sans-serif); }
+.portal-standard .final-indicator-label { max-width: 100%; margin: 0; color: var(--portal-muted); font: 700 1rem/1.4 var(--font-body, 'Karla', sans-serif); letter-spacing: 0; white-space: normal; overflow-wrap: anywhere; text-wrap: balance; }
+@media (min-width: 1200px) { .final-indicators-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+@media (max-width: 599px) { .final-indicators-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 359px) { .final-indicators-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* Viva o Esporte mais compacto, preservando todo o conteúdo. */
+.portal-standard #viva-esporte .viva-content { padding: 24px; }
+.portal-standard #viva-esporte .viva-content h3 { font-size: clamp(1.5rem, 2.5vw, 2rem); margin-bottom: 16px; }
+#viva-esporte .viva-content > .bg-yellow-400 { margin-bottom: 16px; }
+#viva-esporte .viva-photo { min-height: 280px; }
+#viva-esporte .space-y-4 > p + p { margin-top: 12px; }
+@media (min-width: 1024px) { #viva-esporte .viva-layout { grid-template-columns: 3fr 2fr; } #viva-esporte .viva-photo { min-height: 320px; } }
+
+.viva-photo-rotation { margin: 0; overflow: hidden; }
+.viva-photo-rotation a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.viva-photo-rotation .photo-credit { left: 12px; right: 12px; font-size: .75rem; }
+
+/* Viva o Esporte: foto de fundo e camada azul desfocada à esquerda. */
+#viva-esporte .viva-layout { position: relative; display: block; isolation: isolate; min-height: 480px; background: #023568; }
+#viva-esporte .viva-photo { position: absolute; inset: 0; min-height: 0; }
+#viva-esporte .viva-photo img { object-position: 70% center; }
+#viva-esporte .viva-layout::before { content: ''; position: absolute; inset: 0 25% 0 0; z-index: 1; backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px); mask-image: linear-gradient(to right, #000 65%, transparent); pointer-events: none; }
+#viva-esporte .viva-layout::after { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgb(2 26 62 / .98) 0%, rgb(2 53 104 / .94) 42%, rgb(2 53 104 / .83) 65%, rgb(2 53 104 / .15) 100%); pointer-events: none; }
+.portal-standard #viva-esporte .viva-content { position: relative; z-index: 2; width: 68%; padding: 40px 32px 64px; color: #fff; }
+.portal-standard #viva-esporte .viva-content h3 { color: #fff; }
+#viva-esporte .viva-content > .text-slate-600 { color: #fff; text-align: left; }
+#viva-esporte .viva-content > .bg-yellow-400 { background: rgb(255 255 255 / .1); border: 1px solid rgb(255 255 255 / .4); border-radius: 999px; color: #fff; }
+#viva-esporte .viva-photo .photo-credit { left: auto; max-width: 30%; }
+@media (max-width: 767px) { .portal-standard #viva-esporte .viva-content { width: 100%; padding: 72px 24px 112px; } #viva-esporte .viva-layout::after { background: rgb(2 26 62 / .88); } #viva-esporte .viva-layout::before { right: 0; } #viva-esporte .viva-photo .photo-credit { left: 12px; max-width: calc(100% - 24px); } }
+html.dark #viva-esporte .viva-layout::after { background: #000; }
+html.dark #viva-esporte .viva-layout::before { display: none; }
