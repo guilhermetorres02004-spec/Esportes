@@ -235,3 +235,4 @@ Adaptar o rodapé no portal existente, começando pela conferência dos contatos
 - Escopo preparado: portal existente, APIs, dados/fotos oficiais e documentação. Piloto antigo, vendor do piloto, configuração Yarn desse piloto, ajustes locais da IDE e hooks de modernização preservados fora do envio.
 - Verificações finais repetidas: build aprovado; 96 testes frontend e 78 backend aprovados. Arquivos preparados conferidos sem tokens/chaves privadas detectados e diff sem erros de whitespace.
 - Notas da versão em docs/releases/v1.2.md. Pendências visuais e de dados geográficos permanecem documentadas, sem bloqueio da publicação do código solicitado.
+- Publicação confirmada: commit f02aa2170acdee1a8b0cdb67278ba4de1afaa5e0 enviado à master e tag anotada v1.2; Release pública criada em https://github.com/guilhermetorres02004-spec/Esportes/releases/tag/v1.2 . Referências remotas conferidas após envio.
