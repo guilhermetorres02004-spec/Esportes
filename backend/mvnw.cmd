@@ -3,6 +3,13 @@ setlocal
 
 cd /d "%~dp0"
 
+rem Prefere o Java 25 portatil do projeto, sem alterar o ambiente do Windows.
+if exist "%CD%\.tools\java25" (
+    for /d %%J in ("%CD%\.tools\java25\jdk-25*") do (
+        if exist "%%~fJ\bin\java.exe" set "JAVA_HOME=%%~fJ"
+    )
+)
+
 set "LOCAL_MAVEN=%CD%\.tools\apache-maven-3.9.9\bin\mvn.cmd"
 if exist "%LOCAL_MAVEN%" (
     call "%LOCAL_MAVEN%" "-Dmaven.repo.local=%CD%\.m2\repository" %*

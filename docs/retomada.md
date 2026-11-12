@@ -443,3 +443,108 @@ Adaptar o rodapé no portal existente, começando pela conferência dos contatos
 - Escopo: mudanças do portal desde v1.2, componentes React, inscrição Viva Esportes, mapas, cabeçalho/sessão, imagens, testes e instruções. Excluídos ajustes .vscode, frontend/piloto, frontend/vendor e frontend/.yarnrc.yml, conforme orientação vigente.
 - Verificação final repetida: build de produção e 127 testes frontend aprovados. Notas em docs/releases/v1.3.md, incluindo limitações visuais, dados geográficos pendentes e arquivos externos não incluídos.
 - Preparar commit release: v1.3 e tag anotada local. Sem autorização de push/publicação neste pedido.
+
+## Inicialização local — 12/11/2026
+
+- Frontend iniciado com npm run dev -- --host 127.0.0.1 --port 5174; GET / respondeu HTTP 200.
+- API não iniciada: projeto exige Java 25; Java padrão disponível é 8 e instalação adicional encontrada é Java 21. Java 25 não localizado nos diretórios consultados.
+- Nenhuma alteração funcional ou instalação realizada. Próximo passo: disponibilizar/localizar Java 25 e iniciar backend/mvnw.cmd spring-boot:run. Login e funções dependentes da API não verificados.
+
+
+## Botão Entrar conforme referência — 12/11/2026
+
+- Ajustado o acesso compartilhado existente: cápsula branca de 134px mínimos por 56px, ícone de entrada, texto azul institucional e tipografia do portal; hover e foco preservados.
+- Link aponta diretamente para /entrar (React existente). Visível desde a montagem, inclusive com API indisponível; sessão válida continua ocultando Entrar e exibindo Sair. Nenhuma permissão de API alterada.
+- Verificações: 15 testes de cabeçalho/sessão aprovados e build de produção aprovado. Conferência visual interativa não realizada. Login real segue dependente da API/Java 25.
+- Sem commit ou publicação. Próximo passo: conferir visualmente o botão no portal local.
+
+
+## Conexão do login restabelecida — 12/11/2026
+
+- Causa confirmada: API parada na porta 8080, produzindo HTTP 500 pelo proxy de login do Vite.
+- Java portátil Temurin 25.0.5+8 baixado para backend/.tools/java25 (ignorado pelo Git). backend/mvnw.cmd agora prefere essa instalação local sem alterar o Java global.
+- API iniciada com backend/mvnw.cmd spring-boot:run, PID 16092. Maven confirmou Java 25.0.5. GET /api/auth/me direto e via Vite retornou 401; POST /login sem credenciais via Vite retornou 401 esperado, confirmando comunicação com autenticação.
+- Quatro testes de login React aprovados. Sem alterações em credenciais ou regras de autenticação. Acesso real do admin não testado com senha do usuário.
+- Próximo passo: usuário repetir login em http://127.0.0.1:5174/entrar. Frontend e API precisam permanecer ativos. Sem commit/publicação.
+
+
+## Botão Entrar menor — 12/11/2026
+
+- Reduzidos mínimos de 134 × 56px para 110 × 44px, fonte de 16px para 14px e espaçamentos internos. Estilo, foco e destino /entrar preservados.
+- Sete testes do cabeçalho aprovados; conferência visual pendente. Próximo passo: conferir tamanho no portal local.
+
+## Botão Sair menor — 12/11/2026
+
+- Reduzida largura mínima de 110px para 90px, fonte para 13px e espaçamentos internos; alvo mínimo de 44px de altura preservado. Fluxo de logout mantido.
+- Quinze testes de cabeçalho/sessão aprovados. Conferência visual pendente; próximo passo: conferir tamanho no portal local.
+
+## Agenda adaptada para React — 12/11/2026
+
+- Migrada agenda.html para /agenda no frontend existente: AgendaPage, AgendaDialog, EventoForm, serviço e oito eventos iniciais extraídos sem alteração de conteúdo. HTML original preservado como referência, sem executar seus scripts na rota React.
+- Aplicados identidade azul, Montserrat/Karla, tokens, cards, botões de 44px, labels, diálogo nativo com Escape/foco e rodapé compartilhado. Calendário em 42 células com rolagem horizontal no celular e estilo de impressão.
+- Preservados eventosEsporte e eventoSelecionado no localStorage, detalhes-evento.html, criação/edição/exclusão com confirmação, oito campos, mês atual/futuro, datas de São Paulo e bloqueio dos dias passados. Dados não foram transferidos para API; erros de armazenamento exibem mensagem sem sobrescrever dados inválidos ou descartar formulário.
+- Timers e listeners de atualização do dia são removidos ao desmontar. Menu aponta para /agenda; entrada antiga redireciona com query/fragmento em desenvolvimento/preview e build.
+- Verificações: build aprovado; 132 testes frontend aprovados, cinco novos da agenda React; GET /agenda HTTP 200 e agenda.html?origem=menu redirecionou para /agenda?origem=menu. Testes legados permanecem como regressão da referência antiga.
+- Limitação: navegador de conferência indisponível (nenhum navegador conectado); criação/edição/exclusão via UI, impressão e apresentação responsiva precisam de conferência visual. Nenhum evento de teste gravado no navegador do usuário. Sem commit/publicação.
+- Próximo passo: conferir /agenda visualmente e exercitar os diálogos com o usuário; próximo lote geral do rodapé permanece separado.
+
+## Pesquisa de fotos antes/depois das quadras — 12/11/2026
+
+- Usuário confirmou comparação antes/depois da reforma e pediu pesquisa na internet. Consultadas notícias oficiais, imprensa local e busca de imagens.
+- Fontes: https://www.betim.mg.gov.br/portal/noticias/0/3/13004/horto-municipal-segue-recebendo-melhorias/ (melhorias de 2024); https://portalagita.com.br/equipamentos-esportivos-sao-revitalizados-pela-prefeitura-de-betim/ (23/06/2020, cobertura das quadras 1 e 2 prevista); https://www.betimonline.com/index.php/noticias/horto-municipal-ganha-novos-equipamentos-esportivos (27/08/2021, cobertura concluída).
+- Encontradas fotos gerais do Horto e das quadras cobertas, mas nenhum par antes/depois confirmado para cada quadra numerada. Não atribuir foto genérica ou do Ginásio Divino Braga a quadra específica.
+- Comparador ainda não implementado: faltam pares identificados do mesmo espaço. Próximo passo: obter acervo identificado da Secretaria ou fotos fornecidas pelo usuário. Nenhuma imagem baixada/inserida, sem alterações funcionais neste lote.
+
+## Galeria pública do Horto ao selecionar quadra — 12/11/2026
+
+- Usuário autorizou substituir a comparação antes/depois por galeria de vistas gerais do Horto. Clique em qualquer card mantém seleção/agendamento e abre diálogo com duas fotos locais, legenda, fonte e aviso de que não identificam a quadra selecionada.
+- Fotos conferidas visualmente: exterior das quadras cobertas (Portal Agita) e área de areia publicada em agosto de 2021 (Prefeitura/Divulgação via Betim Online). URLs das fontes e créditos registrados em frontend/public/js/horto-galeria.js e exibidos na galeria. Arquivos em frontend/public/Imagens/horto; não representam estado atual comprovado nem par antes/depois.
+- Navegação anterior/próxima, setas de teclado, Escape nativo, fechar por botão/fundo, bloqueio/restauração de rolagem e retorno de foco ao card recriado. Erro de foto mantém fonte e controles acessíveis. Agendamento, APIs e sessão preservados.
+- Verificação: build aprovado e 136 testes frontend aprovados, quatro novos da galeria. Fotos e módulo servidos com HTTP 200 após reiniciar Vite na porta 5174. Navegador interativo indisponível na sessão; verificação visual final em desktop/celular e Escape nativo pendente.
+- Próximo passo: conferir a galeria em agendamento-quadras.html com sessão administrativa. Sem commit/publicação.
+
+## Remoção da galeria das quadras — 12/11/2026
+
+- A pedido do usuário, removidos abertura da galeria, aviso nos cards, módulo, CSS, duas fotos baixadas e testes específicos da galeria. Clique volta a somente selecionar a quadra; agendamento preservado.
+- Próximo passo: continuar somente mediante novo pedido. Galeria e comparação antes/depois não fazem mais parte da página.
+- Verificações da remoção: 17 testes de agenda/quadras aprovados e build de produção aprovado.
+
+## Agendamento de quadras adaptado para React — 12/11/2026
+
+- Pedido :adapte aplicado ao agendamento-quadras.html. Criada rota /agendamento-quadras com HortoPage, hook useHorto, serviço, cards/horários, formulário e tabela separados no frontend existente. HTML e script antigos mantidos como referência, sem execução na rota React.
+- Aplicados identidade azul, tokens, Montserrat/Karla, cards de 16px, foco visível, labels, botões de 44px, grade responsiva e rodapé compartilhado. Fotos/galeria continuam removidas; clique somente seleciona a quadra. Contagens de quadras/areia/cobertas derivadas da API.
+- Preservados GET /api/auth/me, /api/horto/quadras, /api/horto/esportes, /api/horto/reservas?data e POST /api/horto/reservas com JSON, cookie e campos existentes. Exige ROLE_ADMIN antes de mostrar dados/formulário; 401 redireciona para /entrar e 403 bloqueia acesso. Revalida ao retornar à página/aba e a cada 30s.
+- Reutilizadas regras horto-utils: datas de São Paulo, períodos futuros, mínimo de uma hora, término até 24h, conflitos e esportes conforme piso. Nome e esporte só são limpos após sucesso; falha mantém campos e atualiza disponibilidade. Bloqueio síncrono de envio duplicado, timeout, cancelamento ao desmontar e descarte de respostas antigas ao trocar data.
+- Menu usa rota limpa; endereço antigo compatível em desenvolvimento/preview/build com query e fragmento. Inventário React atualizado.
+- Verificação final: build aprovado; 141 testes frontend aprovados, nove novos cobrindo API/perfis, datas, conflitos, renderização protegida, 24 horários, rotas, envio duplicado, expiração e cancelamento de consultas. GET /agendamento-quadras HTTP 200; agendamento-quadras.html?origem=menu redirecionou para /agendamento-quadras?origem=menu.
+- Limitação: nenhum navegador conectado para validação visual/responsiva ou fluxo com credenciais reais. Nenhuma reserva de teste criada no banco operacional. Sem alteração de backend/banco, commit ou publicação.
+- Próximo passo: conferir visualmente e validar reserva em ambiente autorizado; próximo lote geral do rodapé permanece separado.
+
+## Detalhes do evento adaptados para React — 12/11/2026
+
+- Pedido datelhes-eventos.html interpretado como detalhes-evento.html, único arquivo correspondente. Criados EventoPage, EventoContent, serviço de leitura e estilos na pasta src/agenda, rota /detalhes-evento no frontend existente.
+- Preservada leitura de eventoSelecionado do localStorage, seus oito campos, quatro orientações de participação, Solicitar material para almoxarifado.html, histórico Voltar e Imprimir. Voltar oferece /agenda quando não existe histórico. Nenhuma API ou credencial alterada.
+- Aplicados visual azul, tokens, cards, tipografia compartilhada, responsividade, foco visível e Footer. Renderização React escapa conteúdo. Dados ausentes, JSON inválido, data inválida ou armazenamento bloqueado recebem orientação para retornar à agenda, sem sobrescrever dados.
+- Agenda e menu apontam à rota limpa; detalhes-evento.html continua compatível em desenvolvimento/preview/build, preservando query e fragmento. HTML antigo mantido somente como referência.
+- Verificações: build aprovado e 147 testes frontend aprovados, seis novos cobrindo contrato local, armazenamento inválido/bloqueado, datas bissextas, navegação, conteúdo/material padrão, texto escapado e saídas publicadas. /detalhes-evento HTTP 200; entrada antiga com origem=agenda redirecionou corretamente.
+- Limitação: conferência visual/responsiva, impressão física e fluxo interativo no navegador permanecem pendentes (nenhum navegador conectado nesta sessão). Nenhum dado de evento do usuário modificado. Sem commit/publicação.
+- Próximo passo: abrir um evento pela agenda e conferir os detalhes visualmente; rodapé geral permanece lote separado.
+
+## Central Arquivos adaptada para React — 12/11/2026
+
+- comunicacao.html migrada para /comunicacao com ArquivosPage/ArquivosContent, FotosStatus, hook e serviço na pasta src/comunicacao. Visual azul, tokens, tipografia compartilhada, três cards responsivos, foco e controles de 44px, rodapé compartilhado. HTML original preservado como referência.
+- Mantidos links importar-videos.html e importar-imagens.html. Não foram migradas as páginas de importação nem alterados uploads, APIs ou autenticação. GET /api/fotos/status e /api/auth/me com cookie/no-store; POST /api/fotos/atualizar somente com perfil ROLE_ADMIN confirmado. Resposta 401/403 oculta atualização manual.
+- Intervalo exibido deriva de intervaloSegundos da API (evita afirmar uma hora com backend configurado de outra forma). Acervo/última consulta/aviso exibidos; falha preserva último status e oferece nova consulta. Consulta a cada cinco minutos, a cada três segundos durante atualização e ao retornar à aba; timers/listeners/requisições limpos ao desmontar. Bloqueio de envio duplicado.
+- Menu usa rota limpa; comunicacao.html redireciona em desenvolvimento/preview/build preservando query/fragmento. Script legado portal-fotos não manipula o DOM da rota React.
+- Verificação: build aprovado e 156 testes frontend aprovados, nove novos da central de arquivos cobrindo contratos, permissão, erros, intervalo/data, renderização, rotas, envio duplicado, polling e cancelamento. GET /comunicacao HTTP 200 e entrada antiga com origem=gestao redirecionou corretamente.
+- Limitação: validação visual/responsiva e atualização real das fotos oficiais não realizadas; nenhum navegador conectado nesta sessão. Nenhum upload ou atualização real disparado. Sem commit/publicação.
+- Próximo passo: conferir a central visualmente e os links de importação; rodapé geral permanece lote separado.
+
+## Preparação de release v1.4 — 12/11/2026
+
+- Consolidado o estado atual do portal em uma preparação de release local: ajustes no cabeçalho compartilhado, compatibilidade de páginas legadas, roteamento do frontend e revisão das regras de acessibilidade/retomada.
+- Na base ativa: `frontend/public/js/portal-header.js` ajusta atributos e comportamento do botão Entrar/menús; `frontend/public/css/portal-base.css` reforça consistência visual; `frontend/src/main.jsx` e `frontend/src/home/Home.jsx` mantêm a entrada React alinhada às rotas antigas; `frontend/scripts/copy-html-pages.mjs` preserva compatibilidade dos HTML legados durante o build; `frontend/vite.config.js` recebe ajuste de servidor para o portal local.
+- Testes específicos de cabeçalho e regressão foram atualizados em `frontend/tests/portal-header.test.mjs`, mantendo a validação de comportamento sem tocar em fluxos de autenticação reais.
+- Atualizado o registro de retomada e a referência de padrões em `docs/retomada.md` e `docs/padroes-portal.md`, sem alterar o conteúdo funcional do backend ou introduzir dados operacionais.
+- Verificações: `npm run build` no frontend concluído com sucesso; suíte `node --test tests/*.test.mjs` passou com código 0. A versão está pronta para commit local e tag `v1.4` na branch atual, sem push ou publicação.
+- Limitações: validação visual em navegador e revisão de fluxos com credenciais reais continuam pendentes; o cenário local não oferece navegador conectado nesta sessão. Nenhuma alteração de produção foi enviada ao GitHub.

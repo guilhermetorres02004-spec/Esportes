@@ -9,6 +9,10 @@ import ConquistasPage from './conquistas/ConquistasPage.jsx';
 import LoginPage from './login/LoginPage.jsx';
 import AdminPage from './admin/AdminPage.jsx';
 import InscricaoPage from './inscricao/InscricaoPage.jsx';
+import AgendaPage from './agenda/AgendaPage.jsx';
+import HortoPage from './horto/HortoPage.jsx';
+import EventoPage from './agenda/EventoPage.jsx';
+import ArquivosPage from './comunicacao/ArquivosPage.jsx';
 
 normalizeHomeUrl(window.location, window.history);
 const modalidade = normalizeModalidadeUrl(window.location, window.history);
@@ -17,8 +21,16 @@ const conquistas = /^\/conquistas(?:\.html|\/)?$/.test(window.location.pathname)
 const login = /^\/(?:entrar\/?|login\.html)$/.test(window.location.pathname);
 const administrativo = /^\/administrativo(?:\.html|\/)?$/.test(window.location.pathname);
 const inscricao = /^\/inscricao(?:\.html|\/)?$/i.test(window.location.pathname);
+const agenda = /^\/agenda(?:\.html|\/)?$/.test(window.location.pathname);
+const horto = /^\/agendamento-quadras(?:\.html|\/)?$/.test(window.location.pathname);
+const evento = /^\/detalhes-evento(?:\.html|\/)?$/.test(window.location.pathname);
+const arquivos = /^\/comunicacao(?:\.html|\/)?$/.test(window.location.pathname);
+if (arquivos && window.location.pathname !== '/comunicacao') window.history.replaceState(null, '', '/comunicacao' + window.location.search + window.location.hash);
+if (evento && window.location.pathname !== '/detalhes-evento') window.history.replaceState(null, '', '/detalhes-evento' + window.location.search + window.location.hash);
+if (horto && window.location.pathname !== '/agendamento-quadras') window.history.replaceState(null, '', '/agendamento-quadras' + window.location.search + window.location.hash);
+if (agenda && window.location.pathname !== '/agenda') window.history.replaceState(null, '', '/agenda' + window.location.search + window.location.hash);
 if (inscricao && window.location.pathname !== '/inscricao') window.history.replaceState(null, '', '/inscricao' + window.location.search + window.location.hash);
 if (administrativo && window.location.pathname !== '/administrativo') window.history.replaceState(null, '', '/administrativo' + window.location.search + window.location.hash);
 if (login && window.location.pathname !== '/entrar') window.history.replaceState(null, '', '/entrar' + window.location.search + window.location.hash);
 if (conquistas && window.location.pathname !== '/conquistas') window.history.replaceState(null, '', '/conquistas' + window.location.search + window.location.hash);
-createRoot(document.getElementById('root')).render(inscricao ? <InscricaoPage /> : administrativo ? <AdminPage /> : login ? <LoginPage /> : conquistas ? <ConquistasPage /> : regionais ? <RegionaisPage /> : modalidade ? <ModalidadePage modalidade={modalidade} /> : <Home />);
+createRoot(document.getElementById('root')).render(arquivos ? <ArquivosPage /> : evento ? <EventoPage /> : horto ? <HortoPage /> : agenda ? <AgendaPage /> : inscricao ? <InscricaoPage /> : administrativo ? <AdminPage /> : login ? <LoginPage /> : conquistas ? <ConquistasPage /> : regionais ? <RegionaisPage /> : modalidade ? <ModalidadePage modalidade={modalidade} /> : <Home />);

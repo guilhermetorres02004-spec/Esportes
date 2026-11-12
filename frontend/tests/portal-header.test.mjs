@@ -8,7 +8,7 @@ test('menus antigos Eventos e Gestão começam ocultos e preservam destinos', ()
     const { html } = preparar();
     assert.match(html, /id="portal-menu-eventos" hidden/);
     assert.match(html, /id="portal-menu-gestao" hidden/);
-    for (const href of ['/administrativo', '/inscricao', '/agenda.html', '/comunicacao.html', '/almoxarifado.html', '/presenca.html'])
+    for (const href of ['/administrativo', '/inscricao', '/agenda', '/comunicacao', '/almoxarifado.html', '/presenca.html'])
         assert.ok(html.includes(`href="${href}"`));
 });
 class Elemento {
@@ -51,7 +51,7 @@ test('painéis recebem descrições e Entrar fica ao lado do título sem expor i
     assert.doesNotMatch(t.html, /class="portal-header-primary"/);
     const topbar = t.html.match(/<header class="portal-header-topbar">([\s\S]*?)<\/header>/)[1];
     assert.ok(topbar.indexOf('class="portal-header-title"') < topbar.indexOf('id="portal-session-login"'));
-    assert.match(topbar, /<a id="portal-session-login" href="login\.html" class="portal-header-action portal-header-login" data-temporariamente-desativado="false" hidden><svg[^>]*aria-hidden="true"[^>]*>[\s\S]*?<\/svg>Entrar<\/a>/);
+    assert.match(topbar, /<a id="portal-session-login" href="\/entrar" class="portal-header-action portal-header-login" data-temporariamente-desativado="false"><svg[^>]*aria-hidden="true"[^>]*>[\s\S]*?<\/svg>Entrar<\/a>/);
     assert.match(topbar, /<button id="sair" type="button" class="portal-header-action portal-header-login portal-header-logout" hidden>/);
     assert.equal((t.html.match(/id="sair"/g) || []).length, 1);
     assert.doesNotMatch(t.html.match(/<nav id="portal-site-header"[\s\S]*?<\/nav>/)[0], /id="sair"/);

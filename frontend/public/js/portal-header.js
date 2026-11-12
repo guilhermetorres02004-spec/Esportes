@@ -28,8 +28,8 @@
             ['Futsal', '/futsal'], ['Basquete', '/basquete'], ['Ver todas', '/#escola']]],
         ['Programas', [['Atividades Esportivas', '/#atividades-esportivas'],
             ['Escola Esporte', '/#escola'], ['Viva o Esporte', '/#viva-esporte']]],
-        ['Eventos', [['Agenda de Eventos', '/agenda.html'], ['Detalhes do Evento', '/detalhes-evento.html'], ['Quadras do Horto', '/agendamento-quadras.html']], 'portal-menu-eventos'],
-        ['Gestão', [['Administrativo', '/administrativo'], ['Inscrição', '/inscricao'], ['Arquivos', '/comunicacao.html'], ['Central de Downloads', '/downloads.html'],
+        ['Eventos', [['Agenda de Eventos', '/agenda'], ['Detalhes do Evento', '/detalhes-evento'], ['Quadras do Horto', '/agendamento-quadras']], 'portal-menu-eventos'],
+        ['Gestão', [['Administrativo', '/administrativo'], ['Inscrição', '/inscricao'], ['Arquivos', '/comunicacao'], ['Central de Downloads', '/downloads.html'],
             ['Almoxarifado', '/almoxarifado.html'], ['Folha de Presença', '/frequenciapreenchimento.html'], ['Relatório de Presença', '/presenca.html'],
             ['Matrix Impact', '/descanso.html'], ['Página Base', '/esporteteste.html']], 'portal-menu-gestao']
     ];
@@ -72,7 +72,7 @@
                 </div>
                 <a href="/" class="portal-header-title">Portal do Esporte</a>
                 ${inscricaoHabilitada ? '<a href="Inscricao.html" class="portal-header-primary">Inscreva-se</a>' : ''}
-                <a id="portal-session-login" href="login.html" class="portal-header-action portal-header-login" data-temporariamente-desativado="${!loginHabilitado}" hidden><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M10 17l5-5-5-5M15 12H3"/><path d="M12 3h7a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-7"/></svg>Entrar</a>
+                <a id="portal-session-login" href="/entrar" class="portal-header-action portal-header-login" data-temporariamente-desativado="${!loginHabilitado}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M10 17l5-5-5-5M15 12H3"/><path d="M12 3h7a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-7"/></svg>Entrar</a>
                 <button id="sair" type="button" class="portal-header-action portal-header-login portal-header-logout" hidden><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M14 7l5 5-5 5M19 12H7"/><path d="M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h5"/></svg>Sair</button>
             </div>
         </header>

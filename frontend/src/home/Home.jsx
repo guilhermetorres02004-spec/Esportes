@@ -8,12 +8,13 @@ import { Indicators, Videos, Activities, School, VivaEsporte, FinalIndicators } 
 import { OfficialPhotosProvider, PhotoSources } from './OfficialPhotos.jsx';
 import './home.css';
 
-export default function Home() {
+export default function Home({ base = false } = {}) {
     useEffect(() => {
         window.scrollToCurrentSection?.();
     }, []);
     return <OfficialPhotosProvider>
         <main id="conteudo" tabIndex={-1}>
+        {base && <div className="gestao-base-back"><a href="/administrativo">← Voltar para o Administrativo</a></div>}
         <div id="home" className="page active">
             <Carousel />
             <Indicators />

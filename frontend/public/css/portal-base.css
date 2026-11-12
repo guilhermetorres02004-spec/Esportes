@@ -171,6 +171,9 @@ body.portal-standard { margin: 0; font-family: var(--font-body); font-size: 1rem
 .portal-standard .portal-header-topbar .portal-header-login:hover { background: #eff6ff; color: var(--betim-blue-dark, #023568); }
 .portal-standard .portal-header-topbar .portal-header-login svg { width: 16px; height: 16px; }
 .portal-standard .portal-header-topbar .portal-header-login { min-width: 110px; cursor: pointer; }
+.portal-standard .portal-header-topbar #portal-session-login { min-width: 110px; min-height: 44px; gap: .5rem; padding: .5rem 1rem; border-color: #cbd5e1; color: var(--color-betim-blue, #0072e7); font-family: var(--font-heading); font-size: .875rem; box-shadow: 0 1px 2px rgb(2 53 104 / .12); }
+.portal-standard .portal-header-topbar #portal-session-login:hover { background: #eff6ff; border-color: var(--color-betim-blue, #0072e7); color: var(--betim-blue-dark, #023568); }
+.portal-standard .portal-header-topbar .portal-header-logout { min-width: 90px; padding: .375rem .75rem; gap: .375rem; font-size: .8125rem; }
 .portal-standard .portal-header-topbar .portal-header-logout:disabled { opacity: .7; cursor: wait; }
 .portal-standard .portal-header-nav .portal-header-user { display: block; max-width: 150px; padding: 0; border: 0; background: transparent; color: white; font-size: .75rem; }
 .portal-standard .portal-header-user::before,.portal-standard .portal-header-user::after { content: none; }

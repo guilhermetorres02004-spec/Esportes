@@ -5,7 +5,8 @@ Referência comum para todas as IAs que trabalham neste repositório. Deve ser l
 ## React e rotas
 
 - Trabalhar no portal existente em `frontend`, com React e Vite. Não continuar `frontend/piloto` sem pedido explícito.
-- Home, 22 modalidades, Núcleos (`/esporte-nas-regionais`), Conquistas (`/conquistas`), Login (`/entrar`), Administrativo (`/administrativo`) e Inscrição (`/inscricao`) já têm componentes React. Conferir `frontend/src/main.jsx` e o estado dos arquivos antes de editar. A autenticação continua em `POST /login`; não substituir esse endpoint pela página.
+- A central Arquivos (`/comunicacao`) também usa React, com importações existentes e painel de fotos oficiais; atualização manual permanece exclusiva de administradores.
+- Home, 22 modalidades, Núcleos (`/esporte-nas-regionais`), Conquistas (`/conquistas`), Login (`/entrar`), Administrativo (`/administrativo`), Inscrição (`/inscricao`), Agenda (`/agenda`), Agendamento de Quadras (`/agendamento-quadras`) e Detalhes do Evento (`/detalhes-evento`) já têm componentes React. Conferir `frontend/src/main.jsx` e o estado dos arquivos antes de editar. A autenticação continua em `POST /login`; não substituir esse endpoint pela página.
 - Novas páginas e adaptações de páginas devem seguir React, com componentes e estado declarativos; reutilizar os componentes existentes. Não criar outra versão HTML independente nem reexecutar scripts legados que alterem o DOM controlado pelo React.
 - Se a página solicitada ainda for legada, adaptar essa página para React dentro do escopo autorizado. Não declarar todas as páginas migradas nem migrar páginas não solicitadas automaticamente.
 - Usar URLs públicas sem `.html`; preservar compatibilidade dos endereços antigos, parâmetros e fragmentos. Integrar rotas em `src/main.jsx`, desenvolvimento/preview, build e publicação, conforme necessário.
