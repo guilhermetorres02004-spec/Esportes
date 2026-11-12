@@ -1,5 +1,37 @@
 # Portal Esporte Betim
 
+## Progresso e Conquistas das Issues
+
+Acompanhamento visual das resoluções (detalhes completos em [docs/progresso-issues.md](docs/progresso-issues.md)):
+
+```mermaid
+flowchart LR
+    subgraph Concluidas["🏆 Concluídas (4)"]
+        I2["✅ #2 Build Destravado\n(Vite build limpo e testes 100%)"]
+        I3["✅ #3 Divs Fantasmas Removidas\n(Home limpa antes do rodapé)"]
+        I4["✅ #4 Dots no Carrossel\n(Navegação interativa e acessível)"]
+        I5["✅ #5 Cores Tailwind em News\n(Classes literais geradas no CSS)"]
+    end
+
+    subgraph Proxima["⚡ Próxima na Fila"]
+        I6["⏳ #6 Vídeos Absolutos\n(Caminhos seguros em Sections.jsx)"]
+    end
+
+    subgraph Backlog["📋 Backlog Pendente (1)"]
+        I7["⚪ #7 Limpeza da Raiz"]
+    end
+
+    I2 --> I3
+    I3 --> I4
+    I4 --> I5
+    I5 ==> I6
+    I6 -.-> I7
+
+    style Concluidas fill:#e6f9ed,stroke:#16a34a,stroke-width:2px
+    style Proxima fill:#fef9c3,stroke:#ca8a04,stroke-width:2px
+    style Backlog fill:#f8fafc,stroke:#94a3b8,stroke-width:1px
+```
+
 ## Retomar trabalho com IA
 
 Digite `:return` para retomar o próximo lote registrado em [docs/retomada.md](docs/retomada.md),

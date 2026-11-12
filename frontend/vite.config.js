@@ -5,22 +5,6 @@ import { resolveModalidade } from './src/modalidades/routes.js';
 function modalityRoutes() {
   const configure = server => { server.middlewares.use((req, res, next) => {
     const url = new URL(req.url, 'http://localhost');
-    if (/^\/comunicacao(?:\.html|\/)?$/.test(url.pathname)) {
-      if (url.pathname !== '/comunicacao') { res.writeHead(302, { Location: '/comunicacao' + url.search }); res.end(); return; }
-      req.url = '/index.html' + url.search; next(); return;
-    }
-    if (/^\/detalhes-evento(?:\.html|\/)?$/.test(url.pathname)) {
-      if (url.pathname !== '/detalhes-evento') { res.writeHead(302, { Location: '/detalhes-evento' + url.search }); res.end(); return; }
-      req.url = '/index.html' + url.search; next(); return;
-    }
-    if (/^\/agendamento-quadras(?:\.html|\/)?$/.test(url.pathname)) {
-      if (url.pathname !== '/agendamento-quadras') { res.writeHead(302, { Location: '/agendamento-quadras' + url.search }); res.end(); return; }
-      req.url = '/index.html' + url.search; next(); return;
-    }
-    if (/^\/agenda(?:\.html|\/)?$/.test(url.pathname)) {
-      if (url.pathname !== '/agenda') { res.writeHead(302, { Location: '/agenda' + url.search }); res.end(); return; }
-      req.url = '/index.html' + url.search; next(); return;
-    }
     if (/^\/inscricao(?:\.html|\/)?$/i.test(url.pathname)) {
       if (url.pathname !== '/inscricao') { res.writeHead(302, { Location: '/inscricao' + url.search }); res.end(); return; }
       req.url = '/index.html' + url.search; next(); return;

@@ -25,8 +25,6 @@ export default function Home({ base = false } = {}) {
             <PhotoGallery />
         </div>
         </main>
-        <div id="frequencia" className="page min-h-screen py-24 text-center"><h2 className="text-5xl font-black text-blue-900 uppercase italic">Portal do Atleta</h2></div>
-        <div id="inscricao" className="page min-h-screen py-24 text-center"><h2 className="text-5xl font-black text-blue-900 uppercase italic leading-none">Inscrição 2026</h2></div>
         <Footer />
     </OfficialPhotosProvider>;
 }

@@ -22,6 +22,18 @@ export default function Carousel() {
                 <OfficialCredit {...link} categoria="principal" indice={i} className={linkClass} tabIndex={indice === i ? 0 : -1}>{slide.credit}</OfficialCredit>
             </div>;
         })}
-        <div className="dots-container absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-2 z-30" id="dots" />
+        <div className="dots-container absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-2 z-30" id="dots" role="tablist" aria-label="Navegação dos slides">
+            {photos.slides.map((_, i) => (
+                <button
+                    key={i}
+                    type="button"
+                    role="tab"
+                    aria-selected={indice === i}
+                    aria-label={`Ir para a foto ${i + 1} de ${photos.slides.length}`}
+                    className={`dot${indice === i ? ' active' : ''}`}
+                    onClick={() => setIndice(i)}
+                />
+            ))}
+        </div>
     </div>;
 }

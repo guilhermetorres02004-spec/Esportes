@@ -3,14 +3,14 @@ import { OfficialImage, useOfficialPhoto } from './OfficialPhotos.jsx';
 
 const fallback = 'https://www.betim.mg.gov.br/portal/noticias/0/3/15692/confira-as-conquistas-dos-atletas-de-betim-desta-semana/';
 const laterais = [
-    { categoria: 'Editais', titulo: 'Bolsa Atleta 2026: Inscrições Abertas', cor: 'blue' },
-    { categoria: 'Infraestrutura', titulo: 'Novo piso no Divino Braga', cor: 'green' },
-    { categoria: 'Educação', titulo: 'Recorde nos Jogos Escolares', cor: 'purple' },
+    { categoria: 'Editais', titulo: 'Bolsa Atleta 2026: Inscrições Abertas', cor: 'blue', borderClass: 'border-blue-600', textClass: 'text-blue-600' },
+    { categoria: 'Infraestrutura', titulo: 'Novo piso no Divino Braga', cor: 'green', borderClass: 'border-green-600', textClass: 'text-green-600' },
+    { categoria: 'Educação', titulo: 'Recorde nos Jogos Escolares', cor: 'purple', borderClass: 'border-purple-600', textClass: 'text-purple-600' },
 ];
 function SideNews({ indice, original }) {
     const foto = useOfficialPhoto('principal', indice);
-    return <div className={`news-side-card border-l-8 border-${original.cor}-600`}><div>
-        <span className={`text-${original.cor}-600 text-[10px] font-black uppercase`}>{foto ? 'Esportes · Prefeitura de Betim' : original.categoria}</span>
+    return <div className={`news-side-card border-l-8 ${original.borderClass}`}><div>
+        <span className={`${original.textClass} text-[10px] font-black uppercase`}>{foto ? 'Esportes · Prefeitura de Betim' : original.categoria}</span>
         <h5 className="font-black text-blue-900 uppercase italic text-lg mt-1">{foto ? <a href={foto.origem} target="_blank" rel="noopener noreferrer">{foto.titulo}</a> : original.titulo}</h5>
     </div></div>;
 }

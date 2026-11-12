@@ -14,6 +14,11 @@
         .slogan-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 20; pointer-events: none; }
         .photo-credit { position: absolute; right: 16px; bottom: 12px; z-index: 21; max-width: calc(100% - 32px); padding: 6px 10px; border-radius: 8px; background: rgba(15, 23, 42, 0.85); color: white; font-size: 11px; line-height: 1.5; }
         .photo-credit:hover, .photo-credit:focus-visible { text-decoration: underline; }
+        .dots-container { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 30; display: flex; gap: 8px; align-items: center; }
+        .dot { width: 12px; height: 12px; border-radius: 9999px; background: rgba(255, 255, 255, 0.4); border: none; cursor: pointer; padding: 0; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        .dot:hover { background: rgba(255, 255, 255, 0.85); }
+        .dot:focus-visible { outline: 2px solid #facc15; outline-offset: 2px; }
+        .dot.active { background: #facc15; width: 32px; border-radius: 6px; }
 
         /* NOTÍCIAS AMPLIADAS */
         .news-main-card { height: 550px; }

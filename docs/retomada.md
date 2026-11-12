@@ -548,3 +548,50 @@ Adaptar o rodapé no portal existente, começando pela conferência dos contatos
 - Atualizado o registro de retomada e a referência de padrões em `docs/retomada.md` e `docs/padroes-portal.md`, sem alterar o conteúdo funcional do backend ou introduzir dados operacionais.
 - Verificações: `npm run build` no frontend concluído com sucesso; suíte `node --test tests/*.test.mjs` passou com código 0. A versão está pronta para commit local e tag `v1.4` na branch atual, sem push ou publicação.
 - Limitações: validação visual em navegador e revisão de fluxos com credenciais reais continuam pendentes; o cenário local não oferece navegador conectado nesta sessão. Nenhuma alteração de produção foi enviada ao GitHub.
+
+
+## Resolução da Issue #2 (Correção de build do Vite) — 12/11/2026
+
+- Corrigida a quebra no `npm run build` causada por imports inexistentes em `frontend/src/main.jsx` (`AgendaPage`, `HortoPage`, `EventoPage`, `ArquivosPage`).
+- Em `frontend/scripts/copy-html-pages.mjs`, restaurada a cópia direta dos arquivos HTML canônicos e funcionais (`agenda.html`, `agendamento-quadras.html`, `detalhes-evento.html`, `comunicacao.html`) para a pasta de distribuição `dist/`.
+- Em `frontend/vite.config.js`, removidas as regras de rewrite em desenvolvimento para as páginas que ainda operam em HTML estático.
+- Verificações: `npm run build` concluiu com sucesso (código 0, saída em `dist/`), e todos os testes da suíte (`test:horto`, `test:inscricao`, `test:agenda`, `test:administrativo`, `test:suporte`, `test:sessao`, `test:fotos`) passaram com 100% de aprovação.
+- Issue #2 comentada e fechada no GitHub.
+- Próximo passo sugerido: avançar para a Issue #3 (remoção das divs fantasmas `frequencia` e `inscricao` no rodapé da Home).
+
+
+## Resolução da Issue #3 (Limpeza de divs fantasmas na Home) — 12/11/2026
+
+- Removidas de `frontend/src/home/Home.jsx` as tags `<div id="frequencia">` e `<div id="inscricao">`, que adicionavam `min-h-screen py-24` e espaço em branco desnecessário no fim da página inicial.
+- A página agora renderiza `<main>` seguido diretamente pelo `<Footer />`.
+- Verificações: `node --test tests/home-react.test.mjs` (5 testes aprovados) e `npm run build` aprovado sem erros.
+- Issue #3 comentada e fechada no GitHub.
+- Próximo passo sugerido: avançar para a Issue #4 (implementação dos dots de navegação no carrossel).
+
+
+## Resolução da Issue #4 (Marcadores de navegação no Carrossel) — 12/11/2026
+
+- Implementada a renderização dos botões `.dot` no container `.dots-container` de `frontend/src/home/Carousel.jsx`.
+- Cada botão possui `role="tab"`, `aria-selected` vinculado ao índice ativo, `aria-label` acessível e handler de clique `onClick={() => setIndice(i)}`.
+- Estilizadas as classes `.dots-container`, `.dot` e `.dot.active` em `frontend/src/home/home.css`, com expansão suave para 32px e amarelo institucional no item ativo, além de foco visível (`:focus-visible`).
+- Verificações: `node --test tests/home-react.test.mjs` (5 testes aprovados) e `npm run build` aprovado sem erros.
+- Issue #4 comentada e fechada no GitHub.
+- Próximo passo sugerido: avançar para a Issue #5 (correção das classes dinâmicas do Tailwind em `News.jsx`).
+
+
+## Resolução da Issue #5 (Classes dinâmicas do Tailwind em News.jsx) — 12/11/2026
+
+- Substituída a interpolação dinâmica de classes ``border-${original.cor}-600`` e ``text-${original.cor}-600`` em `frontend/src/home/News.jsx` por classes literais estáticas (`borderClass` e `textClass`).
+- Confirmada a compilação e presença das regras `border-purple-600`, `border-green-600` e `text-purple-600` no arquivo `frontend/public/css/tailwind.css`.
+- Verificações: `npm run build:css`, `node --test tests/home-react.test.mjs` (5 testes aprovados) e `npm run build` aprovados sem erros.
+- Issue #5 comentada e fechada no GitHub.
+- Próximo passo sugerido: avançar para a Issue #6 (ajuste de caminhos relativos de vídeos em `Sections.jsx`).
+
+
+## Preparação da release v1.5 — 12/11/2026
+
+- Preparadas para a versão as correções do build e das rotas HTML legadas, a remoção de blocos vazios da Home, a navegação acessível do carrossel, as classes Tailwind estáticas das notícias e o painel de acompanhamento das issues.
+- Arquivos JSON gerados com alterações apenas de CRLF/LF foram restaurados após comparação semântica confirmar conteúdo idêntico; não serão incluídos como ruído de formatação.
+- Verificações: `node --test tests/*.test.mjs` em `frontend` passou com 127/127 testes; `npm run build` concluiu com sucesso (80 módulos); `git diff --check` sem erros. O build emitiu aviso não fatal de `caniuse-lite` desatualizado.
+- A tag remota `v1.5` foi consultada e não existia; `master` estava alinhada com `origin/master` antes da preparação. O usuário autorizou criar commit, tag anotada e enviar ambos.
+- Próximo passo: revisar a lista final de arquivos, criar o commit e a tag `v1.5`, enviar ao remoto e conferir os refs. Conferência visual em navegador não realizada; as issues #6 e #7 continuam indicadas como pendentes em `docs/progresso-issues.md`.
